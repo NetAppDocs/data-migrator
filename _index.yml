@@ -1,14 +1,26 @@
 indexpage:
-  title: # Unquoted string 
-  lead: # Quoted string
-  summary: # Quoted string 
-  keywords: # Unquoted comma-delimited list of keywords 
+  title: NetApp Data Migrator documentation
+  lead: NetApp Data Migrator (NDM) is an enterprise-grade, multi-cloud, data migration software application that is designed to simplify and accelerate the transfer of file-based workloads from on-premises or third-party storage systems to NetApp’s first-party cloud storage services. NDM helps you to discover your existing storage environments, plan and execute data migrations, and allow you to monitor their progress through an easy-to-use, unified interface.
+  summary: NetApp Data Migrator (NDM) is an enterprise-grade, multi-cloud, data migration software application that is designed to simplify and accelerate the transfer of file-based workloads from on-premises or third-party storage systems to NetApp’s first-party cloud storage services. NDM helps you to discover your existing storage environments, plan and execute data migrations, and allow you to monitor their progress through an easy-to-use, unified interface.
+  keywords: netapp data migrator documentation ndm 
   tiles: 
-    # Tile definition 
-    - title: # Quoted or unquoted string
+    - title: Get started
       links: 
-        # Link definition
-        - title: # Quoted or unquoted string
-          url: # Path to target
-        # Next link on this tile (title/url pair)
-    # Next tile on this page (title/links)
+        - title: Release notes
+          url: /known-issues-and-limitations.html
+        - title: Learn about NDM
+          url: /learn-about.html
+        - title: Quick start 
+          url: /quick-start.html
+    - title: Install and use NDM
+      links: 
+        - title: Install and setup NDM
+          url: /install-options.html
+        - title: Use NDM
+          url: /manage-users.html
+    - title: More resources
+      links: 
+        - title: Get help
+          url: /troubleshoot.html
+        - title: FAQ
+          url: /faq.html
