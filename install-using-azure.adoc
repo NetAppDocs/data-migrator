@@ -39,19 +39,19 @@ Create the control plane and the worker virtual machines (VMs) from the OVA file
 . Select **Compute Galleries** from the search results, and select **`datamigrator`**. There are two image definitions in the **`datamigrator`** gallery:
 * **`ndm-control-plane`**
 * **`ndm-worker`**
-. Create the control plane:
-. Select **`ndm-control-plane`**
-. Copy the **Control Plane** image names. You need this image when you create the worker VM late in this procedure.
-. Select **Create VM.**
-. Enter the following information to configure the VM settings:
+. Create the control plane VM:
+.. Select `ndm-control-plane`
+.. Copy the **Control Plane** image names. You need this image when you create the worker VM late in this procedure.
+.. Select **Create VM.**
+.. Enter the following information to configure the VM settings:
 * **Subscription**: Enter your subscription name.
 * **Resource Group**: Enter the name of your resource group.
 * **VM name**: The prefix for the new VM, for example, **`<user_name>-<image_name>`**
 * **Image**: Choose the custom Packer-created image for a control plane.
 * **Size**: The recommended size for the control plane is 8 vCPU, 32GB RAM.
 * **Administrator Account**:
-. **Username**: Ubuntu
-. **SSH Public Key**: Use your SSH public key or create a new one.
+* **Username**: Ubuntu
+* **SSH Public Key**: Use your SSH public key or create a new one.
 * **License type**: Other
 * Select **Next: Disks >.**
 * **Delete with VM**: Optionally, select this option if you want to delete the OS disk with the VM.
@@ -59,23 +59,23 @@ Create the control plane and the worker virtual machines (VMs) from the OVA file
 * **Virtual Network (VNet)**: Enter your designated virtual network.
 * **Public IP**: Set to "**None**" to avoid assigning a public IP.
 * **Delete NIC when VM is deleted**: Optionally, select this option if want to delete a NIC along with VM.
-* If you created a new SSH key, when prompted, download and save the key.
-. Select **Review** and verify the settings.
-. Select **Create** to deploy the worker VM.
-. If you're creating a new pair, the **Generate new key pair** prompt appears. Select **Download private key and create resource** to download the **.pem** file.
+.. If you created a new SSH key, when prompted, download and save the key.
+.. Select **Review** and verify the settings.
+.. Select **Create** to deploy the worker VM.
+.. If you're creating a new pair, the **Generate new key pair** prompt appears. Select **Download private key and create resource** to download the **.pem** file.
 . Create the worker VM:
-. Select **`ndm-worker`**
-. Copy the **Worker** image name. You need this image when you create the worker VM late in this procedure.
-. Select **Create VM.**
-. Enter the following information to configure the VM settings:
+.. Select `ndm-worker`
+.. Copy the **Worker** image name. You need this image when you create the worker VM late in this procedure.
+.. Select **Create VM.**
+.. Enter the following information to configure the VM settings:
 * **Subscription**: Enter your subscription name.
 * **Resource Group**: Enter the name of your resource group.
-    * **VM name**: The prefix for the new VM, for example,**`<user_name>-<image_name>.`**
+* **VM name**: The prefix for the new VM, for example,**`<user_name>-<image_name>.`**
 * **Image**: Choose the custom Packer-created image for a worker.
 * **Size**: The recommended size for the worker is 4 vCPU, 16GB RAM.
 * **Administrator Account**:
-. **Username**: Ubuntu
-. **SSH Public Key**: Use your SSH public key or create a new one.
+* **Username**: Ubuntu
+* **SSH Public Key**: Use your SSH public key or create a new one.
 * **License type**: Other
 * Select **Next: Disks >**
 * **Delete with VM**: Optionally, select this option if you want to delete the OS disk with the VM.
@@ -83,10 +83,10 @@ Create the control plane and the worker virtual machines (VMs) from the OVA file
 * **Virtual Network (VNet)**: Enter your designated virtual network.
 * **Public IP**: Set to "**None**" to avoid assigning a public IP.
 * **Delete NIC when VM is deleted**: Optionally, select this option if want to delete a NIC along with VM.
-* If you created a new SSH key, when prompted, download and save the key.
-. Select **Review** and verify the settings.
-. Select **Create** to deploy the worker VM.
-. If you're creating a new pair, the **Generate new key pair** prompt appears. Select **Download private key and create resource** to download the **.pem** file.
+.. If you created a new SSH key, when prompted, download and save the key.
+.. Select **Review** and verify the settings.
+.. Select **Create** to deploy the worker VM.
+.. If you're creating a new pair, the **Generate new key pair** prompt appears. Select **Download private key and create resource** to download the **.pem** file.
 
 == Step 2: Connect to the control plane VM
 
@@ -139,8 +139,7 @@ Connect to the VM using Windows:
 --
 ====
 
-. When the connection completes, you are logged into the VM as the `ubuntu` user. Switch the user to `datamigrator`.
-. Switch the user to `datamigrator`:
+. When the connection completes, you are logged into the VM as the `ubuntu` user. Switch the user to `datamigrator`:
 +
 [source,cli]
 ----

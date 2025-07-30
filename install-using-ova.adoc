@@ -122,58 +122,65 @@ When you set up the Windows or Linux worker for the first time, you need to veri
 
 Depending on your environment, select the Linux Worker or Windows Worker tab, or both tabs if your configuration includes both NFS and SMB.
 
+[role="tabbed-block"]
+====
 .Linux Worker
-
-. Navigate to the NDM UI on the control plane using the IP address recorded in step 16:
+--
+.. Navigate to the NDM UI on the control plane using the IP address recorded in step 16:
 +
 [source,cli]
 ----
 https://<IP_address>/
 ----
-. Select *View instructions to set up worker* and SSH to the worker VM:
+.. Select *View instructions to set up worker* and SSH to the worker VM:
 +
 [source,cli]
 ----
 ssh <user_ID>@<worker_server_IP>
 ----
+
 NOTE: Don’t use the same worker secret and worker ID to create multiple workers.
-. Login as the root user:
+
+.. Login as the root user:
 +
 [source,cli]
 ----
 sudo su -
 ----
-. Paste the instructions copied in step 4
-. Verify the status of the worker:
+.. Paste the instructions copied in step 4
+.. Verify the status of the worker:
 +
 [source,cli]
 ----
 systemctl status datamigrator-worker.service
 ----
-. Check the status of the logs:
+.. Check the status of the logs:
 +
 [source,cli]
 ----
 tail -20f /opt/datamigrator/logs/datamigrator-worker.log
 ----
-. Navigate to NDM UI to verify that the worker is registered.
+.. Navigate to NDM UI to verify that the worker is registered.
+--
 
 .Windows Worker
-
-. Run the Windows Worker Installer that you copied to the Windows server.
-. During installation, enter the following values when prompted. You can get the values from the NDM UI under *Home > View Instructions to Setup Worker*:
+--
+.. Run the Windows Worker Installer that you copied to the Windows server.
+.. During installation, enter the following values when prompted. You can get the values from the NDM UI under *Home > View Instructions to Setup Worker*:
 * Worker ID
 * Worker secret
 * Control plane IP address
-. After the installation completes, the worker service starts automatically.
+.. After the installation completes, the worker service starts automatically.
 * The installation directory is `C:\datamigrator\.` 
 * Locate the Logs at `C:\datamigrator\logs.`
-. Follow the logs in real-time by opening PowerShell and running the following command:
+.. Follow the logs in real-time by opening PowerShell and running the following command:
 +
 [source,cli]
 ----
 Get-Content -Path "C:\datamigrator\logs\<log_file_name> -Wait"
 ----
+--
+====
 
 == Step 4: Manage worker credentials
 
