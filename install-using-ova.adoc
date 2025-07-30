@@ -51,7 +51,7 @@ Create the control plane and worker virtual machines (VMs) from the OVA files us
 * For *Select virtual disk format*, select “Thin Provision”.
 * For *VM Storage Policy,* select the datastore for the VM files.
 . Select *Select networks* and select the VM’s network.
-. Optionally, select *Customize template* to provide static IP address to the VM. You use DHCP, the NDM vCenter, or your own vCenter:
+. Optionally, select *Customize template* to provide a static IP address to the VM. You can use DHCP, the NDM vCenter, or your own vCenter:
 +
 [role="tabbed-block"]
 ====
