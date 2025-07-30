@@ -1,0 +1,12 @@
+---
+sidebar: sidebar
+permalink: quick-start.html
+keywords: 
+summary: 
+---
+= Quick start for NDM
+:icons: font
+:imagesdir: ./media/
+
+[.lead]
+To get started with NetApp Data Migrator (NDM), you need install the tool by setting up control pane and worker virtual machines (VMs) using OVA, Azure, or Google Cloud, define your credentials, and create your first project.

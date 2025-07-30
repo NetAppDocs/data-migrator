@@ -1,0 +1,25 @@
+---
+sidebar: sidebar
+permalink: install-using-google-cloud.html
+keywords: 
+summary: 
+---
+= Install NDM using Google Cloud 
+:icons: font
+:imagesdir: ./media/
+
+[.lead]
+
+
+.About this task
+
+
+
+.Before you begin
+
+
+
+
+== What's next?
+
+link:manage-users.html[Learn about using the NDM tool]

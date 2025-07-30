@@ -1,0 +1,77 @@
+---
+sidebar: sidebar
+permalink: manage-file-servers.html
+keywords: 
+summary: 
+---
+= Add and manage file servers
+:icons: font
+:imagesdir: ./media/
+
+[.lead]
+You can use NetApp Data Migrator (NDM) to add, configure, and edit file servers that use the NFS or SMB protocols. File servers can have one of four status types, listed under the **Status** field in the **File Servers** table:
+
+* **Active**: There are no errors, and all details have been validated.
+* **In Progress:** Server validation is in progress.
+* **Draft**: No workers have been associated with a file server.
+* **Errored**: Some information, for example, export details or the working directory, is not valid.
+
+== Add or configure a new file server
+
+.Steps
+
+. In the left navigation panel, select **Storage Servers**.
+. Select **File Servers**.
+. Select **+Add,** then the **File Servers** page opens**.**
+. Select the **Server Type** tab then:
+. Select the **Credentials** tab.
+. Enter the **Host Name** (or IP address) of the **NFS** or **SMB** server.
+. If you are using an **NFS** file server:
+* Enter a **Username** for accessing **NFS** file shares.
+* Enter a **Password** (Optional).
+* Select a **Protocol Version** for **NFS**.
+* In the **Export Paths Retrieval Mechanism** panel select:
+** **Auto Discover** to automatically discover export paths
+** **Manual Upload** to upload export paths manually, or in environments where **Auto Discover** is not supported, like the Google Cloud NetApp Volumes (GCNV) Flex service.
+. If you are using an **SMB** file server:
+* Enter a **Username** for accessing **SMB** file shares.
+* Enter a **Password** (Optional).
+* Select a **Protocol Version** for **SMB**.
+. Select the **Workers** tab
+. In the **Associated** column, select the toggle button next to the names of worker(s) you wish to associate with a server.
+. Select **Proceed** to initiate a pre-check operation that tests if the selected worker(s) have connectivity to NDM.
+. When the pre-check is complete, you should resolve any errors that are flagged. (Refer to File Server Frequently Asked Questions (FAQ) for details on how to resolve errors).
+. If the pre-check completes without errors, select the **Job Config** tab, then select **Finish.** The name of your File Server appears under the list of **File Servers**.
+
+== Manually upload an Export paths
+
+NDM allows you to manually upload export paths for use in data migration. This feature is useful in environments where automatic NFS export path detection is unavailable, for example, the GCNV Flex service. If you selected **Manual Upload** in the **Export Paths Retrieval Mechanism** panel, you need to download and complete the template file provided by NDM.
+
+.Steps
+
+. In the left navigation panel, select **Storage Servers**.
+. Select **File Servers.**
+. Select **Click here to Upload Export Paths**.
+. Select **Download Template** to download a CSV file template.
+. Save your export paths in this file.
+. Select **Click here to Upload Export Paths** then select the CSV file containing your export paths, which then appear under **Paths**.
+. If you need to include more export paths, add them to your file, then select **Re-Upload Export Paths.**
+
+When upload is complete, export paths can have one of the following status types:
+
+* Valid: a path that successfully uploaded which you can mount and unmount
+* Invalid: a path that failed to upload.
+* Disable: a path which is available, but not in the file you uploaded.
+
+== Edit file server details
+
+You can quickly make changes to your file server details.
+
+.Steps
+
+. Select the action menu beside the File Server you want to edit.
+. Select **Edit File Server**. If you selected the **Manual Upload** option for **Upload Export Path Retrieval**, only valid paths are displayed.
+. Select the **Server Type** tab, make your required edits, then select **Proceed**.
+. Select the **Credentials** tab, make any required edits, then select **Proceed**.
+. Select the **Workers** tab, make any required edits, then select **Proceed**.
+. Select the **Job Config** tab, make any required edits, then select **Finish.**

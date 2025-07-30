@@ -1,0 +1,106 @@
+---
+sidebar: sidebar
+permalink: configure-bulk-migrate.html
+keywords: 
+summary: 
+---
+= Configure Bulk Migrate in NDM
+:icons: font
+:imagesdir: ./media/
+
+[.lead]
+You can use Bulk Migrate features in NetApp Data Migrator (NDM) to efficiently transfer large volumes of data from a source to a destination location.
+
+.Before you begin
+
+You need to define the servers for Bulk Migrate before you can use the feature:
+
+. Log in to NDM.
+. Select **Storage Servers** in the left navigation pane.
+. Select **File Servers.**
+. Select the **File Server Name** for which you want to create the job.
+. Select **Bulk Migrate**.
+
+== Step 1: Configure the mapping file
+
+. From the **Select Protocol** dropdown menu, select **NFS** or **SMB**.
+. Select the checkbox next to the **Source Path**. Source Paths that are no longer reachable are disabled and cannot be selected. For example, paths that have been deleted or no longer appear in the output of `showmount -e <serverIpAddress>` for NFS, or didn't return during SMB share enumeration.
+. Select the name of the **Destination** file from the dropdown menu.
+. Select the **Destination Path** from the dropdown menu.
+. You can then choose to either select **Start Now** if you intend running the job immediately or select **Schedule Date & Time** to start the run at a future time.
+. Select **Upload** to upload the mapping file.
+. Select **Proceed** to open the **Options** page.
+
+== Step 2: Customize the Bulk Migrate job
+
+You can select various settings from the Options page to customize your Bulk Migrate job, according to your needs.
+
+.Preserve a-time (Access Time)
+
+Select this option if you want to retain the original file access timestamp, instead of updating it to the migration time.
+
+.Migrate File
+
+You can use this option to select files to migrate based on their last modified time.
+
+.Steps
+
+. Select **All** to migrate all files regardless of their modification date.
+. Select **Exclude file older than (UTC)** to exclude files older than a specified date.
+
+.Skip Files modified in last
+
+This option to specify files from a time window (in minutes/hours/days) to exclude from your migration. This helps with data inconsistency by ensuring that actively edited files are not transferred mid-update.
+
+.Incremental Sync Schedule
+
+Use this option to configure how often data syncs incrementally. This ensures that only the changes since the last sync are updated, thereby improving migration efficiency and reducing processing time.
+
+.Steps
+
+. Select **Off** to disable incremental sync.
+. Select **Set Schedule** to specify how a sync schedule. You can choose to sync data hourly, daily or weekly.
+. Select Cron **Expression** if you are an advanced user and wish to define a custom sync schedule using a cron expression, for more granular control over sync timing.
+
+.Excluded Path Patterns
+
+This option allows users to define specific file paths or directories that should be excluded from processing. This can help to optimize storage and performance by skipping unnecessary files.
+
+* You can enter multiple path patterns, one per line.
+* You can enter a wildcard (`*`) to match multiple files or folders.
+* Example exclusions:
+* `*/snapshots/*` – Excludes all files and folders inside any "snapshots" directory.
+* `*/logs/*` – Excludes log files.
+* `*/tmp/*` – Excludes temporary files.
+
+.Upload SID Mapping
+
+Use this option to upload a **Security Identifier (SID) mapping** file. SID mapping ensures that user and group permissions are retained accurately when migrating or syncing files between systems. The uploaded file must follow the format specified in the template provided for you to download.
+
+.Steps
+
+. Select **Download Template** to download a sample file format.
+. Select **Choose a file** to select the mapping file from your local system.
+. Select **Upload** to apply the mapping.
+
+.Upload GID / UID Mapping
+
+You can use this option to upload a **Group ID (GID) / User ID (UID) mapping** file to maintain correct file ownership during migration. The uploaded file must follow the format specified in the template provided.
+
+.Steps
+
+. Select **Download Template** to download a sample file format.
+. Select **Choose a file** to select the mapping file from your local system.
+. Select **Upload** to apply the mapping.
+
+When you have finished selecting your required options, select **Proceed** to open the **Review and Submit** page.
+
+== Step 3: Review and submit
+
+Verify your settings before proceeding with Bulk Migration.
+
+.Steps
+
+* View the **Precheck Status** of your job, which ensures that the source path contains the correct data and confirms the destination path has sufficient storage and access permissions.
+* Select **Submit** to create a new migration job. A notification message appears, confirming that a **Bulk Migrate job has been created**.
+* You can select the **View Job Listing** link next to the notification message to open the **Job List** page where your new job is listed.

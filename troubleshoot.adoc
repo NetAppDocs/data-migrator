@@ -1,0 +1,65 @@
+---
+sidebar: sidebar
+permalink: troubleshoot.html
+keywords: 
+summary: 
+---
+= Add and manage users in NDM
+:icons: font
+:imagesdir: ./media/
+
+[.lead]
+NetApp Data Migrator (NDM) uses [Role-Based Access Control (RBAC)] to provide secure and efficient management of data migration activities. App Admin users can assign one of the following three roles to other users. These roles allow new users to log in, view or manage projects, and perform other migration activities, depending on their permissions.
+
+.About this task
+
+You need to be logged in as App Admin to add a new user, enable or disable an existing user, or reset a user password.
+
+== Add a new user
+
+Create a new user and share the temporary password.
+
+.Steps
+
+. Log in to NDM.
+. Select *Settings* in the navigation bar.
+. Select the *Users* tab to view a list of registered users.
+. Select *Add User*.
+. Enter the *First Name*, *Last Name,* and *Email* address of the new user.
+. If the new user requires administrator permissions, select the *App Admin* checkbox.
+. Select *Submit* to create the user. A message appears confirming that the new user has been successfully created.
+. Select the *Copy* link (next to the password field) to copy the temporary password, which is displayed in a masked format.
+. Select *Close*.
+. Share the copied temporary password with the new user who can then use it to log in. At first login, they will be prompted to change their password.
+
+== Disable an existing user
+
+Disable access to NDM for other users. This prevents users from logging in but does not delete user data or previous migration jobs or logs associated with that user.
+
+.Steps
+
+. Select the *Settings* icon in the navigation bar.
+. Select the *Users* tab to view a list of registered users.
+. Select the *(⋮)* icon beside the details of the user who is being disabled then select *Disable Access* from the dropdown menu. The user status changes from *Active* to *Inactive* and they can't log into NetApp Data Migrator.
+
+== Enable a user
+
+Restore access to NDM for a disabled user, allowing them to log in and perform actions based on their assigned permissions.
+
+.Steps
+
+. Select *Settings* icon in the navigation bar.
+. Select the *Users* tab to view a list of registered users.
+. Select the *(⋮)* icon beside the details of the user who is being enabled then select *Enable Access* from the dropdown menu. The user status changes from *Inactive* to *Active,* allowing them to log into NDM.
+
+== Reset a user password
+
+Reset the password for an existing user.
+
+.Steps
+
+. Select the *Settings* icon in the navigation bar.
+. Select the *Users* tab to view a list of registered users.
+. Select the *(⋮)* icon beside the details of the user whose password needs to be reset then select *Reset Password* from the dropdown menu. A message appears confirming that the password reset has been successful.
+. Select the *Copy* link (next to the password field) to copy the temporary password which is displayed in a masked format.
+. Share the copied temporary password with the user.
