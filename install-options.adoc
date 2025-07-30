@@ -1,6 +1,6 @@
 ---
 sidebar: sidebar
-permalink: install-option.html
+permalink: install-options.html
 keywords: 
 summary: 
 ---
@@ -9,3 +9,4 @@ summary:
 :imagesdir: ./media/
 
 [.lead]
+Insert text here.

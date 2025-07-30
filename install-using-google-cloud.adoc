@@ -9,7 +9,7 @@ summary:
 :imagesdir: ./media/
 
 [.lead]
-
+Use Google Cloud to install the NetApp Data Migrator (NDM) tool.
 
 .About this task
 

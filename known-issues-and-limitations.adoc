@@ -1,6 +1,6 @@
 ---
 sidebar: sidebar
-permalink: sample-article.html
+permalink: known-issues-and-limitations.html
 keywords: 
 summary: 
 ---
