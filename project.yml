@@ -1,5 +1,5 @@
 settings:
-  name: "Product Name"
+  name: NetApp Data Migrator
   internal:
     pdf_enabled: true
   prod:
