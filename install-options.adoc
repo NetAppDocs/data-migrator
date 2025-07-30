@@ -9,4 +9,4 @@ summary:
 :imagesdir: ./media/
 
 [.lead]
-Insert text here.
+Insert content here.

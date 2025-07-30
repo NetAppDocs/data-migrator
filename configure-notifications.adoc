@@ -31,6 +31,4 @@ You need to be logged in as an *App admin* user to configure SMTP email server d
 | To Email | Recipient address(es) for alerts
 |===
 
-.Note:
-
-. Once SMTP is configured, users are required to re-enter the password when editing SMTP settings. 
+NOTE: Once SMTP is configured, users are required to re-enter the password when editing SMTP settings. 
