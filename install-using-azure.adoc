@@ -193,7 +193,7 @@ Create the Windows VM.
 . Select *Create*.
 
 == Step 4: Connect to a worker VM
-when you create a worker VM for the first time, you need to connect to it using the control plane and worker images.
+When you create a worker VM for the first time, you need to connect to it using the control plane and worker images.
 
 .Steps
 
@@ -301,7 +301,7 @@ az login --tenant <tenant_id>
 .. Select *Show Options*.
 .. In the *Username* field, enter the username of the VM.
 .. Set up the folder mount containing the Windows Worker Installer. For instructions, see the Windows Remote Access documentation. 
-.. Move the indows Worker Installer from the mounted folder to a suitable location on the Windows VM .
+.. Move the Windows Worker Installer from the mounted folder to a suitable location on the Windows VM .
 --
 ====
 
