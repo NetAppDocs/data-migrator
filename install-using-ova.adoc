@@ -46,14 +46,43 @@ Create the control plane and worker virtual machines (VMs) from the OVA files us
 . Check *Automatically power on deployed VM*
 . Select *Next*.
 . Select  *Review details*. Verify that the details that you entered are correct and select *Next*.
+. Accept the EULA and select *Next*.
 . Select *Select storage.*
 * For *Select virtual disk format*, select “Thin Provision”.
 * For *VM Storage Policy,* select the datastore for the VM files.
 . Select *Select networks* and select the VM’s network.
+. Optionally, select *Customize template* to provide static IP address to the VM. You use DHCP, the NDM vCenter, or your own vCenter:
++
+[role="tabbed-block"]
+====
+.DCHP
+--
+To use DHCP (Dynamic IP), keep the network settings blank.
+--
+.NDM vCenter
+--
+To use use the NDM vCenter, locate the reference for the custom properties in *vCenter OVA Deployment Custom Details*.
+--
+.Own vCenter
+--
+If you are using your own vCenter, provide the following details for your network:
+
+* *SSH Username*: User account for SSH operations
+* *SSH Password*: Password for the SSH user 
+* *IPv4 Address*: VM assigned fixed IP address
+* *IPv4 Subnet Netmask*: Default route for network traffic
+* *IPv4 Gateway*: Defines the subnet range
+* *Primary DNS*: Main domain name resolver
+* *Secondary DNS*: Backup domain name resolver
+* *Search domains*: DNS search suffixes
+--
+====
+
 . Select  *Ready to* complete and review the summary page.
 . Select *Finish* to start the deployment for the control plane VM.
 . Repeat steps 2 to 14 to create the worker VM.
 . Record the server IP addresses for the control plane and the worker VMs. You need these IP addresses when you're setting up the worker VMs later in the procedure.
+. Use the SSH username and password provided during the OVA deployment to connect using SSH.
 
 == Step 2: Connect to the control plane VM
 
