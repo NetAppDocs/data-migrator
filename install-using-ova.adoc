@@ -217,4 +217,4 @@ https://<IP_address>/ui/
 
 == What's next?
 
-link:manage-users.html[Learn about using the NDM tool] 
+link:configure-ndm.html[Set up and configure NDM]

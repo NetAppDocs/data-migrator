@@ -40,4 +40,8 @@ After you log out of NDM, you need to use your newly created credentials (email 
 . Select the **User** icon (next to **Settings**).
 . Select **Logout,** then the **Welcome** page opens.
 . Enter the **Email** address and **Password** you registered previously.
-. Select **Login.** 
+. Select **Login**.
+
+== What's next?
+
+link:manage-users.html[Learn about using the NDM tool]
