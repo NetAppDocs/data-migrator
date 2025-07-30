@@ -24,29 +24,30 @@ The workers are either NFS or SMB and they carry out the data migration. You can
 
 .Before you begin
 
-* Download the control plane OVA from the NetApp Support site.
-* If you're using SMB migration, download the Windows Worker Installer from the NetApp Support Site.
-* If you're using NFS migration, download the Worker OVA from the NetApp Support Site.
+* Download the control plane image from the NetApp Support site. <provide link when it becomes available>
+* If you're using SMB migration, download the Windows Worker Installer from the NetApp Support Site. <provide link when it becomes available>
+* If you're using NFS migration, download the Worker OVA from the NetApp Support Site. <provide link when it becomes available>
 
 == Step 1: Create the control plane and worker VMs
 
-Create the control plane and the worker virtual machines (VMs) from the OVA files using the setup wizard.
+Create the control plane and the worker virtual machines (VMs) using the Azure "datamigrator" images.
 
 .Steps
 
-. Go to the Azure Portal.
-. In the Azure Portal, search for **"Azure Compute Galleries"** in the search bar at the top.
-. Select **Compute Galleries** from the search results, and select **`datamigrator`**. There are two image definitions in the **`datamigrator`** gallery:
-* **`ndm-control-plane`**
-* **`ndm-worker`**
+. Go to the link:https://portal.azure.com/#home[Azure Portal^].
+. In the Azure Portal, search for **Azure Compute Galleries**.
+. Select **Compute Galleries** > **datamigrator**. There are two image definitions in the datamigrator gallery:
+* `ndm-control-plane`
+* `ndm-worker`
 . Create the control plane VM:
-.. Select `ndm-control-plane`
-.. Copy the **Control Plane** image names. You need this image when you create the worker VM late in this procedure.
+.. Select `ndm-control-plane.`
+.. <What is the instruction for the user that replaces "Go to the NDM image details page and select the image under the Azure column" instruction listed in Copy > Install NDM using Azure>.
+.. Copy the **Control Plane** image name. You need this image when you create the worker VM later in this procedure.
 .. Select **Create VM.**
 .. Enter the following information to configure the VM settings:
 * **Subscription**: Enter your subscription name.
 * **Resource Group**: Enter the name of your resource group.
-* **VM name**: The prefix for the new VM, for example, **`<user_name>-<image_name>`**
+* **VM name**: The prefix for the new VM, for example `<user_name>-<image_name>`.
 * **Image**: Choose the custom Packer-created image for a control plane.
 * **Size**: The recommended size for the control plane is 8 vCPU, 32GB RAM.
 * **Administrator Account**:
@@ -191,14 +192,14 @@ Create the Windows VM.
 . After are connected to the windows VM, select *Review* > *Create* to deploy the VM.
 . Select *Create*.
 
-== Step 4: Connect to the worker VM
-Connect to and verify your Azure VMs using a custom NDM control plane and worker images.
+== Step 4: Connect to a worker VM
+when you create a worker VM for the first time, you need to connect to it using the control plane and worker images.
 
 .Steps
 
 . Login to the Windows Server using the Remote Desktop Protocol to access the NDM.
-* If your windows server has public IP address, use Microsoft Windows App (Mac) or Remote Desktop Connection (Windows) to create a Remote Desktop Protocol session.
-* If your windows server does not have public IP address, open an Azure bastion tunnel to the Windows Server and then create Remote Desktop Protocol session.
+* If your Windows Server has a public IP address, use Microsoft Windows App (Mac) or Remote Desktop Connection (Windows) to create a Remote Desktop Protocol session.
+* If your Windows Server does not have public IP address, open an Azure bastion tunnel to the Windows Server and then create a Remote Desktop Protocol session.
 . Retrieve the private IP address from the newly created control plane VM in Azure.
 . Navigate to the NDM UI using the control plane IP address: 
 +
@@ -221,7 +222,7 @@ If your configuration includes NFS and SMB, select multiple tabs, as needed:
 Connect to the Linux Worker server using a bastion tunnel:
 
 .. Go to the Azure Portal and select the Worker VM.
-.. In the left-hand pane, select Connect > bastion.
+.. In the left-hand pane, select *Connect* > *bastion*.
 .. Select the following:
 ** *Authentication type*: SSH Private Key from Local File
 ** *User*: ubuntu
@@ -252,9 +253,9 @@ tail -20f /opt/datamigrator/logs/datamigrator-worker.log
 
 .Windows worker for MacOS
 --
-Connect to the Windows for MacOS:
+Connect to the Windows worker for MacOS:
 
-.. Install Azure CLI. Refer to the Azure CLI Download instructions.
+.. Install Azure CLI. Refer to the link:https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-macos?view=azure-cli-latest[Azure CLI Download^] instructions.
 .. Create a tunnel to access to the worker VM: 
 ... Log in using your Tenant ID:
 +
@@ -262,9 +263,9 @@ Connect to the Windows for MacOS:
 ----
 az login --tenant <tenant_id>
 ----
-.. Get the *Resource ID* for the Azure VM:
+.. Locate the *Resource ID* for the Azure VM:
 ... Go to *Azure Portal* > *Virtual Machines*.
-... Select your VM 
+... Select your VM. 
 ... On the VM overview page, select *JSON View* and locate the *Resource ID* at the top of the page.
 
 .. Open the tunnel:
@@ -280,15 +281,15 @@ az network bastion tunnel --resource-group <resource_id> --target-resource-id <v
 .. Add the credentials for the VM created in Step <add the step link>.
 .. Select the *Folders* tab.
 .. Select the + icon <add image file> to add a directory.
-.. Select the folder containing the worker installer.
+.. Select the folder containing the Windows Worker Installer.
 .. Select *Add* to apply the settings.
 .. Locate the folder you mounted to the Windows Server under "This PC" on the server.
-.. Move the installer from the mounted folder to a suitable location on the Windows VM .
+.. Move the Windows Worker Installer from the mounted folder to a suitable location on the Windows VM .
 --
 
 .Windows worker for Windows
 --
-.. Install Azure CLI. Refer to the Azure CLI Download instructions.
+.. Install Azure CLI. Refer to the link:https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-macos?view=azure-cli-latest[Azure CLI Download^] instructions.
 .. Create a tunnel to access to the worker VM:
 ... Log in using your Tenant ID:
 +
@@ -300,7 +301,7 @@ az login --tenant <tenant_id>
 .. Select *Show Options*.
 .. In the *Username* field, enter the username of the VM.
 .. Set up the folder mount containing the Windows Worker Installer. For instructions, see the Windows Remote Access documentation. 
-.. Move the installer from the mounted folder to a suitable location on the Windows VM .
+.. Move the indows Worker Installer from the mounted folder to a suitable location on the Windows VM .
 --
 ====
 
