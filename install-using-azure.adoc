@@ -96,7 +96,7 @@ When you first create the control plane VMs, you need to connect the control pla
 .Steps
 
 . Install Azure CLI. Refer to the Azure CLI Download instructions.
-. Create a tunnel to access to the worker VM:
+. Create an Azure Bastion tunnel to access to the worker VM:
 . Log in using your Tenant ID:
 +
 [source,cli]
@@ -199,7 +199,7 @@ When you create a worker VM for the first time, you need to connect to it using 
 
 . Login to the Windows Server using the Remote Desktop Protocol to access the NDM.
 * If your Windows Server has a public IP address, use Microsoft Windows App (Mac) or Remote Desktop Connection (Windows) to create a Remote Desktop Protocol session.
-* If your Windows Server does not have public IP address, open an Azure bastion tunnel to the Windows Server and then create a Remote Desktop Protocol session.
+* If your Windows Server does not have public IP address, open an Azure Bastion tunnel to the Windows Server and then create a Remote Desktop Protocol session.
 . Retrieve the private IP address from the newly created control plane VM in Azure.
 . Navigate to the NDM UI using the control plane IP address: 
 +
@@ -219,10 +219,10 @@ If your configuration includes NFS and SMB, select multiple tabs, as needed:
 ====
 .Linux worker 
 --
-Connect to the Linux Worker server using a bastion tunnel:
+Connect to the Linux worker VM using an Azure Bastion tunnel:
 
 .. Go to the Azure Portal and select the Worker VM.
-.. In the left-hand pane, select *Connect* > *bastion*.
+.. In the left-hand pane, select *Connect* > *Bastion*.
 .. Select the following:
 ** *Authentication type*: SSH Private Key from Local File
 ** *User*: ubuntu
@@ -253,7 +253,7 @@ tail -20f /opt/datamigrator/logs/datamigrator-worker.log
 
 .Windows worker for MacOS
 --
-Connect to the Windows worker for MacOS:
+Connect to the Windows worker VM for MacOS:
 
 .. Install Azure CLI. Refer to the link:https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-macos?view=azure-cli-latest[Azure CLI Download^] instructions.
 .. Create a tunnel to access to the worker VM: 
@@ -289,6 +289,8 @@ az network bastion tunnel --resource-group <resource_id> --target-resource-id <v
 
 .Windows worker for Windows
 --
+Connect to the Windows worker VM for Windows.
+
 .. Install Azure CLI. Refer to the link:https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-macos?view=azure-cli-latest[Azure CLI Download^] instructions.
 .. Create a tunnel to access to the worker VM:
 ... Log in using your Tenant ID:
