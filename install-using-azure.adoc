@@ -131,7 +131,7 @@ Connect to the VM using MacOS:
 --
 Connect to the VM using Windows:
 
-.. Launch the **Remote Desktop Connection**.
+.. Launch *Remote Desktop Connection*.
 .. Select **Show Options**.
 .. Select the **Computer**.
 .. In **User name,** enter the user name of the VM.
@@ -297,7 +297,7 @@ az network bastion tunnel --resource-group <resource_id> --target-resource-id <v
 ----
 az login --tenant <tenant_id>
 ----
-.. Launch the *Remote Desktop* connection.
+.. Launch *Remote Desktop Connection*.
 .. Select *Show Options*.
 .. In the *Username* field, enter the username of the VM.
 .. Set up the folder mount containing the Windows Worker Installer. For instructions, see the Windows Remote Access documentation. 
