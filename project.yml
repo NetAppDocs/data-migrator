@@ -31,7 +31,7 @@ sidebar:
       - title: Install NDM using Azure
         url: /install-using-azure.html
       - title: Install NDM using Google Cloud
-        url: /install-using-google-cloud.html
+        url: /install-on-google-cloud.html
     - title: Configure NDM
       url: /configure-ndm.html
   - title: Use NDM
