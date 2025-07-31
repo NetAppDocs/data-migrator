@@ -125,11 +125,13 @@ You need to set up the worker VM after you create it for the first time.
 
 .Steps
 
-Depending on your configuration, set up a Linux or Windows worker VM, or both VMs.
+Depending on your configuration, select the Linux worker (NFS), Windows worker for MacOS (SMB), or Windows worker for Windows (SMB) tab. 
+
+If your configuration includes NFS and SMB, select multiple tabs, as needed:
 
 [role="tabbed-block"]
 ====
-.Linux worker (NFS)
+.Linux worker 
 --
 Set up a Linux worker VM.
 
@@ -171,7 +173,7 @@ tail -20f /opt/datamigrator/logs/datamigrator-worker.log
 . Navigate to DM UI and verify that the worker VM is registered.
 --
 
-.Windows Worker for MacOS
+.Windows worker for MacOS
 --
 Set up a Windows worker VM for MacOS.
 
@@ -188,7 +190,7 @@ Set up a Windows worker VM for MacOS.
 . Move the installer to a suitable location on the Windows VM from the mounted folder.
 --
 
-.Windows Worker for Windows
+.Windows worker for Windows
 --
 Set up a Windows worker VM for Windows.
 

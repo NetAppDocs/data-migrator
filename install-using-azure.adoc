@@ -211,7 +211,7 @@ https://<control_plane_IP_address>/
 * Worker ID
 * Worker secret
 * Control plane IP
-. Depending on your configuration, select the Linux worker, Windows worker for MacOS, or Windows worker for Windows tab. 
+. Depending on your configuration, select the Linux worker (NFS), Windows worker for MacOS (SMB), or Windows worker for Windows (SMB) tab. 
 +
 If your configuration includes NFS and SMB, select multiple tabs, as needed:
 +

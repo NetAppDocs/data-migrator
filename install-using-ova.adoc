@@ -149,7 +149,10 @@ You need to set up a worker VM when you create it for the first time.
 
 .Steps
 
-Depending on your environment, select the Linux Worker or Windows Worker tab, or both tabs if your configuration includes both NFS and SMB.
+Depending on your configuration, select the Linux worker (NFS), Windows worker for MacOS (SMB), or Windows worker for Windows (SMB) tab. 
+
+If your configuration includes NFS and SMB, select multiple tabs, as needed:
+
 
 [role="tabbed-block"]
 ====
