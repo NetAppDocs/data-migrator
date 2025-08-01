@@ -1,0 +1,156 @@
+---
+sidebar: sidebar
+permalink: known-issues-and-limitations.html
+keywords: 
+summary: 
+---
+= Known issues and limitations for NDM
+:icons: font
+:imagesdir: ./media/
+
+[.lead]
+The NetApp Data Migrator (NDM) tool has the following known issues and limitations.
+
+== No error message for a Discovery job run when the host or destination server is down.
+
+After starting a Bulk Discovery job run, the NDM dashboard does not display an error message, even if the network interface of the host or destination server goes down. This can mislead users into thinking that the discovery is still running correctly.
+
+.Solution
+
+A discovery job run is refreshed for every 30 seconds so if the discovered data details (file count, directory count, or data size) are not updating regularly, then you should suspect a problem and check the network interfaces on either source or destination servers.
+
+.Steps
+
+. Verify the network connection in the worker VM by pinging to the destination IP by typing `ping <IP Address>` at the command line. If this ping fails (no response or unreachable), then proceed to perform the following steps below to bring the network interface back up manually.
+. ssh to destination IP address (for example, `ssh 10.0.0.148`)
+. Type `ipconfig` to display details of that interface, identify the interface name from the command output (for example, `eth0`)
+. Type `ifup <interface name>` to bring the interface up manually.
+. Repeat the above steps for the source server.
+
+== Reuse of worker secret codes
+
+Reuse of worker secret codes can pose security risks, enable unauthorized access, and present operational difficulties. It may also lead to worker duplication, compliance violations, and difficulty in tracking assignments.
+
+.Solution
+
+Worker secret codes must not be reused.
+
+== Update to file server protocol version requires page refresh to update the export path list
+
+When you update a file server with a different protocol version, NDM requires you to perform a page refresh to update the export path list. Failure to do so may cause compatibility issues, delays in fetching the export list, or incomplete updates. This may lead to data inconsistencies, failed synchronization, or errors in accessing the latest export information.
+
+.Solution
+
+Refresh the page after you update the file server protocol version.
+
+== Precheck should fail immediately if a worker goes offline
+
+If a worker goes offline before a migration job starts, NDM continues to send API requests (up to 20 times) before displaying a notification message. This delay causes unnecessary waiting, wastes system resources, and can lead to job failures. To improve efficiency, precheck should fail immediately if a worker is offline.
+
+.Solution
+
+When you submit a migration job, wait for up to two minutes, and if NDM does not display a pre-check error, check the associated worker status.
+
+.Steps
+
+. Login to the worker system.
+. At the command line, type `sudo su -`
+. At the command line, type `systemctl status datamigrator-worker.service`
+. If the worker is offline, restart the worker by typing `systemctl restart datamigrator-worker.service`
+
+== NDM dashboard is slow to load
+
+The NDM dashboard is slow to load, reducing system availability and negatively impacting responsiveness and user workflows.
+
+.Solution
+
+You should wait approximately 5 minutes after startup before using the NDM dashboard. You can monitor the startup progress by executing the following command:
+
+[source,cli]
+----
+tail -10f /var/log/datamigrator/microk8s-boot.log
+----
+
+== Performance lag in generating the Reports Overview.
+
+The Reports Overview API takes approximately 20 seconds to load data from the backend.
+
+.Solution
+NetApp is currently working to address this issue.
+
+== A Discovery or Migration job fails after a worker reboot or shutdown
+
+A worker reboot or shutdown can happen manually or automatically (after a crash) and cause a Discovery or Migration job to fail.
+
+.Solution
+
+Restart your Discovery or Migration job.
+
+== Insufficient storage space at destination
+
+If you try to migrate data to a destination server that has less storage space than the source server, a precheck notification appears stating "Insufficient disk space at destination".
+
+.Solution
+
+Check the destination has sufficient storage space before migrating your data. Type `df -h` to view disk size, used, and available space.
+
+== Migration or Cutover job status shows "Completed", even though a task is still pending.
+
+In some Migration or Cutover job runs, the status can show as "Completed", even though a task is still pending.
+
+.Workaround
+NetApp is working to address this issue.
+
+== Security identifiers (SIDs) are not copied for files with spaces in their names.
+
+For files that have spaces in their names, file data is copied, but SIDs are not.
+
+.Solution
+
+After files are copied, manually update permissions at the destination by restoring the original SIDs.
+
+== Discovery or Migration jobs may incorrectly show as "Completed" after restarting the worker service.
+
+Discovery or Migration job run status shows "Completed" before the job run has started. This usually occurs after restarting the worker service for file servers associated with multiple workers.
+
+.Solution
+In rare cases, a worker can restart on its own and there is currently no way to prevent this. To reduce the possibility of this happening, you should NOT manually restart a worker service while any jobs that depend on it, are running.
+
+== App Admin needs to reset own password.
+
+Currently, App Admin users can reset the password of other users, but they may also occasionally need to reset their own password (for example, if they forget it).
+
+.Solution
+
+An App Admin user who needs to reset their password should proceed as follows.
+
+.Steps
+
+. Navigate to OpenBao and enter "https:/IP_Address/ui/" (here IP address is that of your dashboard)
+. At the command line, you can get the root token by typing:
+* `sudo su - datamigrator`
+* `cat /opt/datamigrator/openbao/cluster-keys.json`
+. Copy the root token from the output details displayed.
+. Log in to OpenBao using the root token.
+. Select **Engines** then select **secrets.**
+. Select **keycloak-secrets** then select **keycloak-creds.**
+. Copy the **Keycloak Admin password.**
+. Open the url "https:/IP_Address/keycloak/" then under **manage realms** select **datamigrator.**
+. For Users, enter **admin@datamigrator.local**, then select **credentials**
+. Select **reset password.**
+
+If any user except App Admin forgets their password:
+
+. **Log in** using the **App Admin** credentials.
+. Go to **Settings → Users**.
+. Find the user and click **Reset Password**.
+. Share the new password with the user.
+. Ask the user to **log in with the new password**.
+. On first login, they will be prompted to **set a new password**.
+
+== Features not included in NDM (alpha release)
+
+* CoC report: CoC report generation at path level
+* Speed Test
+* NDM Backup Repository
+* Product Registration

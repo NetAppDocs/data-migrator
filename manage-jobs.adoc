@@ -1,0 +1,215 @@
+---
+sidebar: sidebar
+permalink: manage-jobs.html
+keywords: 
+summary: 
+---
+= Manage jobs and job runs in NDM
+:icons: font
+:imagesdir: ./media/
+
+[.lead]
+Use job management features in NetApp Data Migrator (NDM) to initiate and track your *Discovery*, *Migration*, and *Cutover* jobs and job runs.
+
+== View Job List
+
+The *Job List* page provides you with a comprehensive overview of all migration related jobs. You can use the information shown on this page to efficiently monitor and manage the status and progress of *Discovery*, *Migration*, and *Cutover*jobs.
+
+.Steps
+
+. Log in to NDM.
+. Select *Jobs* from the left navigation bar.
+. Select *Job List*.
+
+The *Job List* page shows a *Jobs Listings* table, which includes the following information:
+
+* *Source* – Location of source file server.
+* *Destination* – Destination file server and export path details (for Migration jobs).
+* *Protocol* – Protocol used by the job (*NFS* or *SMB*).
+* *Next Schedule* – Next scheduled execution time (if applicable).
+* *Runs* – Number of times the job has been executed.
+* *Type* – Job type (*Discovery, Migration, or Cutover*).
+* *Status* – The current state of a job can be either *Active* or *Inactive*. Jobs that use manual export paths with an *invalid* or *disable* status automatically become *Inactive*. Refer to *Add and Manage file servers* for more details.
+* *Updated On* – Job update timestamp.
+
+Jobs that use manual export paths and the *Export Paths File* is later re-uploaded, any previously run jobs associated with a *now invalid or disabled path* will automatically become inactive.
+
+== Job List Filters
+
+On the *Job List* page, you can use the *Filters* feature to quickly sort jobs shown in the *Jobs Listings* table. You can choose a combination of filters based on the following options:
+
+* Source
+* Destination
+* Protocol
+* Type
+* Status
+
+Select *Clear all* to remove any filters you have already applied to your job listings.
+
+== Manage Job Level Operations
+
+On the *Job List* page, you can access the following job level operations, which allow you to manage Job Run operations:
+
+* Activate and Deactivate a job
+* Job Details, which provides you with additional information about your jobs
+* Job Run History, which provides information about previous job runs
+
+== Activate a Job
+
+.Steps
+
+. On the *Job List* page, in the *Job Listings* table, locate the job you want to activate.
+. Locate the job you want to activate.
+. Select the action menu next to your job.
+. Select *Activate* from the pop-up menu.
+. The job *Status* changes from *Inactive* to *Active*.
+
+== Deactivate a Job
+
+.Steps
+
+. Select *Jobs* in the left navigation bar.
+. Select *Job List*.
+. In the *Job Listings* table, locate an *Active* job you want to deactivate and select the action menu next to your job.
+. Select *Deactivate* from the pop-up menu.
+. The job *Status* changes from *Active* to *Inactive*, and execution stops until you reactivate the job.
+
+== View Job Details
+
+From the *Job List* page, you can access the *Job Details* page to view additional details about individual jobs, such as:
+
+* Job type (*Discovery, Migration, or Cutover*).
+* Number of files and directories discovered.
+* Time elapsed.
+* Data discovered.
+
+.Steps
+
+. Select *Jobs* on the left navigation bar.
+. Select *Job List*.
+. In the *Job Listings* table, select the action menu next to a job, then select *Details* from the pop-up menu.
+
+== View Job Run History
+
+On the *Job Details* page, the *Run History* table provides you with the following information about previous job runs:
+
+* Job ID
+* Start Date & Time
+* End Date & Time
+* Time elapsed
+* Files (number of files processed)
+* Data (size)
+* Status
+* Errors (if any)
+
+The *Status* of a job can be:
+
+* *Ready:* a job is scheduled to run.
+* *Running:* a job is in the running state.
+* *Paused:* a job run has been paused manually, or by NDM. For example, a job can have a paused status if a worker goes down while the job is running.
+* *Errored:* an unhandled or fatal error has occurred.
+* *Blocked:* a cutover job is waiting for a user response.
+* *Stopped:* a job has stopped running.
+
+== Manage Job Run operations
+
+From the *Job Details* page, you can manage various the *Start*, *Stop*, *Pause*, and *Resume* operations for a job. You can use the *Pause* feature to temporarily halt a job that is running, without canceling it entirely. You can then resume a job from the point where you paused it, making this a useful feature in scenarios where you need to free up system resources or troubleshoot issues without losing progress.
+
+=== Pause or resume a job run
+
+.Steps
+
+. On the *Job Details* page, in the *Run History* table, select the action menu next to a job run whose status is *Running*.
+. Select *Pause* from the pop-up menu and the job run status changes to *Paused*.
+. To *Resume*, select the action menu next to the paused job run; the status changes to *Running* and it continues to run from the step where it was paused.
+
+You can use the *Stop* option to permanently terminate a job run that is in progress. This action is useful when a job run is no longer required. You cannot resume a job run that is stopped but you have the option to start a new job run from the beginning.
+
+=== Stop or start a job run
+
+.Steps
+
+. On the *Job Details* page, in the *Run History* table, select the action menu next to a job run whose status is *Running*.
+. Select *Stop* from the pop-up menu and the job run status changes to *Stopped*.
+. To start a new job run, select *Adhoc Run* and the job run status changes to *Running*.
+
+== Access Job Run Details
+
+From the *Run History* table, you can access the *Job Run Details* page where you can view additional details about your job runs.
+
+.Steps
+
+. On the *Job Details* page, in the *Run History* table, select the action menu next to a job run.
+. Select *Details* from the pop-up menu.
+
+The top tile on the *Job Run Details* page provides a summary of key job run metrics including:
+
+* *Discovery:* job run status.
+* *Files:* the number of files found during the discovery process.
+* *Directories:* the number of directories found during the discovery process.
+* *Elapsed Time:* how long the discovery process took.
+* *Data Discovered:* the total size of discovered files.
+
+The middle tile on the *Job Run Details* page provides a summary of key Task metrics including:
+
+* *Workers:* The number of workers assigned to the job.
+* *Tasks:* The number of tasks being executed.
+* *Task Status Indicators:*
+* *Pending* – The number of Tasks waiting to be executed.
+* *Running* – The number of Tasks currently in progress.
+* *Completed* – The number of tasks that have successfully completed.
+* *Errored* – The number of Tasks that encountered issues during execution.
+
+The lower left tile on the *Job Run Details* page provides information such as:
+
+* *Job Name:* the name assigned to the job.
+* *Source Path:* the path to the file being used for data discovery.
+* *Protocol:* the protocol being used for discovery (*NFS* or *SMB*).
+
+The lower right tile on the *Job Run Details* page lists the number of errors that occurred during migration (if any). Select *View All* to access the *Errors* page, where you can find more detailed information about these errors.
+
+On the *Job Run Details* page you can also generate detailed reports that provide you with insights into job execution metrics including file counts, status, errors, and execution time. You can use these reports for review or auditing purposes. You can also view or download logs using Grafana.
+
+.Steps
+
+. Select *Discovery Report*.
+. Select *Preview* to view a Histogram of job report data.
+. Select *Download as CSV* to export a report in CSV format, which you can analyze using a spreadsheet application.
+. Select *Download as PDF* to export a report in PDF format, which is ideal for document sharing.
+. Select *View Logs* to view or download the log files using Grafana.
+
+== Access Task Details
+
+The *Task Details* page is where all Tasks executed for a job run are listed. You can access this page by selecting the hyperlinked number shown above *Tasks* on the *Job Run Details* page. Here, you can also view logs for a specific task using Grafana.
+
+.Steps
+
+. On the *Task Details* page, select `***` next to a task.
+. Select *View Logs* and your report opens in Grafana.
+
+From the *Job Run List* page you can monitor, filter, and control job runs. You can also simultaneously *Pause*, *Stop*, or *Resume* multiple job runs.
+
+.Steps
+
+. From the left navigation bar, select *Jobs*.
+. Select *Job Run List*.
+. In the *Job Run List* table, select the checkbox next to one or more job runs to which you wish to apply actions.
+. Select *Pause* or *Stop* or *Resume* depending on your requirements.
+
+== Generate a job error report
+
+NDM allows you to generate an error report for jobs with an *Errored* status. This can help you to understand the reason for the error(s).
+
+.Steps
+
+. On the *Job Details* page, in the Errors pane, select *View All*.
+. Select *Generate Error Report* to download details about errors in the latest job run.
+
+You can also generate an error report for a previous job run.
+
+.Steps
+
+. On the *Job Details* page, in the *Run History* table, select the action menu next to the job run for which you want to generate an error report.
+. Select *Details*.
+. On the *Job Run Details* page, in the *Errors* panel, select *View All*.
+. Select *Generate Error Report* to download details about errors in the job run you selected.

@@ -1,0 +1,47 @@
+---
+sidebar: sidebar
+permalink: configure-ndm.html
+keywords: 
+summary: 
+---
+= Set up and configure NDM
+:icons: font
+:imagesdir: ./media/
+
+[.lead]
+After installing NetApp Data Migrator (NDM), you need to log in as an App Admin (administrator) using the default username and password. You are then required to change your login credentials and create your first project.
+
+.Steps
+
+. Open a web browser and navigate to: `https://<IP_ADDRESS>/`.
+. On the **Welcome** page, in **Username/Email** enter admin@datamigrator.local
+. In **Password** enter Welcome@123
+. Select **Login**, then the **Reset Password** page opens.
+. Enter a new password that meets the following security requirements:
+* Includes at least 8 characters
+* Includes at least one uppercase letter
+* Includes at least one lowercase letter
+* Includes at least one number
+* Includes at least one special character
+. Select **Reset Password,** then **Your Details** page opens.
+. Enter your **First Name**, **Last Name,** and **Email** address.
+. Select **Proceed,** then **Create a New Project** page opens.
+. Select **Create Project,** then enter the following details:
+* **Project Name**: This should be a descriptive name for your project.
+* **Project Description (Optional):** You can provide additional details about your project.
+. Select **Create** to create your new project, which appears in the notification bar at the top of the NDM dashboard.
+
+== Log out of NDM
+
+After you log out of NDM, you need to use your newly created credentials (email and password) the next time you log in.
+
+.Steps
+
+. Select the **User** icon (next to **Settings**).
+. Select **Logout,** then the **Welcome** page opens.
+. Enter the **Email** address and **Password** you registered previously.
+. Select **Login**.
+
+== What's next?
+
+link:manage-users.html[Learn about using the NDM tool]

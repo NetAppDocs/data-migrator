@@ -1,0 +1,12 @@
+---
+sidebar: sidebar
+permalink: install-options.html
+keywords: 
+summary: 
+---
+= Learn about the install options for NDM
+:icons: font
+:imagesdir: ./media/
+
+[.lead]
+Insert content here.
