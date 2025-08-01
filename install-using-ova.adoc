@@ -24,7 +24,7 @@ The workers are either NFS or SMB and they carry out the data migration. You can
 
 .Before you begin
 
-* Download the control plane OVA from the NetApp Support site .
+* Download the control plane OVA from the NetApp Support site.
 * If you’re using SMB migration, download the Windows Worker Installer from the NetApp Support Site.
 * If you're using NFS migration. download the Worker OVA from the NetApp Support Site.
 
@@ -34,7 +34,7 @@ Create the control plane and worker virtual machines (VMs) from the OVA files us
 
 .Steps
 
-. Log into VMware vCenter
+. Log into VMware vCenter.
 . Right click on *NDMCluster* and select *Deploy OVF Template*.
 . Select  *Select an OVF template* and upload the file that you downloaded from the NetApp Support Site.
 . Select *Next*.
@@ -43,7 +43,7 @@ Create the control plane and worker virtual machines (VMs) from the OVA files us
 * The location for the new VM. Select the datacenter or destination folder.
 . Select *Next*.
 . Select  *Select a compute resource* and select the cluster or host where the VM will run.
-. Check *Automatically power on deployed VM*
+. Check *Automatically power on deployed VM*.
 . Select *Next*.
 . Select  *Review details*. Verify that the details that you entered are correct and select *Next*.
 . Accept the EULA and select *Next*.
@@ -61,7 +61,7 @@ To use DHCP (Dynamic IP), keep the network settings blank.
 --
 .NDM vCenter
 --
-To use use the NDM vCenter, locate the reference for the custom properties in *vCenter OVA Deployment Custom Details*.
+To use the NDM vCenter, locate the reference for the custom properties in *vCenter OVA Deployment Custom Details*.
 --
 .Own vCenter
 --
@@ -78,7 +78,7 @@ If you are using your own vCenter, provide the following details for your networ
 --
 ====
 
-. Select  *Ready to* complete and review the summary page.
+. Select  *Ready* to complete and review the summary page.
 . Select *Finish* to start the deployment for the control plane VM.
 . Repeat steps 2 to 14 to create the worker VM.
 . Record the server IP addresses for the control plane and the worker VMs. You need these IP addresses when you're setting up the worker VMs later in the procedure.
@@ -122,7 +122,7 @@ tail -10f /opt/datamigrator/logs/ndm-first-boot.log
 kubectl get pods -n datamigrator
 ----
 +
-NOTE: Wait between ten and fifteen minutes minutes for the UI to load. If it is still loading after ten minutes, restart the service:
+NOTE: Wait between ten and fifteen minutes for the UI to load. If it is still loading after ten minutes, restart the service:
 +
 [source,cli]
 ----
@@ -131,7 +131,6 @@ systemctl start boot-microk8s.service
 +
 After the UI loads, you see an output similar to the following example:
 +
-[source,cli]
 ----
 kubectl get pods -n datamigrator
 NAME                               READY   STATUS    RESTARTS   AGE
@@ -179,7 +178,7 @@ NOTE: Don’t use the same worker secret and worker ID to create multiple worker
 ----
 sudo su -
 ----
-. Paste the instructions copied in step 4
+. Paste the instructions copied in step 4.
 . Verify the status of the worker:
 +
 [source,cli]

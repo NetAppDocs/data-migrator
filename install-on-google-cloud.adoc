@@ -44,7 +44,7 @@ You need to create a Windows VM to access the NDM tool using the Remote Desktop 
 * *Region and Zone:* Select *us-east4-b.*
 * *Machine type:* Select an option based on your memory requirements.
 . Scroll to the *OS and Storage* section and select *Change.*
-. Choose the following options
+. Choose the following options:
 * *OS:* Windows Server
 * *Version:* Windows Server 2022 Datacenter
 * Choose the disk size (default is 50 GB).
@@ -69,8 +69,7 @@ Create the control plane and worker VMs using Google Cloud images. You use the s
 * *General purpose > Series:* E2
 * *Machine type:* Custom. You need to scroll down to find the "Machine type" option.
 * *Cores:* Enter the number of CPUs to meet your requirements.
-* *Memory*: Enter the GB size to meet your requirements.
-** The recommended size for the control plane is *8 vCPU, 32GB RAM*.
+* *Memory*: Enter the GB size to meet your requirements. The recommended size for the control plane VM is *8 vCPU, 32GB RAM*.
 .. Select *Operating system and Storage* and verify that the correct image is installed.
 * Don't make any changes.
 .. Select *Networking*, window and enter the following information:
@@ -98,8 +97,7 @@ Create the control plane and worker VMs using Google Cloud images. You use the s
 * *General purpose > Series:* E2
 * *Machine type:* Custom. You need to scroll down to find the "Machine type" option.
 * *Cores:* Enter the number of CPUs to meet your requirements.
-* *Memory*: Enter the GB size to meet your requirements.
-** The recommended size for the worker is *4 vCPU, 16GB RAM*.
+* *Memory*: Enter the GB size to meet your requirements. The recommended size for the worker VM is *4 vCPU, 16GB RAM*.
 .. Select *Operating system and Storage* and verify that the correct image is installed.
 * Don't make any changes.
 .. Select *Networking*, window and enter the following information:
