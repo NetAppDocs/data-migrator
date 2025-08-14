@@ -36,6 +36,8 @@ sidebar:
       url: /configure-ndm.html
   - title: Use NDM
     entries: 
+    - title: Create and manage projects
+      url: /manage-projects.html
     - title: Manage users
       entries: 
       - title: Add and manage users
@@ -44,13 +46,11 @@ sidebar:
         url: /access-control.html
     - title: Add and manage file servers
       url: /manage-file-servers.html
-    - title: Create and manage projects
-      url: /manage-projects.html
     - title: Configure real-time notifications
       url: /configure-notifications.html
     - title: Manage migration options
       entries:
-      - title: Configure Bulk Discover
+      - title: Plan data migration
         url: /configure-bulk-discover.html
       - title: Configure Bulk Migrate
         url: /configure-bulk-migrate.html

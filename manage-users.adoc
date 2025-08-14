@@ -9,7 +9,7 @@ summary:
 :imagesdir: ./media/
 
 [.lead]
-NetApp Data Migrator (NDM) uses link:access-control.html[Role-Based Access Control (RBAC)] to provide secure and efficient management of data migration activities. After setting up the control and worker virtual machines (VMs), App Admin users can add new users and assign them a role that allows them to log in, view or manage projects, and perform other migration activities, depending on their permissions.
+NetApp Data Migrator (NDM) uses link:access-control.html[Role-Based Access Control (RBAC)] to provide secure and efficient management of data migration activities. After setting up control and worker virtual machines (VMs), App Admin users can create and assign roles to new users. This allows them to log in, view or manage projects, and perform other migration activities, depending on their permissions.
 
 .About this task
 

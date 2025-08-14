@@ -10,18 +10,18 @@ summary:
 
 [.lead]
 ---
-Install the NetApp Data Migrator (NDM) tool on Google Cloud.
+Install NetApp Data Migrator (NDM) on Google Cloud.
 
 .About this task
 
 This procedure has two main components, the control plane and the worker.
 
-The control plane is the central location for managing all migration jobs and you create it first.
+The control plane, which is always deployed on a Linux virtual machine (VM), serves as the central location for managing all migration jobs and should be created first.
 
-The workers are either NFS or SMB and they carry out the data migration. You can install multiple workers based on your needs:
+Workers are virtual machines running on Linux, which supports the NFS protocol, or Windows, which supports the SMB protocol. You can install multiple workers based on your needs:
 
-* For SMB migration, you use the Windows Worker Installer. You must install the Windows Worker Installer on a Windows VM.
-* For NFS migration, you use the Linux Worker.
+* For SMB migration, use the Windows Worker Installer. You must install the Windows Worker Installer on a Windows VM.
+* For NFS migration, use the Linux Worker.
 
 .Before you begin
 
@@ -31,19 +31,19 @@ The workers are either NFS or SMB and they carry out the data migration. You can
 
 == Step 1: Create the Windows VM
 
-You need to create a Windows VM to access the NDM tool using the Remote Desktop Protocol and the control plane or worker IP address.
+You need to create a Windows VM to access the NDM and set up Windows installer using the Remote Desktop Protocol.
 
 .Steps
 
 . Open the Google Cloud Platform portal.
-. Navigate to *Compute Engine > Virtual machines > VM instances*.
-. Select *Enable* to activate the API, if prompted to do so.
+. Navigate to *Compute Engine > Virtual machines > VM instances*.
+. Select *Enable* to activate the API, if prompted to do so.
 * Wait for between one and two minutes for the resources to load.
-. Select *Create Instance* and enter the following information:
+. Select *Create Instance* and enter the following information:
 * *Name:* `<username>-windows-vm`
 * *Region and Zone:* Select *us-east4-b.*
 * *Machine type:* Select an option based on your memory requirements.
-. Scroll to the *OS and Storage* section and select *Change.*
+. Scroll to the *OS and Storage* section and select *Change.*
 . Choose the following options:
 * *OS:* Windows Server
 * *Version:* Windows Server 2022 Datacenter
@@ -58,29 +58,29 @@ Create the control plane and worker VMs using Google Cloud images. You use the s
 .Steps
 
 . Select *MigrationAsAService* project to view the NDM images.
-. Log in to the Google Cloud Platform UI and search for *Compute Engine > Images.*
+. Log in to the Google Cloud Platform UI and search for *Compute Engine > Images.*
 . Create the control plane VM:
 .. Select the *datamigrator-control-plane-28-05-2025-14-54-47* image
 .. Select the menu icon under *Actions,* and select *Create Instance.*
-.. Select *Machine configuration* and enter the following information:
-* *Name*:  `<username>-<image-name>`
+.. Select *Machine configuration* and enter the following information:
+* *Name*:  `<username>-<image-name>`
 * *Region*: *us-east4*
 * *Zone:* Any
-* *General purpose > Series:* E2
+* *General purpose > Series:* E2
 * *Machine type:* Custom. You need to scroll down to find the "Machine type" option.
 * *Cores:* Enter the number of CPUs to meet your requirements.
 * *Memory*: Enter the GB size to meet your requirements. The recommended size for the control plane VM is *8 vCPU, 32GB RAM*.
 .. Select *Operating system and Storage* and verify that the correct image is installed.
 * Don't make any changes.
-.. Select *Networking*, window and enter the following information:
+.. Select *Networking*, window and enter the following information:
 * *Edit network interface > Network:* Select *"appmicro-vpc1"*.
 * *Edit network interface > Select Subnet:* Select "us-e4-sn IPv4".
-.. Select *Create.*
+.. Select *Create.*
 .. Use your administrator account credentials to connect to the control plane VM:
-* *Username*: `ubuntu`
+* *Username*: `ubuntu`
 * *Password*: `<password>`
 * *SSH Public Key*: Use the generated SSH key or optionally add an SSH key.
-.. Select *Add item.*
+.. Select *Add item.*
 * The pods start automatically. Wait for five minutes to allow all the pods to start before launching the NDM UI.
 * You can access the NDM application by using the Remote Desktop Protocol created with the Windows VM and the control plane IP address.
 * The default credentials for the NDM UI:
@@ -88,27 +88,27 @@ Create the control plane and worker VMs using Google Cloud images. You use the s
 ** *Username:* **admin@datamigrator.local**
 ** *Password:* Welcome@123
 . Depending on your configuration, create a Linux or Windows worker VM, or both VMs:
-.. Select the *datamigrator-worker-28-05-2025-15-26-46* image
+.. Select the *datamigrator-worker-28-05-2025-15-26-46* image
 .. Select the menu icon under *Actions,* and select *Create Instance.*
-.. Select *Machine configuration* and enter the following information:
-* *Name*:  `<username>-<image-name>`
+.. Select *Machine configuration* and enter the following information:
+* *Name*:  `<username>-<image-name>`
 * *Region*: *us-east4*
 * *Zone:* Any
-* *General purpose > Series:* E2
+* *General purpose > Series:* E2
 * *Machine type:* Custom. You need to scroll down to find the "Machine type" option.
 * *Cores:* Enter the number of CPUs to meet your requirements.
 * *Memory*: Enter the GB size to meet your requirements. The recommended size for the worker VM is *4 vCPU, 16GB RAM*.
 .. Select *Operating system and Storage* and verify that the correct image is installed.
 * Don't make any changes.
-.. Select *Networking*, window and enter the following information:
+.. Select *Networking*, window and enter the following information:
 * *Edit network interface > Network:* Select *"appmicro-vpc1"*.
 * *Edit network interface > Select Subnet:* Select "us-e4-sn IPv4".
-.. Select *Create.*
+.. Select *Create.*
 .. Use your administrator account credentials to connect to the worker VM:
-* *Username*: `ubuntu`
+* *Username*: `ubuntu`
 * *Password*: `<password>`
 * *SSH Public Key*: Use the generated SSH key or optionally add an SSH key.
-.. Select *Add item.*
+.. Select *Add item.*
 * The pods start automatically. Wait for five minutes to allow all the pods to start before launching the NDM UI.
 * You can access the NDM application by using the Remote Desktop Protocol created with the Windows VM and the worker IP address.
 * The default credentials for the NDM UI:
@@ -117,7 +117,7 @@ Create the control plane and worker VMs using Google Cloud images. You use the s
 ** *Password:* Welcome@123
 . Record the server IP addresses for the control plane and the worker VMs. You need these IP addresses when you're setting up the worker VMs later in the procedure.
 
-== Step 3: Set up the worker VM
+== Step 3: Set up the worker VM
 
 You need to set up the worker VM after you create it for the first time.
 
@@ -140,7 +140,7 @@ Set up a Linux worker VM.
 ----
 https://<contorl_plane_IP>/
 ----
-. The initial username is `admin@datamigrator.local` and password is `Welcome@123`. Create a new password.
+. The initial username is `admin@datamigrator.local` and password is `Welcome@123`. Create a new password.
 . Enter your user details and mail ID.
 . Select "*View instructions to set up worker*" and copy the instructions.
 . Connect to the Worker Server:
@@ -175,17 +175,17 @@ tail -20f /opt/datamigrator/logs/datamigrator-worker.log
 --
 Set up a Windows worker VM for MacOS.
 
-. Install the *Microsoft Windows App* on your local laptop.
+. Install the *Microsoft Windows App* on your local laptop.
 . Open the app and select *Add PC*.
-. In the *PC Name* field, enter: `Server-ip:3389`
-. Under *User Account*, select *Credentials*
+. In the *PC Name* field, enter: `Server-ip:3389`
+. Under *User Account*, select *Credentials*
 . Add the credentials for the Worker VM that you created in Step x.
-. Select the *Folders* tab, and select *+* to add a directory.
+. Select the *Folders* tab, and select *+* to add a directory.
 . Select the folder containing the worker installer.
-. Select *Save* to apply the settings.
-. Connect to the worker VM using the newly added PC.
+. Select *Save* to apply the settings.
+. Connect to the worker VM using the newly added PC.
 . You can view the folder you mounted to the Windows in "This PC".
-. Move the installer to a suitable location on the Windows VM from the mounted folder.
+. Move the installer to a suitable location on the Windows VM from the mounted folder.
 --
 
 .Windows worker for Windows
@@ -211,8 +211,8 @@ Set up a Windows worker VM for Windows.
 * Worker secret
 * Control plane IP address
 . After the installation completes, the worker service starts automatically.
-* The installation directory is `C:\datamigrator\`.
-* Locate the logs at `C:\datamigrator\logs.`
+* The installation directory is `C:\datamigrator\`.
+* Locate the logs at `C:\datamigrator\logs.`
 . Follow the logs in real-time by opening PowerShell and running the following command:
 * `Get-Content -Path "C:\datamigrator\logs\<log_file_name> -Wait"`
 . Open the command prompt (cmd) as Administrator and run the following commands to manage the service:
@@ -233,7 +233,7 @@ Check the VM logs for the control plane and worker VMs.
 .Steps
 
 . Double click on the Google Cloud SDK Shell that was installed in step x.
-. Login to Google Cloud using in the browser pop-up window:
+. Login to Google Cloud using in the browser pop-up window:
 +
 [source,cli]
 ----

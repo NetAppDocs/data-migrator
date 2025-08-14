@@ -9,24 +9,24 @@ summary:
 :imagesdir: ./media/
 
 [.lead]
-Use Azure in a VMWare vSphere environment to install the NetApp Data Migrator (NDM) tool.
+Use Azure to install NetApp Data Migrator (NDM).
 
 .About this task
 
 This procedure has two main components, the control plane and the worker.
 
-The control plane is the central location for managing all migration jobs and you create it first.
+The control plane, which is always deployed on a Linux virtual machine (VM), serves as the central location for managing all migration jobs and should be created first.
 
-The workers are either NFS or SMB and they carry out the data migration. You can install multiple workers based on your needs:
+Workers are virtual machines running on Linux, which supports the NFS protocol, or Windows, which supports the SMB protocol. You can install multiple workers based on your needs:
 
-* For SMB migration, you use the Windows Worker Installer. You must install the Windows Worker Installer on a Windows VM.
-* For NFS migration, you use the Linux Worker.
+* For SMB migration, use the Windows Worker Installer. You must install the Windows Worker Installer on a Windows VM.
+* For NFS migration, use the Linux Worker.
 
 .Before you begin
 
 * Download the control plane image from the NetApp Support site. <provide link when it becomes available>
 * If you're using SMB migration, download the Windows Worker Installer from the NetApp Support Site. <provide link when it becomes available>
-* If you're using NFS migration, download the Worker OVA from the NetApp Support Site. <provide link when it becomes available>
+* If you're using NFS migration, download the Worker VDMK from the NetApp Support Site. <provide link when it becomes available>
 
 == Step 1: Create the control plane and worker VMs
 
@@ -35,59 +35,59 @@ Create the control plane and the worker virtual machines (VMs) using the Azure "
 .Steps
 
 . Go to the link:https://portal.azure.com/#home[Azure Portal^].
-. In the Azure Portal, search for **Azure Compute Galleries**.
-. Select **Compute Galleries** > **datamigrator**. There are two image definitions in the datamigrator gallery:
+. In the Azure Portal, search for *Azure Compute Galleries*.
+. Select *Compute Galleries* > *datamigrator*. There are two image definitions in the datamigrator gallery:
 * `ndm-control-plane`
 * `ndm-worker`
 . Create the control plane VM:
 .. Select `ndm-control-plane.`
 .. <What is the instruction for the user that replaces "Go to the NDM image details page and select the image under the Azure column" instruction listed in Copy > Install NDM using Azure>.
-.. Copy the **Control Plane** image name. You need this image when you create the worker VM later in this procedure.
-.. Select **Create VM.**
+.. Copy the *Control Plane* image name. You need this image when you create the worker VM later in this procedure.
+.. Select *Create VM.*
 .. Enter the following information to configure the VM settings:
-* **Subscription**: Enter your subscription name.
-* **Resource Group**: Enter the name of your resource group.
-* **VM name**: The prefix for the new VM, for example `<user_name>-<image_name>`.
-* **Image**: Choose the custom Packer-created image for a control plane.
-* **Size**: The recommended size for the control plane is 8 vCPU, 32GB RAM.
-* **Administrator Account**:
-* **Username**: Ubuntu
-* **SSH Public Key**: Use your SSH public key or create a new one.
-* **License type**: Other
-* Select **Next: Disks >.**
-* **Delete with VM**: Optionally, select this option if you want to delete the OS disk with the VM.
-* Select **Next Networking >**.
-* **Virtual Network (VNet)**: Enter your designated virtual network.
-* **Public IP**: Set to "**None**" to avoid assigning a public IP.
-* **Delete NIC when VM is deleted**: Optionally, select this option if want to delete a NIC along with VM.
+* *Subscription*: Enter your subscription name.
+* *Resource Group*: Enter the name of your resource group.
+* *VM name*: The prefix for the new VM, for example `<user_name>-<image_name>`.
+* *Image*: Choose the custom Packer-created image for a control plane.
+* *Size*: The recommended size for the control plane is 8 vCPU, 32GB RAM.
+* *Administrator Account*:
+* *Username*: Ubuntu
+* *SSH Public Key*: Use your SSH public key or create a new one.
+* *License type*: Other
+* Select *Next: Disks >.*
+* *Delete with VM*: Optionally, select this option if you want to delete the OS disk with the VM.
+* Select *Next Networking >*.
+* *Virtual Network (VNet)*: Enter your designated virtual network.
+* *Public IP*: Set to "*None*" to avoid assigning a public IP.
+* *Delete NIC when VM is deleted*: Optionally, select this option if want to delete a NIC along with VM.
 .. If you created a new SSH key, when prompted, download and save the key.
-.. Select **Review** and verify the settings.
-.. Select **Create** to deploy the worker VM.
-.. If you're creating a new pair, the **Generate new key pair** prompt appears. Select **Download private key and create resource** to download the **.pem** file.
+.. Select *Review* and verify the settings.
+.. Select *Create* to deploy the worker VM.
+.. If you're creating a new pair, the *Generate new key pair* prompt appears. Select *Download private key and create resource* to download the *.pem* file.
 . Create the worker VM:
 .. Select `ndm-worker`.
-.. Copy the **Worker** image name. You need this image when you create the worker VM late in this procedure.
-.. Select **Create VM.**
+.. Copy the *Worker* image name. You need this image when you create the worker VM late in this procedure.
+.. Select *Create VM.*
 .. Enter the following information to configure the VM settings:
-* **Subscription**: Enter your subscription name.
-* **Resource Group**: Enter the name of your resource group.
-* **VM name**: The prefix for the new VM, for example,**`<user_name>-<image_name>.`**
-* **Image**: Choose the custom Packer-created image for a worker.
-* **Size**: The recommended size for the worker is 4 vCPU, 16GB RAM.
-* **Administrator Account**:
-* **Username**: Ubuntu
-* **SSH Public Key**: Use your SSH public key or create a new one.
-* **License type**: Other
-* Select **Next: Disks >**
-* **Delete with VM**: Optionally, select this option if you want to delete the OS disk with the VM.
-* Select **Next Networking >**.
-* **Virtual Network (VNet)**: Enter your designated virtual network.
-* **Public IP**: Set to "**None**" to avoid assigning a public IP.
-* **Delete NIC when VM is deleted**: Optionally, select this option if want to delete a NIC along with VM.
+* *Subscription*: Enter your subscription name.
+* *Resource Group*: Enter the name of your resource group.
+* *VM name*: The prefix for the new VM, for example,*`<user_name>-<image_name>.`*
+* *Image*: Choose the custom Packer-created image for a worker.
+* *Size*: The recommended size for the worker is 4 vCPU, 16GB RAM.
+* *Administrator Account*:
+* *Username*: Ubuntu
+* *SSH Public Key*: Use your SSH public key or create a new one.
+* *License type*: Other
+* Select *Next: Disks >*
+* *Delete with VM*: Optionally, select this option if you want to delete the OS disk with the VM.
+* Select *Next Networking >*.
+* *Virtual Network (VNet)*: Enter your designated virtual network.
+* *Public IP*: Set to "*None*" to avoid assigning a public IP.
+* *Delete NIC when VM is deleted*: Optionally, select this option if want to delete a NIC along with VM.
 .. If you created a new SSH key, when prompted, download and save the key.
-.. Select **Review** and verify the settings.
-.. Select **Create** to deploy the worker VM.
-.. If you're creating a new pair, the **Generate new key pair** prompt appears. Select **Download private key and create resource** to download the **.pem** file.
+.. Select *Review* and verify the settings.
+.. Select *Create* to deploy the worker VM.
+.. If you're creating a new pair, the *Generate new key pair* prompt appears. Select *Download private key and create resource* to download the *.pem* file.
 
 == Step 2: Connect to the control plane VM
 
@@ -95,7 +95,7 @@ When you first create the control plane VMs, you need to connect the control pla
 
 .Steps
 
-. Install Azure CLI. Refer to the Azure CLI Download instructions.
+. Install Azure CLI. Refer to the link:https://learn.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest[Azure CLI Download instructions.]
 . Create an Azure Bastion tunnel to access to the worker VM:
 . Log in using your Tenant ID:
 +
@@ -103,10 +103,10 @@ When you first create the control plane VMs, you need to connect the control pla
 ----
 az login --tenant <tenant_id>
 ----
-. Get the **Resource ID** for the Azure **Virtual Machine (VM)**:
-.. Go to **Azure Portal** > **Virtual Machines**.
+. Get the *Resource ID* for the Azure *Virtual Machine (VM)*:
+.. Go to *Azure Portal* > *Virtual Machines*.
 .. Select your VM.
-.. On the VM overview page, select **JSON View** and locate the **Resource ID** at the top of the page.
+.. On the VM overview page, select *JSON View* and locate the *Resource ID* at the top of the page.
 . Open the tunnel:
 +
 [source,cli]
@@ -121,10 +121,10 @@ az network bastion tunnel --resource-group <resource_id> --target-resource-id <v
 --
 Connect to the VM using MacOS:
 
-.. Install the **Microsoft Windows App:**
-.. Open the app and select **Add PC**.
-.. In the **PC name** field, enter `localhost:<port_number>.`
-.. Select **Add** to apply the settings.
+.. Install the *Microsoft Windows App:*
+.. Open the app and select *Add PC*.
+.. In the *PC name* field, enter `localhost:<port_number>.`
+.. Select *Add* to apply the settings.
 --
 
 .Windows
@@ -132,11 +132,11 @@ Connect to the VM using MacOS:
 Connect to the VM using Windows:
 
 .. Launch *Remote Desktop Connection*.
-.. Select **Show Options**.
-.. Select the **Computer**.
-.. In **User name,** enter the user name of the VM.
-.. Select **Connect.**
-.. Enter your password and select **OK.**
+.. Select *Show Options*.
+.. Select the *Computer*.
+.. In *User name,* enter the user name of the VM.
+.. Select *Connect.*
+.. Enter your password and select *OK.*
 --
 ====
 
@@ -180,8 +180,8 @@ Create the Windows VM.
 * *Image*: Choose "Windows Server 2022 Datacenter: Azure Edition - x64 Gen2".
 * *Size*: Select "Standard_D8s_v3 - 8 vcpus, 32 GiB" memory.
 * *Administrator Account*:
-** *Username*: Enter your username.
-** *Password*: Enter your password.
+* *Username*: Enter your username.
+* *Password*: Enter your password.
 * *Set Inbound port Rules*: Allow Remote Desktop Protocol. (port 3389) for remote access.
 * Select *Next: Disks >*.
 * *Delete with VM*: Optionally, select this option if you want to delete the OS disk along with VM.
@@ -206,7 +206,8 @@ When you create a worker VM for the first time, you need to connect to it using 
 https://<control_plane_IP_address>/
 . Reset the password.
 . Add new user details and email ID.
-. Select *View instructions to set up worker* to create a new project.
+. Select *Create Project* to create a new project. 
+. When the project is created,Select *View instructions to set up worker*.
 . Record the following information for use later in this procedure:
 * Worker ID
 * Worker secret
@@ -224,10 +225,10 @@ Connect to the Linux worker VM using an Azure Bastion tunnel:
 .. Go to the Azure Portal and select the Worker VM.
 .. In the left-hand pane, select *Connect* > *Bastion*.
 .. Select the following:
-** *Authentication type*: SSH Private Key from Local File
-** *User*: ubuntu
-** *SSH key*: Select the SSH key you selected when creating the VM
-** *Open in new browser tab*: Yes
+* *Authentication type*: SSH Private Key from Local File
+* *User*: ubuntu
+* *SSH key*: Select the SSH key you selected when creating the VM
+* *Open in new browser tab*: Yes
 .. Select *Connect*.
 .. Log in as the root user:
 +
@@ -302,7 +303,7 @@ az login --tenant <tenant_id>
 .. Launch *Remote Desktop Connection*.
 .. Select *Show Options*.
 .. In the *Username* field, enter the username of the VM.
-.. Set up the folder mount containing the Windows Worker Installer. For instructions, see the Windows Remote Access documentation. 
+.. Set up the folder mount containing the Windows Worker Installer. For instructions, see link:https://cat.pdx.edu/platforms/windows/remote-access/file-sharing-rdp-from-windows/[Windows Remote Access documentation]. 
 .. Move the Windows Worker Installer from the mounted folder to a suitable location on the Windows VM .
 --
 ====
@@ -344,7 +345,3 @@ net stop DatamigratorWorker
 ----
 net stop DatamigratorWorker && start DatamigratorWorker
 ----
-
-== What's next?
-
-link:configure-ndm.html[Set up and configure NDM]

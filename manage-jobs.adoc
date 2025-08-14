@@ -23,14 +23,14 @@ The *Job List* page provides you with a comprehensive overview of all migration 
 
 The *Job List* page shows a *Jobs Listings* table, which includes the following information:
 
-* *Source* – Location of source file server.
-* *Destination* – Destination file server and export path details (for Migration jobs).
-* *Protocol* – Protocol used by the job (*NFS* or *SMB*).
-* *Next Schedule* – Next scheduled execution time (if applicable).
-* *Runs* – Number of times the job has been executed.
-* *Type* – Job type (*Discovery, Migration, or Cutover*).
-* *Status* – The current state of a job can be either *Active* or *Inactive*. Jobs that use manual export paths with an *invalid* or *disable* status automatically become *Inactive*. Refer to *Add and Manage file servers* for more details.
-* *Updated On* – Job update timestamp.
+* *Source*: Location of source file server.
+* *Destination*: Destination file server and export path details (for Migration jobs).
+* *Protocol*: Protocol used by the job (*NFS* or *SMB*).
+* *Next Schedule*: Next scheduled execution time (if applicable).
+* *Runs*: Number of times the job has been executed.
+* *Type*: Job type (*Discovery, Migration, or Cutover*).
+* *Status*: The current state of a job can be either *Active* or *Inactive*. Jobs that use manual export paths with an *invalid* or *disable* status automatically become *Inactive*. Refer to *Add and Manage file servers* for more details.
+* *Updated On*: Job update timestamp.
 
 Jobs that use manual export paths and the *Export Paths File* is later re-uploaded, any previously run jobs associated with a *now invalid or disabled path* will automatically become inactive.
 
@@ -107,8 +107,12 @@ The *Status* of a job can be:
 * *Ready:* a job is scheduled to run.
 * *Running:* a job is in the running state.
 * *Paused:* a job run has been paused manually, or by NDM. For example, a job can have a paused status if a worker goes down while the job is running.
+* *Completed:* a job is complete.
 * *Errored:* an unhandled or fatal error has occurred.
+* *Failed:* a worker has not picked up the job.
 * *Blocked:* a cutover job is waiting for a user response.
+* *Rejected:* a cutover job has been reviewed and rejected by a user.
+* *Approved:* a cutover job has been reviewed and approved by a user. 
 * *Stopped:* a job has stopped running.
 
 == Manage Job Run operations
@@ -155,10 +159,10 @@ The middle tile on the *Job Run Details* page provides a summary of key Task met
 * *Workers:* The number of workers assigned to the job.
 * *Tasks:* The number of tasks being executed.
 * *Task Status Indicators:*
-* *Pending* – The number of Tasks waiting to be executed.
-* *Running* – The number of Tasks currently in progress.
-* *Completed* – The number of tasks that have successfully completed.
-* *Errored* – The number of Tasks that encountered issues during execution.
+* *Pending*: The number of Tasks waiting to be executed.
+* *Running*: The number of Tasks currently in progress.
+* *Completed*: The number of tasks that have successfully completed.
+* *Errored*: The number of Tasks that encountered issues during execution.
 
 The lower left tile on the *Job Run Details* page provides information such as:
 
