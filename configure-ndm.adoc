@@ -9,7 +9,7 @@ summary:
 :imagesdir: ./media/
 
 [.lead]
-After you install NetApp Data Migrator (NDM), you need to log in as an App Admin (administrator) using the default username and password. You are then required to change your login credentials and create your first project.
+After you install NetApp Data Migrator (NDM), you need to log in as an App Admin (administrator) using the default username and password. You are then required to change your login credentials, and create your first project.
 
 .Steps
 
