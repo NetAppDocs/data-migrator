@@ -13,7 +13,7 @@ Use Bulk Cutover in NetApp Data Migrator (NDM) to perform the final sync between
 
 == Start a Cutover Job
 
-. Follow these steps to start a cutover job:
+Follow these steps to start a cutover job:
 
 . Log in to NDM.
 . Select *Storage Servers* in the left navigation pane.
