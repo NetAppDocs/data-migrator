@@ -4,7 +4,7 @@ permalink: manage-projects.html
 keywords: 
 summary: 
 ---
-= = Create and manage projects in NDM
+= Create and manage projects in NDM
 :icons: font
 :imagesdir: ./media/
 
