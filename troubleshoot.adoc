@@ -4,7 +4,7 @@ permalink: troubleshoot.html
 keywords: 
 summary: 
 ---
-= Troubleshoot the NDM tool
+= Troubleshoot NetApp Data Migrator (NDM)
 :icons: font
 :imagesdir: ./media/
 

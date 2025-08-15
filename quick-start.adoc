@@ -9,4 +9,4 @@ summary:
 :imagesdir: ./media/
 
 [.lead]
-To install NetApp Data Migrator (NDM), you need to set up control pane and worker virtual machines (VMs) using either OVA, Azure, or Google Cloud, define your credentials then create your first project.
+To install NetApp Data Migrator (NDM), you need to set up control pane and worker virtual machines (VMs) using either OVA, Azure, or Google Cloud, then define your credentials and create your first project.
