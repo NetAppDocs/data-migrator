@@ -17,7 +17,7 @@ This procedure has two main components, the control plane and the worker.
 
 The control plane, which is always deployed on a Linux virtual machine (VM), serves as the central location for managing all migration jobs and should be created first.
 
-Workers are virtual machines running on Linux (which supports the NFS protocol), or Windows (which supports the SMB protocol) and carry out the data migration.You can install multiple workers based on your needs:
+Workers are virtual machines running on Linux (which supports the NFS protocol), or Windows (which supports the SMB protocol) and carry out the data migration. You can install multiple workers based on your needs:
 
 * For SMB migration, use the Windows Worker Installer. You must install the Windows Worker Installer on a Windows VM.
 * For NFS migration, use the Linux Worker VM.
@@ -42,15 +42,15 @@ Create the control plane and worker virtual machines (VMs) from the OVA files us
 * The name for the VM.
 * The location for the new VM.Select the datacenter or destination folder.
 . Select *Next*.
-. Select  *Select a compute resource* and select thecluster or host where the VM will run.
+. Select  *Select a compute resource* and select the cluster or host where the VM will run.
 . Check *Automatically power on deployed VM*.
 . Select *Next*.
 . Select  *Review details*. Verify that the details that you entered are correct and select *Next*.
 . Accept the EULA and select*Next*.
 . Select *Select storage.*
-* For*Select virtual disk format*, select “Thin Provision”.
-* For*VM Storage Policy,* select the datastore for the VM files.
-. Select *Select networks* and select the VM’s network.
+* For *Select virtual disk format*, select *Thin Provision*.
+* For *VM Storage Policy,* select the datastore for the VM files.
+. Select *Select networks* and select the VM's network.
 . Optionally, select *Customize template* to provide a static IP address to the VM. You can use DHCP, the NDM vCenter, or your own vCenter:
 +
 [role="tabbed-block"]

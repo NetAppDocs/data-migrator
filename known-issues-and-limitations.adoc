@@ -9,7 +9,7 @@ summary:
 :imagesdir: ./media/
 
 [.lead]
-The NetApp Data Migrator (NDM) tool has the following known issues and limitations.
+NetApp Data Migrator (NDM) has the following known issues and limitations.
 
 == No error message for a Discovery job run when the host or destination server is down.
 
