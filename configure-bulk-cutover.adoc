@@ -32,7 +32,7 @@ Next, on the *Select Path* page:
 
 == Approve a Bulk Cutover
 
-.Follow these steps to approve a cutover job:
+. Follow these steps to approve a cutover job:
 
 . On the *Jobs* page, select the *Job Run List* tab.
 . Select the action menu next to your Cutover job.

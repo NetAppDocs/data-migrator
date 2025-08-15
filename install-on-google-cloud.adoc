@@ -84,9 +84,9 @@ Create the control plane and worker VMs using Google Cloud images. You use the s
 * The pods start automatically. Wait for five minutes to allow all the pods to start before launching the NDM UI.
 * You can access the NDM application by using the Remote Desktop Protocol created with the Windows VM and the control plane IP address.
 * The default credentials for the NDM UI:
-** *NDM URL:* https://<control-plane-private-ip>/
-** *Username:* **admin@datamigrator.local**
-** *Password:* Welcome@123
+* *NDM URL:* https://<control-plane-private-ip>/
+* *Username:* *admin@datamigrator.local*
+* *Password:* Welcome@123
 . Depending on your configuration, create a Linux or Windows worker VM, or both VMs:
 .. Select the *datamigrator-worker-28-05-2025-15-26-46* image
 .. Select the menu icon under *Actions,* and select *Create Instance.*
@@ -112,9 +112,9 @@ Create the control plane and worker VMs using Google Cloud images. You use the s
 * The pods start automatically. Wait for five minutes to allow all the pods to start before launching the NDM UI.
 * You can access the NDM application by using the Remote Desktop Protocol created with the Windows VM and the worker IP address.
 * The default credentials for the NDM UI:
-** *NDM URL:* https://<control-plane-private-ip>/
-** *Username:* **admin@datamigrator.local**
-** *Password:* Welcome@123
+* *NDM URL:* https://<control-plane-private-ip>/
+* *Username:* *admin@datamigrator.local*
+* *Password:* Welcome@123
 . Record the server IP addresses for the control plane and the worker VMs. You need these IP addresses when you're setting up the worker VMs later in the procedure.
 
 == Step 3: Set up the worker VM

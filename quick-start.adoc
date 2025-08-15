@@ -9,4 +9,4 @@ summary:
 :imagesdir: ./media/
 
 [.lead]
-To get started with NetApp Data Migrator (NDM), you need to set up control pane and worker virtual machines (VMs) using either OVA, Azure, or Google Cloud, define your credentials and then create your first project.
+To get started with NetApp Data Migrator (NDM), you need to set up control pane and worker virtual machines (VMs) using either OVA, Azure, or Google Cloud, define your credentials, and then create your first project.

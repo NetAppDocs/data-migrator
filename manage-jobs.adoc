@@ -188,7 +188,7 @@ The *Task Details* page is where all Tasks executed for a job run are listed. Yo
 
 .Steps
 
-. On the *Task Details* page, select `***` next to a task.
+. On the *Task Details* page, select the action menu next to a task.
 . Select *View Logs* and your report opens in Grafana.
 
 From the *Job Run List* page you can monitor, filter, and control job runs. You can also simultaneously *Pause*, *Stop*, or *Resume* multiple job runs.

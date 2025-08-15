@@ -9,7 +9,7 @@ summary:
 :imagesdir: ./media/
 
 [.lead]
-f you experience issues while using NetApp Data Migrator (NDM), these troubleshooting steps and reference commands might be useful. 
+If you experience issues while using NetApp Data Migrator (NDM), these troubleshooting steps and reference commands might be useful. 
 
 *Application Access*
 

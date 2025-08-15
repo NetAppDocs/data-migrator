@@ -15,7 +15,7 @@ You can use Bulk Migrate features in NetApp Data Migrator (NDM) to efficiently t
 
 .Before you begin
 
-You need to define the servers for Bulk Migrate before you can use the feature:
+You need to define the servers for Bulk Migrate before you can use this feature:
 
 . Log in to NDM.
 . Select *Storage Servers* in the left navigation pane.

@@ -132,21 +132,21 @@ An App Admin user who needs to reset their password should proceed as follows.
 * `cat /opt/datamigrator/openbao/cluster-keys.json`
 . Copy the root token from the output details displayed.
 . Log in to OpenBao using the root token.
-. Select **Engines** then select **secrets.**
-. Select **keycloak-secrets** then select **keycloak-creds.**
-. Copy the **Keycloak Admin password.**
-. Open the url "https:/IP_Address/keycloak/" then under **manage realms** select **datamigrator.**
-. For Users, enter **admin@datamigrator.local**, then select **credentials**
-. Select **reset password.**
+. Select *Engines* then select *secrets.*
+. Select *keycloak-secrets* then select *keycloak-creds.*
+. Copy the *Keycloak Admin password.*
+. Open the url "https:/IP_Address/keycloak/" then under *manage realms* select *datamigrator.*
+. For Users, enter *admin@datamigrator.local*, then select *credentials*
+. Select *reset password.*
 
 If any user except App Admin forgets their password:
 
-. **Log in** using the **App Admin** credentials.
-. Go to **Settings → Users**.
-. Find the user and click **Reset Password**.
+. *Log in* using the *App Admin* credentials.
+. Go to *Settings → Users*.
+. Find the user and click *Reset Password*.
 . Share the new password with the user.
-. Ask the user to **log in with the new password**.
-. On first login, they will be prompted to **set a new password**.
+. Ask the user to *log in with the new password*.
+. On first login, they will be prompted to *set a new password*.
 
 == Features not included in NDM (alpha release)
 
