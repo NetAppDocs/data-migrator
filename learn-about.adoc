@@ -4,7 +4,7 @@ permalink: learn-about.html
 keywords: 
 summary: 
 ---
-= Learn about Netapp Data Migrator
+= Learn about NDM
 :icons: font
 :imagesdir: ./media/
 
