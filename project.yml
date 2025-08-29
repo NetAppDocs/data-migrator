@@ -12,7 +12,9 @@ sidebar:
     url: /index.html
   - title: Release notes 
     entries:
-    - title: Known issues and limitations
+    - title: Known issues for NDM
+      url: /known-issues-and-limitations.html
+    - title: Usage limitations of NDM
       url: /known-issues-and-limitations.html
   - title: Get started
     entries: 
