@@ -37,7 +37,7 @@ NDM includes self-signed SSL certificates. You must manually configure trusted C
 * NDM supports SMB v2.0, v3.0 & v3.1.
 * NDM does not support SMB v2.1 or cross-version migrations.
 * NDM does not support migrations across protocol types (NFS to SMB or vice versa).
-* Qtrees are currently not supported*
+* Qtrees are currently not supported.
 * At present, NDM supports GCNV Flex with the SMB protocol, but does not yet support for GCNV Flex for NFS.
 
 

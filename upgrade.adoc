@@ -10,3 +10,106 @@ summary:
 
 [.lead]
 You can upgrade NetApp Data Migrator (NDM) to avail of new features when a new version of the software is released.
+
+.About this task
+
+Before you start to upgrade, you must stop all job runs and make all jobs inactive.
+
+*Control plane upgrade*
+
+. *Copy the upgrade bundle.*
+** Transfer the upgrade zip file to the Control Plane machine using scp:
++
+[source,cli]
+----
+scp -P 2226 ~/2025.08.19-preview.zip ubuntu@localhost:/tmp
+----
+. *SSH to the Control Plane and Switch User.* 
+** Connect to the Control Plane machine and switch to the datamigrator user:
++
+[source,cli]
+----
+$ sudo su - datamigrator
+----
+. *Install Unzip and Extract the Bundle.*
+** Navigate to the /tmp directory, install unzip if necessary, and extract the upgrade package:
++
+[source,cli]
+----
+$ cd /tmp 
+$ sudo apt install unzip 
+$ unzip 2025.08.19-preview.zip
+----
+
+. *Verify the extracted file.*
+
+** After unzipping the upgrade package, you should see the following files in the extracted folder:
+
+* A checksum file (for example, checksums.sha256)
+
+* A Docker image tar file (for example, datamigrator-2025.08.23-main.tar)
+* A Helm chart archive (for example, datamigrator-2025.08.23-main.tgz)
+* The upgrade script (upgrade.sh)
+You can verify the contents of the directory with:
++
+[source,cli]
+----
+$ cd 2025.08.19-preview 
+$ ls -lart 
+total 6962656 
+-rw-r--r-- 1 datamigrator datamigrator 7129717248 Aug 23 11:16 datamigrator-2025.08.23-main.tar 
+-rwxr-xr-x 1 datamigrator datamigrator 7392 Aug 23 11:16 upgrade.sh 
+-rw-r--r-- 1 datamigrator datamigrator 6046 Aug 23 11:16 datamigrator-2025.08.23-main.tgz 
+-rw-r--r-- 1 datamigrator datamigrator 275 Aug 23 11:17 checksums.sha256
+----
+. *Prepare and Run the Upgrade Script.*
+** Make the upgrade script executable. then to run it, provide the paths to the checksum file, Docker tar file, and Helm chart archive:
++
+[source,cli]
+----
+$ sudo chmod +x upgrade.sh
+$ ./upgrade.sh <path-to-check-sum-file> <path-to-docker-tar-file> <path-to-helm-tgz-file>
+
+Example:
+
+./upgrade.sh checksums.sha256 datamigrator-2025.08.19-preview.tar datamigrator-2025.08.19-preview.tgz
+----
+ 
+
+. Resume Jobs
+
+After the upgrade completes,
+
+* You need to create a new job run for any stopped jobs because these cannot be restarted.
+* You must reactivate any inactive jobs to ensure that they run as scheduled.
+
+*Worker Upgrade*
+
+For both the source and destination file server, and disassociate the old worker before you associate a new worker.
+
+ 
+*Linux*
+
+Create a new VM with the image provided for upgrade. For previously created jobs:
+
+* Detach the old worker from, then attach the new worker to, both the source and destination file servers.
+* Create a new migration job to find and migrate differences between the source and destination data.
+
+*Windows*
+
+Uninstall the existing application, then install the new executable on the Windows machine. For previously created jobs:
+
+* Detach the old worker from, then attach the new worker to, both the source and destination file servers.
+* Create a new migration job to find and migrate differences between the source and destination data.
+
+Notes
+
+* upgrade logs appear in the unzipped folder with the following file name format:
+
+ upgrade_<timestamp>.log. 
+
+* If you encounter any issues, contact NetApp support (Niharika@netapp.com or Ashish.Sinha@netapp.com). Please attach upgrade logs to your communication.
+
+
+
+ 
