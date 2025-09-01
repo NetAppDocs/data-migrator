@@ -1,6 +1,6 @@
 ---
 sidebar: sidebar
-permalink: known-issues-and-limitations.html
+permalink: known-issues.html
 keywords: 
 summary: 
 ---
@@ -9,7 +9,7 @@ summary:
 :imagesdir: ./media/
 
 [.lead]
-NetApp Data Migrator (NDM) has the following known issues and limitations.
+NetApp Data Migrator (NDM) has the following known issues.
 
 == No error message for a Discovery job run when the host or destination server is down.
 

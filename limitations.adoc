@@ -1,0 +1,12 @@
+---
+sidebar: sidebar
+permalink: limitations.html
+keywords: 
+summary: 
+---
+= Known issues and limitations for NDM
+:icons: font
+:imagesdir: ./media/
+
+[.lead]
+NetApp Data Migrator (NDM) has some usage limitations.

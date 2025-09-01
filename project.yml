@@ -13,9 +13,9 @@ sidebar:
   - title: Release notes 
     entries:
     - title: Known issues for NDM
-      url: /known-issues-and-limitations.html
+      url: /known-issues.html
     - title: Usage limitations of NDM
-      url: /known-issues-and-limitations.html
+      url: /limitations.html
   - title: Get started
     entries: 
     - title: Learn about NDM
