@@ -1,0 +1,79 @@
+---
+sidebar: sidebar
+permalink: usage-limitations.html
+keywords: 
+summary: 
+---
+= Usage limitations of NDM
+:icons: font
+:imagesdir: ./media/
+
+[.lead]
+Understanding the usage limitations of NetApp Data Migrator (NDM) can help to make your data migration activities more efficient. 
+
+*Network and Accessibility*
+
+* NDM must only be deployed within a private network.
+* NDM does not support DNS or FQDN-based domain name access. Only IP addresses can be used.
+
+*Data Selection & Filtering*
+
+* NDM requires full export paths and does not support subdirectories with an export path.
+* This may limit use cases where only partial data within a larger share is to be migrated or discovered.
+
+*Security*
+
+NDM includes self-signed SSL certificates. You must manually configure trusted Certificate Authority (CA) certificates to prevent browser and API warnings.
+
+*User Interface*
+
+* The UI is optimized for 1920x1080 screen resolution. Smaller screens may not display elements correctly.
+* You can only use a desktop browser to access the NDM user interface. Mobile and tablet views are not supported. 
+
+*Protocol support for migration*
+
+* NDM supports NFS v3, v4.0, v4.1 & v4.2.
+* NDM does not support NFS cross-version migrations
+* NDM supports SMB v2.0, v3.0 & v3.1.
+* NDM does not support SMB v2.1 or cross-version migrations.
+* NDM does not support migrations across protocol types (NFS to SMB or vice versa).
+* Qtrees are currently not supported*
+* At present, NDM supports GCNV Flex with the SMB protocol, but does not yet support for GCNV Flex for NFS.
+
+
+*File names and storage*
+
+* Files with symbolic links may not migrate correctly.  
+* NDM only supports standard Linux NFS and Windows SMB shares. Third-party NAS appliances require compatibility testing.
+* Certain characters in file or directory names may not be supported by the target system, and this can lead to failure or corruption during data migration. 
+** Illegal SMB characters - this issue can arise with multiprotocol datasets but can also happen in SMB only environments (usually caused by MAC users). 
+** There are several characters that are legal with unix, but are illegal with SMB:
+*** For example, with "Test" and "test", when connecting with NFS, you see two files but when connecting via SMB you only see one file, either "Test" or "test". This can result in missing data and errors like a checksum mismatch. 
+*** "trailing space ", "trailingdot.", and pipe characters like "file|stuff" result in a 'not found' error in Windows.
+* Different systems may use different character encodings, leading to data corruption or loss during migration. 4+byte characters (like emojis in file names) are legal for SMB but are not supported by UTF-8. This issue commonly arises when migrating emails. Other characters like Chinese symbols (and others) can also cause this issue to arise.
+* Different storage vendors may have unique features or limitations that complicate data migration.
+NDM can migrate hidden directories and files and their properties. For example, if a file is hidden in the source, it will also be hidden in the target. NDM labels this information in the CoC and Discovery report. 
+* NDM cannot migrate system-generated files that are exclusively owned by a source system.
+* For migrations between different source and destination domains, a detailed SID (Security Identifier) mapping must be specified in an Excel spreadsheet. This is crucial to ensue correct user and group permissions are applied on the target system.
+* Fake SIDs are common with multiprotocol datasets, particularly with systems like Isilon. A "normal" domain SID looks like S-1-5-21-1004336348-1177238915-682003330-512, while a "fake" or temporary SID, like S-1-22-1-504, could be generated for a Unix user accessing a Windows dataset via NFS. While a copy tool may successfully write these SIDs, they are meaningless to any machine other than the system that created them, and this can lead to access problems. NDM is capable of migrating these fake SIDs if a specific mapping is provided in an Excel spreadsheet. Without this mapping, these SIDs will be marked as a transient error in the migration process.
+
+*Performance Considerations*
+
+Migrations larger than 100 GB require increased resource usage that can result in longer completion times.
+
+*User Management:*
+
+Only predefined roles (App Admin, Project Admin, Project Viewer) are available. Custom roles or fine-grained access control are not supported.
+
+|===
+| *Category* | *Limitation*
+
+| Network Accessibility | NDM is not supported outside of private networks
+| Domain Support | No domain support, accessible via IP address only
+| Security | NDM uses self-signed SSL certificate not validated by a certificate authority
+| UI | NDM UI does not support mobile views
+| Worker Deployment | Worker must be part of the same root domain as the destination
+| Performance | NDM application performance is dependent on source and destination network throughput
+| Protocol Migration - Version | Cross-version migration within the same protocol is not supported (e.g., NFS v3 to NFS v4)
+| Protocol Migration - Type | Cross-protocol migration is not supported (e.g., NFS to SMB)
+|===

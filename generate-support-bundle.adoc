@@ -9,7 +9,7 @@ summary:
 :imagesdir: ./media/
 
 [.lead]
-NetApp Data Migrator (NDM) allows you to generate a support bundle that may help troubleshoot any issues you experience. This bundle contains diagnostic information such as log files, error reports and configuration data. 
+NetApp Data Migrator (NDM) allows you to generate a support bundle to help troubleshoot any issues you experience. This bundle contains diagnostic information such as log files, error reports and configuration data. 
 
 .Steps
 
@@ -20,7 +20,7 @@ NetApp Data Migrator (NDM) allows you to generate a support bundle that may help
 . Select the *Download Report* button to download the support bundle.
 
 |===
-| Role | Access scope
+| *Role* | *Access scope*
 | App Admin | All projects
 | Project Admin | Assigned projects only
 | Project Viewer | Server authentication username
