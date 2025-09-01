@@ -1,0 +1,12 @@
+---
+sidebar: sidebar
+permalink: upgrade.html
+keywords: 
+summary: 
+---
+= Update NDM
+:icons: font
+:imagesdir: ./media/
+
+[.lead]
+You can upgrade NetApp Data Migrator (NDM) to avail of new features when a new version of the software is released.

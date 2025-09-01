@@ -64,6 +64,8 @@ sidebar:
     entries:
     - title: Troubleshoot
       url: /troubleshoot.html
+  - title: Upgrade NDM
+    url: /upgrade.html
   - title: FAQ
     url: /faq.html
   - title: Legal notices
