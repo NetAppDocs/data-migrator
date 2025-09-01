@@ -13,7 +13,7 @@ Follow these instructions to upgrade various feature in NetApp Data Migrator (ND
 
 .About this task
 
-Before you start, you must stop all job runs and make all jobs inactive. upgrade logs appear in the unzipped folder with the following file name format:
+Before you start, you must stop all job runs and make all jobs inactive. Upgrade logs appear in the unzipped folder with the following file name format:
 
  upgrade_<timestamp>.log. 
 
