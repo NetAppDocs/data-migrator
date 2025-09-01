@@ -4,7 +4,7 @@ permalink: known-issues.html
 keywords: 
 summary: 
 ---
-= Known issues for NDM
+= Known issues
 :icons: font
 :imagesdir: ./media/
 

@@ -4,7 +4,7 @@ permalink: usage-limitations.html
 keywords: 
 summary: 
 ---
-= Usage limitations of NDM
+= Usage limitations
 :icons: font
 :imagesdir: ./media/
 
