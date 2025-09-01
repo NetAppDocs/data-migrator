@@ -81,15 +81,14 @@ Example:
 ----
  
 
-. Resume Jobs
+. *Resume Jobs*
 
-After the upgrade completes,
+After the upgrade completes, you need to:
 
-* You need to create a new job run for any stopped jobs, because these cannot be restarted.
-* You must reactivate any inactive jobs to ensure that they run as scheduled.
+* create a new job run for any stopped jobs, because these cannot be restarted.
+* reactivate any inactive jobs to ensure that they run as scheduled.
 
 *Upgrade Linux Worker*
-
 
 Create a new VM with the image provided for upgrade. For previously created jobs:
 
