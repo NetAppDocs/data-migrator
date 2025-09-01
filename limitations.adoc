@@ -4,7 +4,7 @@ permalink: limitations.html
 keywords: 
 summary: 
 ---
-= Known issues and limitations for NDM
+= Usage limitations of NDM
 :icons: font
 :imagesdir: ./media/
 
