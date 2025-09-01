@@ -10,13 +10,14 @@ summary:
 
 [.lead]
 Follow these instructions to upgrade various feature in NetApp Data Migrator (NDM). 
+
 .About this task
 
-Before you start to upgrade, you must stop all job runs and make all jobs inactive. upgrade logs appear in the unzipped folder with the following file name format:
+Before you start, you must stop all job runs and make all jobs inactive. upgrade logs appear in the unzipped folder with the following file name format:
 
  upgrade_<timestamp>.log. 
 
-If you encounter issues when you upgrade NDM, contact NetApp support (Niharika@netapp.com or Ashish.Sinha@netapp.com). Please attach upgrade logs to your communication.
+If you encounter issues, contact NetApp support (Niharika@netapp.com or Ashish.Sinha@netapp.com). Please attach upgrade logs to your communication.
 
 
 *Control plane upgrade*
