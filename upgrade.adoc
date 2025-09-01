@@ -4,16 +4,20 @@ permalink: upgrade.html
 keywords: 
 summary: 
 ---
-= Update NDM
+= Upgrade features in NDM
 :icons: font
 :imagesdir: ./media/
 
 [.lead]
-You can upgrade NetApp Data Migrator (NDM) to avail of new features when a new version of the software is released.
-
+Follow these instructions to upgrade various feature in NetApp Data Migrator (NDM). 
 .About this task
 
-Before you start to upgrade, you must stop all job runs and make all jobs inactive.
+Before you start to upgrade, you must stop all job runs and make all jobs inactive. upgrade logs appear in the unzipped folder with the following file name format:
+
+ upgrade_<timestamp>.log. 
+
+If you encounter issues when you upgrade NDM, contact NetApp support (Niharika@netapp.com or Ashish.Sinha@netapp.com). Please attach upgrade logs to your communication.
+
 
 *Control plane upgrade*
 
@@ -80,35 +84,23 @@ Example:
 
 After the upgrade completes,
 
-* You need to create a new job run for any stopped jobs because these cannot be restarted.
+* You need to create a new job run for any stopped jobs, because these cannot be restarted.
 * You must reactivate any inactive jobs to ensure that they run as scheduled.
 
-*Worker Upgrade*
+*Upgrade Linux Worker*
 
-For both the source and destination file server, and disassociate the old worker before you associate a new worker.
-
- 
-*Linux*
 
 Create a new VM with the image provided for upgrade. For previously created jobs:
 
 * Detach the old worker from, then attach the new worker to, both the source and destination file servers.
 * Create a new migration job to find and migrate differences between the source and destination data.
 
-*Windows*
+*Upgrade Windows worker*
 
 Uninstall the existing application, then install the new executable on the Windows machine. For previously created jobs:
 
 * Detach the old worker from, then attach the new worker to, both the source and destination file servers.
 * Create a new migration job to find and migrate differences between the source and destination data.
-
-Notes
-
-* upgrade logs appear in the unzipped folder with the following file name format:
-
- upgrade_<timestamp>.log. 
-
-* If you encounter any issues, contact NetApp support (Niharika@netapp.com or Ashish.Sinha@netapp.com). Please attach upgrade logs to your communication.
 
 
 
