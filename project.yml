@@ -60,6 +60,8 @@ sidebar:
         url: /configure-bulk-cutover.html
     - title: Manage jobs and job runs
       url: /manage-jobs.html
+    - title: Generate support bundle
+      url: /generate-support-bundle.html
   - title: Get help
     entries:
     - title: Troubleshoot
