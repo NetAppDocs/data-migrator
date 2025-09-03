@@ -141,8 +141,6 @@ For NFS migration, you need to create the Linus worker VM using the previously i
 
 *Step 3(b): SMB migration*
 
-.Steps
-
 . Add the Windows worker installer
 
 * For SMB migration, download the windows worker installer for Azure from NSS: <Placeholder link>. Then follow this link:https://learn.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-portal[link] to learn how to create a Windows VM using these recommended settings:
@@ -184,8 +182,6 @@ Windows worker for Windows:
 *Step 4: Connect to the control plane VM*
 
 After you create the control plane VM, you can connect to validate if NDM is active.
-
-.Steps
 
 . Install Azure CLI. Refer to the Azure CLI Download instructions.
 . SSH Into your control plane server. If your server does not have Public IP, you can use Azure bastion to configure SSH Access. Follow this link:https://learn.microsoft.com/en-us/azure/bastion/quickstart-host-portal[link] to learn how.
@@ -266,7 +262,6 @@ tail -20f /opt/datamigrator/logs/datamigrator-worker.log
 .SMB
 --
 Associate Windows worker with control plane VM
-.Steps
 
 . Run the Windows Worker Installer that you copied to the Windows Worker Server.
 . Enter the following details when prompted. You can get these details from the NDM UI under *Home > View Instructions to Setup Worker:*
@@ -309,7 +304,7 @@ net stop DatamigratorWorker && start DatamigratorWorker
 --
 ====
 
-You should consider the following when installing NDM using Azure
+You should consider the following when installing NDM using Azure:
 
 * *SAS URLs are time-limited*: Start your copy operation as soon as possible—typically within 7 days.
 
