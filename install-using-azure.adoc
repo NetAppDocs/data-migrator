@@ -187,15 +187,15 @@ After you create the control plane VM, you can connect to validate if NDM is act
 
 .Steps
 
-.. Install Azure CLI. Refer to the Azure CLI Download instructions.
-.. SSH Into your control plane server. If your server does not have Public IP, you can use Azure bastion to configure SSH Access. Follow this link:https://learn.microsoft.com/en-us/azure/bastion/quickstart-host-portal[link] to learn how.
-.. Switch the user to datamigrator:
+. Install Azure CLI. Refer to the Azure CLI Download instructions.
+. SSH Into your control plane server. If your server does not have Public IP, you can use Azure bastion to configure SSH Access. Follow this link:https://learn.microsoft.com/en-us/azure/bastion/quickstart-host-portal[link] to learn how.
+. Switch the user to datamigrator:
 +
 [source,cli]
 ----
 sudo su - datamigrator
 ----
-.. Check the status of boot service and logs:
+. Check the status of boot service and logs:
 +
 [source,cli]
 ----
@@ -207,8 +207,8 @@ Optionally, check the boot service logs:
 ----
 tail -10f /opt/datamigrator/logs/ndm-first-boot.log
 ----
-.. If you see "Datamigrator Application Setup Complete" in the logs, it indicates the setup is complete.
-.. Verify that all the pods are up and running:
+. If you see "Datamigrator Application Setup Complete" in the logs, it indicates the setup is complete.
+. Verify that all the pods are up and running:
 +
 [source,cli]
 ----
@@ -230,8 +230,6 @@ The default credentials for the NDM UI are:
 .NFS
 --
 Associate Linux worker with control plane VM.
-
-.Steps
 
 . Login to the Windows VM using RDP to access NDM.
 * Use Microsoft Windows App (Mac) or Remote Desktop Connection (Windows) to create a RDP session.
