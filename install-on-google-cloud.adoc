@@ -151,7 +151,8 @@ Windows worker for Windows:
 .. Move the Windows Worker Installer from the mounted folder to a suitable location on the Windows VM .
 --
 ====
-*Step 4: Connect to the control plane VM*
+
+* Step 4: Connect to the control plane VM*
 
 .Steps
 
