@@ -335,7 +335,7 @@ You can confirm if the issue is due to the destination being unreachable, by che
 
 == Features not included in NDM (alpha release)
 
-* CoC report: CoC report generation at path level
+* CoC report generation at path level
 * Speed test
 * NDM backup repository
 * Product registration
