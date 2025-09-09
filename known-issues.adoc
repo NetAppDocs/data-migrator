@@ -148,13 +148,6 @@ If any user except App Admin forgets their password:
 . Ask the user to *log in with the new password*.
 . On first login, they will be prompted to *set a new password*.
 
-== Features not included in NDM (alpha release)
-
-* CoC report: CoC report generation at path level
-* Speed Test
-* NDM Backup Repository
-* Product Registration
-
 ==  Windows Worker Fails to Switch User on SMB File Server (1746) 
 
 When a Windows worker attempts to connect to an SMB file server using a different set of credentials than those previously used for the same server, the following error may occur: 
@@ -323,7 +316,6 @@ After you configure SMTP settings in NDM, the details may sometimes fail to save
 
 == Migration appears to continue without progressing, when the destination server is down (1107) 
  
-
 If the destination storage server goes offline during a migration, the Control Plane may still show the job as running, however, no new tasks are created and no data is transferred. The expected behavior is for the Control Plane to detect the issue and mark the job as errored. 
 
 *Workaround*
@@ -340,4 +332,11 @@ You can confirm if the issue is due to the destination being unreachable, by che
  NFS server unreachable 
 
 . When the destination server is back online, restart the migration job from the NDM portal to resume data transfer. 
+
+== Features not included in NDM (alpha release)
+
+* CoC report: CoC report generation at path level
+* Speed test
+* NDM backup repository
+* Product registration
 
