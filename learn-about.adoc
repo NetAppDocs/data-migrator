@@ -54,9 +54,9 @@ Each file server is configured with:
 * Authentication credentials.
 * Associated workers for executing migration tasks.
 
-=== Dashboard
+=== Control plane
 
-The NDM dashboard is where you can access all migration activities. From here, you can:
+The NDM control plane is where you can access all migration activities. From here, you can:
 
 * Manage projects, users, jobs, and file servers.
 * Schedule and dispatch job runs to available workers.
@@ -70,12 +70,12 @@ A worker is a virtual machine, agent, or proxy that performs actual data operati
 
 * Workers are responsible for executing tasks such as scanning directories, copying files, and syncing metadata.
 * Workers enable distributed processing, allowing NDM to scale across large datasets and multiple environments efficiently.
-* Workers also relay high-level statistical information about data migration to the dashboard.
+* Workers also relay high-level statistical information about data migration to the control plane.
 * Each worker:
 * Is installed and registered using NDM.
 * Is associated with one or more file servers.
-* Reports system metrics such as CPU, memory, and status (online or offline) to the dashboard.
-* Reports high-level statistical information about data migration to the dashboard.
+* Reports system metrics such as CPU, memory, and status (online or offline) to the control plane.
+* Reports high-level statistical information about data migration to the control plane.
 
 === Export path
 

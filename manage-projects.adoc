@@ -9,7 +9,7 @@ summary:
 :imagesdir: ./media/
 
 [.lead]
-You can use the Projects tab in the NetApp Data Migrator (NDM) dashboard to quickly and easily create, edit, or switch between projects.
+You can use the Projects tab in the NetApp Data Migrator (NDM) control plane to quickly and easily create, edit, or switch between projects.
 
 == Create a project
 
