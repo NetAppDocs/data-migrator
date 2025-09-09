@@ -270,7 +270,7 @@ Sometime, after your Migration has completed, the total file count may appear to
 
 There is currently no solution to this issue. Review the migration report and the COC (Change of Content) report to identify and review files marked as errored. 
 
-* A Migration is stuck in a Running state due to syncTaskActivity Error (2069) 
+== A Migration is stuck in a Running state due to syncTaskActivity Error (2069) 
 
 
 When migrating a large dataset using SMB, a migration job may remain in a running state for many hours with no transfer of data occurring. This issue can affect multiple migration jobs at the same time. In some cases, jobs remain stuck even after the source volume is brought back online, and only resume after the worker is restarted.
