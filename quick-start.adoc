@@ -22,7 +22,7 @@ Depending on your environment, you can install NDM using Open Virtual Appliance 
 
 [role="quick-margin-para"]
 
-Next, you need to log in as an Administrator, using the default username and password, and change your login credentials.
+Next, you need to log in as an administrator using the default username and password, then change your login credentials.
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png[Three] Create your first project
 
