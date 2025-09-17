@@ -28,7 +28,7 @@ Next, you need to log in as an Administrator, using the default username and pas
 
 // This step shows an example of using a list under the block title, rather than a paragraph. Note that lists are styled with the `quick-margin-list` role attribute to ensure correct indentation.
 
-[role="quick-margin-list"]
+[role="quick-margin-para"]
 Use the Projects tab in the NDM control plane to quickly and easily create, edit, and switch between projects.
 
 .What's next?
