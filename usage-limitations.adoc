@@ -27,6 +27,7 @@ Understanding the usage limitations of NetApp Data Migrator (NDM) can help to ma
 
 |===
 | Category | Limitation
+
 | Number of export paths that can
 run simultaneously	 | <tbd>
 | Maximum number of files in a directory
