@@ -11,7 +11,7 @@ summary:
 [.lead]
 Understanding the usage limitations of NetApp Data Migrator (NDM) can help to make your data migration activities more efficient. 
 
-* Summary of server and protocols supported by NDM
+*Summary of file server types and protocols supported by NDM
 
 
 |===
