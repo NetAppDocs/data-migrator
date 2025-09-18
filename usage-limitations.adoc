@@ -13,7 +13,6 @@ Understanding the usage limitations of NetApp Data Migrator (NDM) can help to ma
 
 *Summary of file server types and protocols supported by NDM*
 
-
 |===
 | Category | Limitation
 
@@ -50,7 +49,7 @@ for SMB | <tbd>
 | UI | Optimized for 1920 x 1080 screen resolution. NDM UI does not support mobile views
 | Worker Deployment | Worker must be part of the same root domain as the destination
 | Performance | NDM application performance is dependent on source and destination network throughput
-| Protocol Migration - Version | Cross-version migration within the same protocol is not supported (e.g., NFS v3 to NFS v4)
+| Protocol Migration - Version | Cross-version migration within the same protocol is not supported (for example, NFS v3 to NFS v4)
 | Protocol Migration - Type | Cross-protocol migration is not supported (for example, NFS to SMB)
 | File names | NDM cannot migrate system-generated files owned by source 
 
