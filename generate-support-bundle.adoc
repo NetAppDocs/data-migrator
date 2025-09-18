@@ -4,7 +4,7 @@ permalink: generate-support-bundle.html
 keywords: 
 summary: 
 ---
-= Support bundle
+= Generate NDM support bundle
 :icons: font
 :imagesdir: ./media/
 
