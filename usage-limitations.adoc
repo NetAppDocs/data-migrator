@@ -41,13 +41,13 @@ for SMB | <tbd>
 
 *Other limitations*
 |===
-| *Category* | *Limitation*
+| Category | Limitation
 
 | Network Accessibility | It is recommended to use NDM in  private networks
 | Directory level migration | No directory level migration support, only full export paths supported
 | Domain Support | No domain support, accessible via IP address only
 | Security | NDM uses self-signed SSL certificate
-| UI | Optimized for 1920 x 1080 screen resolution. NDM UI does not support mobile views
+| User interface | Optimized for 1920 x 1080 screen resolution. Mobile displays are not supported.
 | Worker Deployment | Worker must be part of the same root domain as the destination
 | Performance | NDM application performance is dependent on source and destination network throughput
 | Protocol Migration - Version | Cross-version migration within the same protocol is not supported (for example, NFS v3 to NFS v4)
