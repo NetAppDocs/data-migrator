@@ -102,14 +102,17 @@ On the *Job Details* page, the *Run History* table provides you with the followi
 * Status
 * Errors (if any)
 
-The *Status* of a job can be:
+Migration/Discovery job status types include:
 
 * *Ready:* a job is scheduled to run.
 * *Running:* a job is in the running state.
 * *Paused:* a job run has been paused manually, or by NDM. For example, a job can have a paused status if a worker goes down while the job is running.
 * *Completed:* a job is complete.
-* *Errored:* an unhandled or fatal error has occurred.
-* *Failed:* a worker has not picked up the job.
+* *Errored:* a job run triggers a fatal error.
+* *Failed:* if a worker goes offline while a job is running, the job may enter a failed state.
+
+Cutover job status types include:
+
 * *Blocked:* a cutover job is waiting for a user response.
 * *Rejected:* a cutover job has been reviewed and rejected by a user.
 * *Approved:* a cutover job has been reviewed and approved by a user. 
@@ -117,7 +120,7 @@ The *Status* of a job can be:
 
 == Manage Job Run operations
 
-From the *Job Details* page, you can manage various the *Start*, *Stop*, *Pause*, and *Resume* operations for a job. You can use the *Pause* feature to temporarily halt a job that is running, without canceling it entirely. You can then resume a job from the point where you paused it, making this a useful feature in scenarios where you need to free up system resources or troubleshoot issues without losing progress.
+From the *Job Details* page, you can manage various *Start*, *Stop*, *Pause*, and *Resume* operations for a job. You can use the *Pause* feature to temporarily halt a job that is running, without canceling it entirely. You can then resume a job from the point where you paused it, making this a useful feature in scenarios where you need to free up system resources or troubleshoot issues without losing progress.
 
 === Pause or resume a job run
 
@@ -148,7 +151,7 @@ From the *Run History* table, you can access the *Job Run Details* page where yo
 
 The top tile on the *Job Run Details* page provides a summary of key job run metrics including:
 
-* *Discovery:* job run status.
+* *Discovery/Migration:* job run type and status.
 * *Files:* the number of files found during the discovery process.
 * *Directories:* the number of directories found during the discovery process.
 * *Elapsed Time:* how long the discovery process took.
@@ -162,7 +165,7 @@ The middle tile on the *Job Run Details* page provides a summary of key Task met
 * *Pending*: The number of Tasks waiting to be executed.
 * *Running*: The number of Tasks currently in progress.
 * *Completed*: The number of tasks that have successfully completed.
-* *Errored*: The number of Tasks that encountered issues during execution.
+* *Errored*: The number of tasks that encountered issues during execution.
 
 The lower left tile on the *Job Run Details* page provides information such as:
 
