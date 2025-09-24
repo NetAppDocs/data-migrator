@@ -43,7 +43,7 @@ for SMB | <tbd>
 
 Due to restrictions on the number of concurrent mounts, NFS v4.1 is currently de-prioritized for use in multi-worker scenarios. Where multiple workers attempt to mount the same NFS v4.1 share simultaneously, issues may arise that impact workflow stability and performance.
 
-Temporary Guidance:
+Temporary guidance:
 Avoid using NFS v4.1 for workflows that involve multiple workers accessing the same share. It is recommended to use NFS v3.0, or other configurations that support parallel access for multi-worker environments.
 
 *Other limitations*
