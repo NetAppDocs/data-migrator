@@ -213,7 +213,7 @@ This returns the full block device usage (e.g., ~710 GB) instead of the datasetâ
 
 This issue does not occur if a discovery is performed migration, because the discovered dataset size is then passed into the precheck workflow.
 
-*Solution:*
+*Solution*
 
 Perform a discovery before initiating migration to ensure the correct dataset size is passed to the precheck step. If you encounter the previous warning even though there is sufficient space: 
 
