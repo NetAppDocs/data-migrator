@@ -40,6 +40,7 @@ for SMB | <tbd>
 |===
 
 *Limitation: NFS v4.1 in multi-worker scenarios*
+
 Due to limitations on the number of concurrent mounts, NFS v4.1 is currently de-prioritized for use in multi-worker scenarios. Where multiple workers attempt to mount the same NFS v4.1 share simultaneously, issues may arise that impact workflow stability and performance.
 
 Temporary Guidance:
