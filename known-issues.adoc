@@ -98,7 +98,7 @@ Check the destination has sufficient storage space before migrating your data. T
 
 In some Migration or Cutover job runs, the status can show as "Completed", even though a task is still pending.
 
-.Workaround
+Solution
 NetApp is working to address this issue.
 
 == Security identifiers (SIDs) are not copied for files with spaces in their names.
@@ -248,7 +248,7 @@ During data Discovery, NDM encounters a fatal error and incorrectly retries the 
 
 Despite the presence of this fatal error, NDM retries data Discovery and succeeds. Thus appears to results in a correct file count, even though for a fatal error, NDM should not attempt to retry data Discovery, and the file count should appear to be less than the actual count. 
 
- *Solution* 
+*Solution* 
  
 Currently, there is no solution to this issue. To ensure complete data discovery, manually verify the discovered storage data against your file server. If you find discrepancies, re-run data Discovery for the export path/share that encountered fatal error. 
 
@@ -318,7 +318,7 @@ After you configure SMTP settings in NDM, the details may sometimes fail to save
  
 If the destination storage server goes offline during a migration, the Control Plane may still show the job as running, however, no new tasks are created and no data is transferred. The expected behavior is for the Control Plane to detect the issue and mark the job as errored. 
 
-*Workaround*
+.Solution
 
 You can confirm if the issue is due to the destination being unreachable, by checking job error details in the NDM interface: 
 

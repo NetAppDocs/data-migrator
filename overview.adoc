@@ -4,11 +4,11 @@ permalink: overview.html
 keywords: 
 summary: 
 ---
-= Overview of NetApp Data Migrator (NDM)
+= NetApp Data Migrator (NDM)
 :icons: font
 :imagesdir: ./media/
 
 [.lead]
-NDM is multi-protocol,multi-cloud migration web application software with easy-to-use user-(UI) and API-based interfaces that allow you to migrate unstructured file data from any storage system to NetApp 1P cloud storage services. NDM is an independent application, that runs on user-managed virtual machines. It is neither software-as-a-service (SaaS) or a component of BlueXP.
+NDM is multi-protocol,multi-cloud migration web application software with easy-to-use user-(UI) and API-based interfaces that allow you to migrate unstructured file data from any storage system to NetApp 1P cloud storage services. NDM is an independent application, that runs on user-managed virtual machines. It is not software-as-a-service (SaaS) or a component of BlueXP.
 
-After installation, you can use NDM to discover your existing storage estate and generate a quick inventory of files. Then, you can create plans to migrate your data from a source storage server, to NetApp 1P public cloud storage services. After data migration commences, you can monitor migration jobs and use NDM's logging capabilities to diagnose and resolve issues. NDM also allows you to generate Chain of Custody (CoC) reports, that use checksums to help verify if your migration succeeded or failed.
+After installation, you can use NDM to discover your existing storage estate and generate a quick inventory of files. Then, you can create plans to migrate your data from a source storage server, to NetApp 1P public cloud storage services. After data migration commences, you can monitor migration jobs and use NDM's logging capabilities to diagnose and resolve issues. NDM also allows you to generate Chain of Custody (CoC) reports, that use checksums to help verify if your data migrated successfully.
