@@ -48,7 +48,7 @@ Avoid using NFS v4.1 for workflows that involve multiple workers accessing the s
 
 *Other limitations*
 |===
-| Category | Limitation
+| Category | Supported
 
 | Network accessibility | It is recommended to use NDM in  private networks
 | Directory level migration | NDM does not support Directory level migration.
