@@ -4,12 +4,12 @@ permalink: learn-about.html
 keywords: 
 summary: 
 ---
-= Discover NetApp Data Migrator
+= Discover NetApp Data Migrator (NDM)
 :icons: font
 :imagesdir: ./media/
 
 [.lead]
-NetApp Data Migrator (NDM) is an enterprise-grade, multi-cloud, data migration software application that is designed to simplify and accelerate the transfer of file-based workloads from on-premises or third-party storage systems to NetApp's first-party cloud storage services. NDM helps you to discover your existing storage environments, plan and execute data migrations, and allow you to monitor their progress through an easy-to-use, unified interface.
+NDM is an enterprise-grade, multi-cloud, data migration software application that is designed to simplify and accelerate the transfer of file-based workloads from on-premises or third-party storage systems to NetApp's first-party cloud storage services. NDM helps you to discover your existing storage environments, plan and execute data migrations, and allow you to monitor their progress through an easy-to-use, unified interface.
 
 NDM supports both the NFS and SMB file transfer protocols and allows you to deploy worker nodes within your own environment. This enables you to maintain control and security during the migration process. Workers facilitate parallel data transfers, helping to improve performance and scalability. NDM also includes features such as pre-checks, and incremental sync to ensure smooth and efficient migration with minimal downtime. You can keep your source systems active for most of the migration process, then perform a final cutover when ready. In addition to its operational capabilities, NDM offers robust logging and error handling, allowing you to troubleshoot and recover from issues with no need to restart the entire migration process. NDM is a unified, scalable, and cost-efficient migration solution that has been purpose-built to meet real-world enterprise migration requirements and eliminate the need for complex custom scripts and disjointed tools.
 
