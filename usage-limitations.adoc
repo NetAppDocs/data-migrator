@@ -9,7 +9,7 @@ summary:
 :imagesdir: ./media/
 
 [.lead]
-Understanding the usage limitations as well as the protocols and server types supported by NetApp Data Migrator (NDM) can help to make your migration activities more efficient.
+Understanding the usage limitations oF NetApp Data Migrator (NDM), as well as the protocols and server types it supports, can help to make your migration activities more efficient.
 
 *Summary of file server types and protocols supported by NDM*
 
