@@ -86,13 +86,11 @@ After data migration has completed, the total number of files is correct, but so
 
 Review the migration COC report to identify files marked as errored. Then re-run the migration until the errors are resolved. 
 
-Issue 6: Discovery Job May Show 0 Files Until Dashboard Refresh (2275) [Known Issue] [Validation] 
+*Issue 6: Discovery job shows 0 Files until Control Plane is refreshed (2275)*
 
 .Description
 
-When running a discovery job, the Job Run Details page may initially show zero files or directories, even though the Discovery Report Preview displays actual results. 
-
-This happens because the dashboard updates every 10 minutes. During this interval, the Job Run Details may temporarily show outdated information, even if the job is marked as "Completed." 
+When running a discovery job, the Job Run Details page may initially show zero files or directories, even though the Discovery report preview displays the actual results.  This happens because the Control Plane updates every 10 minutes. During this interval, the Job Run Details may temporarily show outdated information, even if the job is marked as "Completed." 
 
 .Solution
 
@@ -101,7 +99,7 @@ This happens because the dashboard updates every 10 minutes. During this interva
 
 == Configuration 
 
-Issue 7: *Migration Precheck May Show False Positive Warning "Insufficient Space" (1872)*
+*Issue 7: Migration precheck displays false "Insufficient Space" warning  (1872)*
 
 .Description
 
@@ -114,9 +112,9 @@ This can happen if the discovery step is skipped and NDM uses a general command 
 
 .Solution: 
 
-Run Discovery before a Migration run to ensure disk usage information is available for pre-check operation. If you still see this warning: 
+Run Discovery before a Migration run, to ensure disk usage information is available for pre-check operation. If you still see this warning, then: 
 
-* Confirm that discovery was completed. 
+* Confirm that discovery has completed. 
 * Manually verify the destination volume has enough space. 
 * If there is sufficient space, you can safely proceed with data migration. 
 
@@ -134,7 +132,7 @@ This happens because Excel mistakenly treats certain permission strings (startin
 
 To view correct file and folder permissions open the CSV file using one of the following applications: 
 
-*Google Sheets 
+* Google Sheets 
 
 * Apple Numbers 
 
@@ -168,7 +166,7 @@ Discovery jobs refresh every 30 seconds. If you notice that the file count, dire
 
    ifup <interface name> 
 
-. If required, repeat these steps for the source server,  
+. If required, repeat these steps for the source server. 
 
 *Issue 10: Unable to switch user on Windows Worker*
 
@@ -184,7 +182,7 @@ To remove the previous connection, open Command Prompt on the Windows Worker and
  net use 
  net use <IP address> /delete 
 
- You can then switch to the new user account and access the file server. 
+You can then switch to the new user account and access the file server. 
 
 == Recommendations for using NDM
 
