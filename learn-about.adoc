@@ -127,7 +127,7 @@ Tasks are:
 
 === Discover
 
-You can use Discover job to scan and inventory data on a source or destination file server. The outcome of Discover job is a detailed report that provides information about the files and directories in selected export paths in a source or destination file server. Discovery can help you to understand the scope and complexity of your data before starting migration.
+You can use a Discover job to scan and inventory data on a source or destination file server. The outcome of a Discover job is a detailed report that provides information about the files and directories in selected export paths in a source or destination file server. Discovery can help you to understand the scope and complexity of your data before starting migration.
 
 A Discover job:
 
@@ -143,7 +143,7 @@ A Migrate job:
 
 * Performs baseline migration (initial full copy).
 * Supports incremental sync (updates based on changes).
-* Allows you to configure of options like exclusion patterns, permission remapping, and access time preservation.
+* Allows you to configure options like exclusion patterns, permission remapping, and access time preservation.
 * Includes pre-checks of permissions, capacity, and connectivity.
 
 === Cutover

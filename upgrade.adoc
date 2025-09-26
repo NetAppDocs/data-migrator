@@ -17,7 +17,7 @@ Before you start, you must stop all job runs and make all jobs inactive. Upgrade
 
  upgrade_<timestamp>.log. 
 
-If you encounter issues, contact NetApp support (Niharika@netapp.com or Ashish.Sinha@netapp.com). Please attach upgrade logs to your communication.
+If you encounter issues, contact NetApp support ng-ndm-support@netapp.com. Please attach upgrade logs to your communication.
 
 
 *Control plane upgrade*

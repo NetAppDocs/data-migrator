@@ -11,332 +11,190 @@ summary:
 [.lead]
 NetApp Data Migrator (NDM) has the following known issues.
 
-== No error message for a Discovery job run when the host or destination server is down.
+== Workflows
 
-After starting a Bulk Discovery job run, the NDM control plane does not display an error message, even if the network interface of the host or destination server goes down. This can mislead users into thinking that the discovery is still running correctly.
+*Issue 1: Job Run status can be confusing when errors occur (1594)*
 
-.Solution
+.Description
 
-A discovery job run is refreshed for every 30 seconds so if the discovered data details (file count, directory count, or data size) are not updating regularly, then you should suspect a problem and check the network interfaces on either source or destination servers.
+Some Migration job runs that encounter errors can show a "Completed" migration status, while others show an "Errored" status. This can cause confusion in interpreting the actual status of a Migration job run. 
 
-.Steps
+Status definitions:
 
-. Verify the network connection in the worker VM by pinging to the destination IP by typing `ping <IP Address>` at the command line. If this ping fails (no response or unreachable), then proceed to perform the following steps below to bring the network interface back up manually.
-. ssh to destination IP address (for example, `ssh 10.0.0.148`)
-. Type `ipconfig` to display details of that interface, identify the interface name from the command output (for example, `eth0`)
-. Type `ifup <interface name>` to bring the interface up manually.
-. Repeat the above steps for the source server.
+* Completed: A job run has finished, but may contain errors.
 
-== Reuse of worker secret codes
+.Description
 
-Reuse of worker secret codes can pose security risks, enable unauthorized access, and present operational difficulties. It may also lead to worker duplication, compliance violations, and difficulty in tracking assignments.
+* Errored: A job run failed due to a critical issue.
 
 .Solution
 
-Worker secret codes must not be reused.
+To be certain of the job run outcome, please check the job run details for any errors — especially if the status is “Completed”. Until this issues is addressed, do not rely only on the status label.
 
-== Update to file server protocol version requires page refresh to update the export path list
+*Issue 2: Migrations fail for jobs in "Inactive" state (2103)*
 
-When you update a file server with a different protocol version, NDM requires you to perform a page refresh to update the export path list. Failure to do so may cause compatibility issues, delays in fetching the export list, or incomplete updates. This may lead to data inconsistencies, failed synchronization, or errors in accessing the latest export information.
+.Description
+
+During data migration, the following error message may appear:
+
+    Source Path: <source-path> & Destination Path: <destination-path> failed due to Inactive job found. Please reactivate or remove the existing job.
+
+
+This issue occurs when NDM updates migration paths but can't find an active job associated with them. Even if you recreate the path, the job remains inactive unless you manually update it.
+
+.Solution
+Go to (http://<control plane IP address>/jobs-list) in NDM, manually set the job configuration to Active, then restart the migration job. 
+
+*Issue 3: Incorrect File Listing During Cutover Without Delta Changes (2316) (2351)*
+
+.Description
+
+The UI may show files as migrated, even if there are no changes in the source data. This is a display issue and does not affect actual data integrity. 
 
 .Solution
 
-Refresh the page after you update the file server protocol version.
+* If you previously scheduled incremental sync then no action is required because the next sync will run automatically. 
 
-== Precheck should fail immediately if a worker goes offline
+* If an incremental sync is not scheduled, you can manually trigger an incremental migration.
 
-If a worker goes offline before a migration job starts, NDM continues to send API requests (up to 20 times) before displaying a notification message. This delay causes unnecessary waiting, wastes system resources, and can lead to job failures. To improve efficiency, precheck should fail immediately if a worker is offline.
+* For your next bulk migration, enable automatic incremental migrations by choosing either “Schedule” or “Cron Expression” at Step 2 (Options-  Incremental Sync Schedule). This option is disabled, by default.
 
-.Solution
+After incremental sync has completed, then:
 
-When you submit a migration job, wait for up to two minutes, and if NDM does not display a pre-check error, check the associated worker status.
+* If NDM reports 0 files, your source and destination are in sync. 
+* If NDM reports files, re-run the migration until it shows 0 files, then it is then safe to start cutover.
 
-.Steps
+*Issue 4: Update to file server protocol version requires page refresh to update the export path list*
 
-. Login to the worker system.
-. At the command line, type `sudo su -`
-. At the command line, type `systemctl status datamigrator-worker.service`
-. If the worker is offline, restart the worker by typing `systemctl restart datamigrator-worker.service`
+.Description
 
-== NDM control plane is slow to load
+When you update a file server with a different protocol version, NDM requires you to perform a page refresh to update the export path list. Failure to do so may cause compatibility issues, delays in fetching the export list, or incomplete updates. This may lead to data inconsistencies, failed synchronization, or errors in accessing the latest export information.  
 
-The NDM control plane is slow to load, reducing system availability and negatively impacting responsiveness and user workflows.
+.Solution  
 
-.Solution
+Refresh the page whenever you update the file server protocol version. 
 
-You should wait approximately 5 minutes after startup before using the NDM control plane. You can monitor the startup progress by executing the following command:
+== Validation
 
-[source,cli]
-----
-tail -10f /var/log/datamigrator/microk8s-boot.log
-----
+*Issue 5: File Sizes May Differ After Migration Even if Counts Match (2092)*
 
-== Performance lag in generating the Reports Overview.
+.Description
 
-The Reports Overview API takes approximately 20 seconds to load data from the backend.
-
-.Solution
-NetApp is currently working to address this issue.
-
-== A Discovery or Migration job fails after a worker reboot or shutdown
-
-A worker reboot or shutdown can happen manually or automatically (after a crash) and cause a Discovery or Migration job to fail.
+After data migration has completed, the total number of files is correct, but some files may have a different size compared to the original source. This can happen due to temporary network interruptions or server-side issues during the file transfer process. 
 
 .Solution
 
-Restart your Discovery or Migration job.
+Review the migration COC report to identify files marked as errored. Then re-run the migration until the errors are resolved. 
 
-== Insufficient storage space at destination
+Issue 6: Discovery Job May Show 0 Files Until Dashboard Refresh (2275) [Known Issue] [Validation] 
 
-If you try to migrate data to a destination server that has less storage space than the source server, a precheck notification appears stating "Insufficient disk space at destination".
+.Description
 
-.Solution
+When running a discovery job, the Job Run Details page may initially show zero files or directories, even though the Discovery Report Preview displays actual results. 
 
-Check the destination has sufficient storage space before migrating your data. Type `df -h` to view disk size, used, and available space.
-
-== Migration or Cutover job status shows "Completed", even though a task is still pending.
-
-In some Migration or Cutover job runs, the status can show as "Completed", even though a task is still pending.
-
-Solution
-NetApp is working to address this issue.
-
-== Security identifiers (SIDs) are not copied for files with spaces in their names.
-
-For files that have spaces in their names, file data is copied, but SIDs are not.
+This happens because the dashboard updates every 10 minutes. During this interval, the Job Run Details may temporarily show outdated information, even if the job is marked as "Completed." 
 
 .Solution
 
-After files are copied, manually update permissions at the destination by restoring the original SIDs.
+* Wait for the dashboard to refresh (up to 10 minutes) the Job Run Details page, then accurate file and directory counts are displayed. 
+* For immediate confirmation, refer to the Discovery Report Preview, which includes discovered files and directories. 
 
-== Discovery or Migration jobs may incorrectly show as "Completed" after restarting the worker service.
+== Configuration 
 
-Discovery or Migration job run status shows "Completed" before the job run has started. This usually occurs after restarting the worker service for file servers associated with multiple workers.
+Issue 7: *Migration Precheck May Show False Positive Warning "Insufficient Space" (1872)*
+
+.Description
+
+During migration prechecks, you may see a the following warning, even if the destination has sufficient space. : 
+
+  Insufficient destination space for selected path. Do you still want to proceed with the migration? 
+ 
+
+This can happen if the discovery step is skipped and NDM uses a general command that reads the entire block device size, instead of the actual dataset size. This can trigger a false warning. 
+
+.Solution: 
+
+Run Discovery before a Migration run to ensure disk usage information is available for pre-check operation. If you still see this warning: 
+
+* Confirm that discovery was completed. 
+* Manually verify the destination volume has enough space. 
+* If there is sufficient space, you can safely proceed with data migration. 
+
+== Reporting 
+
+*Issue 8: Excel displays incorrect permissions in COC report file*
+
+.Description: 
+
+When opening the COC report CSV file in Microsoft Excel, some file or folder permissions may appear as #NAME? instead of the actual values (for example, -rwxrwxrwx). 
+
+This happens because Excel mistakenly treats certain permission strings (starting with - or =) as formulas, leading to display errors. (The CSV file itself is correct — this is only a display issue).  
 
 .Solution
-In rare cases, a worker can restart on its own and there is currently no way to prevent this. To reduce the possibility of this happening, you should NOT manually restart a worker service while any jobs that depend on it, are running.
 
-== App Admin needs to reset own password.
+To view correct file and folder permissions open the CSV file using one of the following applications: 
 
-Currently, App Admin users can reset the password of other users, but they may also occasionally need to reset their own password (for example, if they forget it).
+*Google Sheets 
+
+* Apple Numbers 
+
+* Online CSV viewer 
+
+* Text editors like Notepad++ 
+
+*Issue 9: No Error Message When Discovery Job Fails Due to Network Issues*
+
+.Description: 
+
+If the host or destination server goes down during a Bulk Discovery job, NDM may not show an error message. This can give the impression that the job is still running normally.  
 
 .Solution
 
-An App Admin user who needs to reset their password should proceed as follows:
+Discovery jobs refresh every 30 seconds. If you notice that the file count, directory count, or data size is not updating, this may indicate a network issue.  
 
-.Steps
+. Check network connectivity: 
 
-. Navigate to OpenBao and enter "https:/IP_Address/ui/" (here IP address is that of your control plane)
-. At the command line, you can get the root token by typing:
-* `sudo su - datamigrator`
-* `cat /opt/datamigrator/openbao/cluster-keys.json`
-. Copy the root token from the output details displayed.
-. Log in to OpenBao using the root token.
-. Select *Engines* then select *secrets.*
-. Select *keycloak-secrets* then select *keycloak-creds.*
-. Copy the *Keycloak Admin password.*
-. Open the url "https:/IP_Address/keycloak/" then under *manage realms* select *datamigrator.*
-. For Users, enter *admin@datamigrator.local*, then select *credentials*
-. Select *reset password.*
+* Open the worker VM terminal. Ping the IP address of the destination server and if there's no response, the destination may be unreachable.
 
-If any user except App Admin forgets their password:
+. Restore the network interface:
 
-. *Log in* using the *App Admin* credentials.
-. Go to *Settings → Users*.
-. Find the user and click *Reset Password*.
-. Share the new password with the user.
-. Ask the user to *log in with the new password*.
-. On first login, they will be prompted to *set a new password*.
+* SSH into the destination server:
 
-==  Windows Worker Fails to Switch User on SMB File Server (1746) 
+   ssh <destination IP>
 
-When a Windows worker attempts to connect to an SMB file server using a different set of credentials than those previously used for the same server, the following error may occur: 
+* Run ipconfig to find the interface name (for example, eth0) 
 
- System error 1219 Multiple connections to a server or shared resource by the same user, using more than one user name, are not allowed.
+* Run ifup to bring it back online.
 
-This happens because Windows does not allow multiple simultaneous connections to the same network resource using different credentials. Even if the previous connection is inactive, it may still be cached or held by the system. 
+   ifup <interface name> 
 
-*Solution*
+. If required, repeat these steps for the source server,  
 
-To resolve this issue, follow these steps:  
+*Issue 10: Unable to switch user on Windows Worker*
 
-. List existing SMB connections:
-+
-[source,cli]
-----
+.Description: 
+
+Switching to a different user account on Windows Worker may fail due to existing network connections. This can prevent access to the file server. 
+
+.Solution 
+
+
+To remove the previous connection, open Command Prompt on the Windows Worker and run the following commands:
+
  net use 
----- 
-. Delete any existing connection to the target server: 
-+
-[source,cli]
-----
-net use <share> /delete
-----
-. Reboot the system to clear any remaining cached credentials or sessions.  
-. Reconnect using the desired credentials. 
+ net use <IP address> /delete 
 
-== File server in errored state after adding both protocol credentials (1694) 
+ You can then switch to the new user account and access the file server. 
 
-When adding a file server with both NFS and SMB credentials, the system incorrectly attempts to validate both protocols regardless of the associated worker type.  
+== Recommendations for using NDM
 
-For example: 
+* For NFS migrations, add a file server with NFS credentials and NFS config details.  
 
-If an NFS worker is selected, it still tries to validate SMB using port 2049 (which is meant for NFS), instead of the correct SMB port 445. This results in the file server being created in an errored state. Attempts to edit the file server later fail due to "worker not responding" error during pre-check.  
+* For SMB migrations, add a file server with SMB credentials and SMB config details 
 
-Similarly, when an SMB worker is selected, the system incorrectly shows a successful NFS protocol check, further highlighting the flawed validation logic. 
 
-*Solution*
+* When adding a file server, do not add NFS and SMB credentials as this can cause errors. 
 
-Do not add both NFS and SMB protocol credentials because NFS can only supports only one at any time. If your file server supports both NFS and SMB, you will need to add the file server twice: first with NFS protocol credentials and then with SMB protocol credentials. For NFS protocol, associate a Linux worker, and for SMB protocol, associate a Windows worker. 
+* Do not run Migration and Cutover jobs simultaneously. Ensure only one job is active at any time. 
 
-==  Incorrect disk usage warning appears during Migration precheck 
-
-During migration prechecks, NDM may display this warning: 
-
- Insufficient destination space for selected path. Do you still want to proceed with the migration? 
- 
-This appears to suggest that there is insufficient destination space, even where the destination volume has adequate capacity and occurs when the precheck command used for determining disk usage returns the usage of the entire block device, rather than the actual usage of the specified dataset path.
-
-Example scenario: 
-
-* Source dataset size: 114 GB 
-* Allocated destination volume: 200 GB 
-* The following Warning displays: 
-
- "Insufficient space on destination" 
-
-If a discovery step is not performed before migration, the precheck runs this command:
-
- df 
-
-This returns the full block device usage (e.g., ~710 GB) instead of the dataset’s actual size (~114 GB). The inflated number triggers a false insufficient-space warning. 
-
-This issue does not occur if a discovery is performed migration, because the discovered dataset size is then passed into the precheck workflow.
-
-*Solution*
-
-Perform a discovery before initiating migration to ensure the correct dataset size is passed to the precheck step. If you encounter the previous warning even though there is sufficient space: 
-
-. Verify that the discovery step was completed successfully. 
-
-. Manually confirm the destination volume capacity. 
-
-. If there is sufficient space, proceed with data migration despite the warning. 
-
-==  Inconsistent Job Status Reporting 
-
-Jobs that encounter errors may display different statuses, leading to confusion. 
-Currently, some jobs with errors are marked as *Completed*, while others are marked as *Errored*. 
-
-*Completed*: Job is finished but may still contain errors. 
-
-*Errored*: Job failed due to fatal or unrecoverable errors. 
-
-This inconsistency may make it difficult for you to interpret job results and understand whether the job has succeeded or partially failed. 
-
-*Solution*
-
-* Review job details to determine whether a *Completed* job actually had errors or completed successfully. 
-
-* Until status categorization is more clearly defines, do not rely solely on job status labels; cross-check errors before taking further action. 
-
-== Discovery continues despite a fatal error occurring when the NFS server cannot be reached. 
-
-During data Discovery, NDM encounters a fatal error and incorrectly retries the operation. The discovery job enters an errored state and display this message: 
-
- NFS server unreachable: <ip_address> (Unknown error).
-
-Despite the presence of this fatal error, NDM retries data Discovery and succeeds. Thus appears to results in a correct file count, even though for a fatal error, NDM should not attempt to retry data Discovery, and the file count should appear to be less than the actual count. 
-
-*Solution* 
- 
-Currently, there is no solution to this issue. To ensure complete data discovery, manually verify the discovered storage data against your file server. If you find discrepancies, re-run data Discovery for the export path/share that encountered fatal error. 
-
-== Migration and Cutover jobs running simultaneously (1768) 
-
-Migration and cutover jobs should not run simultaneously for the same job configuration.  When a cutover job is complete and both jobs become inactive, if the user reactivates them, it is possible to start both migration and cutover jobs simultaneously for the same configuration. This behavior may lead to data inconsistencies. 
-
-*Solution*
-
-Avoid running Migration and Cutover jobs at the same time.
-
-== Mismatch in file size and count after Migration (2092) 
-
-
-Sometime, after your Migration has completed, the total file count may appear to be correct, but certain files may have a different size, when compared to the source. This can happen due to transient errors (temporary issues during transfer) or checksum errors (a file is not copied correctly). These issues are often caused by network interruptions or server-side problems during migration. 
-
- 
-*Solution* 
-
-There is currently no solution to this issue. Review the migration report and the COC (Change of Content) report to identify and review files marked as errored. 
-
-== A Migration is stuck in a Running state due to syncTaskActivity Error (2069) 
-
-
-When migrating a large dataset using SMB, a migration job may remain in a running state for many hours with no transfer of data occurring. This issue can affect multiple migration jobs at the same time. In some cases, jobs remain stuck even after the source volume is brought back online, and only resume after the worker is restarted.
-
-*Solution*
-
-Adjust concurrency settings to improve migration stability, for example:
-
- MAX_COMMAND_CONCURRENCY=20 and MAX_WRITE_CONCURRENCY=20
-
-If a migration is stuck, restart the worker to resume and complete the job using:
-
-[source,cli]
-----
-sudo systemctl restart datamigrator-worker.service
-----
-
-
-To adjust the concurrency settings, follow these steps: 
-
-. SSH into the worker:
-
-  multipass shell datamigrator-worker 
-
-. Open environment variable file:
-
-  /opt/datamigrator/conf/worker.env
-
-. Replace the existing variable with the following: 
-
- MAX_COMMAND_CONCURRENCY=<desirable_value> 
- MAX_WRITE_CONCURRENCY=<desirable_value>
-
-== Inconsistent SMTP email notifications (1986) 
-
-After you configure SMTP settings in NDM, the details may sometimes fail to save or update correctly. Even when saved, email notifications may not always sent.Inconsistent behavior has been observed — where in some cases, emails are delivered successfully, while in others, they fail. This is due to network connectivity issues where the application pod cannot reliably connect to the SMTP server. 
-
-*Solution*
-
-* Verify network connectivity between the NDM pod and the SMTP server. 
-* Retry sending the email from the user interface after confirming network stability. 
-* If possible, test SMTP connectivity from outside the pod to confirm that the issue is isolated to in-pod communication.  
-
-== Migration appears to continue without progressing, when the destination server is down (1107) 
- 
-If the destination storage server goes offline during a migration, the Control Plane may still show the job as running, however, no new tasks are created and no data is transferred. The expected behavior is for the Control Plane to detect the issue and mark the job as errored. 
-
-.Solution
-
-You can confirm if the issue is due to the destination being unreachable, by checking job error details in the NDM interface: 
-
-. Go to Jobs in the NDM portal. 
-. Select *Job Run List*. 
-. Find the affected job with status     *Errored*. 
-. Select the *...* dropdown menu and select *Details*. 
-. In Errors , select *View All*.
-. In the *Error Details* column, look for this (or a similar) message:
-
- NFS server unreachable 
-
-. When the destination server is back online, restart the migration job from the NDM portal to resume data transfer. 
-
-== Features not included in NDM (alpha release)
-
-* CoC report generation at path level
-* Speed test
-* NDM backup repository
-* Product registration
-
+* Use one worker secret code to set up a worker explicitly. 

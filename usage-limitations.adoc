@@ -9,7 +9,7 @@ summary:
 :imagesdir: ./media/
 
 [.lead]
-Understanding the usage limitations of NetApp Data Migrator (NDM) can help to make your data migration activities more efficient. 
+Understanding the usage limitations and server types supported by NetApp Data Migrator (NDM) can help to make your data migration activities more efficient.
 
 *Summary of file server types and protocols supported by NDM*
 
@@ -50,15 +50,15 @@ Avoid using NFS v4.1 for workflows that involve multiple workers accessing the s
 |===
 | Category | Limitation
 
-| Network Accessibility | It is recommended to use NDM in  private networks
-| Directory level migration | No directory level migration support, only full export paths supported
-| Domain Support | No domain support, accessible via IP address only
+| Network accessibility | It is recommended to use NDM in  private networks
+| Directory level migration | NDM does not support Directory level migration.
+| Domain aupport | No domain support, accessible via IP address only
 | Security | NDM uses self-signed SSL certificate
 | User interface | Optimized for 1920 x 1080 screen resolution. Mobile displays are not supported.
-| Worker Deployment | Worker must be part of the same root domain as the destination
+| Windows worker deployment | Worker must be part of the same root domain as the destination
 | Performance | NDM application performance is dependent on source and destination network throughput
-| Protocol Migration - Version | Cross-version migration within the same protocol is not supported (for example, NFS v3 to NFS v4)
-| Protocol Migration - Type | Cross-protocol migration is not supported (for example, NFS to SMB)
+| Protocol migration - Version | Cross-version migration within the same protocol is not supported (for example, NFS v3 to NFS v4)
+| Protocol migration - Type | Cross-protocol migration is not supported (for example, NFS to SMB)
 | File names | NDM cannot migrate system-generated files owned by source 
 
 NDM can migrate hidden directories and files and their properties

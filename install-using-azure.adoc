@@ -54,7 +54,7 @@ az account set --subscription <YOUR_SUBSCRIPTION_ID>
 az account show
 ----
 . Follow this link:https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal[link] to learn how to create storage and a container in your Azure account.
-. Contact NetApp Support at [insert email/contact method] to request a time-limited SAS URL for the VHD and checksum file. The SAS URL provides temporary, secure access required for the deployment process described here.
+. Contact NetApp Support at ng-ndm-support@netap.com to request a time-limited SAS URL for the VHD and checksum file. The SAS URL provides temporary, secure access required for the deployment process described here.
 . Copy control plane and worker VHDs:
 * Retrieve the primary access key for your storage account:
 +
