@@ -4,7 +4,7 @@ permalink: overview.html
 keywords: 
 summary: 
 ---
-= NetApp Data Migrator (NDM)
+= What is NetApp Data Migrator (NDM)?
 :icons: font
 :imagesdir: ./media/
 
