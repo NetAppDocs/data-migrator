@@ -4,7 +4,7 @@ permalink: overview.html
 keywords: 
 summary: 
 ---
-= What is NDM?
+= What is NDM and what is it used for?
 :icons: font
 :imagesdir: ./media/
 
