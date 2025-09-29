@@ -4,12 +4,12 @@ permalink: support-matrix.html
 keywords: 
 summary: 
 ---
-= NetApp Data Migrator support matrix (NDM). 
+= Protocols and servers supported by NetApp Data Migrator (NDM). 
 :icons: font
 :imagesdir: ./media/
 
 [.lead]
-Understand the protocols and files server types are supported by NDM to help streamline your migration activities
+Learn about the protocols and files server types are supported by NDM, to help streamline your migration activities.
 
 *Summary of file server types and protocols supported by NDM*
 
