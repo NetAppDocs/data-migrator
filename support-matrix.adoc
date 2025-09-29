@@ -4,7 +4,7 @@ permalink: support-matrix.html
 keywords: 
 summary: 
 ---
-= Protocols and servers supported by NetApp Data Migrator (NDM). 
+= NetApp Data Migrator support matrix (NDM). 
 :icons: font
 :imagesdir: ./media/
 
