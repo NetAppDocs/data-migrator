@@ -17,7 +17,7 @@ Learn about the protocols and files server types supported by NetApp Data Migrat
 | Category | Supported
 
 | Source file server	 | Dell Isilon, ONTAP, Vanilla Linux and Windows servers
-| Destination file server | Any service level of ANF/GCNV
+| Destination file server | All service levels of ANF and GCNV
 | NFS protocol version| 3.0, 4.1
 | SMB protocol version| 2.0, 3.0, 3.1
 
