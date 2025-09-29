@@ -114,7 +114,7 @@ Each job run:
 * Can be in one of several states: Ready, Running, Paused, Stopped, Errored, or Blocked.
 * Generates logs, metrics, and task-level details.
 
-== NDM tasks
+=== Task
 
 A task is the smallest unit of execution within a job run. It represents a discrete operation such as scanning a directory, copying a file, or updating metadata. Tasks provide you with better granularity to help monitor the progress and health of a job run.
 

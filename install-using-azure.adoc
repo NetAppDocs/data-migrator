@@ -41,6 +41,7 @@ copy these assets to your Azure storage, (optionally) validate integrity, and cr
 .Steps
 
 . Select one of these links to learn how to install the Azure CLI on your operating system:
+
 * link:https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows?view=azure-cli-latest&pivots=winget[Install on Windows]
 * link:https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-macos[Install on macOS]
 * link:https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-linux[Install on Linux]

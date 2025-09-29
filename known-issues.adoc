@@ -196,3 +196,5 @@ You can then switch to the new user account and access the file server.
 * Do not run Migration and Cutover jobs simultaneously. Ensure only one job is active at any time. 
 
 * Use one worker secret code to set up a worker explicitly. 
+
+* Please contact NDM support at ndm-support@netapp.com if you need to reboot the control plane.

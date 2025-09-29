@@ -4,24 +4,13 @@ permalink: usage-limitations.html
 keywords: 
 summary: 
 ---
-= Usage limitations
+= NetApp Data Migrator (NDM) usage limitations
 :icons: font
 :imagesdir: ./media/
 
 [.lead]
-Understanding the usage limitations oF NetApp Data Migrator (NDM), as well as the supported protocols and server types, can help to make your migration activities more efficient.
+Understand the usage limitations of NDM to help make your migration activities more efficient.
 
-*Summary of file server types and protocols supported by NDM*
-
-|===
-| Category | Supported
-
-| Source file server	 | Dell Isilon, ONTAP, Vanilla Linux and Windows servers
-| Destination file server | Any service level of ANF/GCNV
-| NFS protocol version| 3.0, 4.1
-| SMB protocol version| 2.0, 3.0, 3.1
-
-|===
 
 *Discovery and migration limitations*
 
@@ -29,22 +18,16 @@ Understanding the usage limitations oF NetApp Data Migrator (NDM), as well as th
 | Category | Limitation
 
 | Number of export paths that can
-run simultaneously	 | <tbd>
+run simultaneously	 | NFS:4; SMB: 2
 | Maximum number of files in a directory
 for NFS	 | 1 million
 | Maximum number of files in a directory
 for SMB | 1 million
 | Maximum depth| 75
-| Number of workers| <tbd>
-| Worker sizing| <tbd>
+| Number of workers| NFS3: 4; NFSv4.1: 1 SMB: 1 
+| Worker sizing| NFS: 8CPU, 32GB; SMB: 16CPU, 64GB
 |===
 
-*Limitation: NFS v4.1 in multi-worker scenarios*
-
-Due to restrictions on the number of concurrent mounts, NFS v4.1 is currently de-prioritized for use in multi-worker scenarios. Where multiple workers attempt to mount the same NFS v4.1 share simultaneously, issues may arise that impact workflow stability and performance.
-
-Temporary guidance:
-Avoid using NFS v4.1 for workflows that involve multiple workers accessing the same share. It is recommended to use NFS v3.0, or other configurations that support parallel access for multi-worker environments.
 
 *Other limitations*
 |===
@@ -56,7 +39,6 @@ Avoid using NFS v4.1 for workflows that involve multiple workers accessing the s
 | Security | NDM uses self-signed SSL certificate
 | User interface | Optimized for 1920 x 1080 screen resolution. Mobile displays are not supported.
 | Windows worker deployment | Windows worker must be part of the same root domain as the destination
-| Performance | NDM application performance is dependent on source and destination network throughput
 | Protocol migration - Version | Cross-version migration within the same protocol is not supported (for example, NFS v3 to NFS v4)
 | Protocol migration - Type | Cross-protocol migration is not supported (for example, NFS to SMB)
 | File names | NDM cannot migrate system-generated files owned by source 

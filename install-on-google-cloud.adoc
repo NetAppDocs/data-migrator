@@ -56,17 +56,18 @@ gcloud projects add-iam-policy-binding <PROJECT_ID> \
   --member=user:<YOUR_EMAIL> \
   --role=roles/vmmigration.admin
 ----
+
 == Step 4: Obtain and upload images
 
 * Log into link:https://mysupport.netapp.com/site/[NSS] to download the control plane and worker .tar.gz images as well as (optional) .sha256 checksum files
-*Upload the tar.gz for worker and control plane to your GCS bucket. Follow this link:https://cloud.google.com/storage/docs/uploading-objects#uploading-an-object[link] to learn how to do this.
+* Upload the tar.gz for worker and control plane to your GCS bucket. Follow this link:https://cloud.google.com/storage/docs/uploading-objects#uploading-an-object[link] to learn how to do this.
 
 == Step 5: Validate SHA256 checksums (optional)
 After you download the tar.gz file, you can optionally use this link:https://emn178.github.io/online-tools/sha256_checksum.html[checksum calculator] to verify the checksum and validate against the checksum file downloaded from NSS.
 
 == Step 6: Import images using VM migration service
 After you upload the worker and control plane tar.gz files, you can create a VM image for worker and control plane:
-+
+
 [source,cli]
 ----
 gcloud migration vms image-imports create <IMAGE_IMPORT_NAME> \

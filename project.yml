@@ -14,6 +14,8 @@ sidebar:
     entries:
     - title: What is NDM?
       url: /overview.html
+    - title: Support matrix for NDM
+      url: /support-matrix.html
     - title: Usage limitations of NDM
       url: /usage-limitations.html
     - title: Known issues for NDM

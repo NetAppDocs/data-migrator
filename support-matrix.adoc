@@ -1,0 +1,24 @@
+---
+sidebar: sidebar
+permalink: support-matrix.html
+keywords: 
+summary: 
+---
+= NetApp Data Migrator support matrix (NDM). 
+:icons: font
+:imagesdir: ./media/
+
+[.lead]
+Understand the protocols and files server types are supported by NDM to help streamline your migration activities
+
+*Summary of file server types and protocols supported by NDM*
+
+|===
+| Category | Supported
+
+| Source file server	 | Dell Isilon, ONTAP, Vanilla Linux and Windows servers
+| Destination file server | Any service level of ANF/GCNV
+| NFS protocol version| 3.0, 4.1
+| SMB protocol version| 2.0, 3.0, 3.1
+
+|===
