@@ -4,12 +4,12 @@ permalink: usage-limitations.html
 keywords: 
 summary: 
 ---
-= NetApp Data Migrator (NDM) usage limitations
+= NDM usage limitations
 :icons: font
 :imagesdir: ./media/
 
 [.lead]
-Understand the usage limitations of NDM to help make your migration activities more efficient.
+Understand the usage limitations of NetApp Data Migrator (NDM) to help make your migration activities more efficient.
 
 
 *Discovery and migration limitations*
