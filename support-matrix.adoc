@@ -9,7 +9,7 @@ summary:
 :imagesdir: ./media/
 
 [.lead]
-Learn about the protocols and files server types are supported by NDM, to help streamline your migration activities.
+Learn about the protocols and files server types supported by NDM, to help streamline your migration activities.
 
 *Summary of file server types and protocols supported by NDM*
 
