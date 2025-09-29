@@ -45,7 +45,7 @@ This issue occurs when NDM updates migration paths but can't find an active job 
 .Solution
 Go to (http://<control-plane-IP-address>/jobs-list) in NDM, manually set the job configuration to *Active*, then restart the migration job. 
 
-*Issue 3: Incorrect File Listing During Cutover Without Delta Changes (2316) (2351)*
+*Issue 3: Incorrect file listing during cutover without delta changes (2316) (2351)*
 
 .Description
 
@@ -76,7 +76,7 @@ Refresh the page whenever you update the file server protocol version.
 
 == Validation
 
-*Issue 5: File Sizes May Differ After Migration Even if Counts Match (2092)*
+*Issue 5: File sizes may differ after migration even if counts match (2092)*
 
 .Description
 
@@ -86,7 +86,7 @@ After data migration has completed, the total number of files is correct, but so
 
 Review the migration COC report to identify files marked as errored. Then re-run the migration until the errors are resolved. 
 
-*Issue 6: Discovery job shows 0 Files until Control Plane is refreshed (2275)*
+*Issue 6: Discovery job shows 0 files until control plane is refreshed (2275)*
 
 .Description
 
@@ -140,7 +140,7 @@ To view correct file and folder permissions open the CSV file using one of the f
 
 * Text editors like Notepad++ 
 
-*Issue 9: No Error Message When Discovery Job Fails Due to Network Issues*
+*Issue 9: No error message when Discovery job fails due to network issues*
 
 .Description: 
 
