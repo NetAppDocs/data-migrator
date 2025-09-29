@@ -4,7 +4,7 @@ permalink: support-matrix.html
 keywords: 
 summary: 
 ---
-= NDM protocols and server support matrix
+= NDM protocols and file server support matrix
 :icons: font
 :imagesdir: ./media/
 
