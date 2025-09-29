@@ -8,7 +8,7 @@ settings:
 
 sidebar: 
   entries:
-  - title: NetApp Data Migrator docs
+  - title: NetApp Data Migrator (NDM) docs
     url: /index.html
   - title: Release notes 
     entries:
