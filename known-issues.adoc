@@ -43,7 +43,7 @@ During data migration, the following error message may appear:
 This issue occurs when NDM updates migration paths but can't find an active job associated with them. Even if you recreate the path, the job remains inactive unless you manually update it.
 
 .Solution
-Go to (http://<control plane IP address>/jobs-list) in NDM, manually set the job configuration to Active, then restart the migration job. 
+Go to (http://<control-plane-IP-address>/jobs-list) in NDM, manually set the job configuration to *Active*, then restart the migration job. 
 
 *Issue 3: Incorrect File Listing During Cutover Without Delta Changes (2316) (2351)*
 
