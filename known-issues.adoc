@@ -23,8 +23,6 @@ Status definitions:
 
 * Completed: A job run has finished, but may contain errors.
 
-.Description
-
 * Errored: A job run failed due to a critical issue.
 
 .Solution
