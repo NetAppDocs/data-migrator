@@ -22,7 +22,8 @@ run simultaneously	 | 4  | 2
 | Maximum number of files in a directory | 1 million | 1 million
 | Maximum depth| 75 | 75
 | Number of workers| NFS3: 4;  NFSv4.1: 1 | 1 
-| Worker sizing| NFS: 8 core CPU, 32GB memory | 16 core CPU, 64GB memory
+| Control plane sizing| 16 core CPU, 64 GB memory | 16 core CPU, 64 GB memory 
+| Worker sizing| 4 core CPU, 16 GB memory | 16 core CPU, 64 GB memory
 |===
 
 
