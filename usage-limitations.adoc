@@ -15,14 +15,14 @@ Understand the usage limits of NetApp Data Migrator (NDM) to help make your migr
 *Discovery and migration limits*
 
 |===
-| Category | Limits
+| Category | NFS | SMB 
 
 | Number of export paths that can
-run simultaneously	 | NFS: 4;  SMB: 2
-| Maximum number of files in a directory | NFS: 1 million;  SMB: 1 million
-| Maximum depth| 75
-| Number of workers| NFS3: 4;  NFSv4.1: 1;  SMB: 1 
-| Worker sizing| NFS: 8 core CPU, 32GB memory;  SMB: 16 core CPU, 64GB memory
+run simultaneously	 | 4  | 2
+| Maximum number of files in a directory | 1 million | 1 million
+| Maximum depth| 75 | 75
+| Number of workers| NFS3: 4;  NFSv4.1: 1 | 1 
+| Worker sizing| NFS: 8 core CPU, 32GB memory | 16 core CPU, 64GB memory
 |===
 
 
