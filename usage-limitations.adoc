@@ -19,12 +19,9 @@ Understand the usage limitations of NetApp Data Migrator (NDM) to help make your
 
 | Number of export paths that can
 run simultaneously	 | NFS:4; SMB: 2
-| Maximum number of files in a directory
-for NFS	 | 1 million
-| Maximum number of files in a directory
-for SMB | 1 million
+| Maximum number of files in a director | NFS: 1 million; SMB: 1 million
 | Maximum depth| 75
-| Number of workers| NFS3: 4; NFSv4.1: 1 SMB: 1 
+| Number of workers| NFS3: 4; NFSv4.1: 1; SMB: 1 
 | Worker sizing| NFS: 8CPU, 32GB; SMB: 16CPU, 64GB
 |===
 
