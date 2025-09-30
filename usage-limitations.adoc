@@ -31,7 +31,7 @@ run simultaneously	 | 4  | 2
 | Category | Limits
 
 | Network accessibility | It is recommended to use NDM in  private networks
-| Directory level migration | NDM does not support Directory level migration.
+| Directory level migration | NDM does not support directory level migration.
 | Domain support | No domain support, accessible via IP address only
 | Security | NDM uses self-signed SSL certificate
 | User interface | Optimized for 1920 x 1080 screen resolution. Mobile displays are not supported.
