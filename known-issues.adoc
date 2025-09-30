@@ -13,7 +13,7 @@ NetApp Data Migrator (NDM) has the following known issues.
 
 == Workflows
 
-*Issue 1: Job Run status can be confusing when errors occur (1594)*
+*Issue 1: Job Run status can be confusing when errors occur*
 
 .Description
 
@@ -31,7 +31,7 @@ Status definitions:
 
 To be certain of the job run outcome, please check the job run details for any errors — especially if the status is “Completed”. Until this issues is addressed, do not rely only on the status label.
 
-*Issue 2: Migrations fail for jobs in "Inactive" state (2103)*
+*Issue 2: Migrations fail for jobs in "Inactive" state*
 
 .Description
 
@@ -45,7 +45,7 @@ This issue occurs when NDM updates migration paths but can't find an active job 
 .Solution
 Go to (http://<control-plane-IP-address>/jobs-list) in NDM, manually set the job configuration to *Active*, then restart the migration job. 
 
-*Issue 3: Incorrect file listing during cutover without delta changes (2316) (2351)*
+*Issue 3: Incorrect file listing during cutover without delta changes*
 
 .Description
 
@@ -76,7 +76,7 @@ Refresh the page whenever you update the file server protocol version.
 
 == Validation
 
-*Issue 5: File sizes may differ after migration even if counts match (2092)*
+*Issue 5: File sizes may differ after migration even if counts match*
 
 .Description
 
@@ -86,7 +86,7 @@ After data migration has completed, the total number of files is correct, but so
 
 Review the migration COC report to identify files marked as errored. Then re-run the migration until the errors are resolved. 
 
-*Issue 6: Discovery job shows 0 files until control plane is refreshed (2275)*
+*Issue 6: Discovery job shows 0 files until control plane is refreshed*
 
 .Description
 
@@ -99,7 +99,7 @@ When running a discovery job, the Job Run Details page may initially show zero f
 
 == Configuration 
 
-*Issue 7: Migration precheck displays false "Insufficient Space" warning  (1872)*
+*Issue 7: Migration precheck displays false "Insufficient Space" warning*
 
 .Description
 

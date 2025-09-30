@@ -4,31 +4,31 @@ permalink: usage-limitations.html
 keywords: 
 summary: 
 ---
-= NDM usage limitations
+= NDM usage limits
 :icons: font
 :imagesdir: ./media/
 
 [.lead]
-Understand the usage limitations of NetApp Data Migrator (NDM) to help make your migration activities more efficient.
+Understand the usage limits of NetApp Data Migrator (NDM) to help make your migration activities more efficient.
 
 
-*Discovery and migration limitations*
+*Discovery and migration limits*
 
 |===
-| Category | Limitation
+| Category | Limits
 
 | Number of export paths that can
 run simultaneously	 | NFS: 4;  SMB: 2
 | Maximum number of files in a directory | NFS: 1 million;  SMB: 1 million
 | Maximum depth| 75
 | Number of workers| NFS3: 4;  NFSv4.1: 1;  SMB: 1 
-| Worker sizing| NFS: 8CPU, 32GB;  SMB: 16CPU, 64GB
+| Worker sizing| NFS: 8 core CPU, 32GB memory;  SMB: 16 core CPU, 64GB memory
 |===
 
 
-*Other limitations*
+*Other usage limits*
 |===
-| Category | Limitation
+| Category | Limits
 
 | Network accessibility | It is recommended to use NDM in  private networks
 | Directory level migration | NDM does not support Directory level migration.
