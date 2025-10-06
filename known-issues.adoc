@@ -13,9 +13,7 @@ NetApp Data Migrator (NDM) has the following known issues.
 
 == Workflows
 
-*Issue 1: Job Run status can be confusing when errors occur*
-
-.Description
+=== Job Run status can be confusing when errors occur
 
 Some Migration job runs that encounter errors can show a "Completed" migration status, while others show an "Errored" status. This can cause confusion in interpreting the actual status of a Migration job run. 
 
@@ -29,23 +27,20 @@ Status definitions:
 
 To be certain of the job run outcome, please check the job run details for any errors — especially if the status is “Completed”. Until this issues is addressed, do not rely only on the status label.
 
-*Issue 2: Migrations fail for jobs in "Inactive" state*
-
-.Description
+=== Issue 2: Migrations fail for jobs in "Inactive" state
 
 During data migration, the following error message may appear:
 
-    Source Path: <source-path> & Destination Path: <destination-path> failed due to Inactive job found. Please reactivate or remove the existing job.
-
+----
+Source Path: <source-path> & Destination Path: <destination-path> failed due to Inactive job found. Please reactivate or remove the existing job.
+----
 
 This issue occurs when NDM updates migration paths but can't find an active job associated with them. Even if you recreate the path, the job remains inactive unless you manually update it.
 
 .Solution
 Go to (http://<control-plane-IP-address>/jobs-list) in NDM, manually set the job configuration to *Active*, then restart the migration job. 
 
-*Issue 3: Incorrect file listing during cutover without delta changes*
-
-.Description
+=== Issue 3: Incorrect file listing during cutover without delta changes
 
 The UI may show files as migrated, even if there are no changes in the source data. This is a display issue and does not affect actual data integrity. 
 
@@ -62,9 +57,7 @@ After incremental sync has completed, then:
 * If NDM reports 0 files, your source and destination are in sync. 
 * If NDM reports files, re-run the migration until it shows 0 files, then it is then safe to start cutover.
 
-*Issue 4: Update to file server protocol version requires page refresh to update the export path list*
-
-.Description
+=== Update to file server protocol version requires page refresh to update the export path list
 
 When you update a file server with a different protocol version, NDM requires you to perform a page refresh to update the export path list. Failure to do so may cause compatibility issues, delays in fetching the export list, or incomplete updates. This may lead to data inconsistencies, failed synchronization, or errors in accessing the latest export information.  
 
@@ -74,9 +67,7 @@ Refresh the page whenever you update the file server protocol version.
 
 == Validation
 
-*Issue 5: File sizes may differ after migration even if counts match*
-
-.Description
+=== File sizes may differ after migration even if counts match*
 
 After data migration has completed, the total number of files is correct, but some files may have a different size compared to the original source. This can happen due to temporary network interruptions or server-side issues during the file transfer process. 
 
@@ -84,9 +75,7 @@ After data migration has completed, the total number of files is correct, but so
 
 Review the migration COC report to identify files marked as errored. Then re-run the migration until the errors are resolved. 
 
-*Issue 6: Discovery job shows 0 files until control plane is refreshed*
-
-.Description
+=== Discovery job shows 0 files until control plane is refreshed
 
 When running a discovery job, the Job Run Details page may initially show zero files or directories, even though the Discovery report preview displays the actual results.  This happens because the Control Plane updates every 10 minutes. During this interval, the Job Run Details may temporarily show outdated information, even if the job is marked as "Completed." 
 
@@ -97,14 +86,13 @@ When running a discovery job, the Job Run Details page may initially show zero f
 
 == Configuration 
 
-*Issue 7: Migration precheck displays false "Insufficient Space" warning*
+=== Migration precheck displays false "Insufficient Space" warning*
 
-.Description
+During migration prechecks, you might see the following warning, even if the destination has sufficient space: 
 
-During migration prechecks, you may see a the following warning, even if the destination has sufficient space. : 
-
-  Insufficient destination space for selected path. Do you still want to proceed with the migration? 
- 
+----
+Insufficient destination space for selected path. Do you still want to proceed with the migration? 
+---- 
 
 This can happen if the discovery step is skipped and NDM uses a general command that reads the entire block device size, instead of the actual dataset size. This can trigger a false warning. 
 
@@ -118,9 +106,7 @@ Run Discovery before a Migration run, to ensure disk usage information is availa
 
 == Reporting 
 
-*Issue 8: Excel displays incorrect permissions in COC report file*
-
-.Description: 
+=== Excel displays incorrect permissions in COC report file
 
 When opening the COC report CSV file in Microsoft Excel, some file or folder permissions may appear as #NAME? instead of the actual values (for example, -rwxrwxrwx). 
 
@@ -138,9 +124,7 @@ To view correct file and folder permissions open the CSV file using one of the f
 
 * Text editors like Notepad++ 
 
-*Issue 9: No error message when Discovery job fails due to network issues*
-
-.Description: 
+=== No error message when Discovery job fails due to network issues
 
 If the host or destination server goes down during a Bulk Discovery job, NDM may not show an error message. This can give the impression that the job is still running normally.  
 
@@ -155,20 +139,18 @@ Discovery jobs refresh every 30 seconds. If you notice that the file count, dire
 . Restore the network interface:
 
 * SSH into the destination server:
++
+`ssh <destination IP>`
 
-   ssh <destination IP>
+* Run `ipconfig` to find the interface name (for example, eth0). 
 
-* Run ipconfig to find the interface name (for example, eth0) 
+* Run `ifup` to bring it back online:
++
+`ifup <interface name>`    
 
-* Run ifup to bring it back online.
+. If required, repeat the Steps 1 and 2 for the source server.
 
-   ifup <interface name> 
-
-. If required, repeat these steps for the source server. 
-
-*Issue 10: Unable to switch user on Windows Worker*
-
-.Description: 
+=== Unable to switch user on Windows Worker
 
 Switching to a different user account on Windows Worker may fail due to existing network connections. This can prevent access to the file server. 
 
@@ -177,8 +159,9 @@ Switching to a different user account on Windows Worker may fail due to existing
 
 To remove the previous connection, open Command Prompt on the Windows Worker and run the following commands:
 
- net use 
- net use <IP address> /delete 
+`net use`
+
+`net use <IP address> /delete`
 
 You can then switch to the new user account and access the file server. 
 

@@ -31,14 +31,14 @@ Workers are virtual machines running on Linux, which supports the NFS protocol, 
 
 == Step 1: Enable required APIs
 
-Follow these link:https://cloud.google.com/migrate/virtual-machines/docs/5.0/get-started/enable-services#enabling_required_services_on_the_host_project[Google instructions] to enable all of the APIs required for your project. These APIs are mandatory for image import and deployment operations.
+Follow the steps in the link:https://cloud.google.com/migrate/virtual-machines/docs/5.0/get-started/enable-services#enabling_required_services_on_the_host_project[Google Cloud documentation^] to enable all of the APIs required for your project. These APIs are mandatory for image import and deployment operations.
 
 == Step 2: Prepare import destination
 
-Follow this link:https://cloud.google.com/storage/docs/creating-buckets#console[link] to learn how to create a GCS bucket if you have not already created one.
+Follow the steps in the link:https://cloud.google.com/storage/docs/creating-buckets#console[Google Cloud documentation^] to create a Google Cloud Storage (GCS) bucket if you have not already created one.
 
 == Step 3: Set Up IAM roles and permissions
-This step ensures that the migration API has the required access permission. Follow this link:https://cloud.google.com/migrate/virtual-machines/docs/5.0/migrate/image_import#add-disk-to-storage[link] to learn about disk storage permissions. Alternatively, you can use the following commands.
+This step ensures that the migration API has the required access permission. Learn about disk storage permissions in the link:https://cloud.google.com/migrate/virtual-machines/docs/5.0/migrate/image_import#add-disk-to-storage[Google Cloud documentation^] Alternatively, you can use the following commands.
 
 * Assign the service account objectViewer access to your destination GCS bucket:
 +
@@ -59,8 +59,8 @@ gcloud projects add-iam-policy-binding <PROJECT_ID> \
 
 == Step 4: Obtain and upload images
 
-* Log into link:https://mysupport.netapp.com/site/[NSS] to download the control plane and worker .tar.gz images as well as (optional) .sha256 checksum files
-* Upload the tar.gz for worker and control plane to your GCS bucket. Follow this link:https://cloud.google.com/storage/docs/uploading-objects#uploading-an-object[link] to learn how to do this.
+* Log into link:https://mysupport.netapp.com/site/[NetApp Support Site] to download the control plane and worker .tar.gz images as well as (optional) .sha256 checksum files
+* Upload the tar.gz for worker and control plane to your GCS bucket by following the steps in the link:https://cloud.google.com/storage/docs/uploading-objects#uploading-an-object[Google Cloud documentation].
 
 == Step 5: Validate SHA256 checksums (optional)
 After you download the tar.gz file, you can optionally use this link:https://emn178.github.io/online-tools/sha256_checksum.html[checksum calculator] to verify the checksum and validate against the checksum file downloaded from NSS.
@@ -88,49 +88,43 @@ gcloud migration vms image-imports list --location=<REGION> --project=<PROJECT_I
 Wait for SUCCEEDED status before you proceed to VM creation.
 
 == Step 8: Create VM instances
+You need to create a Windows VM to access NDM using the Remote Desktop Protocol.
 
-. Create the Windows VM to access NDM
+.Steps
+. Follow the steps in the link:https://cloud.google.com/compute/docs/create-windows-server-vm-instance[Google Cloud documentation^] to create a Windows Server VM instance using the following recommended settings:
 +
-You need to create a Windows VM to access NDM using the Remote Desktop Protocol. 
-Follow this link:[link] to learn how to link:https://cloud.google.com/compute/docs/create-windows-server-vm-instance[create a Windows Server VM instance using these recommended settings:
-
 * Image: Windows Server 2022 Datacenter
 * Size: 16 vCPU, 64 GB RAM
 * RDP port 3389 open.
 
-You can connect to this Windows VM using RDP by following the instructions in this link:https://cloud.google.com/compute/docs/instances/connecting-to-windows[Google Cloud RDP link]. You can then access NDM.
+. Connect to the Windows VM created in Step 1 using RDP by following the steps in the link:https://cloud.google.com/compute/docs/instances/connecting-to-windows[Google Cloud documentation^]. You can then access NDM.
 
-. Create the control plane VM
-
-Create this VM using the control plane image imported previously. Follow this link:https://cloud.google.com/compute/docs/instances/create-vm-from-custom-image[Google Cloud Platform link] to learn how to create a VM from a custom imported image using these recommended settings:
-
+. Create the control plane VM using the control plane image imported previously. +
+Follow the steps in the link:https://cloud.google.com/compute/docs/instances/create-vm-from-custom-image[Google Cloud documentation] to create a VM from a custom imported image  using the following recommended settings:
++
 * Size: 16 vCPU, 64 GB RAM
 * Image: Custom imported image for the control plane.
 
-. Create a Linux worker VM or add the Windows worker installer:
-
-.. NFS migration - Create the Linux worker VM
-
-Create this VM using the control plane image imported previously. Follow this link:https://cloud.google.com/compute/docs/instances/create-vm-from-custom-image[Google Cloud Platform link] to learn how to create a VM from a custom imported image using these recommended settings:
-
+. For NFS migration, create the Linux worker VM for NFA migration using the control plane image imported previously. 
++
+Follow the steps in the link:https://cloud.google.com/compute/docs/instances/create-vm-from-custom-image[Google Cloud documentation^] to create a VM from a custom imported image using the following recommended settings:
++
 * Size: 4 vCPU, 16 GB RAM
 * Image: Custom imported image for the control plane.
 
-.. SMB Migration
-
-. Add the Windows worker installer
+. For SMB migration, add the Windows worker installer:
+.. Download the windows worker installer for Google Cloud Platform from the link:https://mysupport.netapp.com/site/[NetApp Support site^]. 
+.. Follow the steps in the link:https://cloud.google.com/compute/docs/create-windows-server-vm-instance[Google Cloud documentation^] to create a Windows Server VM instance using the following recommended settings for the Windows worker VM:
 +
-For SMB migration, you need to download the windows worker installer for Google Cloud Platform from NSS: <Placeholder link>. Follow this link:https://cloud.google.com/compute/docs/create-windows-server-vm-instance[Google Cloud Platform link] to learn how to create a Windows Server VM instance using these recommended settings for the windows worker VM:
-
 * Image: Windows Server 2022 Datacenter
 * Size: 16 vCPU, 64 GB RAM.
 * RDP port 3389 open
 
-. Move the Windows worker installer to the Windows VM
-+
-* Login to the Windows Worker VM using RDP and copy the Windows worker installer to the Windows VM.
-* Use Microsoft Windows App (Mac) or Remote Desktop Connection (Windows) to create an RDP session.
-* You can learn how to connect to the Windows VM using RDP by following the instructions provided in this link:https://cloud.google.com/compute/docs/instances/connecting-to-windows[Google Cloud RDP link] 
+.. Move the Windows worker installer to the Windows VM:
+
+... Login to the Windows Worker VM using RDP and copy the Windows worker installer to the Windows VM.
+... Use Microsoft Windows App (Mac) or Remote Desktop Connection (Windows) to create an RDP session.
+... Connect to the Windows VM using RDP by following the instructions provided in the link:https://cloud.google.com/compute/docs/instances/connecting-to-windows[Google Cloud documentation^].
 
 . Depending on your configuration, select the MacOS or Windows tab.
 +

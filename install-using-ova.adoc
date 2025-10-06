@@ -290,10 +290,10 @@ cat /opt/datamigrator/openbao/cluster-keys.json
 https://<IP_address>/ui/
 ----
 . Navigate to the following secret UIs after opening the OpenBao UI:
-* KeycloakUI:`https://<IP_address>/keycloak/`
-* TemporalUI:`https://<IP_address>/temporal/ui/`
+* KeycloakUI: `https://<IP_address>/keycloak/`
+* TemporalUI: `https://<IP_address>/temporal/ui/`
 . Use the control plane IP address to connect to the postgres database.
 * Log in using the username and password from OpenBao.
-* Postgres keys:`POSTGRES_DMADMIN_USER`and`POSTGRES_DMADMIN_PASSWORD`
+* Postgres keys: POSTGRES_DMADMIN_USER and POSTGRES_DMADMIN_PASSWORD
 
 

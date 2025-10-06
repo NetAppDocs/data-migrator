@@ -13,46 +13,53 @@ After installing Azure using the CLI, create the control plane and worker VMs to
 
 == Step 1: Create the Windows VM
 
-Create a Windows VM to access NDM using the Remote Desktop Protocol using the following recommended settings:
+Create a Windows VM to access NDM using the Remote Desktop Protocol:
+
+Follow the steps in the link:https://learn.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-portal[Microsoft Virtual Machines documentation^] to create the Windows VM. Use the following recommended settings when creating VM:
 
 * Image: Windows Server 2022
 * Datacenter: Azure Edition - x64 Gen2
 * Size: 16 vCPU, 64 GB memory
 * RDP port 3389 open
 
-Follow the steps in the link:https://learn.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-portal[Microsoft Virtual Machines documentation^] to create the Windows VM.
+
 
 == Step 2: Create the control plane VM
 
-To create the control pane VM, you need to use the previously imported control plane image. Follow this link:https://learn.microsoft.com/en-us/azure/virtual-machines/capture-image-resource#portal-create-a-vm-from-a-legacy-managed-image[link] to learn how to create a VM from a custom imported image, using these recommended settings:
+To create the control pane VM, you need to use the previously imported control plane image. 
+
+Follow the steps in the link:https://learn.microsoft.com/en-us/azure/virtual-machines/capture-image-resource#portal-create-a-vm-from-a-legacy-managed-image[[Microsoft Virtual Machines documentation^] to create a VM from a custom imported image. Use the following recommended settings when creating the control plane VM:
 
 * Image: Custom imported
 * Size: 16 vCPU, 64 GB RAM
 * License type: Other
 
-== Step 3
-Create the Linux worker VM or add the Windows worker installer.
+== Step 3 (a): Create the Linux worker VM 
 
-.Steps
+Create the Linux worker VM for NFS migration using the previously imported worker image.
 
-. Create the Linux worker VM for NFS migration:
-+
-Create the Linus worker VM using the previously imported worker image. Follow this link:https://learn.microsoft.com/en-us/azure/virtual-machines/capture-image-resource#portal-create-a-vm-from-a-legacy-managed-image[link] to learn how to create a worker VM from a custom imported image, using these recommended settings:
+Follow the steps this link:https://learn.microsoft.com/en-us/azure/virtual-machines/capture-image-resource#portal-create-a-vm-from-a-legacy-managed-image[Microsoft Virtual Machines documentation^] to create a worker VM from a custom imported image. Use the following recommended settings when creating the Linux worker VM:
 
 * Image: Custom imported
 * Size: 4 vCPU, 16GB RAM
 * License type: Other
 
-. Add the Windows worker installer for SMB migration:
+.Step 3 (b)Add the Windows worker installer
 
-.. Download the windows worker installer for Azure from NSS: <Placeholder link>. Then follow this link:https://learn.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-portal[link] to learn how to create a Windows VM using these recommended settings:
+Add the Windows worker installer for SMB migration.
 
+.Steps
+. Download the windows worker installer for Azure from the link:https://mysupport.netapp.com/site/[NetApp Support site^]. 
+. Follow the steps in the link:https://learn.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-portal[Microsoft Virtual Machines documentation^] to create a Windows VM.
++
+Use the following recommended settings when creating the Windows VM:
++
 ** Image: Choose Windows Server 2022 
 ** Datacenter: Azure Edition - x64 Gen2
 ** Size: 16 vCPUs, 64 GB memory
 ** RDP port 3389 open 
 
-.. Move the Windows worker installer to the Windows VM
+. Move the Windows worker installer to the Windows VM
 * Login to the Windows Worker VM using the Remote Desktop Protocol and copy the Windows worker installer to the Windows VM.
 * Use Microsoft Windows App (Mac) or RDP (Windows) to create a remote session. Follow this link:https://learn.microsoft.com/en-us/azure/virtual-machines/windows/connect-rdp[link] to learn about RDP connections.
 
@@ -79,7 +86,8 @@ PS C:\Windows\system32> Add-MpPreference -ExclusionPath "C:\datamigrator\mnt"
 Windows worker for MacOS.
 
 .. Install the Microsoft Windows App on your local laptop.
-.. Follow this link:https://learn.microsoft.com/en-us/windows-app/get-started-connect-devices-desktops-apps[link] to RDP into the SMB Windows Worker VM and use this link:https://learn.microsoft.com/en-us/windows-app/device-audio-folder-redirection-teams?tabs=macos#folder-redirection[link] to mount the local folder which contains the Windows Worker Installer.
+.. Follow the steps in the link:https://learn.microsoft.com/en-us/windows-app/get-started-connect-devices-desktops-apps[Microsoft Windows App documentation^] to RDP into the SMB Windows Worker VM.
+.. Follow the steps in the link:https://learn.microsoft.com/en-us/windows-app/device-audio-folder-redirection-teams?tabs=macos#folder-redirection[Microsoft Windows App documentation^] to mount the local folder which contains the Windows Worker Installer.
 .. Locate the folder you mounted to the Windows Worker VM under "This PC" on the server.
 .. Move the Windows Worker Installer from the mounted folder to a suitable location on the Windows VM.
 --
@@ -88,7 +96,7 @@ Windows worker for MacOS.
 Windows worker for Windows:
 
 .. Launch a Remote Desktop Connection.
-.. Follow this link:https://cat.pdx.edu/platforms/windows/remote-access/file-sharing-rdp-from-windows/[link] to RDP into the SMB Windows Worker VM and mount the local folder containing the Windows Worker Installer. 
+.. Follow the steps in the link:https://cat.pdx.edu/platforms/windows/remote-access/file-sharing-rdp-from-windows/[Windows^] procedure to RDP into the SMB Windows Worker VM and mount the local folder containing the Windows Worker Installer. 
 .. Locate the folder you mounted to the Windows Worker VM under "This PC" on the server.
 .. Move the Windows Worker Installer from the mounted folder to a suitable location on the Windows VM .
 --
@@ -100,8 +108,8 @@ Connect to the control plane to validate if NDM is active.
 
 .Steps
 . Install Azure CLI. Refer to the Azure CLI Download instructions.
-. SSH Into your control plane server. If your server does not have Public IP, you can use Azure bastion to configure SSH Access. Follow this link:https://learn.microsoft.com/en-us/azure/bastion/quickstart-host-portal[link] to learn how.
-. Switch the user to datamigrator:
+. SSH Into your control plane server. If your server does not have Public IP, follow the steps in the link:https://learn.microsoft.com/en-us/azure/bastion/quickstart-host-portal[Azure bastion documentation^] to configure SSH Access. 
+. Switch the user to `datamigrator`:
 +
 [source,cli]
 ----
@@ -134,8 +142,8 @@ The default credentials for the NDM UI are:
 * URL: https://<control-plane-private-ip>/
 * Username: admin@datamigrator.local
 * Password: Welcome@123
-
-. Depending on your migration, select the NFS or SMB tab.
++
+Depending on your migration, select the NFS or SMB tab.
 +
 [role="tabbed-block"]
 ====

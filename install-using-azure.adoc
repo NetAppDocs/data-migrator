@@ -37,5 +37,5 @@ Before you can install the NDM control pane and worker, you must have:
 +
 If you already have the Azure CLI installed, go to Step 2.
 
-. link:create-control-plane-worker-vm.html[Install the NDM control plane and workers].
+. link:create-control-plane-worker-vm.html[Create the control plane and worker VMs].
 

@@ -36,11 +36,11 @@ sidebar:
         url: /install-using-ova.html
       - title: Install NDM using Azure
         entries:
-        - title: Prepare for NDM installation using Azure
+        - title: Prepare for installation
           url: /install-using-azure.html
-        - title: Install Azure CLI and manage assets for NDM 
+        - title: Install Azure CLI and manage assets 
           url: /install-azure-using-cli.html
-        - title: Create the control plane and worker VMs for NDM
+        - title: Create the control plane and worker VMs
           url: /create-control-plane-worker-vm.html
       - title: Install NDM using Google Cloud
         url: /install-on-google-cloud.html

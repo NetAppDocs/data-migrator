@@ -11,32 +11,32 @@ summary:
 [.lead]
 Follow these instructions to upgrade various feature in NetApp Data Migrator (NDM). 
 
-.About this task
+.Before you begin
 
 Before you start, you must stop all job runs and make all jobs inactive. Upgrade logs appear in the unzipped folder with the following file name format:
 
  upgrade_<timestamp>.log. 
 
-If you encounter issues, contact NetApp support ng-ndm-support@netapp.com. Please attach upgrade logs to your communication.
+If you encounter issues, contact NetApp support ng-ndm-support@netapp.com and attach the upgrade logs to your communication.
 
 
-*Control plane upgrade*
+*Upgrade the control plane*
 
-. *Copy the upgrade bundle.*
+. Copy the upgrade bundle:
 ** Transfer the upgrade zip file to the Control Plane machine using scp:
 +
 [source,cli]
 ----
 scp -P 2226 ~/2025.08.19-preview.zip ubuntu@localhost:/tmp
 ----
-. *SSH to the Control Plane and Switch User.* 
+. SSH to the Control Plane and Switch User: 
 ** Connect to the Control Plane machine and switch to the datamigrator user:
 +
 [source,cli]
 ----
 $ sudo su - datamigrator
 ----
-. *Install Unzip and Extract the Bundle.*
+. Install, unzip, and extract the bundle:
 ** Navigate to the /tmp directory, install unzip if necessary, and extract the upgrade package:
 +
 [source,cli]
@@ -46,12 +46,11 @@ $ sudo apt install unzip
 $ unzip 2025.08.19-preview.zip
 ----
 
-. *Verify the extracted file.*
-
+. Verify the extracted file:
++
 ** After unzipping the upgrade package, you should see the following files in the extracted folder:
-
++
 * A checksum file (for example, checksums.sha256)
-
 * A Docker image tar file (for example, datamigrator-2025.08.23-main.tar)
 * A Helm chart archive (for example, datamigrator-2025.08.23-main.tgz)
 * The upgrade script (upgrade.sh)
@@ -67,7 +66,7 @@ total 6962656
 -rw-r--r-- 1 datamigrator datamigrator 6046 Aug 23 11:16 datamigrator-2025.08.23-main.tgz 
 -rw-r--r-- 1 datamigrator datamigrator 275 Aug 23 11:17 checksums.sha256
 ----
-. *Prepare and Run the Upgrade Script.*
+. Prepare and run the upgrade script:
 ** Make the upgrade script executable. then to run it, provide the paths to the checksum file, Docker tar file, and Helm chart archive:
 +
 [source,cli]
@@ -81,12 +80,12 @@ Example:
 ----
  
 
-. *Resume Jobs*
-
+. Resume jobs:
++
 After the upgrade completes, you need to:
 
-* create a new job run for any stopped jobs, because these cannot be restarted.
-* reactivate any inactive jobs to ensure that they run as scheduled.
+* Create a new job run for any stopped jobs, because these cannot be restarted.
+* Reactivate any inactive jobs to ensure that they run as scheduled.
 
 *Upgrade Linux Worker*
 
