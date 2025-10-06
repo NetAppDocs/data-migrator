@@ -4,14 +4,14 @@ permalink: learn-about.html
 keywords: 
 summary: 
 ---
-= Learn about Netapp Data Migrator
+= Discover NDM
 :icons: font
 :imagesdir: ./media/
 
 [.lead]
-NetApp Data Migrator (NDM) is an enterprise-grade, multi-cloud, data migration software application that is designed to simplify and accelerate the transfer of file-based workloads from on-premises or third-party storage systems to NetApp’s first-party cloud storage services. NDM helps you to discover your existing storage environments, plan and execute data migrations, and allow you to monitor their progress through an easy-to-use, unified interface.
+NetApp Data Migrator (NDM) is an enterprise-grade, multi-cloud, data migration software application that is designed to simplify and accelerate the transfer of file-based workloads from on-premises or third-party storage systems to NetApp's first-party cloud storage services. NDM helps you to discover your existing storage environments, plan and execute data migrations, and allow you to monitor their progress through an easy-to-use, unified interface.
 
-NDM supports both the NFS and SMB file transfer protocols and allows you to deploy worker nodes within your own environment. This enables you to maintain control and security during the migration process. Workers facilitate parallel data transfers, helping to improve performance and scalability. NDM also includes features such as pre-checks, and incremental sync to ensure smooth and efficient migration with minimal downtime. You can keep your source systems active for most of the migration process, then perform a final cutover when ready. In addition to its operational capabilities, NDM offers robust logging and error handling, allowing you to troubleshoot and recover from issues with no need to restart the entire migration process. NDM is a unified, scalable, and cost-efficient migration solution that has been purpose-built to meet real-world enterprise migration requirements and eliminate the need for complex custom scripts and disjointed tools.
+NDM supports both the NFS and SMB file transfer protocols and allows you to deploy worker nodes within your own environment. This enables you to maintain control and security during the migration process. Workers facilitate parallel data transfers, helping to improve performance and scalability. NDM also includes features such as pre-checks, and incremental sync to ensure smooth and efficient migration with minimal downtime. You can keep your source systems active for most of the migration process, then perform a final cutover when ready. In addition to its operational capabilities, NDM offers robust logging and error handling, allowing you to troubleshoot and recover from issues with no need to restart the entire migration process. NDM is a unified, scalable, and cost-efficient migration solution that has been purpose-built to meet real-world enterprise migration requirements and eliminate the need for complex custom scripts and disjointed tools.
 
 == Key terminology
 
@@ -54,9 +54,9 @@ Each file server is configured with:
 * Authentication credentials.
 * Associated workers for executing migration tasks.
 
-=== Dashboard
+=== Control plane
 
-The NDM dashboard is where you can access all migration activities. From here, you can:
+The NDM control plane is where you can access all migration activities. From here, you can:
 
 * Manage projects, users, jobs, and file servers.
 * Schedule and dispatch job runs to available workers.
@@ -70,12 +70,12 @@ A worker is a virtual machine, agent, or proxy that performs actual data operati
 
 * Workers are responsible for executing tasks such as scanning directories, copying files, and syncing metadata.
 * Workers enable distributed processing, allowing NDM to scale across large datasets and multiple environments efficiently.
-* Workers also relay high-level statistical information about data migration to the dashboard.
+* Workers also relay high-level statistical information about data migration to the control plane.
 * Each worker:
 * Is installed and registered using NDM.
 * Is associated with one or more file servers.
-* Reports system metrics such as CPU, memory, and status (online or offline) to the dashboard.
-* Reports high-level statistical information about data migration to the dashboard.
+* Reports system metrics such as CPU, memory, and status (online or offline) to the control plane.
+* Reports high-level statistical information about data migration to the control plane.
 
 === Export path
 
@@ -114,7 +114,7 @@ Each job run:
 * Can be in one of several states: Ready, Running, Paused, Stopped, Errored, or Blocked.
 * Generates logs, metrics, and task-level details.
 
-== NDM tasks
+=== Task
 
 A task is the smallest unit of execution within a job run. It represents a discrete operation such as scanning a directory, copying a file, or updating metadata. Tasks provide you with better granularity to help monitor the progress and health of a job run.
 
@@ -127,7 +127,7 @@ Tasks are:
 
 === Discover
 
-You can use Discover job to scan and inventory data on a source or destination file server. The outcome of Discover job is a detailed report that provides information about the files and directories in selected export paths in a source or destination file server. Discovery can help you to understand the scope and complexity of your data before starting migration.
+You can use a Discover job to scan and inventory data on a source or destination file server. The outcome of a Discover job is a detailed report that provides information about the files and directories in selected export paths in a source or destination file server. Discovery can help you to understand the scope and complexity of your data before starting migration.
 
 A Discover job:
 
@@ -143,7 +143,7 @@ A Migrate job:
 
 * Performs baseline migration (initial full copy).
 * Supports incremental sync (updates based on changes).
-* Allows you to configure of options like exclusion patterns, permission remapping, and access time preservation.
+* Allows you to configure options like exclusion patterns, permission remapping, and access time preservation.
 * Includes pre-checks of permissions, capacity, and connectivity.
 
 === Cutover

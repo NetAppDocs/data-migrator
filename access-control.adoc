@@ -11,8 +11,8 @@ summary:
 [.lead]
 NetApp Data Migrator (NDM) uses role-based access control (RBAC) to manage user permissions. RBAC allows App Admin users (administrators) to assign any of the following three roles to other users, ensuring secure access control and efficient operations. App Admin users grant permissions to other users based on their responsibilities and access requirements.
 
-* App Admin: This access level allows users to manage overall system settings, user roles, and access permissions.
-* Project Admin: This access level allows users to oversee specific migration projects, including job configuration and execution.
+* App Admin: This access level allows users to manage overall system settings, user roles, and access permissions.
+* Project Admin: This access level allows users to manage specific migration projects, including job configuration and execution.
 * Project Viewer: This access level provides users with read-only access to monitor migration progress, logs, and reports. This role is intended for users who need to monitor and observe the progress of data migration projects but are not required to perform actions that could alter or interfere with a project.
 
 The following table provides a summary of actions and user role permissions.
@@ -21,35 +21,15 @@ The following table provides a summary of actions and user role permissions.
 |===
 | *Action* | *Description* | App Admin | Project Admin | Project Viewer
 
-| AgentDeployment | This is to access the **"View Instruction To Setup Worker"** button. | Yes | Yes | No
-| CreateUser | This is to access "Add User" , "Enable/Disable User" and "Reset Password" | Yes | No | No
-| DeleteProject | NOT USED (There is a API exist need to check that as well) |  |  |  
-| DeleteUser | NOT USED (There is a API exist need to check that as well) |  |  |  
-| InviteUser | NOT USED |  |  |  
-| ListUsers | NOT USED |  |  |  
-| ManageConfig | This is to access "Add File Server" and "Edit File Server" | Yes | Yes | No
-| ManageJob | This is to access all the JobRun actions like "Pause", "Stop", "Resume", "Start" and to "Activate/Deactivate" Job.  To Access "Bulk Discover", "Bulk Migrate" and "Bulk Cutover"  (To Start Speed Test) | Yes | Yes | No
-| ManageProject | This is to access the "Settings" icon , to "Edit Project" and "Add Project" |  |  |  
-| Reports |  |  |  |  
-| RollbackJob |  |  |  |  
-| UpdateProject |  |  |  |  
-| UpdateUser |  |  |  |  
-| ViewAgentsList |  |  |  |  
-| ViewConfig |  |  |  |  
-| ViewJob |  |  |  |  
-| ViewLogs |  |  |  |  
-| ViewProject |  |  |  |  
-| SpeedTest |  |  |  |  
-| SaveSmtp |  |  |  |  
-| *ManageProject* | User can access the projects listing page. | Access | Access | No Access
-| *UpdateProject* | Permits editing or updating project details. | Access | Access | No Access
-| *ViewProject* | Allows viewing of project details without editing. | Access | Access | No Access
-| *SwitchProject* | User can switch from one project to other | Access | Access | Access
-| *ManageUsers* | User can access users listing page. | Access | Access | No Access
-| *CreateUser* | Allows creation of new user accounts. | Access | No Access | No Access
-| *UpdateUser* | Permits updating user details like resetting the password, enabling/disabling the password | Access | No Access | No Access
-| *Configuring SMTP details* | Add SMTP details. | Access | No Access | No Access
-| *ManageJob* | Access the jobs listing page. | Access | Access | No Access
-| *ViewLogs* | Grant access to job logs page. | Access | Access | Access
-| *ViewJob* | Permit viewing job details and other details. | Access | Access | Access
+| AgentDeployment | User can access the *"View Instruction To Setup Worker"* button. | Yes | Yes | No
+| CreateUser | User can create new user accounts. | Yes | No | No
+| ListUsers | User can create new user accounts.| Yes  | Yes | Yes  
+| ManageConfig | User can create new user accounts. | Yes | Yes | No
+| ManageJob | User can create new user accounts. | Yes | Yes | No
+| Reports | User can access buttons for downloading reports | Yes | Yes | Yes
+| Update Project | User can edit a project | Yes | Yes| No   
+| ViewProject | User can access the projects listing page.  | Yes | Yes | Yes
+| CreateProject | User can create a project.  | Yes | No | No
+| SaveSmtp | User can add/edit SMTP details.| Yes | No | No
+
 |===

@@ -4,9 +4,124 @@ permalink: troubleshoot.html
 keywords: 
 summary: 
 ---
-= Troubleshoot the NDM tool
+= Troubleshoot NDM
 :icons: font
 :imagesdir: ./media/
 
 [.lead]
-Insert content here.
+If you experience issues while using NetApp Data Migrator (NDM), these troubleshooting steps and reference commands might be useful. 
+
+== Application Access
+
+All credentials are managed from openbao. Replace the IP_ADDRESS with the IP address of your virtual machine (VM).
+
+*Steps*
+
+. Fetch the openbao root token. SSH into the control plane server from bastion connect from the Azure portal:
++
+[source,cli]
+----
+sudo su - datamigrator
+cat /opt/datamigrator/openbao/cluster-keys.json
+----
+. Login to openbao UI - https://IP_ADDRESS/ui/ and enter the root token for login. 
+. Navigate to secrets.
+. Keycloak UI - https://IP_ADDRESS/keycloak/
+. NDM UI - https://IP_ADDRESS/. The initial username is admin@datamigrator.local and password is Welcome@123.
+. Temporal UI - https://IP_ADDRESS/temporal/ui/
+. Postgres connection - Use the multipass IP to connect to Postgres database. Get the username, password from openbao. Keys are - POSTGRES_DMADMIN_USER and POSTGRES_DMADMIN_PASSWORD
+
+== kubectl reference commands
+
+- To get the pods in datamigrator namespace:
+[source,cli]
+----
+kubectl get pods -n datamigrator
+----
+- To get the logs for a pod in datamigrator namespace:
+[source,cli]
+----
+kubectl logs <podname> -n datamigrator
+----
+- To describe a pod in datamigrator namespace:
+[source,cli]
+----
+kubectl describe <podname> -n datamigrator
+----
+- To get all namespaces:
+[source,cli]
+----
+kubectl get ns
+----
+- To get the pods in any namespace:
+[source,cli]
+----
+kubectl get pods -n <NAMESPACE>
+----
+== *Unseal Openbao*
+
+If you encounter an issue where openbao is sealed, follow these steps to unseal.
+
+*Steps*
+
+. SSH into the control plane server via bastion connect.
+. replace OPENBAO_UNSEAL_KEY with your key:
+[source,cli]
+----
+sudo su - datamigrator
+export OPENBAO_UNSEAL_KEY=`jq -r ".unseal_keys_b64[]" /opt/datamigrator/openbao/cluster-keys.json`
+kubectl exec openbao-0 -n openbao -- bao operator unseal $OPENBAO_UNSEAL_KEY
+kubectl exec openbao-1 -n openbao -- bao operator unseal $OPENBAO_UNSEAL_KEY
+kubectl exec openbao-2 -n openbao -- bao operator unseal $OPENBAO_UNSEAL_KEY
+----
+
+== Troubleshoot Azure VM access
+
+You should be able to successfully create and connect to your Azure VM. However, if you experience problems, it may help to restart your virtual machine or reset your SSH configuration. 
+
+*Restart your virtual machine*.
+
+*Steps*
+
+. Navigate to your Azure Portal.
+. Navigate to your VM and select *Restart*.
+
+*Reset SSH Configuration*
+
+First refer to the instructions provided in this link:https://learn.microsoft.com/en-us/troubleshoot/azure/virtual-machines/linux/troubleshoot-ssh-connection[troubleshooting reference]. However, sometimes issues can occur when opening the SSH bastion portal which you may be able to resolve in the following way.
+
+*Steps*
+
+. Navigate to your Azure VM control plane.
+. Select *Help*.
+. Select *Reset password*.
+. From Mode, select *Add SSH Public Key*.
+. For the username, Enter ubuntu.
+. For the public key source, choose *Use existing key stored in Azure*.
+. For the Stored Key, choose *Select your existing created key*.
+. Select *Update*.
+
+== Windows Worker Fails to Switch User on SMB File Server
+
+When a windows worker attempts to connect to an SMB file server using a different set of credentials than those previously used for the same file server, the following error message may appear:
+
+ System error 1219: Multiple connections to a server or shared resource by the same user, using more than one user name, are not allowed.
+
+This happens because windows does not allow multiple simultaneous connections to the same network resource using different credentials. Even if the previous connection is inactive, it may still be cached or held by the system.
+
+Follow these steps to resolve this issue:
+
+. List existing SMB connections: 
++
+[source,cli]
+----
+net use
+----
+. Delete any existing connection to the target server:
++
+[source,cli]
+---- 
+net use <share> /delete
+----
+. Reboot to clear any remaining cached credentials or sessions.
+. Reconnect using your desired credentials.

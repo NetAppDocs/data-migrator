@@ -10,18 +10,18 @@ summary:
 
 [.lead]
 ---
-Install the NetApp Data Migrator (NDM) tool on Google Cloud.
+Install NetApp Data Migrator (NDM) on Google Cloud.
 
 .About this task
 
 This procedure has two main components, the control plane and the worker.
 
-The control plane is the central location for managing all migration jobs and you create it first.
+The control plane, which is always deployed on a Linux virtual machine (VM), serves as the central location for managing all migration jobs and should be created first.
 
-The workers are either NFS or SMB and they carry out the data migration. You can install multiple workers based on your needs:
+Workers are virtual machines running on Linux, which supports the NFS protocol, or Windows, which supports the SMB protocol. You can install multiple workers based on your needs:
 
-* For SMB migration, you use the Windows Worker Installer. You must install the Windows Worker Installer on a Windows VM.
-* For NFS migration, you use the Linux Worker.
+* For SMB migration, use the Windows Worker Installer. You must install the Windows Worker Installer on a Windows VM.
+* For NFS migration, use the Linux Worker.
 
 .Before you begin
 
@@ -29,244 +29,312 @@ The workers are either NFS or SMB and they carry out the data migration. You can
 * If you're using SMB migration, download the Windows Worker Installer from the NetApp Support Site.
 * If you're using NFS migration, download the Worker image from the NetApp Support Site.
 
-== Step 1: Create the Windows VM
+== Step 1: Enable required APIs
 
-You need to create a Windows VM to access the NDM tool using the Remote Desktop Protocol and the control plane or worker IP address.
+Follow these link:https://cloud.google.com/migrate/virtual-machines/docs/5.0/get-started/enable-services#enabling_required_services_on_the_host_project[Google instructions] to enable all of the APIs required for your project. These APIs are mandatory for image import and deployment operations.
 
-.Steps
+== Step 2: Prepare import destination
 
-. Open the Google Cloud Platform portal.
-. Navigate to *Compute Engine > Virtual machines > VM instances*.
-. Select *Enable* to activate the API, if prompted to do so.
-* Wait for between one and two minutes for the resources to load.
-. Select *Create Instance* and enter the following information:
-* *Name:* `<username>-windows-vm`
-* *Region and Zone:* Select *us-east4-b.*
-* *Machine type:* Select an option based on your memory requirements.
-. Scroll to the *OS and Storage* section and select *Change.*
-. Choose the following options:
-* *OS:* Windows Server
-* *Version:* Windows Server 2022 Datacenter
-* Choose the disk size (default is 50 GB).
-* Select *Select*.
-. Select *Create.* The instance takes one to two minutes to build.
+Follow this link:https://cloud.google.com/storage/docs/creating-buckets#console[link] to learn how to create a GCS bucket if you have not already created one.
 
-== Step 2: Create the control plane and worker VMs
+== Step 3: Set Up IAM roles and permissions
+This step ensures that the migration API has the required access permission. Follow this link:https://cloud.google.com/migrate/virtual-machines/docs/5.0/migrate/image_import#add-disk-to-storage[link] to learn about disk storage permissions. Alternatively, you can use the following commands.
 
-Create the control plane and worker VMs using Google Cloud images. You use the same steps to create a control plane VM, Linux worker VM, and Windows worker VM.
+* Assign the service account objectViewer access to your destination GCS bucket:
++
+[source,cli]
+----
+gcloud storage buckets add-iam-policy-binding gs://<GCS_BUCKET> \
+  --member=serviceAccount:service-<PROJECT_NUMBER>@gcp-sa-vmmigration.iam.gserviceaccount.com \
+  --role=roles/storage.objectViewer
+----
+* Make yourself an admin user on the vmmigration service:
++
+[source,cli]
+----
+gcloud projects add-iam-policy-binding <PROJECT_ID> \
+  --member=user:<YOUR_EMAIL> \
+  --role=roles/vmmigration.admin
+----
 
-.Steps
+== Step 4: Obtain and upload images
 
-. Select *MigrationAsAService* project to view the NDM images.
-. Log in to the Google Cloud Platform UI and search for *Compute Engine > Images.*
-. Create the control plane VM:
-.. Select the *datamigrator-control-plane-28-05-2025-14-54-47* image
-.. Select the menu icon under *Actions,* and select *Create Instance.*
-.. Select *Machine configuration* and enter the following information:
-* *Name*:  `<username>-<image-name>`
-* *Region*: *us-east4*
-* *Zone:* Any
-* *General purpose > Series:* E2
-* *Machine type:* Custom. You need to scroll down to find the "Machine type" option.
-* *Cores:* Enter the number of CPUs to meet your requirements.
-* *Memory*: Enter the GB size to meet your requirements. The recommended size for the control plane VM is *8 vCPU, 32GB RAM*.
-.. Select *Operating system and Storage* and verify that the correct image is installed.
-* Don't make any changes.
-.. Select *Networking*, window and enter the following information:
-* *Edit network interface > Network:* Select *"appmicro-vpc1"*.
-* *Edit network interface > Select Subnet:* Select "us-e4-sn IPv4".
-.. Select *Create.*
-.. Use your administrator account credentials to connect to the control plane VM:
-* *Username*: `ubuntu`
-* *Password*: `<password>`
-* *SSH Public Key*: Use the generated SSH key or optionally add an SSH key.
-.. Select *Add item.*
-* The pods start automatically. Wait for five minutes to allow all the pods to start before launching the NDM UI.
-* You can access the NDM application by using the Remote Desktop Protocol created with the Windows VM and the control plane IP address.
-* The default credentials for the NDM UI:
-** *NDM URL:* https://<control-plane-private-ip>/
-** *Username:* **admin@datamigrator.local**
-** *Password:* Welcome@123
-. Depending on your configuration, create a Linux or Windows worker VM, or both VMs:
-.. Select the *datamigrator-worker-28-05-2025-15-26-46* image
-.. Select the menu icon under *Actions,* and select *Create Instance.*
-.. Select *Machine configuration* and enter the following information:
-* *Name*:  `<username>-<image-name>`
-* *Region*: *us-east4*
-* *Zone:* Any
-* *General purpose > Series:* E2
-* *Machine type:* Custom. You need to scroll down to find the "Machine type" option.
-* *Cores:* Enter the number of CPUs to meet your requirements.
-* *Memory*: Enter the GB size to meet your requirements. The recommended size for the worker VM is *4 vCPU, 16GB RAM*.
-.. Select *Operating system and Storage* and verify that the correct image is installed.
-* Don't make any changes.
-.. Select *Networking*, window and enter the following information:
-* *Edit network interface > Network:* Select *"appmicro-vpc1"*.
-* *Edit network interface > Select Subnet:* Select "us-e4-sn IPv4".
-.. Select *Create.*
-.. Use your administrator account credentials to connect to the worker VM:
-* *Username*: `ubuntu`
-* *Password*: `<password>`
-* *SSH Public Key*: Use the generated SSH key or optionally add an SSH key.
-.. Select *Add item.*
-* The pods start automatically. Wait for five minutes to allow all the pods to start before launching the NDM UI.
-* You can access the NDM application by using the Remote Desktop Protocol created with the Windows VM and the worker IP address.
-* The default credentials for the NDM UI:
-** *NDM URL:* https://<control-plane-private-ip>/
-** *Username:* **admin@datamigrator.local**
-** *Password:* Welcome@123
-. Record the server IP addresses for the control plane and the worker VMs. You need these IP addresses when you're setting up the worker VMs later in the procedure.
+* Log into link:https://mysupport.netapp.com/site/[NSS] to download the control plane and worker .tar.gz images as well as (optional) .sha256 checksum files
+* Upload the tar.gz for worker and control plane to your GCS bucket. Follow this link:https://cloud.google.com/storage/docs/uploading-objects#uploading-an-object[link] to learn how to do this.
 
-== Step 3: Set up the worker VM
+== Step 5: Validate SHA256 checksums (optional)
+After you download the tar.gz file, you can optionally use this link:https://emn178.github.io/online-tools/sha256_checksum.html[checksum calculator] to verify the checksum and validate against the checksum file downloaded from NSS.
 
-You need to set up the worker VM after you create it for the first time.
+== Step 6: Import images using VM migration service
+After you upload the worker and control plane tar.gz files, you can create a VM image for worker and control plane:
 
-.Steps
+[source,cli]
+----
+gcloud migration vms image-imports create <IMAGE_IMPORT_NAME> \
+  --source-file=gs://<GCS_BUCKET>/<IMAGE_NAME>.tar.gz \
+  --image-name=<IMAGE_NAME> \
+  --location=<REGION> \
+  --target-project=projects/<PROJECT_ID>/locations/global/targetProjects/<PROJECT_ID> \
+  --project=<PROJECT_ID>
+----
+This creates a new GCP VM image from your archive, in the specified region.
 
-Depending on your configuration, select the Linux worker (NFS), Windows worker for MacOS (SMB), or Windows worker for Windows (SMB) tab. 
+== Step 7: List and confirm import completion
 
-If your configuration includes NFS and SMB, select multiple tabs, as needed:
+[source,cli]
+----
+gcloud migration vms image-imports list --location=<REGION> --project=<PROJECT_ID>
+----
+Wait for SUCCEEDED status before you proceed to VM creation.
 
+== Step 8: Create VM instances
+
+Step 1: Create the Windows VM to access NDM
+
+You need to create a Windows VM to access NDM using the Remote Desktop Protocol. Follow this link:https://cloud.google.com/compute/docs/create-windows-server-vm-instance[link] to learn how to create a Windows Server VM instance using these recommended settings:
+
+* Image: Windows Server 2022 Datacenter
+* Size: 8 vCPU, 32 GB RAM
+* RDP port 3389 open.
+
+You can connect to this Windows VM using RDP by following the instructions in this link:https://cloud.google.com/compute/docs/instances/connecting-to-windows[Google Cloud RDP link]. You can then access NDM.
+
+Step 2: Create the control plane VM
+
+Create this VM using the control plane image imported previously. Follow this link:https://cloud.google.com/compute/docs/instances/create-vm-from-custom-image[Google Cloud Platform link] to learn how to create a VM from a custom imported image using these recommended settings:
+
+* Size: 8 vCPU, 32 GB RAM
+* Image: Custom imported image for the control plane.
+
+Step 3(a): NFS migration - Create the Linux worker VM
+
+Create this VM using the control plane image imported previously. Follow this link:https://cloud.google.com/compute/docs/instances/create-vm-from-custom-image[Google Cloud Platform link] to learn how to create a VM from a custom imported image using these recommended settings:
+
+* Size: 4 vCPU, 16 GB RAM
+* Image: Custom imported image for the control plane.
+
+Step 3(b): SMB Migration
+
+. Add the Windows worker installer
++
+For SMB migration, you need to download the windows worker installer for Google Cloud Platform from NSS: <Placeholder link>. Follow this link:https://cloud.google.com/compute/docs/create-windows-se rver-vm-instance[Google Cloud Platform link] to learn how to create a Windows Server VM instance using these recommended settings for the windows worker VM:
+
+* Image: Windows Server 2022 Datacenter
+* Size: 4 vCPU, 16 GB RAM.
+* RDP port 3389 open
+
+. Move the Windows worker installer to the Windows VM
++
+* Login to the Windows Worker VM using RDP and copy the Windows worker installer to the Windows VM.
+* Use Microsoft Windows App (Mac) or Remote Desktop Connection (Windows) to create an RDP session.
+* You can learn how to connect to the Windows VM using RDP by following the instructions provided in this link:https://cloud.google.com/compute/docs/instances/connecting-to-windows[Google Cloud RDP link] 
+
+. Depending on your configuration, select the MacOS or Windows tab.
++
 [role="tabbed-block"]
 ====
-.Linux worker 
+.MacOS
 --
-Set up a Linux worker VM.
+Windows worker for MacOS.
 
-. Login to the Windows Server.
-. Navigate to the NDM UI using the control plane IP:
+.. Install the Microsoft Windows App on your local laptop.
+.. Follow this link:https://learn.microsoft.com/en-us/windows-app/get-started-connect-devices-desktops-apps[link] to RDP into the SMB Windows Worker VM and then use this link:https://learn.microsoft.com/en-us/windows-app/device-audio-folder-redirection-teams?tabs=macos#folder-redirection[link] to mount the local folder which contains the Windows Worker Installer.
+.. Locate the folder you mounted to the Windows Worker VM under "This PC" on the server.
+.. Move the Windows Worker Installer from the mounted folder to a suitable location on the Windows VM.
+--
+.Windows
+--
+Windows worker for Windows:
+
+.. Launch a Remote Desktop Connection.
+.. Follow this link:https://cat.pdx.edu/platforms/windows/remote-access/file-sharing-rdp-from-windows/[link] to RDP into the SMB Windows Worker VM and mount the local folder containing the Windows Worker Installer. 
+.. Locate the folder you mounted to the Windows Worker VM under "This PC" on the server.
+.. Move the Windows Worker Installer from the mounted folder to a suitable location on the Windows VM .
+--
+====
+
+* Step 4: Connect to the control plane VM*
+
+.Steps
+
+. SSH into the control plane VM:
 +
 [source,cli]
 ----
-https://<contorl_plane_IP>/
+gcloud compute ssh <control-plane-instance-name> --internal-ip --zone <zone-name>
 ----
-. The initial username is `admin@datamigrator.local` and password is `Welcome@123`. Create a new password.
-. Enter your user details and mail ID.
-. Select "*View instructions to set up worker*" and copy the instructions.
-. Connect to the Worker Server:
+
+. Switch the user to datamigrator:
 +
 [source,cli]
 ----
-gcloud compute ssh <worker instance name> --internal-ip --zone <zone name>
+sudo su - datamigrator
 ----
-. Login as the root user:
+. Check the status of boot service and logs:
++
+[source,cli]
+----
+sudo systemctl status boot-microk8s.service
+----
+Optionally, check the boot service logs:
++
+[source,cli]
+----
+tail -10f /opt/datamigrator/logs/ndm-first-boot.log
+----
+. If you see "Datamigrator Application Setup Complete" in the logs, this indicates the setup is complete.
+. Verify that all the pods are up and running:
++
+[source,cli]
+----
+kubectl get pods -n datamigrator
+----
+
+You can now access NDM using RDP with the Windows VM you created for NDM access and the control plane private IP address.
+
+The default credentials for the NDM UI are:
+
+* URL: https://<control-plane-private-ip>/
+* Username: admin@datamigrator.local
+* Password: Welcome@123
+
+*Step 5: Depending on your migration, select the NFS or SMB tab*
+[role="tabbed-block"]
+====
+.NFS
+--
+Associate Linux worker with control plane VM.
+
+. Login to the Windows VM using RDP to access NDM.
+* Use Microsoft Windows App (Mac) or Remote Desktop Connection (Windows) to create a RDP session.
+* You can connect to the Windows VM using Remote Desktop Protocol (RDP) by following the instructions in this link:https://cloud.google.com/compute/docs/instances/connecting-to-windows[Google Cloud RDP link].
+. Retrieve the private IP address from the newly created control plane VM in GCP.
+. Open any browser and navigate to the NDM UI using the following credentials: 
+* IP address: https://<control_plane_IP_address>/
+* Username: admin@datamigrator.local
+* Password: Welcome@123.
+. Reset the password.
+. Add new user details and email ID.
+. Create a new project by providing a name and an optional description.
+. Select *View Instructions to Setup Worker* and copy the instructions. 
+. To associate the Linux worker with the CP,
+SSH into your worker server. If your server does not have Public IP, you can use link:https://learn.microsoft.com/en-us/azure/bastion/quickstart-host-portal[Azure bastion] to configure SSH Access. 
+* Log in as root user:
 +
 [source,cli]
 ----
 sudo su -
 ----
-. Paste the instructions copied from Step 2 to register the worker VM.
-. Verify the status of the worker:
-+
-[source,cli]
-----
+* Paste the instructions copied from *View Instructions to Setup Worker* to register the worker VM.
+* Verify the status of the worker:
 systemctl status datamigrator-worker.service
-----
-. Check the logs:
+* Check the logs:
 +
 [source,cli]
 ----
 tail -20f /opt/datamigrator/logs/datamigrator-worker.log
 ----
-. Navigate to DM UI and verify that the worker VM is registered.
+* Navigate to the NDM UI and verify that the worker is registered.
 --
 
-.Windows worker for MacOS
+.SMB
 --
-Set up a Windows worker VM for MacOS.
+Associate Windows worker with control plane VM
 
-. Install the *Microsoft Windows App* on your local laptop.
-. Open the app and select *Add PC*.
-. In the *PC Name* field, enter: `Server-ip:3389`
-. Under *User Account*, select *Credentials*
-. Add the credentials for the Worker VM that you created in Step x.
-. Select the *Folders* tab, and select *+* to add a directory.
-. Select the folder containing the worker installer.
-. Select *Save* to apply the settings.
-. Connect to the worker VM using the newly added PC.
-. You can view the folder you mounted to the Windows in "This PC".
-. Move the installer to a suitable location on the Windows VM from the mounted folder.
---
+. Run the Windows Worker Installer that you copied to the Windows Worker Server.
+. Enter the following details when prompted. You can get these details from the NDM UI under *Home > View Instructions to Setup Worker:*
+* Worker ID
+* Worker secret
+* Project ID
+* Control plane Private IP address
 
-.Windows worker for Windows
---
-Set up a Windows worker VM for Windows.
-
-. Launch *Remote Desktop Connection*.
-. Select *Show Options*.
-. In the *Username* field, enter the username of the VM.
-. Set up the folder mount containing the Windows Installer. For instructions, see the Windows Remote Access documentation.
-. Move the Windows Worker Installer from the mounted folder to a suitable location on the Windows VM.
+. When installation completes, the worker service starts automatically and you can then locate the Logs at:
++
+[source,cli]
+----
+C:\datamigrator\logs
+----
+. Follow the logs in real-time by opening PowerShell and running the following command:
++
+[source,cli]
+----
+Get-Content -Path "C:\datamigrator\logs\<log_file_name> -Wait
+----
+. Open the command prompt (cmd) as Administrator and run the following commands to manage the Service:
+* Start the service:
++
+[source,cli]
+----
+net start DatamigratorWorker
+----
+Stop the service:
++
+[source,cli]
+----
+net stop DatamigratorWorker
+----
+Restart the service:
++
+[source,cli]
+----
+net stop DatamigratorWorker && start DatamigratorWorker
+----
 --
 ====
 
-== Step 4: Start the Windows worker
+*REFERENCES*
 
-.Steps
+* link:https://cloud.google.com/migrate/virtual-machines/docs/5.0/get-started/enable-services#enabling_required_services_on_the_host_project[Enable Image Import APIs]
+* link:https://cloud.google.com/migrate/virtual-machines/docs/5.0/migrate/image_import#add-disk-to-storage[Add Disk to Storage]
+* link:https://cloud.google.com/compute/docs/instances/create-vm-from-custom-image[Create VM from Custom Image]
+* link:https://cloud.google.com/compute/docs/create-windows-server-vm-instance[Create Windows Server VM]
+* link:https://cloud.google.com/storage/docs/uploading-objects#uploading-an-object[Upload Objects to GCS]
 
-. Run the Windows Installer that you copied to the Windows Server.
-. During installation, enter the following values when prompted. You can copy the values from the NDM UI under *Home > View Instructions to Setup Worker*:
+*PLACEHOLDER REFERENCE TABLE*
+|===
+| Placeholder | Description
 
-* Worker ID
-* Worker secret
-* Control plane IP address
-. After the installation completes, the worker service starts automatically.
-* The installation directory is `C:\datamigrator\`.
-* Locate the logs at `C:\datamigrator\logs.`
-. Follow the logs in real-time by opening PowerShell and running the following command:
-* `Get-Content -Path "C:\datamigrator\logs\<log_file_name> -Wait"`
-. Open the command prompt (cmd) as Administrator and run the following commands to manage the service:
-* Start the service:
-+
-`net start DatamigratorWorker`
-* Stop the service:
-+
-`net stop DatamigratorWorker`
-* Restart the service:
-+
-`net stop DatamigratorWorker && start DatamigratorWorker`
+| <PROJECT_ID>	 | Your GCP project ID
+| <PROJECT_NUMBER>	 | Your GCP project number
+| <GCS_BUCKET> | Your GCS bucket name
+| <IMAGE_NAME>| VM image name (without extension)
+| <IMAGE_IMPORT_NAME>| Unique name for the import task
+| <REGION>| Your region. For example, US EAST 4
+|===
 
-== Step 5: Optionally, check the VM logs
 
-Check the VM logs for the control plane and worker VMs.
 
-.Steps
 
-. Double click on the Google Cloud SDK Shell that was installed in step x.
-. Login to Google Cloud using in the browser pop-up window:
-+
-[source,cli]
-----
-gcloud auth login
-----
-. SSH into the control plane or worker VM:
 
-* Control plane VM:
-+
-[sourcecli]
-----
-gcloud compute ssh <control_plane_vm_name> --internal-ip
-----
-* Worker VM:
-+
-[source,cli]
-----
-gcloud compute ssh <worker_vm_name> --internal-ip
-----
-. If required, specify a different zone:
-* Control plane VM:
-+
-[source,cli]
-----
-gcloud compute ssh <control_plane_vm_name> --internal-ip --zone <time_zone>
-----
-* Worker VM:
-+
-[source,cli]
-----
-gcloud compute ssh <worker_vm_name> --internal-ip --zone <time_zone>
-----
 
-== What's next?
 
-link:configure-ndm.html[Set up and configure NDM]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

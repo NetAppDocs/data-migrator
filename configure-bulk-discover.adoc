@@ -4,12 +4,12 @@ permalink: configure-bulk-discover.html
 keywords: 
 summary: 
 ---
-= Configure Bulk Discover in NDM
+= Plan data migration in NDM using Bulk Discover
 :icons: font
 :imagesdir: ./media/
 
 [.lead]
-You can use Bulk Discover in NetApp Data Migrator (NDM) to quickly generate an overview of your entire existing storage capacity before you begin migrating your data. Having a clear understanding of your stored files and system structures can help to streamline the data migration process.
+Configure Bulk Discover in NetApp Data Migrator (NDM) to quickly generate an overview of your entire existing storage capacity before you begin migrating your data. Having a clear understanding of your stored files and system structures can help to streamline the data migration process.
 
 .Steps
 

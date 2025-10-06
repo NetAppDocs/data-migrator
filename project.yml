@@ -8,12 +8,18 @@ settings:
 
 sidebar: 
   entries:
-  - title: NetApp Data Migrator docs
+  - title: NetApp Data Migrator (NDM) docs
     url: /index.html
   - title: Release notes 
     entries:
-    - title: Known issues and limitations
-      url: /known-issues-and-limitations.html
+    - title: What is NDM?
+      url: /overview.html
+    - title: Support matrix for NDM
+      url: /support-matrix.html
+    - title: Usage limits of NDM
+      url: /usage-limitations.html
+    - title: Known issues for NDM
+      url: /known-issues.html
   - title: Get started
     entries: 
     - title: Learn about NDM
@@ -36,6 +42,8 @@ sidebar:
       url: /configure-ndm.html
   - title: Use NDM
     entries: 
+    - title: Create and manage projects
+      url: /manage-projects.html
     - title: Manage users
       entries: 
       - title: Add and manage users
@@ -44,13 +52,11 @@ sidebar:
         url: /access-control.html
     - title: Add and manage file servers
       url: /manage-file-servers.html
-    - title: Create and manage projects
-      url: /manage-projects.html
     - title: Configure real-time notifications
       url: /configure-notifications.html
     - title: Manage migration options
       entries:
-      - title: Configure Bulk Discover
+      - title: Plan data migration
         url: /configure-bulk-discover.html
       - title: Configure Bulk Migrate
         url: /configure-bulk-migrate.html
@@ -58,10 +64,14 @@ sidebar:
         url: /configure-bulk-cutover.html
     - title: Manage jobs and job runs
       url: /manage-jobs.html
+    - title: Generate support bundle
+      url: /generate-support-bundle.html
   - title: Get help
     entries:
     - title: Troubleshoot
       url: /troubleshoot.html
+  - title: Upgrade NDM
+    url: /upgrade.html
   - title: FAQ
     url: /faq.html
   - title: Legal notices

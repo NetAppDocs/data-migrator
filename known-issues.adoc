@@ -1,0 +1,198 @@
+---
+sidebar: sidebar
+permalink: known-issues.html
+keywords: 
+summary: 
+---
+= Known issues and solutions
+:icons: font
+:imagesdir: ./media/
+
+[.lead]
+NetApp Data Migrator (NDM) has the following known issues.
+
+== Workflows
+
+*Issue 1: Job Run status can be confusing when errors occur*
+
+.Description
+
+Some Migration job runs that encounter errors can show a "Completed" migration status, while others show an "Errored" status. This can cause confusion in interpreting the actual status of a Migration job run. 
+
+Status definitions:
+
+* Completed: A job run has finished, but may contain errors.
+
+* Errored: A job run failed due to a critical issue.
+
+.Solution
+
+To be certain of the job run outcome, please check the job run details for any errors — especially if the status is “Completed”. Until this issues is addressed, do not rely only on the status label.
+
+*Issue 2: Migrations fail for jobs in "Inactive" state*
+
+.Description
+
+During data migration, the following error message may appear:
+
+    Source Path: <source-path> & Destination Path: <destination-path> failed due to Inactive job found. Please reactivate or remove the existing job.
+
+
+This issue occurs when NDM updates migration paths but can't find an active job associated with them. Even if you recreate the path, the job remains inactive unless you manually update it.
+
+.Solution
+Go to (http://<control-plane-IP-address>/jobs-list) in NDM, manually set the job configuration to *Active*, then restart the migration job. 
+
+*Issue 3: Incorrect file listing during cutover without delta changes*
+
+.Description
+
+The UI may show files as migrated, even if there are no changes in the source data. This is a display issue and does not affect actual data integrity. 
+
+.Solution
+
+* If you previously scheduled incremental sync then no action is required because the next sync will run automatically. 
+
+* If an incremental sync is not scheduled, you can manually trigger an incremental migration.
+
+* For your next bulk migration, enable automatic incremental migrations by choosing either “Schedule” or “Cron Expression” at Step 2 (Options-  Incremental Sync Schedule). This option is disabled, by default.
+
+After incremental sync has completed, then:
+
+* If NDM reports 0 files, your source and destination are in sync. 
+* If NDM reports files, re-run the migration until it shows 0 files, then it is then safe to start cutover.
+
+*Issue 4: Update to file server protocol version requires page refresh to update the export path list*
+
+.Description
+
+When you update a file server with a different protocol version, NDM requires you to perform a page refresh to update the export path list. Failure to do so may cause compatibility issues, delays in fetching the export list, or incomplete updates. This may lead to data inconsistencies, failed synchronization, or errors in accessing the latest export information.  
+
+.Solution  
+
+Refresh the page whenever you update the file server protocol version. 
+
+== Validation
+
+*Issue 5: File sizes may differ after migration even if counts match*
+
+.Description
+
+After data migration has completed, the total number of files is correct, but some files may have a different size compared to the original source. This can happen due to temporary network interruptions or server-side issues during the file transfer process. 
+
+.Solution
+
+Review the migration COC report to identify files marked as errored. Then re-run the migration until the errors are resolved. 
+
+*Issue 6: Discovery job shows 0 files until control plane is refreshed*
+
+.Description
+
+When running a discovery job, the Job Run Details page may initially show zero files or directories, even though the Discovery report preview displays the actual results.  This happens because the Control Plane updates every 10 minutes. During this interval, the Job Run Details may temporarily show outdated information, even if the job is marked as "Completed." 
+
+.Solution
+
+* Wait for the dashboard to refresh (up to 10 minutes) the Job Run Details page, then accurate file and directory counts are displayed. 
+* For immediate confirmation, refer to the Discovery Report Preview, which includes discovered files and directories. 
+
+== Configuration 
+
+*Issue 7: Migration precheck displays false "Insufficient Space" warning*
+
+.Description
+
+During migration prechecks, you may see a the following warning, even if the destination has sufficient space. : 
+
+  Insufficient destination space for selected path. Do you still want to proceed with the migration? 
+ 
+
+This can happen if the discovery step is skipped and NDM uses a general command that reads the entire block device size, instead of the actual dataset size. This can trigger a false warning. 
+
+.Solution: 
+
+Run Discovery before a Migration run, to ensure disk usage information is available for pre-check operation. If you still see this warning, then: 
+
+* Confirm that discovery has completed. 
+* Manually verify the destination volume has enough space. 
+* If there is sufficient space, you can safely proceed with data migration. 
+
+== Reporting 
+
+*Issue 8: Excel displays incorrect permissions in COC report file*
+
+.Description: 
+
+When opening the COC report CSV file in Microsoft Excel, some file or folder permissions may appear as #NAME? instead of the actual values (for example, -rwxrwxrwx). 
+
+This happens because Excel mistakenly treats certain permission strings (starting with - or =) as formulas, leading to display errors. (The CSV file itself is correct — this is only a display issue).  
+
+.Solution
+
+To view correct file and folder permissions open the CSV file using one of the following applications: 
+
+* Google Sheets 
+
+* Apple Numbers 
+
+* Online CSV viewer 
+
+* Text editors like Notepad++ 
+
+*Issue 9: No error message when Discovery job fails due to network issues*
+
+.Description: 
+
+If the host or destination server goes down during a Bulk Discovery job, NDM may not show an error message. This can give the impression that the job is still running normally.  
+
+.Solution
+
+Discovery jobs refresh every 30 seconds. If you notice that the file count, directory count, or data size is not updating, this may indicate a network issue.  
+
+. Check network connectivity: 
+
+* Open the worker VM terminal. Ping the IP address of the destination server and if there's no response, the destination may be unreachable.
+
+. Restore the network interface:
+
+* SSH into the destination server:
+
+   ssh <destination IP>
+
+* Run ipconfig to find the interface name (for example, eth0) 
+
+* Run ifup to bring it back online.
+
+   ifup <interface name> 
+
+. If required, repeat these steps for the source server. 
+
+*Issue 10: Unable to switch user on Windows Worker*
+
+.Description: 
+
+Switching to a different user account on Windows Worker may fail due to existing network connections. This can prevent access to the file server. 
+
+.Solution 
+
+
+To remove the previous connection, open Command Prompt on the Windows Worker and run the following commands:
+
+ net use 
+ net use <IP address> /delete 
+
+You can then switch to the new user account and access the file server. 
+
+== Recommendations for using NDM
+
+* For NFS migrations, add a file server with NFS credentials and NFS config details.  
+
+* For SMB migrations, add a file server with SMB credentials and SMB config details 
+
+
+* When adding a file server, do not add NFS and SMB credentials as this can cause errors. 
+
+* Do not run Migration and Cutover jobs simultaneously. Ensure only one job is active at any time. 
+
+* Use one worker secret code to set up a worker explicitly. 
+
+* Please contact NDM support at ndm-support@netapp.com if you need to reboot the control plane.

@@ -13,7 +13,7 @@ Use Bulk Cutover in NetApp Data Migrator (NDM) to perform the final sync between
 
 == Start a Cutover Job
 
-.Follow these steps to start a cutover job:
+Follow these steps to start a cutover job:
 
 . Log in to NDM.
 . Select *Storage Servers* in the left navigation pane.
@@ -30,9 +30,9 @@ Next, on the *Select Path* page:
 . Select *Submit* to start your *Bulk Cutover* job and a notification message appears, confirming that a *Cutover job has been created*.
 . You can select the *View Job Listing* link next to this message to open the *Job List* page where your new job is listed.
 
-== Approve a Bulk Cutover
+== Approve a Bulk Cutover job
 
-.Follow these steps to approve a cutover job:
+Follow these steps to approve a cutover job:
 
 . On the *Jobs* page, select the *Job Run List* tab.
 . Select the action menu next to your Cutover job.

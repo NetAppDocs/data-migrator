@@ -9,155 +9,202 @@ summary:
 :imagesdir: ./media/
 
 [.lead]
-Use Azure in a VMWare vSphere environment to install the NetApp Data Migrator (NDM) tool.
+Use Azure to install NetApp Data Migrator (NDM).
 
 .About this task
 
-This procedure has two main components, the control plane and the worker.
+NDM has two main components that you need to install:
 
-The control plane is the central location for managing all migration jobs and you create it first.
+* The *control plane*, which is always deployed on a Linux virtual machine (VM), serves as the central location for managing all migration jobs and should be created first.
 
-The workers are either NFS or SMB and they carry out the data migration. You can install multiple workers based on your needs:
+* *Workers* are virtual machines running on Linux, which supports the NFS protocol, or Windows, which supports the SMB protocol. You can install multiple workers based on your requirements:
 
-* For SMB migration, you use the Windows Worker Installer. You must install the Windows Worker Installer on a Windows VM.
-* For NFS migration, you use the Linux Worker.
+** For shared message block (SMB) migration, use the Windows Worker Installer on a Windows VM.
+** For NFS migration, use the Linux Worker.
 
 .Before you begin
 
-* Download the control plane image from the NetApp Support site. <provide link when it becomes available>
-* If you're using SMB migration, download the Windows Worker Installer from the NetApp Support Site. <provide link when it becomes available>
-* If you're using NFS migration, download the Worker OVA from the NetApp Support Site. <provide link when it becomes available>
+Before you can install the NDM control pane and worker, you must have:
 
-== Step 1: Create the control plane and worker VMs
+* An active Azure subscription
+* A Resource group set up in your desired region
+* Sufficient disk space for data storage and VM deployment
+* Azure command line interface (CLI) installed
 
-Create the control plane and the worker virtual machines (VMs) using the Azure "datamigrator" images.
+If you do not have the Azure command line interface (CLI) already installed, proceed to Part 1 of the following instructions. Otherwise, proceed to Part 2 to learn how to install the NDM control plane and workers.  
 
-.Steps
 
-. Go to the link:https://portal.azure.com/#home[Azure Portal^].
-. In the Azure Portal, search for **Azure Compute Galleries**.
-. Select **Compute Galleries** > **datamigrator**. There are two image definitions in the datamigrator gallery:
-* `ndm-control-plane`
-* `ndm-worker`
-. Create the control plane VM:
-.. Select `ndm-control-plane.`
-.. <What is the instruction for the user that replaces "Go to the NDM image details page and select the image under the Azure column" instruction listed in Copy > Install NDM using Azure>.
-.. Copy the **Control Plane** image name. You need this image when you create the worker VM later in this procedure.
-.. Select **Create VM.**
-.. Enter the following information to configure the VM settings:
-* **Subscription**: Enter your subscription name.
-* **Resource Group**: Enter the name of your resource group.
-* **VM name**: The prefix for the new VM, for example `<user_name>-<image_name>`.
-* **Image**: Choose the custom Packer-created image for a control plane.
-* **Size**: The recommended size for the control plane is 8 vCPU, 32GB RAM.
-* **Administrator Account**:
-* **Username**: Ubuntu
-* **SSH Public Key**: Use your SSH public key or create a new one.
-* **License type**: Other
-* Select **Next: Disks >.**
-* **Delete with VM**: Optionally, select this option if you want to delete the OS disk with the VM.
-* Select **Next Networking >**.
-* **Virtual Network (VNet)**: Enter your designated virtual network.
-* **Public IP**: Set to "**None**" to avoid assigning a public IP.
-* **Delete NIC when VM is deleted**: Optionally, select this option if want to delete a NIC along with VM.
-.. If you created a new SSH key, when prompted, download and save the key.
-.. Select **Review** and verify the settings.
-.. Select **Create** to deploy the worker VM.
-.. If you're creating a new pair, the **Generate new key pair** prompt appears. Select **Download private key and create resource** to download the **.pem** file.
-. Create the worker VM:
-.. Select `ndm-worker`.
-.. Copy the **Worker** image name. You need this image when you create the worker VM late in this procedure.
-.. Select **Create VM.**
-.. Enter the following information to configure the VM settings:
-* **Subscription**: Enter your subscription name.
-* **Resource Group**: Enter the name of your resource group.
-* **VM name**: The prefix for the new VM, for example,**`<user_name>-<image_name>.`**
-* **Image**: Choose the custom Packer-created image for a worker.
-* **Size**: The recommended size for the worker is 4 vCPU, 16GB RAM.
-* **Administrator Account**:
-* **Username**: Ubuntu
-* **SSH Public Key**: Use your SSH public key or create a new one.
-* **License type**: Other
-* Select **Next: Disks >**
-* **Delete with VM**: Optionally, select this option if you want to delete the OS disk with the VM.
-* Select **Next Networking >**.
-* **Virtual Network (VNet)**: Enter your designated virtual network.
-* **Public IP**: Set to "**None**" to avoid assigning a public IP.
-* **Delete NIC when VM is deleted**: Optionally, select this option if want to delete a NIC along with VM.
-.. If you created a new SSH key, when prompted, download and save the key.
-.. Select **Review** and verify the settings.
-.. Select **Create** to deploy the worker VM.
-.. If you're creating a new pair, the **Generate new key pair** prompt appears. Select **Download private key and create resource** to download the **.pem** file.
-
-== Step 2: Connect to the control plane VM
-
-When you first create the control plane VMs, you need to connect the control plane VM using Azure custom images.
+== Part 1: Install Azure CLI and manage assets
+This section explains how to deploy VMs in Azure using a virtual hard disk (VHD) shared by NetApp via a time-limited shared access signature (SAS) URL. You can then use the Azure CLI and portal to
+copy these assets to your Azure storage, (optionally) validate integrity, and create deployable, managed images.
 
 .Steps
 
-. Install Azure CLI. Refer to the Azure CLI Download instructions.
-. Create an Azure Bastion tunnel to access to the worker VM:
-. Log in using your Tenant ID:
+. Select one of these links to learn how to install the Azure CLI on your operating system:
+
+* link:https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows?view=azure-cli-latest&pivots=winget[Install on Windows]
+* link:https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-macos[Install on macOS]
+* link:https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-linux[Install on Linux]
+
+. You can (optionally) authenticate and select your subscription using the following commands:
 +
 [source,cli]
 ----
-az login --tenant <tenant_id>
+az login --tenant <YOUR_TENANT_ID>
+az account set --subscription <YOUR_SUBSCRIPTION_ID>
+az account show
 ----
-. Get the **Resource ID** for the Azure **Virtual Machine (VM)**:
-.. Go to **Azure Portal** > **Virtual Machines**.
-.. Select your VM.
-.. On the VM overview page, select **JSON View** and locate the **Resource ID** at the top of the page.
-. Open the tunnel:
+. Follow this link:https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal[link] to learn how to create storage and a container in your Azure account.
+. Contact NetApp Support at ng-ndm-support@netap.com to request a time-limited SAS URL for the VHD and checksum file. The SAS URL provides temporary, secure access required for the deployment process described here.
+. Copy control plane and worker VHDs:
+* Retrieve the primary access key for your storage account:
 +
 [source,cli]
 ----
-az network bastion tunnel --resource-group <resource_id> --target-resource-id <vm_name> --resource-port 3389 --port <port_number> --name <bastion_name>
+az storage account keys list \
+  --resource-group <YOUR_RESOURCE_GROUP> \
+  --account-name <YOUR_STORAGE_ACCOUNT> \
+  --query "[0].value" -o tsv
 ----
+* Copy the VHD file to your own Azure storage:
++
+[source,cli]
+----
+az storage blob copy start \
+  --source-uri "<PROVIDED_SAS_URL>" \
+  --destination-blob "<VHD_FILE_NAME>.vhd" \
+  --destination-container <YOUR_CONTAINER_NAME> \
+  --account-name <YOUR_STORAGE_ACCOUNT> \
+  --account-key <YOUR_STORAGE_ACCOUNT_KEY>
+----
+* Check to ensure that the copy completes successfully:
++
+[source,cli]
+----
+az storage blob show \
+  --account-name <YOUR_STORAGE_ACCOUNT> \
+  --container-name <YOUR_CONTAINER_NAME> \
+  --name "<VHD_FILE_NAME>.vhd" \
+  --query "properties.copy.status" \
+  -o tsv \
+  --account-key <YOUR_STORAGE_ACCOUNT_KEY>
+----
+* Transfer the checksum file to the same container:
++
+[source,cli]
+----
+az storage blob copy start \
+  --source-uri "<PROVIDED_SAS_URL>" \
+  --destination-blob "<SHA_FILE_NAME>.sha256" \
+  --destination-container <YOUR_CONTAINER_NAME> \
+  --account-name <YOUR_STORAGE_ACCOUNT> \
+  --account-key <YOUR_STORAGE_ACCOUNT_KEY>
+----
+* To validate the checksum (optional), mount your blob storage to a Linux VM using link:https://learn.microsoft.com/en-us/azure/storage/blobs/blobfuse2-how-to-deploy?tabs=RHEL[Blobfuse2], then compute the checksum and for consistency, compare it to the one provided. Follow this link to link:https://linuxhostsupport.com/blog/how-to-verify-checksum-of-a-file-on-linux/[learn how to verify a checksum in Linux].
+* Create a new managed Azure image from the copied VHD, then repeat for each VHD:
++
+[source,cli]
+----
+az image create \
+  --resource-group <YOUR_RESOURCE_GROUP> \
+  --name <YOUR_IMAGE_NAME> \
+  --source https://<YOUR_STORAGE_ACCOUNT>.blob.core.windows.net/<YOUR_CONTAINER_NAME>/<VHD_FILE_NAME>.vhd \
+  --os-type linux \
+  --location <YOUR_AZURE_REGION>
+----
+
+== Part 2: Create the control plane and worker VMs
+
+*Step 1: Create the Windows VM*
+
+You need to create a Windows VM to access NDM using the Remote Desktop Protocol. Follow this link:https://learn.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-portal[link] to learn how to create a Windows VM, using these recommended settings:
+
+* Image: Windows Server 2022
+* Datacenter: Azure Edition - x64 Gen2
+* Size: 8 vcpus, 32 GB memory
+* RDP port 3389 open
+
+*Step 2: Create the control plane VM*
+
+To create the control pane VM, you need to use the previously imported control plane image. Follow this link:https://learn.microsoft.com/en-us/azure/virtual-machines/capture-image-resource#portal-create-a-vm-from-a-legacy-managed-image[link] to learn how to to create a VM from a custom imported image, using these recommended settings:
+
+* Image: Custom imported
+* Size: 8 vCPU, 32GB RAM
+* License type: Other
+
+*Step 3(a): Create the Linux worker VM for NFS migration* 
+
+For NFS migration, you need to create the Linus worker VM using the previously imported worker image. Follow this link:https://learn.microsoft.com/en-us/azure/virtual-machines/capture-image-resource#portal-create-a-vm-from-a-legacy-managed-image[link] to learn how to create a worker VM from a custom imported image, using these recommended settings:
+
+* Image: Custom imported
+* Size: 4 vCPU, 16GB RAM
+* License type: Other
+
+*Step 3(b): SMB migration*
+
+. Add the Windows worker installer
+
+* For SMB migration, download the windows worker installer for Azure from NSS: <Placeholder link>. Then follow this link:https://learn.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-portal[link] to learn how to create a Windows VM using these recommended settings:
+
+** Image: Choose Windows Server 2022 
+** Datacenter: Azure Edition - x64 Gen2
+** Size: 4 vCPUs, 16 GB memory
+** RDP port 3389 open 
+
+. Move the Windows worker installer to the Windows VM
+* Login to the Windows Worker VM using the Remote Desktop Protocol and copy the Windows worker installer to the Windows VM.
+* Use Microsoft Windows App (Mac) or RDP (Windows) to create a remote session. Follow this link:https://learn.microsoft.com/en-us/azure/virtual-machines/windows/connect-rdp[link] to learn about RDP connections.
+
+
 . Depending on your configuration, select the MacOS or Windows tab.
 +
 [role="tabbed-block"]
 ====
 .MacOS
 --
-Connect to the VM using MacOS:
+Windows worker for MacOS.
 
-.. Install the **Microsoft Windows App:**
-.. Open the app and select **Add PC**.
-.. In the **PC name** field, enter `localhost:<port_number>.`
-.. Select **Add** to apply the settings.
+.. Install the Microsoft Windows App on your local laptop.
+.. Follow this link:https://learn.microsoft.com/en-us/windows-app/get-started-connect-devices-desktops-apps[link] to RDP into the SMB Windows Worker VM and use this link:https://learn.microsoft.com/en-us/windows-app/device-audio-folder-redirection-teams?tabs=macos#folder-redirection[link] to mount the local folder which contains the Windows Worker Installer.
+.. Locate the folder you mounted to the Windows Worker VM under "This PC" on the server.
+.. Move the Windows Worker Installer from the mounted folder to a suitable location on the Windows VM.
 --
-
 .Windows
 --
-Connect to the VM using Windows:
+Windows worker for Windows:
 
-.. Launch *Remote Desktop Connection*.
-.. Select **Show Options**.
-.. Select the **Computer**.
-.. In **User name,** enter the user name of the VM.
-.. Select **Connect.**
-.. Enter your password and select **OK.**
+.. Launch a Remote Desktop Connection.
+.. Follow this link:https://cat.pdx.edu/platforms/windows/remote-access/file-sharing-rdp-from-windows/[link] to RDP into the SMB Windows Worker VM and mount the local folder containing the Windows Worker Installer. 
+.. Locate the folder you mounted to the Windows Worker VM under "This PC" on the server.
+.. Move the Windows Worker Installer from the mounted folder to a suitable location on the Windows VM .
 --
 ====
 
-. When the connection completes, you are logged into the VM as the `ubuntu` user. Switch the user to `datamigrator`:
+*Step 4: Connect to the control plane VM*
+
+After you create the control plane VM, you can connect to validate if NDM is active.
+
+. Install Azure CLI. Refer to the Azure CLI Download instructions.
+. SSH Into your control plane server. If your server does not have Public IP, you can use Azure bastion to configure SSH Access. Follow this link:https://learn.microsoft.com/en-us/azure/bastion/quickstart-host-portal[link] to learn how.
+. Switch the user to datamigrator:
 +
 [source,cli]
 ----
 sudo su - datamigrator
 ----
-. Check the status of boot service and logs. The service is disabled state at this stage:
+. Check the status of boot service and logs:
 +
 [source,cli]
 ----
 sudo systemctl status boot-microk8s.service
 ----
-. Optionally, check the boot service logs:
+Optionally, check the boot service logs:
 +
 [source,cli]
 ----
 tail -10f /opt/datamigrator/logs/ndm-first-boot.log
 ----
+. If you see "Datamigrator Application Setup Complete" in the logs, it indicates the setup is complete.
 . Verify that all the pods are up and running:
 +
 [source,cli]
@@ -165,159 +212,71 @@ tail -10f /opt/datamigrator/logs/ndm-first-boot.log
 kubectl get pods -n datamigrator
 ----
 
-== Step 3: Create the Windows VM.
-Create the Windows VM.
+You can now access NDM using RDP with the Windows VM created for NDM access and the control plane private IP address.
 
-.Steps
+The default credentials for the NDM UI are:
 
-. Select *Virtual machines* in the left-hand menu. You can also use the search bar at the top to search for "Virtual machines".
-. Select *Create* > *Azure Virtual Machine*.
-. Configure the VM settings:
-+
-* *Subscription*: Enter your subscription name.
-* *Resource Group*: Enter the name of your resource group
-* *VM name*: The prefix for the new VM, for example,  <user_name>-<image_name>.
-* *Image*: Choose "Windows Server 2022 Datacenter: Azure Edition - x64 Gen2".
-* *Size*: Select "Standard_D8s_v3 - 8 vcpus, 32 GiB" memory.
-* *Administrator Account*:
-** *Username*: Enter your username.
-** *Password*: Enter your password.
-* *Set Inbound port Rules*: Allow Remote Desktop Protocol. (port 3389) for remote access.
-* Select *Next: Disks >*.
-* *Delete with VM*: Optionally, select this option if you want to delete the OS disk along with VM.
-* Select *Next Networking >*.
-* *Virtual Network (VNet)*: Enter your designated virtual network.
-* *Public IP*: Only assign a public IP if it is supported by your subscription. 
-* *Delete NIC when VM is deleted*: Optionally, select this option if you want to delete the NIC along with VM.
-. After are connected to the windows VM, select *Review* > *Create* to deploy the VM.
-. Select *Create*.
+* URL: https://<control-plane-private-ip>/
+* Username: admin@datamigrator.local
+* Password: Welcome@123
 
-== Step 4: Connect to a worker VM
-When you create a worker VM for the first time, you need to connect to it using the control plane and worker images.
-
-.Steps
-
-. Login to the Windows Server using the Remote Desktop Protocol to access the NDM.
-* If your Windows Server has a public IP address, use Microsoft Windows App (Mac) or Remote Desktop Connection (Windows) to create a Remote Desktop Protocol session.
-* If your Windows Server does not have public IP address, open an Azure Bastion tunnel to the Windows Server and then create a Remote Desktop Protocol session.
-. Retrieve the private IP address from the newly created control plane VM in Azure.
-. Navigate to the NDM UI using the control plane IP address: 
-+
-https://<control_plane_IP_address>/
-. Reset the password.
-. Add new user details and email ID.
-. Select *View instructions to set up worker* to create a new project.
-. Record the following information for use later in this procedure:
-* Worker ID
-* Worker secret
-* Control plane IP
-. Depending on your configuration, select the Linux worker (NFS), Windows worker for MacOS (SMB), or Windows worker for Windows (SMB) tab. 
-+
-If your configuration includes NFS and SMB, select multiple tabs, as needed:
+. Depending on your migration, select the NFS or SMB tab.
 +
 [role="tabbed-block"]
 ====
-.Linux worker 
+.NFS
 --
-Connect to the Linux worker VM using an Azure Bastion tunnel:
+Associate Linux worker with control plane VM.
 
-.. Go to the Azure Portal and select the Worker VM.
-.. In the left-hand pane, select *Connect* > *Bastion*.
-.. Select the following:
-** *Authentication type*: SSH Private Key from Local File
-** *User*: ubuntu
-** *SSH key*: Select the SSH key you selected when creating the VM
-** *Open in new browser tab*: Yes
-.. Select *Connect*.
-.. Log in as the root user:
+. Login to the Windows VM using RDP to access NDM.
+* Use Microsoft Windows App (Mac) or Remote Desktop Connection (Windows) to create a RDP session.
+* You can use this link:https://learn.microsoft.com/en-us/azure/virtual-machines/windows/connect-rdp[link] to learn about RDP connections.
+. Retrieve the private IP address from the newly created control plane VM in Azure.
+. Open any browser and navigate to the NDM UI using the following credentials: 
+* IP address: https://<control_plane_IP_address>/
+* Username: admin@datamigrator.local
+* Password: Welcome@123.
+. Reset the password.
+. Add new user details and email ID.
+. Create a new project by providing a name and an optional description.
+. Select *View Instructions to Setup Worker* and copy the instructions. 
+. To associate the Linux worker with the CP,
+SSH into your worker server. If your server does not have Public IP, you can use link:https://learn.microsoft.com/en-us/azure/bastion/quickstart-host-portal[Azure bastion] to configure SSH Access. 
+* Log in as root user:
 +
 [source,cli]
 ----
 sudo su -
 ----
-.. Register the worker by entering the information recorded in Step 7.
-.. Verify the status of the worker:
-+
-[source,cli]
-----
+* Paste the instructions copied from *View Instructions to Setup Worker* to register the worker VM.
+* Verify the status of the worker:
 systemctl status datamigrator-worker.service
-----
-.. Check the logs:
+* Check the logs:
 +
 [source,cli]
 ----
 tail -20f /opt/datamigrator/logs/datamigrator-worker.log
 ----
-.. Navigate to the NDM UI and verify that the worker is registered.
+* Navigate to the NDM UI and verify that the worker is registered.
 --
 
-.Windows worker for MacOS
+.SMB
 --
-Connect to the Windows worker VM for MacOS:
+Associate Windows worker with control plane VM
 
-.. Install Azure CLI. Refer to the link:https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-macos?view=azure-cli-latest[Azure CLI Download^] instructions.
-.. Create a tunnel to access to the worker VM: 
-... Log in using your Tenant ID:
-+
-[source,cli]
-----
-az login --tenant <tenant_id>
-----
-.. Locate the *Resource ID* for the Azure VM:
-... Go to *Azure Portal* > *Virtual Machines*.
-... Select your VM. 
-... On the VM overview page, select *JSON View* and locate the *Resource ID* at the top of the page.
-
-.. Open the tunnel:
-+
-[source,cli]
-----
-az network bastion tunnel --resource-group <resource_id> --target-resource-id <vm_name> --resource-port 3389 --port <port_number> --name <bastion_name>
-----
-.. Install the Microsoft Windows App on your local laptop.
-.. Open the app and select *Add PC*.
-.. In the *PC name* field, enter `localhost:<port_number>`.
-.. Select *User Account* > *Credentials*.
-.. Add the credentials for the VM created in Step <add the step link>.
-.. Select the *Folders* tab.
-.. Select the + icon <add image file> to add a directory.
-.. Select the folder containing the Windows Worker Installer.
-.. Select *Add* to apply the settings.
-.. Locate the folder you mounted to the Windows Server under "This PC" on the server.
-.. Move the Windows Worker Installer from the mounted folder to a suitable location on the Windows VM.
---
-
-.Windows worker for Windows
---
-Connect to the Windows worker VM for Windows.
-
-.. Install Azure CLI. Refer to the link:https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-macos?view=azure-cli-latest[Azure CLI Download^] instructions.
-.. Create a tunnel to access to the worker VM:
-... Log in using your Tenant ID:
-+
-[source,cli]
-----
-az login --tenant <tenant_id>
-----
-.. Launch *Remote Desktop Connection*.
-.. Select *Show Options*.
-.. In the *Username* field, enter the username of the VM.
-.. Set up the folder mount containing the Windows Worker Installer. For instructions, see the Windows Remote Access documentation. 
-.. Move the Windows Worker Installer from the mounted folder to a suitable location on the Windows VM .
---
-====
-
-== Step 5: Start the Windows worker
-
-.Steps
-. Run the Windows Worker Installer that you copied to the Windows Server.
-. During the installation, enter the following values when prompted. You can get the values from the NDM UI under *Home* > *View Instructions to Setup Worker*:
+. Run the Windows Worker Installer that you copied to the Windows Worker Server.
+. Enter the following details when prompted. You can get these details from the NDM UI under *Home > View Instructions to Setup Worker:*
 * Worker ID
 * Worker secret
-* Control plane IP address
-. After the installation completes, the worker service starts automatically.
-. The installation directory is C:\datamigrator\.
-. Locate the Logs at C:\datamigrator\logs.
+* Project ID
+* Control plane Private IP address
+
+. When installation completes, the worker service starts automatically and you can then locate the Logs at:
++
+[source,cli]
+----
+C:\datamigrator\logs
+----
 . Follow the logs in real-time by opening PowerShell and running the following command:
 +
 [source,cli]
@@ -325,26 +284,58 @@ az login --tenant <tenant_id>
 Get-Content -Path "C:\datamigrator\logs\<log_file_name> -Wait
 ----
 . Open the command prompt (cmd) as Administrator and run the following commands to manage the Service:
-
 * Start the service:
 +
 [source,cli]
 ----
 net start DatamigratorWorker
 ----
-* Stop the service:
+Stop the service:
 +
 [source,cli]
 ----
 net stop DatamigratorWorker
 ----
-* Restart the service:
+Restart the service:
 +
 [source,cli]
 ----
 net stop DatamigratorWorker && start DatamigratorWorker
 ----
+--
+====
 
-== What's next?
+You should consider the following when installing NDM using Azure:
 
-link:configure-ndm.html[Set up and configure NDM]
+* *SAS URLs are time-limited*: Start your copy operation as soon as possible—typically within 7 days.
+
+* *Validate copy is complete*: Do not use a partially copied VHD for deployments.
+
+* *Checksum validation is recommended*: This ensures your VHD’s integrity matches the original source.
+
+* *Repeat the full process* for each VHD (Control Plane and Worker).
+
+*REFERENCE TABLE*
+|===
+| Placeholder | Description
+
+| <YOUR_STORAGE_ACCOUNT>	 | Destination storage account name
+| <YOUR_RESOURCE_GROUP>	 | Resource group name
+| <YOUR_AZURE_REGION> | Azure region (e.g., East us)
+| YOUR_CONTAINER_NAME| Container for VHD storage
+| YOUR_STORAGE_ACCOUNT_KEY| Storage account access key
+| <YOUR_SUBSCRIPTION_ID>| Azure subscription ID
+| <YOUR_TENANT_ID>	| Azure tenant ID
+| <YOUR_IMAGE_NAME>	| Name for the managed image
+| <PROVIDED_SAS_URL>| The SAS URL provided by our team
+| <VHD_FILE_NAME>	| VHD file name (without .vhd extension)
+| <SHA_FILE_NAME>	| Checksum file name (without .sha256 extension)
+|===
+
+
+
+
+
+
+
+

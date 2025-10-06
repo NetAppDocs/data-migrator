@@ -9,4 +9,28 @@ summary:
 :imagesdir: ./media/
 
 [.lead]
-To get started with NetApp Data Migrator (NDM), you need install the tool by setting up control pane and worker virtual machines (VMs) using OVA, Azure, or Google Cloud, define your credentials, and create your first project.
+To get started with NetApp Data Migrator (NDM), you need to set up control plane and worker virtual machines (VMs) using either OVA, Azure, or Google Cloud, then define your credentials, and create your first project.
+
+
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png[One] Install NDM
+
+[role="quick-margin-para"]
+Depending on your environment, you can install NDM using Open Virtual Appliance (OVA) templates in a VMWare vSphere, Microsoft Azure or Google Cloud.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png[Two] Log in to NDM
+
+[role="quick-margin-para"]
+
+Next, you need to log in as an administrator using the default username and password, then change your login credentials.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png[Three] Create your first project
+
+// This step shows an example of using a list under the block title, rather than a paragraph. Note that lists are styled with the `quick-margin-list` role attribute to ensure correct indentation.
+
+[role="quick-margin-para"]
+Use the Projects tab in the NDM control plane to quickly and easily create, edit, and switch between projects.
+
+.What's next?
+
+After you have created you first project, you are then able to add/manage users and file servers, configure real-time notifications, set migration options and manage your jobs and job runs.

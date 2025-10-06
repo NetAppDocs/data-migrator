@@ -4,9 +4,9 @@ permalink: install-options.html
 keywords: 
 summary: 
 ---
-= Learn about the install options for NDM
+= Learn about the install options for NetApp Data Migrator (NDM)
 :icons: font
 :imagesdir: ./media/
 
 [.lead]
-Insert content here.
+You can install NDM using Open Virtual Appliance (OVA) templates in a VMWare vSphere environment, Microsoft Azure or Google Cloud.

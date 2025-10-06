@@ -9,24 +9,24 @@ summary:
 :imagesdir: ./media/
 
 [.lead]
-Use OVA (Open Virtual Appliance) templates in a VMWare vSphere environment to install the NetApp Data Migrator (NDM) tool.
+Use OVA (Open Virtual Appliance) templates in a VMWare vSphere environment to install NetApp Data Migrator (NDM).
 
 .About this task
 
 This procedure has two main components, the control plane and the worker.
 
-The control plane is the central location for managing all migration jobs and you create it first.
+The control plane, which is always deployed on a Linux virtual machine (VM), serves as the central location for managing all migration jobs and should be created first.
 
-The workers are either NFS or SMB and they carry out the data migration. You can install multiple workers based on your needs:
+Workers are virtual machines running on Linux (which supports the NFS protocol), or Windows (which supports the SMB protocol) and carry out the data migration. You can install multiple workers based on your needs:
 
-* For SMB migration, you use the Windows Worker Installer. You must install the Windows Worker Installer on a Windows VM.
-* For NFS migration, you use the Linux Worker.
+* For SMB migration, use the Windows Worker Installer. You must install the Windows Worker Installer on a Windows VM.
+* For NFS migration, use the Linux Worker VM.
 
 .Before you begin
 
 * Download the control plane OVA from the NetApp Support site.
-* If you’re using SMB migration, download the Windows Worker Installer from the NetApp Support Site.
-* If you're using NFS migration. download the Worker OVA from the NetApp Support Site.
+* For SMB migration, download the Windows Worker Installer from the NetApp Support Site.
+* For NFS migration, download the Worker OVA from the NetApp Support Site.
 
 == Step 1: Create the control plane and worker VMs
 
@@ -35,22 +35,21 @@ Create the control plane and worker virtual machines (VMs) from the OVA files us
 .Steps
 
 . Log into VMware vCenter.
-. Right click on *NDMCluster* and select *Deploy OVF Template*.
 . Select  *Select an OVF template* and upload the file that you downloaded from the NetApp Support Site.
 . Select *Next*.
 . Select  *Select a name and folder* and provide the following information:
 * The name for the VM.
-* The location for the new VM. Select the datacenter or destination folder.
+* The location for the new VM.Select the datacenter or destination folder.
 . Select *Next*.
-. Select  *Select a compute resource* and select the cluster or host where the VM will run.
+. Select  *Select a compute resource* and select the cluster or host where the VM will run.
 . Check *Automatically power on deployed VM*.
 . Select *Next*.
 . Select  *Review details*. Verify that the details that you entered are correct and select *Next*.
-. Accept the EULA and select *Next*.
+. Accept the EULA and select*Next*.
 . Select *Select storage.*
-* For *Select virtual disk format*, select “Thin Provision”.
-* For *VM Storage Policy,* select the datastore for the VM files.
-. Select *Select networks* and select the VM’s network.
+* For *Select virtual disk format*, select *Thin Provision*.
+* For *VM Storage Policy,* select the datastore for the VM files.
+. Select *Select networks* and select the VM's network.
 . Optionally, select *Customize template* to provide a static IP address to the VM. You can use DHCP, the NDM vCenter, or your own vCenter:
 +
 [role="tabbed-block"]
@@ -61,24 +60,24 @@ To use DHCP (Dynamic IP), keep the network settings blank.
 --
 .NDM vCenter
 --
-To use the NDM vCenter, locate the reference for the custom properties in *vCenter OVA Deployment Custom Details*.
+To use the NDM vCenter, locate the reference for the custom properties in*vCenter OVA Deployment Custom Details*.
 --
 .Own vCenter
 --
 If you are using your own vCenter, provide the following details for your network:
 
-* *SSH Username*: User account for SSH operations
-* *SSH Password*: Password for the SSH user 
+* *SSH Username*:User account for SSH operations
+* *SSH Password*:Password for the SSH user
 * *IPv4 Address*: VM assigned fixed IP address
-* *IPv4 Subnet Netmask*: Default route for network traffic
+* *IPv4 Subnet Netmask*:Default route for network traffic
 * *IPv4 Gateway*: Defines the subnet range
-* *Primary DNS*: Main domain name resolver
-* *Secondary DNS*: Backup domain name resolver
-* *Search domains*: DNS search suffixes
+* *Primary DNS*:Main domain name resolver
+* *Secondary DNS*:Backup domain name resolver
+* *Search domains*:DNS search suffixes
 --
 ====
 
-. Select  *Ready* to complete and review the summary page.
+. Select *Ready* to complete and review the summary page.
 . Select *Finish* to start the deployment for the control plane VM.
 . Repeat steps 2 to 14 to create the worker VM.
 . Record the server IP addresses for the control plane and the worker VMs. You need these IP addresses when you're setting up the worker VMs later in the procedure.
@@ -86,7 +85,7 @@ If you are using your own vCenter, provide the following details for your networ
 
 == Step 2: Connect to the control plane VM
 
-After you first create the control plane, you need to connect to it using OVA images.
+By establishing an SSH connection to the control plane VM, you can review pod logs and status.
 
 .Steps
 
@@ -101,7 +100,7 @@ You are logged into the VM as the ubuntu user.
 +
 [source,cli]
 ----
-sudo su – datamigrator
+sudo su - datamigrator
 ----
 . Check the status of the boot service:
 +
@@ -115,6 +114,14 @@ sudo systemctl status boot-microk8s.service
 ----
 tail -10f /opt/datamigrator/logs/ndm-first-boot.log
 ----
+The final two lines of output from this command should be similar to the following:
++
+[source,cli]
+----
+2025-08-13 05:34:29 MicroK8s cloud init setup completed successfully
+2025-08-13 05:34:30 Datamigrator Application Setup Complete
+----
+
 . Verify that all the pods are up and running:
 +
 [source,cli]
@@ -129,7 +136,7 @@ NOTE: Wait between ten and fifteen minutes for the UI to load. If it is still lo
 systemctl start boot-microk8s.service
 ----
 +
-After the UI loads, you see an output similar to the following example:
+After the UI loads, you should see an output similar to the following example:
 +
 ----
 kubectl get pods -n datamigrator
@@ -142,15 +149,19 @@ jobs-service-7d7c8d69db-q8pj5      2/2     Running   0          144m
 reports-service-65cb4f8858-6vqdm   2/2     Running   0          144m
 ----
 
-== Step 3: Set up a worker VM
+The default credentials for the NDM UI are:
 
-You need to set up a worker VM when you create it for the first time.
+* URL: https://<control-plane-private-ip>/
+* Username: admin@datamigrator.local
+* Password: Welcome@123
+
+== Step 3: Associate worker VM with control plane
+
+You need to add the worker VM to the control plane created in Step 1, for the first time.
 
 .Steps
 
-Depending on your configuration, select the Linux worker (NFS), Windows worker for MacOS (SMB), or Windows worker for Windows (SMB) tab. 
-
-If your configuration includes NFS and SMB, select multiple tabs, as needed:
+Depending on your configuration, select either the Linux worker (NFS) or Windows worker (SMB) steps below. If your configuration includes NFS and SMB, refer to both sets of steps.
 
 
 [role="tabbed-block"]
@@ -163,7 +174,8 @@ If your configuration includes NFS and SMB, select multiple tabs, as needed:
 ----
 https://<IP_address>/
 ----
-. Select *View instructions to set up worker* and SSH to the worker VM:
+. Select *View instructions to set up worker* then copy these instructions.
+. SSH to the worker VM
 +
 [source,cli]
 ----
@@ -178,7 +190,7 @@ NOTE: Don’t use the same worker secret and worker ID to create multiple worker
 ----
 sudo su -
 ----
-. Paste the instructions copied in step 4.
+. Paste the instructions copied in step 2.
 . Verify the status of the worker:
 +
 [source,cli]
@@ -191,12 +203,35 @@ systemctl status datamigrator-worker.service
 ----
 tail -20f /opt/datamigrator/logs/datamigrator-worker.log
 ----
+.. The output of this command should be similar to the following example:
++
+[source,cli]
+----
+datamigrator-worker.service - Datamigrator Worker Service
+     Loaded: loaded (/etc/systemd/system/datamigrator-worker.service; enabled; preset: enabled)
+     Active: active (running) since Tue 2025-08-12 11:33:54 IST; 1 day 3h ago
+   Main PID: 697 (dm-worker-linux)
+      Tasks: 40 (limit: 4599)
+     Memory: 1.8G (peak: 2.1G)
+        CPU: 58min 5.437s
+     CGroup: /system.slice/datamigrator-worker.service
+             ├─697 /opt/datamigrator/binary/dm-worker-linux-x64-v1.0.0
+             ├─908 bash
+             ├─909 bash
+             ├─910 bash
+             ├─911 bash
+             └─912 bash
+
+Aug 12 11:33:54 datamigrator systemd[1]: Started datamigrator-worker.service - Datamigrator Worker Service.----
+----
+
 . Navigate to NDM UI to verify that the worker is registered.
 --
 
 .Windows Worker
 --
-. Run the Windows Worker Installer that you copied to the Windows server.
+. Create a Windows VM and copy the Windows Worker Installer to this Windows VM.
+. Run the Windows Worker Installer that you copied to the Windows VM.
 . During installation, manually enter the following values when prompted. You can get the values from the NDM UI under *Home > View Instructions to Setup Worker*:
 +
 * Worker ID
@@ -204,8 +239,8 @@ tail -20f /opt/datamigrator/logs/datamigrator-worker.log
 * Control plane IP address
 . After the installation completes, the worker service starts automatically.
 +
-* The installation directory is `C:\datamigrator\.` 
-* Locate the Logs at `C:\datamigrator\logs.`
+* The installation directory is`C:\datamigrator\.` 
+* Locate the Logs at`C:\datamigrator\logs.`
 . Follow the logs in real-time by opening PowerShell and running the following command:
 +
 [source,cli]
@@ -217,7 +252,7 @@ Get-Content -Path "C:\datamigrator\logs\<log_file_name> -Wait"
 
 == Step 4: Manage worker credentials
 
-The control plane credentials are stored in OpenBao. Access the OpenBao and PostgreSQL application components to manage credentials.
+The control plane credentials are stored inOpenBao. Access the OpenBao andPostgreSQL application components to manage credentials.
 
 .Steps
 
@@ -242,12 +277,10 @@ cat /opt/datamigrator/openbao/cluster-keys.json
 https://<IP_address>/ui/
 ----
 . Navigate to the following secret UIs after opening the OpenBao UI:
-* Keycloak UI: `https://<IP_address>/keycloak/`
-* Temporal UI: `https://<IP_address>/temporal/ui/`
+* KeycloakUI:`https://<IP_address>/keycloak/`
+* TemporalUI:`https://<IP_address>/temporal/ui/`
 . Use the control plane IP address to connect to the postgres database.
 * Log in using the username and password from OpenBao.
-* Postgres keys: `POSTGRES_DMADMIN_USER` and `POSTGRES_DMADMIN_PASSWORD`
+* Postgres keys:`POSTGRES_DMADMIN_USER`and`POSTGRES_DMADMIN_PASSWORD`
 
-== What's next?
 
-link:configure-ndm.html[Set up and configure NDM]
