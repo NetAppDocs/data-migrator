@@ -81,6 +81,7 @@ This creates a new GCP VM image from your archive, in the specified region.
 
 == Step 7: List and confirm import completion
 
+Run the following command to list the import tasks and confirm that the import was successful:
 [source,cli]
 ----
 gcloud migration vms image-imports list --location=<REGION> --project=<PROJECT_ID>
@@ -201,19 +202,19 @@ The default credentials for the NDM UI are:
 --
 Associate Linux worker with control plane VM.
 
-. Login to the Windows VM using RDP to access NDM.
+... Login to the Windows VM using RDP to access NDM.
 * Use Microsoft Windows App (Mac) or Remote Desktop Connection (Windows) to create a RDP session.
 * You can connect to the Windows VM using Remote Desktop Protocol (RDP) by following the instructions in this link:https://cloud.google.com/compute/docs/instances/connecting-to-windows[Google Cloud RDP link].
-. Retrieve the private IP address from the newly created control plane VM in GCP.
-. Open any browser and navigate to the NDM UI using the following credentials: 
+... Retrieve the private IP address from the newly created control plane VM in GCP.
+... Open any browser and navigate to the NDM UI using the following credentials: 
 * IP address: https://<control_plane_IP_address>/
 * Username: admin@datamigrator.local
 * Password: Welcome@123.
-. Reset the password.
-. Add new user details and email ID.
-. Create a new project by providing a name and an optional description.
-. Select *View Instructions to Setup Worker* and copy the instructions. 
-. To associate the Linux worker with the CP,
+... Reset the password.
+... Add new user details and email ID.
+... Create a new project by providing a name and an optional description.
+... Select *View Instructions to Setup Worker* and copy the instructions. 
+... To associate the Linux worker with the CP,
 SSH into your worker server. If your server does not have Public IP, you can use link:https://learn.microsoft.com/en-us/azure/bastion/quickstart-host-portal[Azure bastion] to configure SSH Access. 
 * Log in as root user:
 +
@@ -237,14 +238,14 @@ tail -20f /opt/datamigrator/logs/datamigrator-worker.log
 --
 Associate Windows worker with control plane VM
 
-. Run the Windows Worker Installer that you copied to the Windows Worker Server.
-. Enter the following details when prompted. You can get these details from the NDM UI under *Home > View Instructions to Setup Worker:*
+... Run the Windows Worker Installer that you copied to the Windows Worker Server.
+... Enter the following details when prompted. You can get these details from the NDM UI under *Home > View Instructions to Setup Worker:*
 * Worker ID
 * Worker secret
 * Project ID
 * Control plane Private IP address
 
-. Disable Windows defender:
+... Disable Windows defender:
 +
 [source,cli]
 ----
@@ -256,21 +257,21 @@ PS C:\Windows\system32> Set-MpPreference -DisableRealtimeMonitoring $true
 PS C:\Windows\system32> Add-MpPreference -ExclusionPath "C:\datamigrator\mnt"
 ----
 
-. Disable Windows update in Windows services.
+... Disable Windows update in Windows services.
 
-. When installation completes, the worker service starts automatically and you can then locate the Logs at:
+... When installation completes, the worker service starts automatically and you can then locate the Logs at:
 +
 [source,cli]
 ----
 C:\datamigrator\logs
 ----
-. Follow the logs in real-time by opening PowerShell and running the following command:
+... Follow the logs in real-time by opening PowerShell and running the following command:
 +
 [source,cli]
 ----
 Get-Content -Path "C:\datamigrator\logs\<log_file_name> -Wait
 ----
-. Open the command prompt (cmd) as Administrator and run the following commands to manage the Service:
+... Open the command prompt (cmd) as Administrator and run the following commands to manage the Service:
 * Start the service:
 +
 [source,cli]
