@@ -24,9 +24,9 @@ Workers are virtual machines running on Linux (which supports the NFS protocol),
 
 .Before you begin
 
-* Download the control plane OVA from the NetApp Support site.
-* For SMB migration, download the Windows Worker Installer from the NetApp Support Site.
-* For NFS migration, download the Worker OVA from the NetApp Support Site.
+* Download the control plane OVA from the link:https://mysupport.netapp.com/site/[NetApp Support site^].
+* For SMB migration, download the Windows Worker Installer from the link:https://mysupport.netapp.com/site/[NetApp Support site^].
+* For NFS migration, download the Worker OVA from the link:https://mysupport.netapp.com/site/[NetApp Support site^].
 
 == Step 1: Create the control plane and worker VMs
 
@@ -45,7 +45,6 @@ Create the control plane and worker virtual machines (VMs) from the OVA files us
 . Check *Automatically power on deployed VM*.
 . Select *Next*.
 . Select  *Review details*. Verify that the details that you entered are correct and select *Next*.
-. Accept the EULA and select*Next*.
 . Select *Select storage.*
 * For *Select virtual disk format*, select *Thin Provision*.
 * For *VM Storage Policy,* select the datastore for the VM files.
@@ -93,7 +92,7 @@ By establishing an SSH connection to the control plane VM, you can review pod lo
 +
 [source,cli]
 ----
-ssh ubuntu@<control-plane-server-IP>
+ssh <username>@<control-plane-server-IP>
 ----
 You are logged into the VM as the ubuntu user.
 . Switch the user to data migrator:
@@ -175,7 +174,7 @@ Depending on your configuration, select either the Linux worker (NFS) or Windows
 https://<IP_address>/
 ----
 . Select *View instructions to set up worker* then copy these instructions.
-. SSH to the worker VM
+. SSH to the worker VM:
 +
 [source,cli]
 ----
@@ -239,7 +238,7 @@ Aug 12 11:33:54 datamigrator systemd[1]: Started datamigrator-worker.service - D
 * Control plane IP address
 . After the installation completes, the worker service starts automatically.
 +
-* The installation directory is`C:\datamigrator\.` 
+* The installation directory is `C:\datamigrator\.` 
 * Locate the Logs at`C:\datamigrator\logs.`
 . Follow the logs in real-time by opening PowerShell and running the following command:
 +
@@ -247,6 +246,20 @@ Aug 12 11:33:54 datamigrator systemd[1]: Started datamigrator-worker.service - D
 ----
 Get-Content -Path "C:\datamigrator\logs\<log_file_name> -Wait"
 ----
+
+. Disable Windows defender:
++
+[source,cli]
+----
+PS C:\Windows\system32> Set-MpPreference -DisableRealtimeMonitoring $true
+----
++
+[source,cli]
+----
+PS C:\Windows\system32> Add-MpPreference -ExclusionPath "C:\datamigrator\mnt"
+----
+
+. Disable Windows update in Windows services.
 --
 ====
 

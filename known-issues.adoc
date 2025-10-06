@@ -184,15 +184,14 @@ You can then switch to the new user account and access the file server.
 
 == Recommendations for using NDM
 
-* For NFS migrations, add a file server with NFS credentials and NFS config details.  
-
-* For SMB migrations, add a file server with SMB credentials and SMB config details 
-
-
-* When adding a file server, do not add NFS and SMB credentials as this can cause errors. 
-
+*  Adding filers in NDM:
+** For NFS migrations, add a file server with NFS credentials and NFS configuration details.  
+** For SMB migrations, add a file server with SMB credentials and SMB configuration details.
+** When adding a file server, do not add NFS and SMB credentials as this can cause errors. 
++
+You can only configure a Linux worker for SMB and a Windows worker for NFS.
 * Do not run Migration and Cutover jobs simultaneously. Ensure only one job is active at any time. 
 
 * Use one worker secret code to set up a worker explicitly. 
 
-* Please contact NDM support at ndm-support@netapp.com if you need to reboot the control plane.
+CAUTION: Don't restart or reboot the control plane. Contact NDM support at ndm-support@netapp.com for assistance.

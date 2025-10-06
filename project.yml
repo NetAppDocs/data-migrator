@@ -35,7 +35,13 @@ sidebar:
       - title: Install NDM using OVA
         url: /install-using-ova.html
       - title: Install NDM using Azure
-        url: /install-using-azure.html
+        entries:
+        - title: Prepare for NDM installation using Azure
+          url: /install-using-azure.html
+        - title: Install Azure CLI and manage assets for NDM 
+          url: /install-azure-using-cli.html
+        - title: Create the control plane and worker VMs for NDM
+          url: /create-control-plane-worker-vm.html
       - title: Install NDM using Google Cloud
         url: /install-on-google-cloud.html
     - title: Configure NDM
@@ -66,12 +72,12 @@ sidebar:
       url: /manage-jobs.html
     - title: Generate support bundle
       url: /generate-support-bundle.html
+  - title: Upgrade NDM
+    url: /upgrade.html
   - title: Get help
     entries:
     - title: Troubleshoot
       url: /troubleshoot.html
-  - title: Upgrade NDM
-    url: /upgrade.html
   - title: FAQ
     url: /faq.html
   - title: Legal notices

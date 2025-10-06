@@ -66,7 +66,7 @@ The NDM control plane is where you can access all migration activities. From her
 
 === Worker
 
-A worker is a virtual machine, agent, or proxy that performs actual data operations, for example, copying data from source to destination.
+A worker is a virtual machine that performs actual data operations, for example, copying data from source to destination.
 
 * Workers are responsible for executing tasks such as scanning directories, copying files, and syncing metadata.
 * Workers enable distributed processing, allowing NDM to scale across large datasets and multiple environments efficiently.

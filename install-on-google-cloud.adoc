@@ -89,38 +89,41 @@ Wait for SUCCEEDED status before you proceed to VM creation.
 
 == Step 8: Create VM instances
 
-Step 1: Create the Windows VM to access NDM
-
-You need to create a Windows VM to access NDM using the Remote Desktop Protocol. Follow this link:https://cloud.google.com/compute/docs/create-windows-server-vm-instance[link] to learn how to create a Windows Server VM instance using these recommended settings:
+. Create the Windows VM to access NDM
++
+You need to create a Windows VM to access NDM using the Remote Desktop Protocol. 
+Follow this link:[link] to learn how to link:https://cloud.google.com/compute/docs/create-windows-server-vm-instance[create a Windows Server VM instance using these recommended settings:
 
 * Image: Windows Server 2022 Datacenter
-* Size: 8 vCPU, 32 GB RAM
+* Size: 16 vCPU, 64 GB RAM
 * RDP port 3389 open.
 
 You can connect to this Windows VM using RDP by following the instructions in this link:https://cloud.google.com/compute/docs/instances/connecting-to-windows[Google Cloud RDP link]. You can then access NDM.
 
-Step 2: Create the control plane VM
+. Create the control plane VM
 
 Create this VM using the control plane image imported previously. Follow this link:https://cloud.google.com/compute/docs/instances/create-vm-from-custom-image[Google Cloud Platform link] to learn how to create a VM from a custom imported image using these recommended settings:
 
-* Size: 8 vCPU, 32 GB RAM
+* Size: 16 vCPU, 64 GB RAM
 * Image: Custom imported image for the control plane.
 
-Step 3(a): NFS migration - Create the Linux worker VM
+. Create a Linux worker VM or add the Windows worker installer:
+
+.. NFS migration - Create the Linux worker VM
 
 Create this VM using the control plane image imported previously. Follow this link:https://cloud.google.com/compute/docs/instances/create-vm-from-custom-image[Google Cloud Platform link] to learn how to create a VM from a custom imported image using these recommended settings:
 
 * Size: 4 vCPU, 16 GB RAM
 * Image: Custom imported image for the control plane.
 
-Step 3(b): SMB Migration
+.. SMB Migration
 
 . Add the Windows worker installer
 +
-For SMB migration, you need to download the windows worker installer for Google Cloud Platform from NSS: <Placeholder link>. Follow this link:https://cloud.google.com/compute/docs/create-windows-se rver-vm-instance[Google Cloud Platform link] to learn how to create a Windows Server VM instance using these recommended settings for the windows worker VM:
+For SMB migration, you need to download the windows worker installer for Google Cloud Platform from NSS: <Placeholder link>. Follow this link:https://cloud.google.com/compute/docs/create-windows-server-vm-instance[Google Cloud Platform link] to learn how to create a Windows Server VM instance using these recommended settings for the windows worker VM:
 
 * Image: Windows Server 2022 Datacenter
-* Size: 4 vCPU, 16 GB RAM.
+* Size: 16 vCPU, 64 GB RAM.
 * RDP port 3389 open
 
 . Move the Windows worker installer to the Windows VM
@@ -153,24 +156,22 @@ Windows worker for Windows:
 --
 ====
 
-* Step 4: Connect to the control plane VM*
+. Connect to the control plane VM:
 
-.Steps
-
-. SSH into the control plane VM:
+.. SSH into the control plane VM:
 +
 [source,cli]
 ----
 gcloud compute ssh <control-plane-instance-name> --internal-ip --zone <zone-name>
 ----
 
-. Switch the user to datamigrator:
+.. Switch the user to datamigrator:
 +
 [source,cli]
 ----
 sudo su - datamigrator
 ----
-. Check the status of boot service and logs:
+.. Check the status of boot service and logs:
 +
 [source,cli]
 ----
@@ -182,23 +183,24 @@ Optionally, check the boot service logs:
 ----
 tail -10f /opt/datamigrator/logs/ndm-first-boot.log
 ----
-. If you see "Datamigrator Application Setup Complete" in the logs, this indicates the setup is complete.
-. Verify that all the pods are up and running:
+.. If you see "Datamigrator Application Setup Complete" in the logs, this indicates the setup is complete.
+.. Verify that all the pods are up and running:
 +
 [source,cli]
 ----
 kubectl get pods -n datamigrator
 ----
-
++
 You can now access NDM using RDP with the Windows VM you created for NDM access and the control plane private IP address.
-
++
 The default credentials for the NDM UI are:
-
++
 * URL: https://<control-plane-private-ip>/
 * Username: admin@datamigrator.local
 * Password: Welcome@123
 
-*Step 5: Depending on your migration, select the NFS or SMB tab*
+.. Depending on your migration, select the NFS or SMB tab:
++
 [role="tabbed-block"]
 ====
 .NFS
@@ -248,6 +250,20 @@ Associate Windows worker with control plane VM
 * Project ID
 * Control plane Private IP address
 
+. Disable Windows defender:
++
+[source,cli]
+----
+PS C:\Windows\system32> Set-MpPreference -DisableRealtimeMonitoring $true
+----
++
+[source,cli]
+----
+PS C:\Windows\system32> Add-MpPreference -ExclusionPath "C:\datamigrator\mnt"
+----
+
+. Disable Windows update in Windows services.
+
 . When installation completes, the worker service starts automatically and you can then locate the Logs at:
 +
 [source,cli]
@@ -282,15 +298,8 @@ net stop DatamigratorWorker && start DatamigratorWorker
 --
 ====
 
-*REFERENCES*
+The following tables describes the placeholder references:
 
-* link:https://cloud.google.com/migrate/virtual-machines/docs/5.0/get-started/enable-services#enabling_required_services_on_the_host_project[Enable Image Import APIs]
-* link:https://cloud.google.com/migrate/virtual-machines/docs/5.0/migrate/image_import#add-disk-to-storage[Add Disk to Storage]
-* link:https://cloud.google.com/compute/docs/instances/create-vm-from-custom-image[Create VM from Custom Image]
-* link:https://cloud.google.com/compute/docs/create-windows-server-vm-instance[Create Windows Server VM]
-* link:https://cloud.google.com/storage/docs/uploading-objects#uploading-an-object[Upload Objects to GCS]
-
-*PLACEHOLDER REFERENCE TABLE*
 |===
 | Placeholder | Description
 
@@ -299,8 +308,18 @@ net stop DatamigratorWorker && start DatamigratorWorker
 | <GCS_BUCKET> | Your GCS bucket name
 | <IMAGE_NAME>| VM image name (without extension)
 | <IMAGE_IMPORT_NAME>| Unique name for the import task
-| <REGION>| Your region. For example, US EAST 4
+| <REGION>| Your region. For example, US EAST 4.
 |===
+
+
+.Related information
+
+* link:https://cloud.google.com/migrate/virtual-machines/docs/5.0/get-started/enable-services#enabling_required_services_on_the_host_project[Enable Image Import APIs^]
+* link:https://cloud.google.com/migrate/virtual-machines/docs/5.0/migrate/image_import#add-disk-to-storage[Add Disk to Storage^]
+* link:https://cloud.google.com/compute/docs/instances/create-vm-from-custom-image[Create VM from Custom Image^]
+* link:https://cloud.google.com/compute/docs/create-windows-server-vm-instance[Create Windows Server VM^]
+* link:https://cloud.google.com/storage/docs/uploading-objects#uploading-an-object[Upload objects to GCS^]
+
 
 
 
