@@ -139,7 +139,7 @@ Scenario 1::
 +
 For users or groups deleted or removed from the source Active Directory, provide the SID in the CSV mapping sheet:
 +
-.Example: 
+*Example* 
 +
 |===
 | sid_source | sid_target
@@ -153,7 +153,7 @@ Scenario 2::
 +
 For active users or groups in Active Directory, provide usernames or group names in the CSV mapping sheet exclusively in lowercase, including the domain prefix, for example, domain\username. 
 +
-.Example:  
+*Example*:  
 +
 |===
 | sid_source | sid_target 
