@@ -129,7 +129,7 @@ Run Discovery before a Migration run, to ensure disk usage information is availa
 
 === Access permission mismatch when SID mapping is used
 
-NDM might report an error (Missing ACE in target) indicating an access permission mismatch between the source and target systems when SID mapping is used. This issue occurs because SID mapping was not performed at the ROOT level.   
+NDM might report an error (Missing ACL in target) indicating an access permission mismatch between the source and target systems when SID mapping is used. This issue occurs because SID mapping was not performed at the ROOT level.   
 
 .Workaround
 
@@ -232,7 +232,7 @@ You can then switch to the new user account and access the file server.
 
 == Recommendations for using NDM
 
-*  Adding filers in NDM:
+*  Adding file servers in NDM:
 ** For NFS migrations, add a file server with NFS credentials and NFS configuration details.  
 ** For SMB migrations, add a file server with SMB credentials and SMB configuration details.
 ** When adding a file server, do not add NFS and SMB credentials as this can cause errors. 

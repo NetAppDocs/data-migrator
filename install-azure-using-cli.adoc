@@ -15,9 +15,9 @@ Deploy VMs in Azure using a virtual hard disk (VHD) shared by NetApp using a tim
 
 . Select one of these links to learn how to install the Azure CLI on your operating system:
 
-* link:https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows?view=azure-cli-latest&pivots=winget[Install on Windows]
-* link:https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-macos[Install on macOS]
-* link:https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-linux[Install on Linux]
+* link:https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows?view=azure-cli-latest&pivots=winget[Install on Windows^]
+* link:https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-macos[Install on macOS^]
+* link:https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-linux[Install on Linux^]
 
 . You can (optionally) authenticate and select your subscription using the following commands:
 +
@@ -27,7 +27,7 @@ az login --tenant <YOUR_TENANT_ID>
 az account set --subscription <YOUR_SUBSCRIPTION_ID>
 az account show
 ----
-. Follow this link:https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal[link] to learn how to create storage and a container in your Azure account.
+. Learn how to link:https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal[create an Azure storage account^].
 . Contact NetApp Support at ng-ndm-support@netap.com to request a time-limited SAS URL for the VHD and checksum file. The SAS URL provides temporary, secure access required for the deployment process described here.
 . Copy control plane and worker VHDs:
 .. Retrieve the primary access key for your storage account:
@@ -88,4 +88,4 @@ az image create \
 
 .What's next?
 
-link:create-control-plane-worker-vm.html[Install the control plane and workers for NDM]
+link:create-control-plane-worker-vm.html[Create the control plane and worker VMs for NDM]

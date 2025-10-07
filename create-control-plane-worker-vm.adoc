@@ -61,7 +61,9 @@ Use the following recommended settings when creating the Windows VM:
 
 . Move the Windows worker installer to the Windows VM
 * Login to the Windows Worker VM using the Remote Desktop Protocol and copy the Windows worker installer to the Windows VM.
-* Use Microsoft Windows App (Mac) or RDP (Windows) to create a remote session. Follow this link:https://learn.microsoft.com/en-us/azure/virtual-machines/windows/connect-rdp[link] to learn about RDP connections.
+* Use Microsoft Windows App (Mac) or RDP (Windows) to create a remote session. 
++
+Learn about link:https://learn.microsoft.com/en-us/azure/virtual-machines/windows/connect-rdp[RDP connections^].
 
 . Disable Windows defender:
 +
@@ -153,7 +155,7 @@ Associate the Linux worker with the control plane VM.
 
 .. Login to the Windows VM using RDP to access NDM.
 * Use Microsoft Windows App (Mac) or Remote Desktop Connection (Windows) to create a RDP session.
-* You can use this link:https://learn.microsoft.com/en-us/azure/virtual-machines/windows/connect-rdp[link] to learn about RDP connections.
+* Learn about link:https://learn.microsoft.com/en-us/azure/virtual-machines/windows/connect-rdp[RDP connections^].
 .. Retrieve the private IP address from the newly created control plane VM in Azure.
 .. Open any browser and navigate to the NDM UI using the following credentials: 
 * IP address: https://<control_plane_IP_address>/

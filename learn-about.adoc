@@ -111,7 +111,7 @@ A job run is a single execution instance of a job. Job runs allow users to monit
 Each job run:
 
 * Has a unique timestamp and execution ID.
-* Can be in one of several states: Ready, Running, Paused, Stopped, Errored, or Blocked.
+* Can be in one of several states: Ready, Running, Paused, Stopped, Errored, Blocked, or Completed.
 * Generates logs, metrics, and task-level details.
 
 === Task
