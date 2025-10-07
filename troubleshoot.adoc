@@ -11,11 +11,11 @@ summary:
 [.lead]
 If you experience issues while using NetApp Data Migrator (NDM), these troubleshooting steps and reference commands might be useful. 
 
-== Application Access
+== Application access
 
 All credentials are managed from openbao. Replace the IP_ADDRESS with the IP address of your virtual machine (VM).
 
-*Steps*
+.Steps
 
 . Fetch the openbao root token. SSH into the control plane server from bastion connect from the Azure portal:
 +
@@ -33,36 +33,42 @@ cat /opt/datamigrator/openbao/cluster-keys.json
 
 == kubectl reference commands
 
-- To get the pods in datamigrator namespace:
+* To get the pods in datamigrator namespace:
++
 [source,cli]
 ----
 kubectl get pods -n datamigrator
 ----
-- To get the logs for a pod in datamigrator namespace:
+* To get the logs for a pod in datamigrator namespace:
++
 [source,cli]
 ----
 kubectl logs <podname> -n datamigrator
 ----
-- To describe a pod in datamigrator namespace:
+* To describe a pod in datamigrator namespace:
++
 [source,cli]
 ----
 kubectl describe <podname> -n datamigrator
 ----
-- To get all namespaces:
+* To get all namespaces:
++
 [source,cli]
 ----
 kubectl get ns
 ----
-- To get the pods in any namespace:
+* To get the pods in any namespace:
++
 [source,cli]
 ----
 kubectl get pods -n <NAMESPACE>
 ----
-== *Unseal Openbao*
+
+== Unseal Openbao
 
 If you encounter an issue where openbao is sealed, follow these steps to unseal.
 
-*Steps*
+.Steps
 
 . SSH into the control plane server via bastion connect.
 . replace OPENBAO_UNSEAL_KEY with your key:
@@ -77,20 +83,20 @@ kubectl exec openbao-2 -n openbao -- bao operator unseal $OPENBAO_UNSEAL_KEY
 
 == Troubleshoot Azure VM access
 
-You should be able to successfully create and connect to your Azure VM. However, if you experience problems, it may help to restart your virtual machine or reset your SSH configuration. 
+You should be able to successfully create and connect to your Azure VM. However, if you experience problems, it might help to restart your virtual machine or reset your SSH configuration. 
 
-*Restart your virtual machine*.
-
-*Steps*
+Restart your virtual machine::
++
+.Steps
 
 . Navigate to your Azure Portal.
 . Navigate to your VM and select *Restart*.
 
-*Reset SSH Configuration*
-
-First refer to the instructions provided in this link:https://learn.microsoft.com/en-us/troubleshoot/azure/virtual-machines/linux/troubleshoot-ssh-connection[troubleshooting reference]. However, sometimes issues can occur when opening the SSH bastion portal which you may be able to resolve in the following way.
-
-*Steps*
+Reset SSH configuration::
++
+First refer to the instructions provided in this link:https://learn.microsoft.com/en-us/troubleshoot/azure/virtual-machines/linux/troubleshoot-ssh-connection[Microsoft troubleshooting reference^]. However, sometimes issues can occur when opening the SSH bastion portal, which you might be able to resolve in the following way.
++
+.Steps
 
 . Navigate to your Azure VM control plane.
 . Select *Help*.
@@ -101,13 +107,13 @@ First refer to the instructions provided in this link:https://learn.microsoft.co
 . For the Stored Key, choose *Select your existing created key*.
 . Select *Update*.
 
-== Windows Worker Fails to Switch User on SMB File Server
+== Windows Worker Fails to switch User on SMB file server
 
-When a windows worker attempts to connect to an SMB file server using a different set of credentials than those previously used for the same file server, the following error message may appear:
+When a windows worker attempts to connect to an SMB file server using a different set of credentials than those previously used for the same file server, the following error message might appear:
 
  System error 1219: Multiple connections to a server or shared resource by the same user, using more than one user name, are not allowed.
 
-This happens because windows does not allow multiple simultaneous connections to the same network resource using different credentials. Even if the previous connection is inactive, it may still be cached or held by the system.
+This happens because windows does not allow multiple simultaneous connections to the same network resource using different credentials. Even if the previous connection is inactive, it might still be cached or held by the system.
 
 Follow these steps to resolve this issue:
 

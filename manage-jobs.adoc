@@ -13,7 +13,7 @@ Use job management features in NetApp Data Migrator (NDM) to initiate and track 
 
 == View Job List
 
-The *Job List* page provides you with a comprehensive overview of all migration related jobs. You can use the information shown on this page to efficiently monitor and manage the status and progress of *Discovery*, *Migration*, and *Cutover*jobs.
+The *Job List* page provides you with a comprehensive overview of all migration related jobs. You can use the information shown on this page to efficiently monitor and manage the status and progress of *Discovery*, *Migration*, and *Cutover* jobs.
 
 .Steps
 
@@ -109,7 +109,7 @@ Migration/Discovery job status types include:
 * *Paused:* a job run has been paused manually, or by NDM. For example, a job can have a paused status if a worker goes down while the job is running.
 * *Completed:* a job is complete.
 * *Errored:* a job run triggers a fatal error.
-* *Failed:* if a worker goes offline while a job is running, the job may enter a failed state.
+* *Failed:* if a worker goes offline while a job is running, the job might enter a failed state.
 
 Cutover job status types include:
 
