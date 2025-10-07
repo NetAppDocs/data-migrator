@@ -65,19 +65,6 @@ Use the following recommended settings when creating the Windows VM:
 +
 Learn about link:https://learn.microsoft.com/en-us/azure/virtual-machines/windows/connect-rdp[RDP connections^].
 
-. Disable Windows defender:
-+
-[source,cli]
-----
-PS C:\Windows\system32> Set-MpPreference -DisableRealtimeMonitoring $true
-----
-+
-[source,cli]
-----
-PS C:\Windows\system32> Add-MpPreference -ExclusionPath "C:\datamigrator\mnt"
-----
-
-. Disable Windows update in Windows services.
 
 . Depending on your configuration, select the MacOS or Windows tab.
 +
@@ -229,13 +216,13 @@ Get-Content -Path "C:\datamigrator\logs\<log_file_name> -Wait
 ----
 net start DatamigratorWorker
 ----
-Stop the service:
+* Stop the service:
 +
 [source,cli]
 ----
 net stop DatamigratorWorker
 ----
-Restart the service:
+* Restart the service:
 +
 [source,cli]
 ----

@@ -31,16 +31,20 @@ Workers are virtual machines running on Linux, which supports the NFS protocol, 
 
 == Step 1: Enable required APIs
 
-Follow the steps in the link:https://cloud.google.com/migrate/virtual-machines/docs/5.0/get-started/enable-services#enabling_required_services_on_the_host_project[Google Cloud documentation^] to enable all of the APIs required for your project. These APIs are mandatory for image import and deployment operations.
+link:https://cloud.google.com/migrate/virtual-machines/docs/5.0/get-started/enable-services#enabling_required_services_on_the_host_project[Enable all of the APIs required for your project^]. These APIs are mandatory for image import and deployment operations.
 
 == Step 2: Prepare import destination
 
-Follow the steps in the link:https://cloud.google.com/storage/docs/creating-buckets#console[Google Cloud documentation^] to create a Google Cloud Storage (GCS) bucket if you have not already created one.
+Learn how to link:https://cloud.google.com/storage/docs/creating-buckets#console[create a Google Cloud Storage (GCS) bucket^], if you have not already created one.
 
 == Step 3: Set Up IAM roles and permissions
-This step ensures that the migration API has the required access permission. Learn about disk storage permissions in the link:https://cloud.google.com/migrate/virtual-machines/docs/5.0/migrate/image_import#add-disk-to-storage[Google Cloud documentation^] Alternatively, you can use the following commands.
+This step ensures that the migration API has the required access permission. 
 
-* Assign the service account objectViewer access to your destination GCS bucket:
+* Learn about link:https://cloud.google.com/migrate/virtual-machines/docs/5.0/migrate/image_import#add-disk-to-storage[disk storage permissions^] 
+
+* Alternatively, use the following commands:
+
+** Assign the service account objectViewer access to your destination GCS bucket:
 +
 [source,cli]
 ----
@@ -48,7 +52,7 @@ gcloud storage buckets add-iam-policy-binding gs://<GCS_BUCKET> \
   --member=serviceAccount:service-<PROJECT_NUMBER>@gcp-sa-vmmigration.iam.gserviceaccount.com \
   --role=roles/storage.objectViewer
 ----
-* Make yourself an admin user on the vmmigration service:
+** Make yourself an admin user on the "vmmigration" service:
 +
 [source,cli]
 ----
@@ -59,11 +63,11 @@ gcloud projects add-iam-policy-binding <PROJECT_ID> \
 
 == Step 4: Obtain and upload images
 
-* Log into link:https://mysupport.netapp.com/site/[NetApp Support Site] to download the control plane and worker .tar.gz images as well as (optional) .sha256 checksum files
-* Upload the tar.gz for worker and control plane to your GCS bucket by following the steps in the link:https://cloud.google.com/storage/docs/uploading-objects#uploading-an-object[Google Cloud documentation].
+* Log into link:https://mysupport.netapp.com/site/[NetApp Support Site^] to download the control plane and worker .tar.gz images as well as (optional) .sha256 checksum files
+* link:https://cloud.google.com/storage/docs/uploading-objects#uploading-an-object[Upload the tar.gz for worker and control plane to your GCS bucket^].
 
 == Step 5: Validate SHA256 checksums (optional)
-After you download the tar.gz file, you can optionally use this link:https://emn178.github.io/online-tools/sha256_checksum.html[checksum calculator] to verify the checksum and validate against the checksum file downloaded from NSS.
+After you download the tar.gz file, you can optionally use this link:https://emn178.github.io/online-tools/sha256_checksum.html[checksum calculator^] to verify the checksum and validate against the checksum file downloaded from NSS.
 
 == Step 6: Import images using VM migration service
 After you upload the worker and control plane tar.gz files, you can create a VM image for worker and control plane:
@@ -94,7 +98,7 @@ You need to create a Windows VM to access NDM using the Remote Desktop Protocol.
 .Steps
 . Create the control plane VM to access NDM.
 +
-.. Learn how to link:https://cloud.google.com/compute/docs/create-windows-server-vm-instance[create a Windows Server VM instance]. Use the following recommended settings:
+.. Learn how to link:https://cloud.google.com/compute/docs/create-windows-server-vm-instance[create a Windows Server VM instance^]. Use the following recommended settings:
 +
 * Image: Windows Server 2022 Datacenter
 * Size: 16 vCPU, 64 GB RAM
