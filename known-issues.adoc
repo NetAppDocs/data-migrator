@@ -129,7 +129,7 @@ Run Discovery before a Migration run, to ensure disk usage information is availa
 
 === Access permission mismatch when SID mapping is used
 
-NDM might report an error (Missing ACL in target) indicating an access permission mismatch between the source and target systems when SID mapping is used. This issue occurs because SID mapping was not performed at the ROOT level.   
+NDM might report an error (Missing ACE in target) indicating an access permission mismatch between the source and target systems when SID mapping is used. This issue occurs because SID mapping was not performed at the ROOT level.   
 
 .Workaround
 
