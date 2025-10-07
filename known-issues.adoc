@@ -4,7 +4,7 @@ permalink: known-issues.html
 keywords: 
 summary: 
 ---
-= Known issues and solutions
+= Known issues and workarounds
 :icons: font
 :imagesdir: ./media/
 
@@ -19,17 +19,17 @@ Some Migration job runs that encounter errors can show a "Completed" migration s
 
 Status definitions:
 
-* Completed: A job run has finished, but may contain errors.
+* Completed: A job run has finished, but might contain errors.
 
 * Errored: A job run failed due to a critical issue.
 
-.Solution
+.Workaround
 
-To be certain of the job run outcome, please check the job run details for any errors — especially if the status is “Completed”. Until this issues is addressed, do not rely only on the status label.
+To be certain of the job run outcome, check the job run details for any errors, especially if the status is "Completed". Do not rely only on the status label until you address this issue.
 
-=== Issue 2: Migrations fail for jobs in "Inactive" state
+=== Migrations fail for jobs in "Inactive" state
 
-During data migration, the following error message may appear:
+During data migration, the following error message might appear:
 
 ----
 Source Path: <source-path> & Destination Path: <destination-path> failed due to Inactive job found. Please reactivate or remove the existing job.
@@ -37,14 +37,14 @@ Source Path: <source-path> & Destination Path: <destination-path> failed due to 
 
 This issue occurs when NDM updates migration paths but can't find an active job associated with them. Even if you recreate the path, the job remains inactive unless you manually update it.
 
-.Solution
+.Workaround
 Go to (http://<control-plane-IP-address>/jobs-list) in NDM, manually set the job configuration to *Active*, then restart the migration job. 
 
-=== Issue 3: Incorrect file listing during cutover without delta changes
+=== Incorrect file listing during cutover without delta changes
 
-The UI may show files as migrated, even if there are no changes in the source data. This is a display issue and does not affect actual data integrity. 
+The UI might show files as migrated, even if there are no changes in the source data. This is a display issue and does not affect actual data integrity. 
 
-.Solution
+.Workaround
 
 * If you previously scheduled incremental sync then no action is required because the next sync will run automatically. 
 
@@ -59,27 +59,50 @@ After incremental sync has completed, then:
 
 === Update to file server protocol version requires page refresh to update the export path list
 
-When you update a file server with a different protocol version, NDM requires you to perform a page refresh to update the export path list. Failure to do so may cause compatibility issues, delays in fetching the export list, or incomplete updates. This may lead to data inconsistencies, failed synchronization, or errors in accessing the latest export information.  
+When you update a file server with a different protocol version, NDM requires you to perform a page refresh to update the export path list. Failure to do so might cause compatibility issues, delays in fetching the export list, or incomplete updates. This might lead to data inconsistencies, failed synchronization, or errors in accessing the latest export information.  
 
-.Solution  
+.Workaround
 
 Refresh the page whenever you update the file server protocol version. 
 
+=== Job paused or stalled (no progress in Running state) for more than 20 minutes
+
+The job might be in the "Paused" state, or in the "Running" state without any visible progress. This stall is potentially due to the source or destination services going down, or the worker service experiencing downtime. 
+
+.Workaround
+
+. Check the source and destination. 
++
+If offline they are offline, restart to restore connectivity.  
+
+. Check the worker status. 
++
+If worker is offline, SSH into the VM and run the following command: 
++
+[source,cli]
+----
+systemctl restart datamigrator-worker.service
+----
+. Reboot the VM: 
++
+If issue persists, restart the worker VM. 
+
+ 
 == Validation
 
-=== File sizes may differ after migration even if counts match*
+=== File sizes might differ after migration even if counts match
 
-After data migration has completed, the total number of files is correct, but some files may have a different size compared to the original source. This can happen due to temporary network interruptions or server-side issues during the file transfer process. 
+After data migration has completed, the total number of files is correct, but some files might have a different size compared to the original source. This can happen due to temporary network interruptions or server-side issues during the file transfer process. 
 
-.Solution
+.Workaround
 
 Review the migration COC report to identify files marked as errored. Then re-run the migration until the errors are resolved. 
 
 === Discovery job shows 0 files until control plane is refreshed
 
-When running a discovery job, the Job Run Details page may initially show zero files or directories, even though the Discovery report preview displays the actual results.  This happens because the Control Plane updates every 10 minutes. During this interval, the Job Run Details may temporarily show outdated information, even if the job is marked as "Completed." 
+When running a discovery job, the Job Run Details page might initially show zero files or directories, even though the Discovery report preview displays the actual results.  This happens because the Control Plane updates every 10 minutes. During this interval, the Job Run Details might temporarily show outdated information, even if the job is marked as "Completed." 
 
-.Solution
+.Workaround
 
 * Wait for the dashboard to refresh (up to 10 minutes) the Job Run Details page, then accurate file and directory counts are displayed. 
 * For immediate confirmation, refer to the Discovery Report Preview, which includes discovered files and directories. 
@@ -96,7 +119,7 @@ Insufficient destination space for selected path. Do you still want to proceed w
 
 This can happen if the discovery step is skipped and NDM uses a general command that reads the entire block device size, instead of the actual dataset size. This can trigger a false warning. 
 
-.Solution: 
+.Workaround
 
 Run Discovery before a Migration run, to ensure disk usage information is available for pre-check operation. If you still see this warning, then: 
 
@@ -104,15 +127,51 @@ Run Discovery before a Migration run, to ensure disk usage information is availa
 * Manually verify the destination volume has enough space. 
 * If there is sufficient space, you can safely proceed with data migration. 
 
+=== Access permission mismatch when SID mapping is used
+
+NDM might report an error (Missing ACE in target) indicating an access permission mismatch between the source and target systems when SID mapping is used. This issue occurs because SID mapping was not performed at the ROOT level.   
+
+.Workaround
+
+Provide the CSV mapping for the SID source and target as shown in the following two scenarios:  
+
+Scenario 1:: 
++
+For users or groups deleted or removed from the source Active Directory, provide the SID in the CSV mapping sheet:
++
+.Example: 
++
+|===
+| sid_source | sid_target
+
+| S-1-5-21-2444020195-1862089444-1769087368-1000 
+| S-1-5-21-3481156262-2863848796-4292454742-512
+
+|===
+
+Scenario 2:: 
++
+For active users or groups in Active Directory, provide usernames or group names in the CSV mapping sheet exclusively in lowercase, including the domain prefix, for example, domain\username. 
++
+.Example:  
++
+|===
+| sid_source | sid_target 
+
+| rootdomain\user1 | rootdomain\user2 
+
+|===
+
+
 == Reporting 
 
 === Excel displays incorrect permissions in COC report file
 
-When opening the COC report CSV file in Microsoft Excel, some file or folder permissions may appear as #NAME? instead of the actual values (for example, -rwxrwxrwx). 
+When opening the COC report CSV file in Microsoft Excel, some file or folder permissions might appear as #NAME? instead of the actual values, for example, -rwxrwxrwx. 
 
-This happens because Excel mistakenly treats certain permission strings (starting with - or =) as formulas, leading to display errors. (The CSV file itself is correct — this is only a display issue).  
+This happens because Excel mistakenly treats certain permission strings (starting with - or =) as formulas, leading to display errors. (The CSV file itself is correct, this is only a display issue).  
 
-.Solution
+.Workaround
 
 To view correct file and folder permissions open the CSV file using one of the following applications: 
 
@@ -122,19 +181,19 @@ To view correct file and folder permissions open the CSV file using one of the f
 
 * Online CSV viewer 
 
-* Text editors like Notepad++ 
+* Text editor, for example, Notepad++ 
 
 === No error message when Discovery job fails due to network issues
 
-If the host or destination server goes down during a Bulk Discovery job, NDM may not show an error message. This can give the impression that the job is still running normally.  
+If the host or destination server goes down during a Bulk Discovery job, NDM might not show an error message. This can give the impression that the job is still running normally.  
 
-.Solution
+.Workaround
 
-Discovery jobs refresh every 30 seconds. If you notice that the file count, directory count, or data size is not updating, this may indicate a network issue.  
+Discovery jobs refresh every 30 seconds. If you notice that the file count, directory count, or data size is not updating, this might indicate a network issue.  
 
 . Check network connectivity: 
 
-* Open the worker VM terminal. Ping the IP address of the destination server and if there's no response, the destination may be unreachable.
+* Open the worker VM terminal. Ping the IP address of the destination server and if there's no response, the destination might be unreachable.
 
 . Restore the network interface:
 
@@ -150,18 +209,24 @@ Discovery jobs refresh every 30 seconds. If you notice that the file count, dire
 
 . If required, repeat the Steps 1 and 2 for the source server.
 
-=== Unable to switch user on Windows Worker
+=== Unable to switch user on Windows worker
 
-Switching to a different user account on Windows Worker may fail due to existing network connections. This can prevent access to the file server. 
+Switching to a different user account on Windows worker might fail due to existing network connections. This can prevent access to the file server. 
 
-.Solution 
+.Workaround 
 
 
-To remove the previous connection, open Command Prompt on the Windows Worker and run the following commands:
+To remove the previous connection, open Command Prompt on the Windows worker and run the following commands:
 
-`net use`
+[source,cli]
+----
+net use
+----
 
-`net use <IP address> /delete`
+[source,cli]
+----
+net use <IP address> /delete
+----
 
 You can then switch to the new user account and access the file server. 
 
