@@ -15,7 +15,7 @@ After installing Azure using the CLI, create the control plane and worker VMs to
 
 Create a Windows VM to access NDM using the Remote Desktop Protocol:
 
-Follow the steps in the link:https://learn.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-portal[Microsoft Virtual Machines documentation^] to create the Windows VM. Use the following recommended settings when creating VM:
+Learn how to link:https://learn.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-portal[create the Windows VM^]. Use the following recommended settings:
 
 * Image: Windows Server 2022
 * Datacenter: Azure Edition - x64 Gen2
@@ -28,7 +28,7 @@ Follow the steps in the link:https://learn.microsoft.com/en-us/azure/virtual-mac
 
 To create the control pane VM, you need to use the previously imported control plane image. 
 
-Learn how to link:https://learn.microsoft.com/en-us/azure/virtual-machines/capture-image-resource#portal-create-a-vm-from-a-legacy-managed-image[create a VM from a custom imported image^]. Use the following recommended settings when creating the control plane VM:
+Learn how to link:https://learn.microsoft.com/en-us/azure/virtual-machines/capture-image-resource#portal-create-a-vm-from-a-legacy-managed-image[create a VM from a custom imported image^]. Use the following recommended settings:
 
 * Image: Custom imported
 * Size: 16 vCPU, 64 GB RAM
@@ -38,7 +38,7 @@ Learn how to link:https://learn.microsoft.com/en-us/azure/virtual-machines/captu
 
 Create the Linux worker VM for NFS migration using the previously imported worker image.
 
-Follow the steps this link:https://learn.microsoft.com/en-us/azure/virtual-machines/capture-image-resource#portal-create-a-vm-from-a-legacy-managed-image[Microsoft Virtual Machines documentation^] to create a worker VM from a custom imported image. Use the following recommended settings when creating the Linux worker VM:
+Learn how to link:https://learn.microsoft.com/en-us/azure/virtual-machines/capture-image-resource#portal-create-a-vm-from-a-legacy-managed-image[create a worker VM from a custom imported image^]. Use the following recommended settings:
 
 * Image: Custom imported
 * Size: 4 vCPU, 16GB RAM
@@ -50,9 +50,7 @@ Add the Windows worker installer for SMB migration.
 
 .Steps
 . Download the Windows worker installer for Azure from the link:https://mysupport.netapp.com/site/[NetApp Support site^]. 
-. Follow the steps in the link:https://learn.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-portal[Microsoft Virtual Machines documentation^] to create a Windows VM.
-+
-Use the following recommended settings when creating the Windows VM:
+. Learn how to link:https://learn.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-portal[create a Windows VM^]. Use the following recommended settings:
 +
 ** Image: Choose Windows Server 2022 
 ** Datacenter: Azure Edition - x64 Gen2
@@ -75,8 +73,8 @@ Learn about link:https://learn.microsoft.com/en-us/azure/virtual-machines/window
 Windows worker for MacOS.
 
 .. Install the Microsoft Windows App on your local laptop.
-.. Follow the steps in the link:https://learn.microsoft.com/en-us/windows-app/get-started-connect-devices-desktops-apps[Microsoft Windows App documentation^] to RDP into the SMB Windows Worker VM.
-.. Follow the steps in the link:https://learn.microsoft.com/en-us/windows-app/device-audio-folder-redirection-teams?tabs=macos#folder-redirection[Microsoft Windows App documentation^] to mount the local folder which contains the Windows Worker Installer.
+.. link:https://learn.microsoft.com/en-us/windows-app/get-started-connect-devices-desktops-apps[RDP into the SMB Windows Worker VM^].
+.. link:https://learn.microsoft.com/en-us/windows-app/device-audio-folder-redirection-teams?tabs=macos#folder-redirection[Mount the local folder which contains the Windows Worker Installer^].
 .. Locate the folder you mounted to the Windows Worker VM under "This PC" on the server.
 .. Move the Windows Worker Installer from the mounted folder to a suitable location on the Windows VM.
 --
@@ -85,7 +83,7 @@ Windows worker for MacOS.
 Windows worker for Windows:
 
 .. Launch a Remote Desktop Connection.
-.. Follow the steps in the link:https://cat.pdx.edu/platforms/windows/remote-access/file-sharing-rdp-from-windows/[Windows^] procedure to RDP into the SMB Windows Worker VM and mount the local folder containing the Windows Worker Installer. 
+.. link:https://cat.pdx.edu/platforms/windows/remote-access/file-sharing-rdp-from-windows/[RDP into the SMB Windows Worker VM and mount the local folder containing the Windows Worker Installer^]. 
 .. Locate the folder you mounted to the Windows Worker VM under "This PC" on the server.
 .. Move the Windows Worker Installer from the mounted folder to a suitable location on the Windows VM .
 --

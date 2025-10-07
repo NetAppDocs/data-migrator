@@ -47,7 +47,8 @@ You can select various settings from the Options page to customize your Bulk Mig
 
 | Migrate File
 a| You can use this option to select files to migrate based on their last modified time.
-. Select *All* to migrate all files regardless of their modification date.
+
+. Select *All* to migrate all files, regardless of their modification date.
 . Select *Exclude file older than (UTC)* to exclude files older than a specified date.
 
 | Skip Files modified in last

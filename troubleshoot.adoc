@@ -34,30 +34,36 @@ cat /opt/datamigrator/openbao/cluster-keys.json
 == kubectl reference commands
 
 * To get the pods in datamigrator namespace:
++
 [source,cli]
 ----
 kubectl get pods -n datamigrator
 ----
 * To get the logs for a pod in datamigrator namespace:
++
 [source,cli]
 ----
 kubectl logs <podname> -n datamigrator
 ----
 * To describe a pod in datamigrator namespace:
++
 [source,cli]
 ----
 kubectl describe <podname> -n datamigrator
 ----
 * To get all namespaces:
++
 [source,cli]
 ----
 kubectl get ns
 ----
 * To get the pods in any namespace:
++
 [source,cli]
 ----
 kubectl get pods -n <NAMESPACE>
 ----
+
 == Unseal Openbao
 
 If you encounter an issue where openbao is sealed, follow these steps to unseal.
