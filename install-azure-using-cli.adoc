@@ -27,7 +27,7 @@ az login --tenant <YOUR_TENANT_ID>
 az account set --subscription <YOUR_SUBSCRIPTION_ID>
 az account show
 ----
-. Learn how to link:https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal[create an Azure storage account^].
+. Learn how to link:https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal[create storage and a container in your Azure account^].
 . Contact NetApp Support at ng-ndm-support@netap.com to request a time-limited SAS URL for the VHD and checksum file. The SAS URL provides temporary, secure access required for the deployment process described here.
 . Copy control plane and worker VHDs:
 .. Retrieve the primary access key for your storage account:
@@ -73,7 +73,9 @@ az storage blob copy start \
   --account-name <YOUR_STORAGE_ACCOUNT> \
   --account-key <YOUR_STORAGE_ACCOUNT_KEY>
 ----
-.. To validate the checksum (optional), mount your blob storage to a Linux VM using link:https://learn.microsoft.com/en-us/azure/storage/blobs/blobfuse2-how-to-deploy?tabs=RHEL[Blobfuse2], then compute the checksum and for consistency, compare it to the one provided. Follow this link to link:https://linuxhostsupport.com/blog/how-to-verify-checksum-of-a-file-on-linux/[learn how to verify a checksum in Linux].
+.. To validate the checksum (optional), mount your blob storage to a Linux VM using link:https://learn.microsoft.com/en-us/azure/storage/blobs/blobfuse2-how-to-deploy?tabs=RHEL[Blobfuse2^], then compute the checksum and for consistency, compare it to the one provided.
++
+Learn how to link:https://linuxhostsupport.com/blog/how-to-verify-checksum-of-a-file-on-linux/[verify a checksum in Linux^].
 .. Create a new managed Azure image from the copied VHD, then repeat for each VHD:
 +
 [source,cli]

@@ -28,6 +28,7 @@ Workers are virtual machines running on Linux (which supports the NFS protocol),
 * For SMB migration, download the Windows Worker Installer from the link:https://mysupport.netapp.com/site/[NetApp Support site^].
 * For NFS migration, download the Worker OVA from the link:https://mysupport.netapp.com/site/[NetApp Support site^].
 
+[[create-control-plane-and-worker-vms]]
 == Step 1: Create the control plane and worker VMs
 
 Create the control plane and worker virtual machines (VMs) from the OVA files using the setup wizard.
@@ -156,7 +157,7 @@ The default credentials for the NDM UI are:
 
 == Step 3: Associate worker VM with control plane
 
-You need to add the worker VM to the control plane created in Step 1, for the first time.
+You need to add the worker VM to the control plane created in <<create-control-plane-and-worker-vms,Step 1>>, for the first time.
 
 .Steps
 

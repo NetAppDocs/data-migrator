@@ -28,7 +28,7 @@ Follow the steps in the link:https://learn.microsoft.com/en-us/azure/virtual-mac
 
 To create the control pane VM, you need to use the previously imported control plane image. 
 
-Follow the steps in the link:https://learn.microsoft.com/en-us/azure/virtual-machines/capture-image-resource#portal-create-a-vm-from-a-legacy-managed-image[[Microsoft Virtual Machines documentation^] to create a VM from a custom imported image. Use the following recommended settings when creating the control plane VM:
+Learn how to link:https://learn.microsoft.com/en-us/azure/virtual-machines/capture-image-resource#portal-create-a-vm-from-a-legacy-managed-image[create a VM from a custom imported image^]. Use the following recommended settings when creating the control plane VM:
 
 * Image: Custom imported
 * Size: 16 vCPU, 64 GB RAM
@@ -44,12 +44,12 @@ Follow the steps this link:https://learn.microsoft.com/en-us/azure/virtual-machi
 * Size: 4 vCPU, 16GB RAM
 * License type: Other
 
-.Step 3 (b)Add the Windows worker installer
+== Step 3 (b)Add the Windows worker installer
 
 Add the Windows worker installer for SMB migration.
 
 .Steps
-. Download the windows worker installer for Azure from the link:https://mysupport.netapp.com/site/[NetApp Support site^]. 
+. Download the Windows worker installer for Azure from the link:https://mysupport.netapp.com/site/[NetApp Support site^]. 
 . Follow the steps in the link:https://learn.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-portal[Microsoft Virtual Machines documentation^] to create a Windows VM.
 +
 Use the following recommended settings when creating the Windows VM:
@@ -144,8 +144,8 @@ The default credentials for the NDM UI are:
 * URL: https://<control-plane-private-ip>/
 * Username: admin@datamigrator.local
 * Password: Welcome@123
-+
-Depending on your migration, select the NFS or SMB tab.
+
+. Depending on your migration, select the NFS or SMB tab.
 +
 [role="tabbed-block"]
 ====
@@ -195,6 +195,20 @@ Associate the Windows worker with the control plane VM.
 * Worker secret
 * Project ID
 * Control plane Private IP address
+
+.. Disable Windows defender:
++
+[source,cli]
+----
+PS C:\Windows\system32> Set-MpPreference -DisableRealtimeMonitoring $true
+----
++
+[source,cli]
+----
+PS C:\Windows\system32> Add-MpPreference -ExclusionPath "C:\datamigrator\mnt"
+----
+
+.. Disable Windows update in Windows services.
 
 .. When installation completes, the worker service starts automatically and you can then locate the Logs at:
 +
