@@ -41,6 +41,12 @@ run simultaneously	 | 4  | 2
 | Protocol migration - Type | Cross-protocol migration is not supported (for example, NFS to SMB)
 | File names | NDM cannot migrate system-generated files owned by source 
 
+| Hard links
+| NDM discovers hard links and reports them after discovery. NDM does not migrate hard links from the source to the destination for both NFS and SMB. Instead, data shared by multiple files on the source using hard links gets duplicated on the destination without preserving the hard links from the source. This results in increased storage usage and inode usage at the destination after migration.
+| SMB permissions
+| Migration of SMB SACL (audit permissions) is currently not supported
+| SMB special files
+| NDM discovers symbolic links and reports them after discovery. Migration of Alternate Data Streams (ADS), sparse files, and SMB redirects (symbolic links, wide links, and junctions) is currently not supported.
 |===
 
 

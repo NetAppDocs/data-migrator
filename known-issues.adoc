@@ -67,17 +67,17 @@ Refresh the page whenever you update the file server protocol version.
 
 === Job paused or stalled (no progress in Running state) for more than 20 minutes
 
-The job might be in the "Paused" state, or in the "Running" state without any visible progress. This stall is potentially due to the source or destination services going down, or the worker service experiencing downtime. 
+NDM might require user intervention when network connectivity issues, or issues with source, destination volume stability, or both are observed. The job might be in the "Paused" state, or in the "Running" state without any visible progress. This stall is potentially due to the source or destination services going down, or the worker service experiencing downtime.
 
 .Workaround
 
 . Check the source and destination. 
 +
-If offline they are offline, restart to restore connectivity.  
+If they are offline, restart to restore connectivity.  
 
 . Check the worker status. 
 +
-If worker is offline, SSH into the VM and run the following command: 
+If the worker is offline, SSH into the VM and run the following command: 
 +
 [source,cli]
 ----

@@ -78,10 +78,11 @@ On the *Job List* page, you can access the following job level operations, which
 
 From the *Job List* page, you can access the *Job Details* page to view additional details about individual jobs, such as:
 
-* Job type (*Discovery, Migration, or Cutover*).
-* Number of files and directories discovered.
-* Time elapsed.
-* Data discovered.
+* Job type (Discovery, Migration, or Cutover)
+* Number of files and directories discovered
+* Time elapsed
+* Data discovered
+* Job configuration 
 
 .Steps
 
