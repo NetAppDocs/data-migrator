@@ -63,11 +63,13 @@ gcloud projects add-iam-policy-binding <PROJECT_ID> \
 
 == Step 4: Obtain and upload images
 
-* Log into link:https://mysupport.netapp.com/site/[NetApp Support Site^] to download the control plane and worker .tar.gz images as well as (optional) .sha256 checksum files
+//* Log into link:https://mysupport.netapp.com/site/[NetApp Support Site^] to download the control plane and worker .tar.gz images as well as (optional) .sha256 checksum files.
+* Go to the preview link provided to download the control plane and worker .tar.gz images as well as (optional) .sha256 checksum files.
 * link:https://cloud.google.com/storage/docs/uploading-objects#uploading-an-object[Upload the tar.gz for worker and control plane to your GCS bucket^].
 
 == Step 5: Validate SHA256 checksums (optional)
-After you download the tar.gz file, you can optionally use this link:https://emn178.github.io/online-tools/sha256_checksum.html[checksum calculator^] to verify the checksum and validate against the checksum file downloaded from NSS.
+//After you download the tar.gz file, you can optionally use this link:https://emn178.github.io/online-tools/sha256_checksum.html[checksum calculator^] to verify the checksum and validate against the checksum file downloaded from NSS.
+After you download the tar.gz file, you can optionally use this link:https://emn178.github.io/online-tools/sha256_checksum.html[checksum calculator^] to verify the checksum and validate against the checksum file downloaded from the preview site.
 
 == Step 6: Import images using VM migration service
 After you upload the worker and control plane tar.gz files, you can create a VM image for worker and control plane:
@@ -121,7 +123,8 @@ Learn how to link:https://cloud.google.com/compute/docs/instances/create-vm-from
 * Image: Custom imported image for the control plane.
 
 . For SMB migration, add the Windows worker installer:
-.. Download the windows worker installer for Google Cloud Platform from the link:https://mysupport.netapp.com/site/[NetApp Support site^]. 
+//.. Download the windows worker installer for Google Cloud Platform from the link:https://mysupport.netapp.com/site/[NetApp Support site^]. 
+.. Download the windows worker installer for Google Cloud Platform from the preview link provided. 
 .. Learn how to link:https://cloud.google.com/compute/docs/create-windows-server-vm-instance[create a Windows Server VM instance^]. Use the following recommended settings for the Windows worker VM:
 +
 * Image: Windows Server 2022 Datacenter
@@ -323,40 +326,4 @@ The following tables describes the placeholder references:
 * link:https://cloud.google.com/compute/docs/create-windows-server-vm-instance[Create Windows Server VM^]
 * link:https://cloud.google.com/storage/docs/uploading-objects#uploading-an-object[Upload objects to GCS^]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
+// 9 OCT 2025, commented out lines with the NSS link and replaced them with "preview link provided" - temporary measure for preview only.

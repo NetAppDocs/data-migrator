@@ -49,7 +49,9 @@ Learn how to link:https://learn.microsoft.com/en-us/azure/virtual-machines/captu
 Add the Windows worker installer for SMB migration.
 
 .Steps
-. Download the Windows worker installer for Azure from the link:https://mysupport.netapp.com/site/[NetApp Support site^]. 
+//. Download the Windows worker installer for Azure from the link:https://mysupport.netapp.com/site/[NetApp Support site^]. 
+. Download the Windows worker installer for Azure from the preview link provided. 
+
 . Learn how to link:https://learn.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-portal[create a Windows VM^]. Use the following recommended settings:
 +
 ** Image: Choose Windows Server 2022 
@@ -257,3 +259,4 @@ The following tables describes the placeholder references:
 | <SHA_FILE_NAME>	| Checksum file name (without .sha256 extension)
 |===
 
+// 9 OCT 2025, commented out lines with the NSS link and replaced them with "preview link provided" - temporary measure for preview only.
