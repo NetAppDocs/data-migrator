@@ -24,9 +24,12 @@ Workers are virtual machines running on Linux (which supports the NFS protocol),
 
 .Before you begin
 
-* Download the control plane OVA from the link:https://mysupport.netapp.com/site/[NetApp Support site^].
-* For SMB migration, download the Windows Worker Installer from the link:https://mysupport.netapp.com/site/[NetApp Support site^].
-* For NFS migration, download the Worker OVA from the link:https://mysupport.netapp.com/site/[NetApp Support site^].
+//* Download the control plane OVA from the link:https://mysupport.netapp.com/site/[NetApp Support site^].
+//* For SMB migration, download the Windows Worker Installer from the link:https://mysupport.netapp.com/site/[NetApp Support site^].
+//* For NFS migration, download the Worker OVA from the link:https://mysupport.netapp.com/site/[NetApp Support site^].
+* Download the control plane OVA from the preview link provided.
+* For SMB migration, download the Windows Worker Installer from the preview link provided.
+* For NFS migration, download the Worker OVA from the preview link provided.
 
 [[create-control-plane-and-worker-vms]]
 == Step 1: Create the control plane and worker VMs
@@ -298,3 +301,4 @@ https://<IP_address>/ui/
 * Postgres keys: POSTGRES_DMADMIN_USER and POSTGRES_DMADMIN_PASSWORD
 
 
+// 9 OCT 2025, commented out lines with the NSS link and replaced them with "preview link provided" - temporary measure for preview only.
