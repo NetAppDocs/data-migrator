@@ -42,3 +42,6 @@ After you log out of NDM, you need to use your newly created credentials (email 
 . Enter the *Email* address and *Password* you registered previously.
 . Select *Login*.
 
+.What's next?
+
+link:manage-projects.html[Learn about using NDM]

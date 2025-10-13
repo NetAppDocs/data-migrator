@@ -259,4 +259,8 @@ The following tables describes the placeholder references:
 | <SHA_FILE_NAME>	| Checksum file name (without .sha256 extension)
 |===
 
+.What's next?
+
+link:configure-ndm.html[Learn about configuring NDM]
+
 // 9 OCT 2025, commented out lines with the NSS link and replaced them with "preview link provided" - temporary measure for preview only.

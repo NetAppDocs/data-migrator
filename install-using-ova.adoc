@@ -300,5 +300,9 @@ https://<IP_address>/ui/
 * Log in using the username and password from OpenBao.
 * Postgres keys: POSTGRES_DMADMIN_USER and POSTGRES_DMADMIN_PASSWORD
 
+.What's next?
+
+link:configure-ndm.html[Learn about configuring NDM]
+
 
 // 9 OCT 2025, commented out lines with the NSS link and replaced them with "preview link provided" - temporary measure for preview only.
