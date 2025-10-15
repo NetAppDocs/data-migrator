@@ -70,7 +70,7 @@ If you encounter an issue where openbao is sealed, follow these steps to unseal.
 
 .Steps
 
-. SSH into the control plane server via bastion connect.
+. SSH into the control plane server using bastion connect.
 . replace OPENBAO_UNSEAL_KEY with your key:
 [source,cli]
 ----

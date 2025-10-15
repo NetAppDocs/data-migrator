@@ -31,22 +31,23 @@ run simultaneously	 | 4  | 2
 |===
 | Category | Limits
 
-| Network accessibility | It is recommended to use NDM in  private networks.
+| Active destination support
+| NDM does not support an active destination (when a target storage is actively used or written before Cutover).
 | Directory level migration | NDM supports migration of entire export paths only. It does not support migrating individual directories within an export path.
-| Domain support | No domain support, NDM is accessible via IP address only
-| Security | NDM uses self-signed certificates to encrypt web traffic with SSL/TLS.
-| User interface | NDM is optimized for Google Chrome and Firefox browsers using 1920 x 1080 screen resolution; mobile displays are not supported.
-| Windows worker deployment | Windows worker must be part of the same root domain as the destination.
-| Protocol migration - Version | Cross-version migration within the same protocol is not supported (for example, NFS v3 to NFS v4).
-| Protocol migration - Type | Cross-protocol migration is not supported (for example, NFS to SMB).
-| System files | NDM cannot migrate system-generated files owned by the source.
-
+| Domain support | There is no domain support, NDM is accessible using an IP address only.
 | Hard links
 | NDM discovers hard links and reports them after discovery. NDM does not migrate hard links from the source to the destination for both NFS and SMB. Instead, data shared by multiple files on the source using hard links gets duplicated on the destination without preserving the hard links from the source. This results in increased storage usage and inode usage at the destination after migration.
+| Network accessibility | It is recommended to use NDM in  private networks.
+| Protocol migration - Type | Cross-protocol migration is not supported (for example, NFS to SMB).
+| Protocol migration - Version | Cross-version migration within the same protocol is not supported (for example, NFS v3 to NFS v4).
 | SMB permissions
 | Migration of SMB SACL (audit permissions) is currently not supported
 | SMB special files
 | NDM discovers symbolic links and reports them after discovery. Migration of Alternate Data Streams (ADS), sparse files, and SMB redirects (symbolic links, wide links, and junctions) is currently not supported.
+| Security | NDM uses self-signed certificates to encrypt web traffic with SSL/TLS.
+| System files | NDM cannot migrate system-generated files owned by the source.
+| User interface | NDM is optimized for Google Chrome and Firefox browsers using 1920 x 1080 screen resolution; mobile displays are not supported.
+| Windows worker deployment | Windows worker must be part of the same root domain as the destination.
 |===
 
 // 9 OCT 2025, made some further updates at dev teams request on preview day.
