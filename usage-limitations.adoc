@@ -34,7 +34,7 @@ run simultaneously	 | 4  | 2
 | Active destination support
 | NDM does not support an active destination (when a target storage is actively used or written before Cutover).
 | Directory level migration | NDM supports migration of entire export paths only. It does not support migrating individual directories within an export path.
-| Domain support | No domain support, NDM is accessible using an IP address only
+| Domain support | There is no domain support, NDM is accessible using an IP address only.
 | Hard links
 | NDM discovers hard links and reports them after discovery. NDM does not migrate hard links from the source to the destination for both NFS and SMB. Instead, data shared by multiple files on the source using hard links gets duplicated on the destination without preserving the hard links from the source. This results in increased storage usage and inode usage at the destination after migration.
 | Network accessibility | It is recommended to use NDM in  private networks.
