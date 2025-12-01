@@ -27,26 +27,30 @@ run simultaneously	 | 4  | 2
 
 
 *Other usage limits*
+
+[cols="30,70"]
 |===
 | Category | Limits
 
 | Active destination support
 | NDM does not support an active destination (when a target storage is actively used or written before Cutover).
 | Case sensitive files 
-| For SMB, NDM migrates only one of the case-differing files created using NFS in a folder and errors out the other. This occurs because SMB can’t accept both files. NetApp recommends running discovery using NFS to identify these case-sensitive files.
+| For SMB, NDM migrates only one of the case-differing files created using NFS in a folder and errors out the other file. This occurs because SMB can’t accept both files. You can run discovery using NFS to identify these case-sensitive files.
 | Directory level migration | NDM supports migration of entire export paths only. It does not support migrating individual directories within an export path.
 | Domain support | There is no domain support, NDM is accessible using an IP address only.
-| Network accessibility | NetApp recommends to use NDM in  private networks.
-| Protocol migration - Type | Cross-protocol migration is not supported (for example, NFS to SMB).
-| Protocol migration - Version | Cross-version migration within the same protocol is not supported (for example, NFS v3 to NFS v4).
+| Network accessibility | NetApp recommends using NDM in private networks.
+| NFS v4 ACLs | NDM doesn’t stamp ACLs with NFS v4, it only applies basic permissions in the destination. This behavior is similar to NFS v3.
+| Protocol migration - Type | Cross-protocol migration is not supported, for example, NFS to SMB.
+| Protocol migration - Version | Cross-version migration within the same protocol is not supported, for example, NFS v3 to NFS v4.
 | SMB permissions
-| Migration of SMB SACL (audit permissions) is currently not supported
-| SMB special files
-| NDM discovers redirects (symbolic links, hard links, junction points, and volume mount points) and reports them after discovery. Migration of Alternate Data Streams (ADS), sparse files, and SMB redirects is currently not supported.
+| Migration of SMB SACL (audit permissions) is not supported.
+| SMB special files | NDM discovers redirects (symbolic links, hard links, junction points, and volume mount points) and reports them after discovery. Migration of Alternate Data Streams (ADS), sparse files, and SMB redirects is not supported.
 | Security | NDM uses self-signed certificates to encrypt web traffic with SSL/TLS.
-| System files | NDM cannot migrate system-generated files owned by the source.
+| Sparse files | Sparse files become full-size files when they migrate, NDM doesn't preserve sparsity. You need extra storage for these files.
+| System files | NDM cannot migrate system-generated files that the source owns.
 | User interface | NDM is optimized for Google Chrome and Firefox browsers using 1920 x 1080 screen resolution; mobile displays are not supported.
-| Windows worker deployment | Windows worker must be part of the same root domain as the destination.
+| Windows worker deployment | The Windows worker must be part of the same root domain as the destination.
+
 |===
 
-// 9 OCT 2025, made some further updates at dev teams request on preview day.
+// 2025 DEC 1, OTHERDOC-166 and NADIAA updates
