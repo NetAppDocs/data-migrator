@@ -171,6 +171,7 @@ The Chain of Custody (COC) report might list files from deleted folders. When yo
 .Workaround
 
 Check the destination volume because the data is correctly mirrored even though the COC report might show entries from deleted folders.
+
 === Excel displays incorrect permissions in COC report file
 
 When opening the COC report CSV file in Microsoft Excel, some file or folder permissions might appear as #NAME? instead of the actual values, for example, -rwxrwxrwx. 
