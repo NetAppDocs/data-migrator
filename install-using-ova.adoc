@@ -31,6 +31,8 @@ Workers are virtual machines running on Linux (which supports the NFS protocol),
 * For SMB migration, download the Windows Worker Installer from the preview link provided.
 * For NFS migration, download the Worker OVA from the preview link provided.
 
+include::./_include/configure-ports.adoc[]
+
 [[create-control-plane-and-worker-vms]]
 == Step 1: Create the control plane and worker VMs
 
@@ -154,7 +156,7 @@ reports-service-65cb4f8858-6vqdm   2/2     Running   0          144m
 
 The default credentials for the NDM UI are:
 
-* URL: https://<control-plane-private-ip>/
+* URL: `https://<control-plane-private-ip>/`
 * Username: admin@datamigrator.local
 * Password: Welcome@123
 
@@ -304,5 +306,5 @@ https://<IP_address>/ui/
 
 link:configure-ndm.html[Learn about configuring NDM]
 
-
+// 2025 DEC 1, OTHERDOC-168
 // 9 OCT 2025, commented out lines with the NSS link and replaced them with "preview link provided" - temporary measure for preview only.

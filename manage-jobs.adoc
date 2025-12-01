@@ -80,7 +80,7 @@ Manage Job Rub operations by accessing the following job level operations on the
 
 . Select *Jobs* in the left navigation bar.
 . Select *Job List*. 
-. In the *Job Listings* table, locate a job you want to delete and select the action menu (three dots) next to your job. 
+. In the *Job Listings* table, locate the job you want to delete and select the action menu (three dots) next to your job. 
 . Select *Delete* from the action menu.
 . Select *Delete* in the pop-up window to delete the job. You can delete a job only if there is no active run. 
 
@@ -232,4 +232,4 @@ You can also generate an error report for a previous job run.
 . On the *Job Run Details* page, in the *Errors* panel, select *View All*.
 . Select *Generate Error Report* to download details about errors in the job run you selected.
 
-// 2025 NOV 28: NADIAA updates
+// 2025 NOV 28: OTHERDOC-171 and NADIAA updates

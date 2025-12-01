@@ -29,6 +29,8 @@ Workers are virtual machines running on Linux, which supports the NFS protocol, 
 * If you're using SMB migration, download the Windows Worker Installer from the NetApp Support Site.
 * If you're using NFS migration, download the Worker image from the NetApp Support Site.
 
+include::./_include/configure-ports.adoc[]
+
 == Step 1: Enable required APIs
 
 link:https://cloud.google.com/migrate/virtual-machines/docs/5.0/get-started/enable-services#enabling_required_services_on_the_host_project[Enable all of the APIs required for your project^]. These APIs are mandatory for image import and deployment operations.
@@ -201,7 +203,7 @@ You can now access NDM using RDP with the Windows VM you created for NDM access 
 +
 The default credentials for the NDM UI are:
 +
-* URL: https://<control-plane-private-ip>/
+* URL: `https://<control-plane-private-ip>/`
 * Username: admin@datamigrator.local
 * Password: Welcome@123
 
@@ -218,7 +220,7 @@ Associate Linux worker with control plane VM.
 * link:https://cloud.google.com/compute/docs/instances/connecting-to-windows[Connect to the Windows VM using Remote Desktop Protocol (RDP)^].
 .. Retrieve the private IP address from the newly created control plane VM in GCP.
 .. Open any browser and navigate to the NDM UI using the following credentials: 
-* IP address: https://<control_plane_IP_address>/
+* IP address: `https://<control_plane_IP_address>/`
 * Username: admin@datamigrator.local
 * Password: Welcome@123.
 .. Reset the password.
@@ -330,4 +332,5 @@ The following tables describes the placeholder references:
 
 link:configure-ndm.html[Learn about configuring NDM]
 
+// 2025 DEC 1, OTHERDOC-168
 // 9 OCT 2025, commented out lines with the NSS link and replaced them with "preview link provided" - temporary measure for preview only.

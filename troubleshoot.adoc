@@ -24,11 +24,11 @@ All credentials are managed from openbao. Replace the IP_ADDRESS with the IP add
 sudo su - datamigrator
 cat /opt/datamigrator/openbao/cluster-keys.json
 ----
-. Login to openbao UI - https://IP_ADDRESS/ui/ and enter the root token for login. 
+. Login to openbao UI - `https://IP_ADDRESS/ui/` and enter the root token for login. 
 . Navigate to secrets.
-. Keycloak UI - https://IP_ADDRESS/keycloak/
-. NDM UI - https://IP_ADDRESS/. The initial username is admin@datamigrator.local and password is Welcome@123.
-. Temporal UI - https://IP_ADDRESS/temporal/ui/
+. Keycloak UI - `https://IP_ADDRESS/keycloak/`
+. NDM UI - `https://IP_ADDRESS/`. The initial username is admin@datamigrator.local and password is Welcome@123.
+. Temporal UI - `https://IP_ADDRESS/temporal/ui/`
 . Postgres connection - Use the multipass IP to connect to Postgres database. Get the username, password from openbao. Keys are - POSTGRES_DMADMIN_USER and POSTGRES_DMADMIN_PASSWORD
 
 == kubectl reference commands

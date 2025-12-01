@@ -212,37 +212,6 @@ You can then switch to the new user account and access the file server.
 
 == Recommendations for using NDM
 
-* Ensure that the following ports for the control plane and workers are enabled:
-+
-*Control plane*
-+
-[cols="1,1,1"]
-|===
-|Service | TCP port | Notes
-
-.2+| Temporal Server | 7233 | Frontend for workers and clients
-| 7234 |	Internode connection, if using clusters
-| Temporal UI | 8080  | Default port, if enabled
-| PostgreSQL (Temporal database) | 5432 | From Temporal services
-| Redis | 6379 | From workers or control plane services
-| API or UI ingress (your app) | 80 or 443, as applicable  |	
-| Grafana | 3000 |	
-|===
-+
-*Workers*
-+
-[cols="1,1,1"]
-|===
-|Service |TCP port | Connect to...
-
-.3+|Outbound to Control plane | 7233 | Temporal frontend
-| 6379 | Redis
-| 80 or 443 | API or UI, if they call it
-.2+| Outbound to storage |NFS: 2049 |NFS servers 
-
-(Include 111 TCP/UDP if the portmapper service for Remote Procedure Calls is needed) | SMB: 445  | SMB servers
-|===
-
 * Do not run Migration and Cutover jobs simultaneously. Ensure only one job is active at any time. 
 
 * Use one worker secret code to set up a worker explicitly. 

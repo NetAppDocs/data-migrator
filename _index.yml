@@ -7,7 +7,7 @@ indexpage:
     - title: Get started
       links: 
         - title: Release notes
-          url: /known-issues-and-limitations.html
+          url: /known-issues.html
         - title: Learn about NDM
           url: /learn-about.html
         - title: Quick start 
