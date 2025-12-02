@@ -147,7 +147,7 @@ Associate the Linux worker with the control plane VM.
 .. Open any browser and navigate to the NDM UI using the following credentials: 
 * IP address: `https://<control_plane_IP_address>/`
 * Username: admin@datamigrator.local
-* Password: Welcome@123.
+* Password: Welcome@123
 .. Reset the password.
 .. Add new user details and email ID.
 .. Create a new project by providing a name and an optional description.

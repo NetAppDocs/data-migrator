@@ -44,6 +44,8 @@ run simultaneously	 | 4  | 2
 | Protocol migration - Version | Cross-version migration within the same protocol is not supported, for example, NFS v3 to NFS v4.
 | SMB permissions
 | Migration of SMB SACL (audit permissions) is not supported.
+|  SMB files with trailing spaces  
+| When migrating over SMB, NDM errors out files with names that contain trailing spaces because SMB does not permit these file names. 
 | SMB special files | NDM discovers redirects (symbolic links, hard links, junction points, and volume mount points) and reports them after discovery. Migration of Alternate Data Streams (ADS), sparse files, and SMB redirects is not supported.
 | Security | NDM uses self-signed certificates to encrypt web traffic with SSL/TLS.
 | Sparse files | Sparse files become full-size files when they migrate, NDM doesn't preserve sparsity. You need extra storage for these files.
