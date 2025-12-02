@@ -82,6 +82,8 @@ gcloud projects add-iam-policy-binding <PROJECT_ID> \
   --member=user:<YOUR_EMAIL> \
   --role=roles/vmmigration.admin
 ----
++
+This gives you VM migration administrative permissions at the project level. 
 --
 ====
 
