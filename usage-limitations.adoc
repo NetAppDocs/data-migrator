@@ -39,7 +39,7 @@ run simultaneously	 | 4  | 2
 | Directory level migration | NDM supports migration of entire export paths only. It does not support migrating individual directories within an export path.
 | Domain support | There is no domain support, NDM is accessible using an IP address only.
 | Network accessibility | NetApp recommends using NDM in private networks.
-| NFS v4 ACLs | NDM doesn’t stamp ACLs with NFS v4, it only applies basic permissions in the destination. This behavior is similar to NFS v3.
+| NFS v4 ACLs | NDM doesn’t stamp access control lists (ACLs) with NFS v4, it only applies basic permissions in the destination. This behavior is similar to NFS v3.
 | Protocol migration - Type | Cross-protocol migration is not supported, for example, NFS to SMB.
 | Protocol migration - Version | Cross-version migration within the same protocol is not supported, for example, NFS v3 to NFS v4.
 | SMB permissions
