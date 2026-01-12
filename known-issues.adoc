@@ -55,7 +55,7 @@ The UI might show files as migrated, even if there are no changes in the source 
 After incremental sync has completed, then:
 
 * If NDM reports 0 files, your source and destination are in sync. 
-* If NDM reports files, re-run the migration until it shows 0 files, then it is then safe to start cutover.
+* If NDM reports files, re-run the migration until it shows 0 files. Then it is safe to start cutover.
 
 === Update to file server protocol version requires page refresh to update the export path list
 
@@ -207,7 +207,7 @@ Discovery jobs refresh every 30 seconds. If you notice that the file count, dire
 +
 `ifup <interface name>`    
 
-. If required, repeat the Steps 1 and 2 for the source server.
+. If required, repeat Steps 1 and 2 for the source server.
 
 === Unable to switch user on Windows worker
 

@@ -50,7 +50,7 @@ Select *Clear all* to remove any filters you have already applied to your job li
 
 On the *Job List* page, you can access the following job level operations, which allow you to manage Job Run operations:
 
-* Activate and Deactivate a job
+* Activate and deactivate a job
 * Job Details, which provides you with additional information about your jobs
 * Job Run History, which provides information about previous job runs
 
