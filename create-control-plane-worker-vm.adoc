@@ -128,7 +128,7 @@ kubectl get pods -n datamigrator
 +
 The default credentials for the NDM UI are:
 +
-* URL: https://<control-plane-private-ip>/
+* URL: `https://<control-plane-private-ip>/`
 * Username: admin@datamigrator.local
 * Password: Welcome@123
 
@@ -145,9 +145,9 @@ Associate the Linux worker with the control plane VM.
 * Learn about link:https://learn.microsoft.com/en-us/azure/virtual-machines/windows/connect-rdp[RDP connections^].
 .. Retrieve the private IP address from the newly created control plane VM in Azure.
 .. Open any browser and navigate to the NDM UI using the following credentials: 
-* IP address: https://<control_plane_IP_address>/
+* IP address: `https://<control_plane_IP_address>/`
 * Username: admin@datamigrator.local
-* Password: Welcome@123.
+* Password: Welcome@123
 .. Reset the password.
 .. Add new user details and email ID.
 .. Create a new project by providing a name and an optional description.

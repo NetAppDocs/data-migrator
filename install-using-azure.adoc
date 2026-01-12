@@ -31,6 +31,8 @@ Before you can install the NDM control pane and worker, you must have:
 * Sufficient disk space for data storage and VM deployment
 * Azure command line interface (CLI) installed
 
+include::./_include/configure-ports.adoc[]
+
 .Steps
 
 . If you do not have the Azure command line interface (CLI) already installed, go to link:install-azure-using-cli.html[Install Azure CLI and manage assets].
@@ -39,3 +41,4 @@ If you already have the Azure CLI installed, go to Step 2.
 
 . link:create-control-plane-worker-vm.html[Create the control plane and worker VMs].
 
+// 2025 DEC 1, OTHERDOC-168

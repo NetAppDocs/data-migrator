@@ -13,7 +13,7 @@ Use job management features in NetApp Data Migrator (NDM) to initiate and track 
 
 == View Job List
 
-The *Job List* page provides you with a comprehensive overview of all migration related jobs. You can use the information shown on this page to efficiently monitor and manage the status and progress of *Discovery*, *Migration*, and *Cutover* jobs.
+The *Job List* page provides a comprehensive overview of all migration related jobs. Use this page to monitor and manage the status and progress of *Discovery*, *Migration*, and *Cutover* jobs.
 
 .Steps
 
@@ -32,7 +32,7 @@ The *Job List* page shows a *Jobs Listings* table, which includes the following 
 * *Status*: The current state of a job can be either *Active* or *Inactive*. Jobs that use manual export paths with an *invalid* or *disable* status automatically become *Inactive*. Refer to *Add and Manage file servers* for more details.
 * *Updated On*: Job update timestamp.
 
-Jobs that use manual export paths and the *Export Paths File* is later re-uploaded, any previously run jobs associated with a *now invalid or disabled path* will automatically become inactive.
+Jobs that use manual export paths and the *Export Paths File* is later re-uploaded, any previously run jobs associated with a *now invalid or disabled path* automatically become inactive.
 
 == Job List Filters
 
@@ -44,11 +44,11 @@ On the *Job List* page, you can use the *Filters* feature to quickly sort jobs s
 * Type
 * Status
 
-Select *Clear all* to remove any filters you have already applied to your job listings.
+Select *Clear all* to remove filters already applied to your job listings.
 
-== Manage Job Level Operations
+== Manage Job Level operations
 
-On the *Job List* page, you can access the following job level operations, which allow you to manage Job Run operations:
+Manage Job Rub operations by accessing the following job level operations on the *Job List* page:
 
 * Activate and Deactivate a job
 * Job Details, which provides you with additional information about your jobs
@@ -73,6 +73,16 @@ On the *Job List* page, you can access the following job level operations, which
 . In the *Job Listings* table, locate an *Active* job you want to deactivate and select the action menu next to your job.
 . Select *Deactivate* from the pop-up menu.
 . The job *Status* changes from *Active* to *Inactive*, and execution stops until you reactivate the job.
+
+== Delete a Job 
+
+.Steps 
+
+. Select *Jobs* in the left navigation bar.
+. Select *Job List*. 
+. In the *Job Listings* table, locate the job you want to delete and select the action menu (three dots) next to your job. 
+. Select *Delete* from the action menu.
+. Select *Delete* in the pop-up window to delete the job. You can delete a job only if there is no active run. 
 
 == View Job Details
 
@@ -121,7 +131,7 @@ Cutover job status types include:
 
 == Manage Job Run operations
 
-From the *Job Details* page, you can manage various *Start*, *Stop*, *Pause*, and *Resume* operations for a job. You can use the *Pause* feature to temporarily halt a job that is running, without canceling it entirely. You can then resume a job from the point where you paused it, making this a useful feature in scenarios where you need to free up system resources or troubleshoot issues without losing progress.
+From the *Job Details* page, you can manage *Start*, *Stop*, *Pause*, and *Resume* operations for a job. Use the *Pause* feature to temporarily halt a running job, without canceling it. Then, you can resume the job from the point where it was paused. This makes it a useful feature in scenarios where you need to free up system resources or troubleshoot issues without losing progress.
 
 === Pause or resume a job run
 
@@ -143,14 +153,14 @@ You can use the *Stop* option to permanently terminate a job run that is in prog
 
 == Access Job Run Details
 
-From the *Run History* table, you can access the *Job Run Details* page where you can view additional details about your job runs.
+From the *Run History* table, access the *Job Run Details* page where you can view additional details about your job runs.
 
 .Steps
 
 . On the *Job Details* page, in the *Run History* table, select the action menu next to a job run.
 . Select *Details* from the pop-up menu.
 
-The top tile on the *Job Run Details* page provides a summary of key job run metrics including:
+You can view a summary of key job run metrics in the top tile on the *Job Run Details* page, including:
 
 * *Discovery/Migration:* job run type and status.
 * *Files:* the number of files found during the discovery process.
@@ -221,3 +231,5 @@ You can also generate an error report for a previous job run.
 . Select *Details*.
 . On the *Job Run Details* page, in the *Errors* panel, select *View All*.
 . Select *Generate Error Report* to download details about errors in the job run you selected.
+
+// 2025 NOV 28: OTHERDOC-171 and NADIAA updates

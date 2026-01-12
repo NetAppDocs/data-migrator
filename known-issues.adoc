@@ -15,7 +15,7 @@ NetApp Data Migrator (NDM) has the following known issues.
 
 === Job Run status can be confusing when errors occur
 
-Some Migration job runs that encounter errors can show a "Completed" migration status, while others show an "Errored" status. This can cause confusion in interpreting the actual status of a Migration job run. 
+Some Migration job runs encounter errors and show a "Completed" migration status, while others show an "Errored" status. This difference can cause confusion when interpreting the Migration job run status. 
 
 Status definitions:
 
@@ -25,7 +25,7 @@ Status definitions:
 
 .Workaround
 
-To be certain of the job run outcome, check the job run details for any errors, especially if the status is "Completed". Do not rely only on the status label until you address this issue.
+Verify the job run outcome by checking the job run details for any errors, especially if the status is "Completed". Do not rely only on the status label until after you address this issue.
 
 === Migrations fail for jobs in "Inactive" state
 
@@ -35,14 +35,14 @@ During data migration, the following error message might appear:
 Source Path: <source-path> & Destination Path: <destination-path> failed due to Inactive job found. Please reactivate or remove the existing job.
 ----
 
-This issue occurs when NDM updates migration paths but can't find an active job associated with them. Even if you recreate the path, the job remains inactive unless you manually update it.
+This issue occurs when NDM updates migration paths but can't find an active job associated with them. Recreating the path does not activate the job; you must update it manually.
 
 .Workaround
 Go to (http://<control-plane-IP-address>/jobs-list) in NDM, manually set the job configuration to *Active*, then restart the migration job. 
 
 === Incorrect file listing during cutover without delta changes
 
-The UI might show files as migrated, even if there are no changes in the source data. This is a display issue and does not affect actual data integrity. 
+The UI might show files as migrated, even if the source data has not changed. This is a display issue and does not affect actual data integrity. 
 
 .Workaround
 
@@ -55,11 +55,11 @@ The UI might show files as migrated, even if there are no changes in the source 
 After incremental sync has completed, then:
 
 * If NDM reports 0 files, your source and destination are in sync. 
-* If NDM reports files, re-run the migration until it shows 0 files, then it is then safe to start cutover.
+* If NDM reports files, re-run the migration until it shows 0 files. Then start cutover.
 
 === Update to file server protocol version requires page refresh to update the export path list
 
-When you update a file server with a different protocol version, NDM requires you to perform a page refresh to update the export path list. Failure to do so might cause compatibility issues, delays in fetching the export list, or incomplete updates. This might lead to data inconsistencies, failed synchronization, or errors in accessing the latest export information.  
+When you update a file server protocol version, NDM requires you to perform a page refresh to update the export path list. If you don't, you might cause compatibility issues, delays in fetching the export list, or incomplete updates. This might lead to data inconsistencies, failed synchronization, or errors in accessing the latest export information.  
 
 .Workaround
 
@@ -67,7 +67,7 @@ Refresh the page whenever you update the file server protocol version.
 
 === Job paused or stalled (no progress in Running state) for more than 20 minutes
 
-NDM might require user intervention when network connectivity issues, or issues with source, destination volume stability, or both are observed. The job might be in the "Paused" state, or in the "Running" state without any visible progress. This stall is potentially due to the source or destination services going down, or the worker service experiencing downtime.
+NDM might require user intervention when network connectivity issues, or issues with source, destination volume stability, or both are observed. The job might be in the "Paused" state, or in the "Running" state without any visible progress. This pause might happen if the source or destination services go down, or if the worker service experiences downtime.
 
 .Workaround
 
@@ -92,7 +92,7 @@ If issue persists, restart the worker VM.
 
 === File sizes might differ after migration even if counts match
 
-After data migration has completed, the total number of files is correct, but some files might have a different size compared to the original source. This can happen due to temporary network interruptions or server-side issues during the file transfer process. 
+After data migration has completed, the total number of files is correct, but some files might have a different size compared to the original source. This can happen it the network is interrupted or if there are problems with the server during file transfer.
 
 .Workaround
 
@@ -117,7 +117,7 @@ During migration prechecks, you might see the following warning, even if the des
 Insufficient destination space for selected path. Do you still want to proceed with the migration? 
 ---- 
 
-This can happen if the discovery step is skipped and NDM uses a general command that reads the entire block device size, instead of the actual dataset size. This can trigger a false warning. 
+This can happen if you skip the discovery step and NDM uses a general command that reads the entire block device size instead of the actual dataset size. This can trigger a false warning. 
 
 .Workaround
 
@@ -165,6 +165,13 @@ For active users or groups in Active Directory, provide usernames or group names
 
 == Reporting 
 
+=== COC report contains files from deleted folders
+The Chain of Custody (COC) report might list files from deleted folders. When you delete a folder in the source, NDM correctly mirrors the deletion by removing the folder from the destination. However, files that were previously contained in that folder might still appear in the COC report.
+
+.Workaround
+
+Check the destination volume because the data is correctly mirrored even though the COC report might show entries from deleted folders.
+
 === Excel displays incorrect permissions in COC report file
 
 When opening the COC report CSV file in Microsoft Excel, some file or folder permissions might appear as #NAME? instead of the actual values, for example, -rwxrwxrwx. 
@@ -182,32 +189,6 @@ To view correct file and folder permissions open the CSV file using one of the f
 * Online CSV viewer 
 
 * Text editor, for example, Notepad++ 
-
-=== No error message when Discovery job fails due to network issues
-
-If the host or destination server goes down during a Bulk Discovery job, NDM might not show an error message. This can give the impression that the job is still running normally.  
-
-.Workaround
-
-Discovery jobs refresh every 30 seconds. If you notice that the file count, directory count, or data size is not updating, this might indicate a network issue.  
-
-. Check network connectivity: 
-
-* Open the worker VM terminal. Ping the IP address of the destination server and if there's no response, the destination might be unreachable.
-
-. Restore the network interface:
-
-* SSH into the destination server:
-+
-`ssh <destination IP>`
-
-* Run `ipconfig` to find the interface name (for example, eth0). 
-
-* Run `ifup` to bring it back online:
-+
-`ifup <interface name>`    
-
-. If required, repeat the Steps 1 and 2 for the source server.
 
 === Unable to switch user on Windows worker
 
@@ -232,14 +213,10 @@ You can then switch to the new user account and access the file server.
 
 == Recommendations for using NDM
 
-*  Adding file servers in NDM:
-** For NFS migrations, add a file server with NFS credentials and NFS configuration details.  
-** For SMB migrations, add a file server with SMB credentials and SMB configuration details.
-** When adding a file server, do not add NFS and SMB credentials as this can cause errors. 
-+
-You can only configure a Linux worker for SMB and a Windows worker for NFS.
 * Do not run Migration and Cutover jobs simultaneously. Ensure only one job is active at any time. 
 
 * Use one worker secret code to set up a worker explicitly. 
 
 CAUTION: Don't restart or reboot the control plane. Contact NDM support at ndm-support@netapp.com for assistance.
+
+// 2025 DEC 1, OTHERDOC-166 and NADIAA updates

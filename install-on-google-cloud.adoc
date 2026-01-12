@@ -29,6 +29,8 @@ Workers are virtual machines running on Linux, which supports the NFS protocol, 
 * If you're using SMB migration, download the Windows Worker Installer from the NetApp Support Site.
 * If you're using NFS migration, download the Worker image from the NetApp Support Site.
 
+include::./_include/configure-ports.adoc[]
+
 == Step 1: Enable required APIs
 
 link:https://cloud.google.com/migrate/virtual-machines/docs/5.0/get-started/enable-services#enabling_required_services_on_the_host_project[Enable all of the APIs required for your project^]. These APIs are mandatory for image import and deployment operations.
@@ -38,13 +40,22 @@ link:https://cloud.google.com/migrate/virtual-machines/docs/5.0/get-started/enab
 Learn how to link:https://cloud.google.com/storage/docs/creating-buckets#console[create a Google Cloud Storage (GCS) bucket^], if you have not already created one.
 
 == Step 3: Set Up IAM roles and permissions
-This step ensures that the migration API has the required access permission. 
 
-* Learn about link:https://cloud.google.com/migrate/virtual-machines/docs/5.0/migrate/image_import#add-disk-to-storage[disk storage permissions^] 
+Ensure that the migration API has the required access permission. 
 
-* Alternatively, use the following commands:
+[role="tabbed-block"]
+====
+.Update disk permissions
+--
+Learn about link:https://cloud.google.com/migrate/virtual-machines/docs/5.0/migrate/image_import#add-disk-to-storage[disk storage permissions^] 
+--
+.Use "vmmigration" service
+--
+Use the "vmmigration" service. 
 
-** Assign the service account objectViewer access to your destination GCS bucket:
+.Steps
+
+. Assign the service account objectViewer access to your destination Cloud Storage bucket:
 +
 [source,cli]
 ----
@@ -52,7 +63,18 @@ gcloud storage buckets add-iam-policy-binding gs://<GCS_BUCKET> \
   --member=serviceAccount:service-<PROJECT_NUMBER>@gcp-sa-vmmigration.iam.gserviceaccount.com \
   --role=roles/storage.objectViewer
 ----
-** Make yourself an admin user on the "vmmigration" service:
++
+The service account needs roles/storage.objectViewer permission to read the VM image files from your Cloud Storage bucket during the migration process. 
++
+When the VM Migration API is enabled, Google Cloud automatically provisions a service account with the following format:
++
+`service-<PROJECT_NUMBER>@gcp-sa-vmmigration.iam.gserviceaccount.com` 
++
+* `++ gcp-sa` is the Google Cloud Platform Service account  
+* `vmmigration` is the VM Migration service identifier
+* `iam.gserviceaccount.com` is the standard domain for Google Cloud service accounts
+
+. Make yourself an admin user on the "vmmigration" service:
 +
 [source,cli]
 ----
@@ -60,6 +82,10 @@ gcloud projects add-iam-policy-binding <PROJECT_ID> \
   --member=user:<YOUR_EMAIL> \
   --role=roles/vmmigration.admin
 ----
++
+This gives you VM migration administrative permissions at the project level. 
+--
+====
 
 == Step 4: Obtain and upload images
 
@@ -201,7 +227,7 @@ You can now access NDM using RDP with the Windows VM you created for NDM access 
 +
 The default credentials for the NDM UI are:
 +
-* URL: https://<control-plane-private-ip>/
+* URL: `https://<control-plane-private-ip>/`
 * Username: admin@datamigrator.local
 * Password: Welcome@123
 
@@ -218,9 +244,9 @@ Associate Linux worker with control plane VM.
 * link:https://cloud.google.com/compute/docs/instances/connecting-to-windows[Connect to the Windows VM using Remote Desktop Protocol (RDP)^].
 .. Retrieve the private IP address from the newly created control plane VM in GCP.
 .. Open any browser and navigate to the NDM UI using the following credentials: 
-* IP address: https://<control_plane_IP_address>/
+* IP address: `https://<control_plane_IP_address>/`
 * Username: admin@datamigrator.local
-* Password: Welcome@123.
+* Password: Welcome@123
 .. Reset the password.
 .. Add new user details and email ID.
 .. Create a new project by providing a name and an optional description.
@@ -330,4 +356,5 @@ The following tables describes the placeholder references:
 
 link:configure-ndm.html[Learn about configuring NDM]
 
+// 2025 DEC 1, OTHERDOC-168
 // 9 OCT 2025, commented out lines with the NSS link and replaced them with "preview link provided" - temporary measure for preview only.
