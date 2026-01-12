@@ -74,6 +74,32 @@ Manage Job Rub operations by accessing the following job level operations on the
 . Select *Deactivate* from the pop-up menu.
 . The job *Status* changes from *Active* to *Inactive*, and execution stops until you reactivate the job.
 
+== Edit job configurations 
+
+.Steps 
+
+. Select *Jobs* in the left navigation bar.
+. Select *Job List*.
+. <<job-run-details,Open the Job Details page>> for the job you want to edit.
+. Select *View/Edit Configuration*.
+. Edit the job configuration:
++
+[role="tabbed-block"]
+====
+.Discovery Job
+--
+* Add or remove Excluded Path Patterns.
+. Schedule a job run. 
+--
+.Migration Job
+--
+* Edit any job option. 
+* Add or remove mappings.
+* Schedule a job run.
+--
+====
+. Select *Save*. The new configuration affects future job runs. 
+
 == Delete a Job 
 
 .Steps 
@@ -151,6 +177,7 @@ You can use the *Stop* option to permanently terminate a job run that is in prog
 . Select *Stop* from the pop-up menu and the job run status changes to *Stopped*.
 . To start a new job run, select *Adhoc Run* and the job run status changes to *Running*.
 
+[[job-run-details]]
 == Access Job Run Details
 
 From the *Run History* table, access the *Job Run Details* page where you can view additional details about your job runs.
@@ -229,7 +256,7 @@ You can also generate an error report for a previous job run.
 
 . On the *Job Details* page, in the *Run History* table, select the action menu next to the job run for which you want to generate an error report.
 . Select *Details*.
-. On the *Job Run Details* page, in the *Errors* panel, select *View All*.
+. On the *Job Details* page, in the *Errors* panel, select *View All*.
 . Select *Generate Error Report* to download details about errors in the job run you selected.
 
 // 2025 NOV 28: OTHERDOC-171 and NADIAA updates
