@@ -89,7 +89,7 @@ Manage Job Rub operations by accessing the following job level operations on the
 .Discovery Job
 --
 * Add or remove Excluded Path Patterns.
-. Schedule a job run. 
+* Schedule a job run. 
 --
 .Migration Job
 --
