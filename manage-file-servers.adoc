@@ -28,29 +28,29 @@ The *File Servers* page opens, followed by the *Server Type* page.
 . Enter the server name and select *Server Type* as "Other NAS".
 +
 The *Credentials* page opens. 
-. Enter the *Host Name* (or IP address) of the *NFS* or *SMB* server.
+. Enter the *Host Name* (or IP address) of the NFS or SMB server.
 . If you are using an *NFS* file server:
-* Enter a *Username* for accessing *NFS* file shares.
-* Enter a *Password* (Optional).
-* Select a *Protocol Version* for *NFS*.
+* Enter a *Username* for accessing NFS file shares.
+* Optionally, enter a *Password*.
+* Select a *Protocol Version* for NFS.
 * In the *Export Paths Retrieval Mechanism* panel select *Auto Discover* or *Manual Upload*:
 +
 *Auto Discover* automatically discovers export paths.
 +
 *Manual Upload* uploads export paths manually, or in environments where *Auto Discover* is not supported, such as the Google Cloud NetApp Volumes (GCNV) Flex service. After adding a file server, <<manually-upload-export-paths,you need to upload export paths manually>>.
 . If you are using an *SMB* file server:
-* Enter a *Username* for accessing *SMB* file shares.
+* Enter a *Username* for accessing SMB file shares.
 * Enter a *Password*.
-* Select a *Protocol Version* for *SMB*.
+* Select a *Protocol Version* for SMB.
 . Select the *Workers* tab.
-.. In the *Associated* column, select the toggle button next to the names of worker(s) you wish to associate with a server.
-.. Select *Proceed* to initiate a pre-check operation that tests if the selected worker(s) have connectivity to NDM.
+.. In the *Associated* column, select the toggle button next to each of the one or more workers you want to associate with a server.
+.. Select *Proceed* to initiate a pre-check operation that tests if the selected one ore more workers have connectivity to NDM.
 . When the pre-check is complete, you should resolve any errors that are flagged. (Refer to File Server Frequently Asked Questions (FAQ) for details on how to resolve errors).
 +
 If the pre-check completes without errors, select the *Job Config* tab, then select *Finish.* The name of your File Server appears under the list of *File Servers*.
-
++
 The status of a file servers is listed in the *Status* column of the *File Servers* table. Status types include:
-
++
 * *Active*: There are no errors, and all details have been validated.
 * *In Progress:* Server validation is in progress.
 * *Draft*: No workers have been associated with a file server.
@@ -62,7 +62,7 @@ The status of a file servers is listed in the *Status* column of the *File Serve
 . In the left navigation panel, select *Storage Servers*.
 . Select *File Servers* > *+Add*.
 +
-The *File Servers* page opens, followed by the *Server Type* page:
+The *File Servers* page opens, followed by the *Server Type* page.
 
 . Enter a *Configuration Name* for your Dell Isilon file server. 
 . Select *Dell Isilon* from the Server Type dropdown. 
@@ -118,7 +118,7 @@ When upload is complete, export paths can have one of the following status types
 
 == Edit file server details
 
-If required, you can quickly make changes to a previously configured file server.
+If required, you can make changes to a previously configured file server.
 
 .Steps
 Edit the file server details using the "Other NAS" or "Dell Isilon" workflow option.
@@ -138,10 +138,14 @@ Edit the file server details using the "Other NAS" or "Dell Isilon" workflow opt
 . Select the action menu beside the Parent File Server you want to edit. 
 . Select *Edit File Server*. 
 . Select the *Server Type* tab: 
+
 .. Update the *Configuration Name* if needed.
-.. you cannot change the *Server Type* (Dell Isilon) and *Management Host*. 
-.. Update *Username* or *Password* if needed. 
+.. Update *Username* or *Password* if needed.
 .. Select *Proceed*. 
+
++
+NOTE: You cannot change the *Server Type* (Dell Isilon) and *Management Host*.  
+
 . Select the *Zone Credentials* tab: 
 .. Add new zones by selecting additional zones from the available list. 
 .. Update the protocol credentials for each zone:
@@ -152,10 +156,8 @@ Update the *SMB IP Address*, *Username*, or *Password* as needed.
 .. Select *Proceed*.
 
 . Select the *Workers* tab: 
-.. Update worker assignments for each zone and protocol: 
-+
-Toggle workers on/off in the *Associated* column. 
-.. Select *Proceed* to run pre-check validation on any newly assigned workers. 
+.. Update worker assignments for each zone and protocol by toggling the workers on or off in the *Associated* column. 
+.. Select *Proceed* to run the pre-check validation on any newly assigned workers. 
 . Select the *Job Config* tab: 
 .. Update the *Working Directory* if needed. 
 .. Select *Finish*.

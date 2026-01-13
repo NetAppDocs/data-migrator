@@ -36,7 +36,7 @@ Jobs that use manual export paths and the *Export Paths File* is later re-upload
 
 == Job Config List Filters
 
-On the *Job List* page, you can use the *Filters* feature to quickly sort jobs shown in the *Jobs Listings* table. You can choose a combination of filters based on the following options:
+On the *Job Config List* page, you can use the *Filters* feature to quickly sort jobs shown in the *Jobs Listings* table. You can choose a combination of filters based on the following options:
 
 * Source
 * Destination
@@ -238,7 +238,7 @@ From the *Job Run List* page you can monitor, filter, and control job runs. You 
 
 . From the left navigation bar, select *Jobs*.
 . Select *Job Run List*.
-. In the *Job Run List* table, select the checkbox next to one or more job runs to which you wish to apply actions.
+. In the *Job Run List* table, select the checkbox next to one or more job runs to which you want to apply actions.
 . Select *Pause* or *Stop* or *Resume* depending on your requirements.
 
 == Generate a job error report

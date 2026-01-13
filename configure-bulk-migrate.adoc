@@ -59,7 +59,7 @@ a| Use this option to configure how often data syncs incrementally. This ensures
 
 . Select *Off* to disable incremental sync.
 . Select *Set Schedule* to specify a sync schedule. You can choose to sync data hourly, daily or weekly.
-. Select Cron *Expression* if you are an advanced user and wish to define a custom sync schedule using a cron expression, for more granular control over sync timing.
+. Select Cron *Expression* if you are an advanced user and want to define a custom sync schedule using a cron expression, for more granular control over sync timing.
 
 | Excluded Path Patterns
 a| This option allows you to define specific file paths or directories that should be excluded from processing. This helps to optimize storage and performance by skipping unnecessary files.
