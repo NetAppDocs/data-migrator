@@ -11,9 +11,9 @@ summary: Use job management features in NetApp Data Migrator to initiate and tra
 [.lead]
 Use job management features in NetApp Data Migrator (NDM) to initiate and track your *Discovery*, *Migration*, and *Cutover* jobs and job runs.
 
-== View Job List
+== View Job Config List
 
-The *Job List* page provides a comprehensive overview of all migration related jobs. Use this page to monitor and manage the status and progress of *Discovery*, *Migration*, and *Cutover* jobs.
+The *Job Config List* page provides a comprehensive overview of all migration related jobs. Use this page to monitor and manage the status and progress of *Discovery*, *Migration*, and *Cutover* jobs.
 
 .Steps
 
@@ -21,7 +21,7 @@ The *Job List* page provides a comprehensive overview of all migration related j
 . Select *Jobs* from the left navigation bar.
 . Select *Job List*.
 
-The *Job List* page shows a *Jobs Listings* table, which includes the following information:
+The *Job Config List* page shows a *Jobs Listings* table, which includes the following information:
 
 * *Source*: Location of source file server.
 * *Destination*: Destination file server and export path details (for Migration jobs).
@@ -34,7 +34,7 @@ The *Job List* page shows a *Jobs Listings* table, which includes the following 
 
 Jobs that use manual export paths and the *Export Paths File* is later re-uploaded, any previously run jobs associated with a *now invalid or disabled path* automatically become inactive.
 
-== Job List Filters
+== Job Config List Filters
 
 On the *Job List* page, you can use the *Filters* feature to quickly sort jobs shown in the *Jobs Listings* table. You can choose a combination of filters based on the following options:
 
@@ -48,7 +48,7 @@ Select *Clear all* to remove filters already applied to your job listings.
 
 == Manage Job Level operations
 
-Manage Job Rub operations by accessing the following job level operations on the *Job List* page:
+Manage Job Rub operations by accessing the following job level operations on the *Job Config List* page:
 
 * Activate and deactivate a job
 * Job Details, which provides you with additional information about your jobs
@@ -58,7 +58,7 @@ Manage Job Rub operations by accessing the following job level operations on the
 
 .Steps
 
-. On the *Job List* page, in the *Job Listings* table, locate the job you want to activate.
+. On the *Job Config List* page, in the *Job Listings* table, locate the job you want to activate.
 . Locate the job you want to activate.
 . Select the action menu next to your job.
 . Select *Activate* from the pop-up menu.
@@ -69,7 +69,7 @@ Manage Job Rub operations by accessing the following job level operations on the
 .Steps
 
 . Select *Jobs* in the left navigation bar.
-. Select *Job List*.
+. Select *Job Config List*.
 . In the *Job Listings* table, locate an *Active* job you want to deactivate and select the action menu next to your job.
 . Select *Deactivate* from the pop-up menu.
 . The job *Status* changes from *Active* to *Inactive*, and execution stops until you reactivate the job.
@@ -79,8 +79,8 @@ Manage Job Rub operations by accessing the following job level operations on the
 .Steps 
 
 . Select *Jobs* in the left navigation bar.
-. Select *Job List*.
-. <<job-run-details,Open the Job Details page>> for the job you want to edit.
+. Select *Job Config List*.
+. <<view-job-details,Open the Job Details page>> for the job you want to edit.
 . Select *View/Edit Configuration*.
 . Edit the job configuration:
 +
@@ -105,14 +105,15 @@ Manage Job Rub operations by accessing the following job level operations on the
 .Steps 
 
 . Select *Jobs* in the left navigation bar.
-. Select *Job List*. 
+. Select *Job Config List*.
 . In the *Job Listings* table, locate the job you want to delete and select the action menu (three dots) next to your job. 
 . Select *Delete* from the action menu.
 . Select *Delete* in the pop-up window to delete the job. You can delete a job only if there is no active run. 
 
+[[view-job-details]]
 == View Job Details
 
-From the *Job List* page, you can access the *Job Details* page to view additional details about individual jobs, such as:
+From the *Job Config List* page, you can access the *Job Details* page to view additional details about individual jobs, such as:
 
 * Job type (Discovery, Migration, or Cutover)
 * Number of files and directories discovered
@@ -122,8 +123,8 @@ From the *Job List* page, you can access the *Job Details* page to view addition
 
 .Steps
 
-. Select *Jobs* on the left navigation bar.
-. Select *Job List*.
+. Select *Jobs* in the left navigation bar.
+. Select *Job Config List*.
 . In the *Job Listings* table, select the action menu next to a job, then select *Details* from the pop-up menu.
 
 == View Job Run History
@@ -177,7 +178,6 @@ You can use the *Stop* option to permanently terminate a job run that is in prog
 . Select *Stop* from the pop-up menu and the job run status changes to *Stopped*.
 . To start a new job run, select *Adhoc Run* and the job run status changes to *Running*.
 
-[[job-run-details]]
 == Access Job Run Details
 
 From the *Run History* table, access the *Job Run Details* page where you can view additional details about your job runs.
