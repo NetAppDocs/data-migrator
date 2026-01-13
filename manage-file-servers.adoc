@@ -17,7 +17,7 @@ Add a new NFS or SMB file server and configure the worker virtual machines.
 .Steps
 Depending on your system configuration, use the "Other NAS" or "Dell Isilon" workflow option.
 
-[role=tabs]
+[role="tabbed-block"]
 ====
 .Other NAS
 --
@@ -123,7 +123,7 @@ If required, you can quickly make changes to a previously configured file server
 .Steps
 Edit the file server details using the "Other NAS" or "Dell Isilon" workflow option.
 
-[role=tabs]
+[role="tabbed-block"]
 ====
 .Other NAS
 --

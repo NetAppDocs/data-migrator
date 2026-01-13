@@ -97,7 +97,7 @@ Connect to the control plane to validate if NDM is active.
 
 .Steps
 . Install Azure CLI. Refer to the Azure CLI Download instructions.
-. Use SSH to connect to your control plane server. If your server does not have Public IP, follow the steps in the link:<<insert link>>[AWS documentation^] to configure SSH access. 
+. Use SSH to connect to your control plane server. If your server does not have Public IP, follow the steps in the link:https://learn.microsoft.com/en-us/azure/bastion/quickstart-host-portal[Azure bastion documentation^] to configure SSH access
 . Switch the user to `datamigrator`:
 +
 [source,cli]
@@ -143,7 +143,7 @@ Associate the Linux worker with the control plane VM.
 .. Login to the Windows VM using RDP to access NDM.
 * Use Microsoft Windows App (Mac) or Remote Desktop Connection (Windows) to create an RDP session.
 * Learn about link:https://learn.microsoft.com/en-us/azure/virtual-machines/windows/connect-rdp[RDP connections^].
-.. Retrieve the private IP address from the newly created control plane VM in AWS.
+.. Retrieve the private IP address from the newly created control plane VM in Azure.
 .. Open any browser and navigate to the NDM UI using the following credentials: 
 * IP address: `https://<control_plane_IP_address>/`
 * Username: admin@datamigrator.local
@@ -234,15 +234,31 @@ net stop DatamigratorWorker && start DatamigratorWorker
 --
 ====
 
-You should consider the following when installing NDM using AWS:
+You should consider the following when installing NDM using Azure:
 
-<text missing?>
+* *SAS URLs are time-limited*: Start your copy operation as soon as possible—typically within 7 days.
+
+* *Validate copy is complete*: Do not use a partially copied VHD for deployments.
+
+* *Checksum validation is recommended*: This ensures your VHD’s integrity matches the original source.
+
+* *Repeat the full process* for each VHD (Control Plane and Worker).
 
 The following tables describes the placeholder references:
 
 |===
 | Placeholder | Description
-
+| <YOUR_STORAGE_ACCOUNT>	 | Destination storage account name
+| <YOUR_RESOURCE_GROUP>	 | Resource group name
+| <YOUR_AZURE_REGION> | Azure region (e.g., East us)
+| YOUR_CONTAINER_NAME| Container for VHD storage
+| YOUR_STORAGE_ACCOUNT_KEY| Storage account access key
+| <YOUR_SUBSCRIPTION_ID>| Azure subscription ID
+| <YOUR_TENANT_ID>	| Azure tenant ID
+| <YOUR_IMAGE_NAME>	| Name for the managed image
+| <PROVIDED_SAS_URL>| The SAS URL provided by our team
+| <VHD_FILE_NAME>	| VHD file name (without .vhd extension)
+| <SHA_FILE_NAME>	| Checksum file name (without .sha256 extension)
 |===
 
 .What's next?

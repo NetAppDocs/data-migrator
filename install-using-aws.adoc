@@ -4,7 +4,7 @@ permalink: install-using-aws.html
 keywords: 
 summary: 
 ---
-= Install NDM using OVA
+= Install NDM using AWS
 :icons: font
 :imagesdir: ./media/
 
@@ -36,7 +36,7 @@ Before you can install the NDM control pane and worker, you must have:
 
 Create a Windows VM to access NDM using the Remote Desktop Protocol:
 
-Learn how to link:https://learn.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-portal[create the Windows VM^]. Use the following recommended settings:
+Learn how to link:https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/launch-marketplace-console.html[create the Windows VM^]. Use the following recommended settings:
 
 * Image: Microsoft Windows 2022 Datacenter Base 
 * Architecture: 64-bit (x86), Ami: ami-0fc8a85749a35ce56 
@@ -47,7 +47,7 @@ Learn how to link:https://learn.microsoft.com/en-us/azure/virtual-machines/windo
 
 To create the control pane VM, use the previously imported control plane image. 
 
-Learn how to link:https://learn.microsoft.com/en-us/azure/virtual-machines/capture-image-resource#portal-create-a-vm-from-a-legacy-managed-image[create a VM from a custom imported image^]. Use the following recommended settings:
+Learn how to link:https://repost.aws/knowledge-center/launch-instance-custom-ami[create a VM from a custom imported image^]. Use the following recommended settings:
 
 * Image: Custom imported
 * Size: 16 vCPU, 64 GB RAM
@@ -57,21 +57,20 @@ Learn how to link:https://learn.microsoft.com/en-us/azure/virtual-machines/captu
 
 Create the Linux worker VM for NFS migration using the previously imported worker image.
 
-Learn how to link:https://learn.microsoft.com/en-us/azure/virtual-machines/capture-image-resource#portal-create-a-vm-from-a-legacy-managed-image[create a worker VM from a custom imported image^]. Use the following recommended settings:
+Learn how to link:https://repost.aws/knowledge-center/launch-instance-custom-ami[create a worker VM from a custom imported image^]. Use the following recommended settings:
 
 * Image: Custom imported
 * Size: 4 vCPU, 16GB RAM
 * License type: Other
 
-== Step 3 (b)Add the Windows worker installer
+== Step 3 (b): Add the Windows worker installer
 
 Add the Windows worker installer for SMB migration.
 
 .Steps
-//. Download the Windows worker installer for Azure from the link:https://mysupport.netapp.com/site/[NetApp Support site^]. 
-. Download the Windows worker installer for Azure from the preview link provided. 
+. Download the Windows worker installer for AWS from the preview link provided. 
 
-. Learn how to link:https://learn.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-portal[create a Windows VM^]. Use the following recommended settings:
+. Learn how to link:https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/launch-instances-from-launch-template.html[create a Windows VM^]. Use the following recommended settings:
 +
 ** Image: Choose Windows Server 2022 Base 
 ** Architecture: 64-bit (x86), Ami: ami-0fc8a85749a35ce56 
@@ -82,7 +81,7 @@ Add the Windows worker installer for SMB migration.
 .. Login to the Windows Worker VM using the Remote Desktop Protocol and copy the Windows worker installer to the Windows VM.
 .. Use Microsoft Windows App (Mac) or RDP (Windows) to create a remote session. 
 +
-Learn about link:https://learn.microsoft.com/en-us/azure/virtual-machines/windows/connect-rdp[RDP connections^].
+Learn about link:https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connect-rdp.html[RDP connections^].
 
 
 . Depending on your configuration, select the MacOS or Windows tab.
@@ -116,7 +115,7 @@ Connect to the control plane to validate if NDM is active.
 
 .Steps
 . Install Azure CLI. Refer to the Azure CLI Download instructions.
-. Use SSH to connect to your control plane server. If your server does not have Public IP, follow the steps in the link:https://learn.microsoft.com/en-us/azure/bastion/quickstart-host-portal[Azure bastion documentation^] to configure SSH access. 
+. Use SSH to connect to your control plane server. If your server does not have Public IP, follow the steps in the link:https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connect-with-ec2-instance-connect-endpoint.html[AWS documentation^] to configure SSH access. 
 . Switch the user to `datamigrator`:
 +
 [source,cli]
@@ -161,7 +160,7 @@ Associate the Linux worker with the control plane VM.
 
 .. Login to the Windows VM using RDP to access NDM.
 * Use Microsoft Windows App (Mac) or Remote Desktop Connection (Windows) to create an RDP session.
-* Learn about link:https://learn.microsoft.com/en-us/azure/virtual-machines/windows/connect-rdp[RDP connections^].
+* Learn about link:https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connect-rdp.html[RDP connections^].
 .. Retrieve the private IP address from the newly created control plane VM in Azure.
 .. Open any browser and navigate to the NDM UI using the following credentials: 
 * IP address: `https://<control_plane_IP_address>/`
@@ -255,30 +254,13 @@ net stop DatamigratorWorker && start DatamigratorWorker
 
 You should consider the following when installing NDM using Azure:
 
-* *SAS URLs are time-limited*: Start your copy operation as soon as possible—typically within 7 days.
-
-* *Validate copy is complete*: Do not use a partially copied VHD for deployments.
-
-* *Checksum validation is recommended*: This ensures your VHD’s integrity matches the original source.
-
-* *Repeat the full process* for each VHD (Control Plane and Worker).
+<missing text?>
 
 The following tables describes the placeholder references:
 
 |===
 | Placeholder | Description
 
-| <YOUR_STORAGE_ACCOUNT>	 | Destination storage account name
-| <YOUR_RESOURCE_GROUP>	 | Resource group name
-| <YOUR_AZURE_REGION> | Azure region (e.g., East us)
-| YOUR_CONTAINER_NAME| Container for VHD storage
-| YOUR_STORAGE_ACCOUNT_KEY| Storage account access key
-| <YOUR_SUBSCRIPTION_ID>| Azure subscription ID
-| <YOUR_TENANT_ID>	| Azure tenant ID
-| <YOUR_IMAGE_NAME>	| Name for the managed image
-| <PROVIDED_SAS_URL>| The SAS URL provided by our team
-| <VHD_FILE_NAME>	| VHD file name (without .vhd extension)
-| <SHA_FILE_NAME>	| Checksum file name (without .sha256 extension)
 |===
 
 .What's next?
