@@ -32,6 +32,12 @@ sidebar:
       entries:
       - title: Learn about the install options
         url: /install-options.html
+      - title: Install NDM using AWS
+        entries:
+        - title: Prepare for installation
+          url: /install-using-aws.html
+        - title: Install AWS CLI and manage assets
+          url: /install-aws-using-cli.html
       - title: Install NDM using OVA
         url: /install-using-ova.html
       - title: Install NDM using Azure

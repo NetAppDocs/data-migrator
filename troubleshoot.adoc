@@ -17,7 +17,7 @@ All credentials are managed from openbao. Replace the IP_ADDRESS with the IP add
 
 .Steps
 
-. Fetch the openbao root token. SSH into the control plane server from bastion connect from the Azure portal:
+. Fetch the openbao root token. Use SSH to connect to the control plane server from bastion connect from the Azure portal:
 +
 [source,cli]
 ----
@@ -74,7 +74,7 @@ If you encounter an issue where openbao is sealed, follow these steps to unseal.
 
 .Steps
 
-. SSH into the control plane server using bastion connect.
+. Use SSH to connect to the control plane server using bastion connect.
 . replace OPENBAO_UNSEAL_KEY with your key:
 [source,cli]
 ----

@@ -190,7 +190,7 @@ Windows worker for Windows:
 
 . Connect to the control plane VM:
 
-.. SSH into the control plane VM:
+.. Use SSH to connect to the control plane VM:
 +
 [source,cli]
 ----
@@ -240,7 +240,7 @@ The default credentials for the NDM UI are:
 Associate Linux worker with control plane VM.
 
 .. Login to the Windows VM using RDP to access NDM.
-* Use Microsoft Windows App (Mac) or Remote Desktop Connection (Windows) to create a RDP session.
+* Use Microsoft Windows App (Mac) or Remote Desktop Connection (Windows) to create an RDP session.
 * link:https://cloud.google.com/compute/docs/instances/connecting-to-windows[Connect to the Windows VM using Remote Desktop Protocol (RDP)^].
 .. Retrieve the private IP address from the newly created control plane VM in GCP.
 .. Open any browser and navigate to the NDM UI using the following credentials: 
@@ -251,8 +251,7 @@ Associate Linux worker with control plane VM.
 .. Add new user details and email ID.
 .. Create a new project by providing a name and an optional description.
 .. Select *View Instructions to Setup Worker* and copy the instructions. 
-.. To associate the Linux worker with the CP,
-SSH into your worker server. If your server does not have Public IP, you can use bastion to configure SSH Access. 
+.. To associate the Linux worker with the CP, use SSH to connect to your worker server. If your server does not have Public IP, you can use bastion to configure SSH access. 
 * Log in as root user:
 +
 [source,cli]
@@ -261,7 +260,10 @@ sudo su -
 ----
 * Paste the instructions copied from *View Instructions to Setup Worker* to register the worker VM.
 * Verify the status of the worker:
+[source,cli]
+----
 systemctl status datamigrator-worker.service
+----
 * Check the logs:
 +
 [source,cli]

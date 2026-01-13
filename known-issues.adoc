@@ -77,7 +77,7 @@ If they are offline, restart to restore connectivity.
 
 . Check the worker status. 
 +
-If the worker is offline, SSH into the VM and run the following command: 
+If the worker is offline, use SSH to connect to the VM and run the following command: 
 +
 [source,cli]
 ----
@@ -204,7 +204,7 @@ Discovery jobs refresh every 30 seconds. If you notice that the file count, dire
 
 . Restore the network interface:
 
-* SSH into the destination server:
+* Use SSH to connect to the destination server:
 +
 `ssh <destination IP>`
 

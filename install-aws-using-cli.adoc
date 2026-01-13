@@ -1,0 +1,93 @@
+---
+sidebar: sidebar
+permalink: install-aws-using-cli
+keywords: 
+summary: 
+---
+= Install Azure CLI and manage assets for NDM 
+:icons: font
+:imagesdir: ./media/
+
+[.lead]
+Deploy VMs in Azure using a virtual hard disk (VHD) shared by NetApp using a time-limited shared access signature (SAS) URL. You can then use the Azure CLI and portal to copy these assets to your Azure storage, (optionally) validate integrity, and create deployable, managed images.
+
+.Steps
+
+. Select one of these links to learn how to install the Azure CLI on your operating system:
+
+* link:https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows?view=azure-cli-latest&pivots=winget[Install on Windows^]
+* link:https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-macos[Install on macOS^]
+* link:https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-linux[Install on Linux^]
+
+. You can (optionally) authenticate and select your subscription using the following commands:
++
+[source,cli]
+----
+az login --tenant <YOUR_TENANT_ID>
+az account set --subscription <YOUR_SUBSCRIPTION_ID>
+az account show
+----
+. Learn how to link:https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal[create storage and a container in your Azure account^].
+. Contact NetApp Support at ng-ndm-support@netap.com to request a time-limited SAS URL for the VHD and checksum file. The SAS URL provides temporary, secure access required for the deployment process described here.
+. Copy control plane and worker VHDs:
+.. Retrieve the primary access key for your storage account:
++
+[source,cli]
+----
+az storage account keys list \
+  --resource-group <YOUR_RESOURCE_GROUP> \
+  --account-name <YOUR_STORAGE_ACCOUNT> \
+  --query "[0].value" -o tsv
+----
+.. Copy the VHD file to your own Azure storage:
++
+[source,cli]
+----
+az storage blob copy start \
+  --source-uri "<PROVIDED_SAS_URL>" \
+  --destination-blob "<VHD_FILE_NAME>.vhd" \
+  --destination-container <YOUR_CONTAINER_NAME> \
+  --account-name <YOUR_STORAGE_ACCOUNT> \
+  --account-key <YOUR_STORAGE_ACCOUNT_KEY>
+----
+.. Check to ensure that the copy completes successfully:
++
+[source,cli]
+----
+az storage blob show \
+  --account-name <YOUR_STORAGE_ACCOUNT> \
+  --container-name <YOUR_CONTAINER_NAME> \
+  --name "<VHD_FILE_NAME>.vhd" \
+  --query "properties.copy.status" \
+  -o tsv \
+  --account-key <YOUR_STORAGE_ACCOUNT_KEY>
+----
+.. Transfer the checksum file to the same container:
++
+[source,cli]
+----
+az storage blob copy start \
+  --source-uri "<PROVIDED_SAS_URL>" \
+  --destination-blob "<SHA_FILE_NAME>.sha256" \
+  --destination-container <YOUR_CONTAINER_NAME> \
+  --account-name <YOUR_STORAGE_ACCOUNT> \
+  --account-key <YOUR_STORAGE_ACCOUNT_KEY>
+----
+.. To validate the checksum (optional), mount your blob storage to a Linux VM using link:https://learn.microsoft.com/en-us/azure/storage/blobs/blobfuse2-how-to-deploy?tabs=RHEL[Blobfuse2^], then compute the checksum and for consistency, compare it to the one provided.
++
+Learn how to link:https://linuxhostsupport.com/blog/how-to-verify-checksum-of-a-file-on-linux/[verify a checksum in Linux^].
+.. Create a new managed Azure image from the copied VHD, then repeat for each VHD:
++
+[source,cli]
+----
+az image create \
+  --resource-group <YOUR_RESOURCE_GROUP> \
+  --name <YOUR_IMAGE_NAME> \
+  --source https://<YOUR_STORAGE_ACCOUNT>.blob.core.windows.net/<YOUR_CONTAINER_NAME>/<VHD_FILE_NAME>.vhd \
+  --os-type linux \
+  --location <YOUR_AZURE_REGION>
+----
+
+.What's next?
+
+link:create-control-plane-worker-vm.html[Create the control plane and worker VMs for NDM]

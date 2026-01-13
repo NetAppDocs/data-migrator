@@ -1,15 +1,36 @@
 ---
 sidebar: sidebar
-permalink: create-control-plane-worker-vm.html
+permalink: install-using-aws.html
 keywords: 
 summary: 
 ---
-= Create the control plane and worker VMs for NDM
+= Install NDM using OVA
 :icons: font
 :imagesdir: ./media/
 
 [.lead]
-After installing Azure using the CLI, create the control plane and worker VMs to access NDM.
+Use AWS to install NetApp Data Migrator (NDM).
+
+.About this task
+
+NDM has two main components that you need to install:
+
+* The *control plane*, which is always deployed on a Linux virtual machine (VM), serves as the central location for managing all migration jobs and should be created first.
+
+* *Workers* are virtual machines running on Linux, which supports the NFS protocol, or Windows, which supports the SMB protocol. You can install multiple workers based on your requirements:
+
+** For shared message block (SMB) migration, use the Windows Worker Installer on a Windows VM.
+** For NFS migration, use the Linux Worker.
+
+.Before you begin
+
+Before you can install the NDM control pane and worker, you must have:
+
+* An active AWS account with sufficient permissions. 
+* A selected AWS region for deployment.
+* An S3 bucket for storing VHDs (if using VHD import). 
+* AWS command line interface (CLI) installed and configured. 
+* Sufficient EC2 quota and storage.
 
 == Step 1: Create the Windows VM
 
@@ -17,16 +38,14 @@ Create a Windows VM to access NDM using the Remote Desktop Protocol:
 
 Learn how to link:https://learn.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-portal[create the Windows VM^]. Use the following recommended settings:
 
-* Image: Windows Server 2022
-* Datacenter: Azure Edition - x64 Gen2
+* Image: Microsoft Windows 2022 Datacenter Base 
+* Architecture: 64-bit (x86), Ami: ami-0fc8a85749a35ce56 
 * Size: 16 vCPU, 64 GB memory
 * RDP port 3389 open
 
-
-
 == Step 2: Create the control plane VM
 
-To create the control pane VM, you need to use the previously imported control plane image. 
+To create the control pane VM, use the previously imported control plane image. 
 
 Learn how to link:https://learn.microsoft.com/en-us/azure/virtual-machines/capture-image-resource#portal-create-a-vm-from-a-legacy-managed-image[create a VM from a custom imported image^]. Use the following recommended settings:
 
@@ -54,14 +73,14 @@ Add the Windows worker installer for SMB migration.
 
 . Learn how to link:https://learn.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-portal[create a Windows VM^]. Use the following recommended settings:
 +
-** Image: Choose Windows Server 2022 
-** Datacenter: Azure Edition - x64 Gen2
+** Image: Choose Windows Server 2022 Base 
+** Architecture: 64-bit (x86), Ami: ami-0fc8a85749a35ce56 
 ** Size: 16 vCPUs, 64 GB memory
 ** RDP port 3389 open 
 
 . Move the Windows worker installer to the Windows VM
-* Login to the Windows Worker VM using the Remote Desktop Protocol and copy the Windows worker installer to the Windows VM.
-* Use Microsoft Windows App (Mac) or RDP (Windows) to create a remote session. 
+.. Login to the Windows Worker VM using the Remote Desktop Protocol and copy the Windows worker installer to the Windows VM.
+.. Use Microsoft Windows App (Mac) or RDP (Windows) to create a remote session. 
 +
 Learn about link:https://learn.microsoft.com/en-us/azure/virtual-machines/windows/connect-rdp[RDP connections^].
 
@@ -97,7 +116,7 @@ Connect to the control plane to validate if NDM is active.
 
 .Steps
 . Install Azure CLI. Refer to the Azure CLI Download instructions.
-. Use SSH to connect to your control plane server. If your server does not have Public IP, follow the steps in the link:<<insert link>>[AWS documentation^] to configure SSH access. 
+. Use SSH to connect to your control plane server. If your server does not have Public IP, follow the steps in the link:https://learn.microsoft.com/en-us/azure/bastion/quickstart-host-portal[Azure bastion documentation^] to configure SSH access. 
 . Switch the user to `datamigrator`:
 +
 [source,cli]
@@ -110,7 +129,7 @@ sudo su - datamigrator
 ----
 sudo systemctl status boot-microk8s.service
 ----
-. Optionally, check the boot service logs:
+Optionally, check the boot service logs:
 +
 [source,cli]
 ----
@@ -143,7 +162,7 @@ Associate the Linux worker with the control plane VM.
 .. Login to the Windows VM using RDP to access NDM.
 * Use Microsoft Windows App (Mac) or Remote Desktop Connection (Windows) to create an RDP session.
 * Learn about link:https://learn.microsoft.com/en-us/azure/virtual-machines/windows/connect-rdp[RDP connections^].
-.. Retrieve the private IP address from the newly created control plane VM in AWS.
+.. Retrieve the private IP address from the newly created control plane VM in Azure.
 .. Open any browser and navigate to the NDM UI using the following credentials: 
 * IP address: `https://<control_plane_IP_address>/`
 * Username: admin@datamigrator.local
@@ -152,7 +171,8 @@ Associate the Linux worker with the control plane VM.
 .. Add new user details and email ID.
 .. Create a new project by providing a name and an optional description.
 .. Select *View Instructions to Setup Worker* and copy the instructions. 
-.. To associate the Linux worker with the CP, use SSH to connect to your worker server. If your server does not have a public IP, you can use bastion to configure SSH access. 
+.. To associate the Linux worker with the CP,
+Use SSH to connect to your worker server. If your server does not have a public IP, you can use bastion to configure SSH access. 
 * Log in as root user:
 +
 [source,cli]
@@ -161,7 +181,6 @@ sudo su -
 ----
 * Paste the instructions copied from *View Instructions to Setup Worker* to register the worker VM.
 * Verify the status of the worker:
-+
 [source,cli]
 ----
 systemctl status datamigrator-worker.service
@@ -234,15 +253,32 @@ net stop DatamigratorWorker && start DatamigratorWorker
 --
 ====
 
-You should consider the following when installing NDM using AWS:
+You should consider the following when installing NDM using Azure:
 
-<text missing?>
+* *SAS URLs are time-limited*: Start your copy operation as soon as possible—typically within 7 days.
+
+* *Validate copy is complete*: Do not use a partially copied VHD for deployments.
+
+* *Checksum validation is recommended*: This ensures your VHD’s integrity matches the original source.
+
+* *Repeat the full process* for each VHD (Control Plane and Worker).
 
 The following tables describes the placeholder references:
 
 |===
 | Placeholder | Description
 
+| <YOUR_STORAGE_ACCOUNT>	 | Destination storage account name
+| <YOUR_RESOURCE_GROUP>	 | Resource group name
+| <YOUR_AZURE_REGION> | Azure region (e.g., East us)
+| YOUR_CONTAINER_NAME| Container for VHD storage
+| YOUR_STORAGE_ACCOUNT_KEY| Storage account access key
+| <YOUR_SUBSCRIPTION_ID>| Azure subscription ID
+| <YOUR_TENANT_ID>	| Azure tenant ID
+| <YOUR_IMAGE_NAME>	| Name for the managed image
+| <PROVIDED_SAS_URL>| The SAS URL provided by our team
+| <VHD_FILE_NAME>	| VHD file name (without .vhd extension)
+| <SHA_FILE_NAME>	| Checksum file name (without .sha256 extension)
 |===
 
 .What's next?
