@@ -32,9 +32,9 @@ sidebar:
       entries:
       - title: Learn about the install options
         url: /install-options.html
-      - title: Install NDM using AWS
+      - title: AWS
         url: /install-using-aws.html
-      - title: Install NDM using Azure
+      - title: Azure
         entries:
         - title: Prepare for installation
           url: /install-using-azure.html
@@ -42,9 +42,9 @@ sidebar:
           url: /install-azure-using-cli.html
         - title: Create the control plane and worker VMs
           url: /create-control-plane-worker-vm.html
-      - title: Install NDM using Google Cloud
+      - title: Google Cloud
         url: /install-on-google-cloud.html
-      - title: Install NDM using OVA
+      - title: OVA
         url: /install-using-ova.html
     - title: Configure NDM
       url: /configure-ndm.html
