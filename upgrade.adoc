@@ -13,14 +13,18 @@ Follow these instructions to upgrade various feature in NetApp Data Migrator (ND
 
 .Before you begin
 
-Before you start, you must stop all job runs and make all jobs inactive. Upgrade logs appear in the unzipped folder with the following file name format:
+Stop all job runs and make all jobs inactive. Upgrade logs appear in the unzipped folder with the following file name format:
 
- upgrade_<timestamp>.log. 
+----
+upgrade_<timestamp>.log. 
+----
 
-If you encounter issues, contact NetApp support ng-ndm-support@netapp.com and attach the upgrade logs to your communication.
+If you encounter issues, contact NetApp support at ng-ndm-support@netapp.com and attach the upgrade logs to your communication.
 
 
-*Upgrade the control plane*
+== Upgrade the control plane
+
+.Steps
 
 . Copy the upgrade bundle:
 ** Transfer the upgrade zip file to the Control Plane machine using scp:
@@ -73,9 +77,11 @@ total 6962656
 ----
 $ sudo chmod +x upgrade.sh
 $ ./upgrade.sh <path-to-check-sum-file> <path-to-docker-tar-file> <path-to-helm-tgz-file>
-
-Example:
-
+----
++
+You should an output similar to the following example:
++
+----
 ./upgrade.sh checksums.sha256 datamigrator-2025.08.19-preview.tar datamigrator-2025.08.19-preview.tgz
 ----
  
@@ -87,14 +93,14 @@ After the upgrade completes, you need to:
 * Create a new job run for any stopped jobs, because these cannot be restarted.
 * Reactivate any inactive jobs to ensure that they run as scheduled.
 
-*Upgrade Linux Worker*
+== Upgrade Linux Worker
 
 Create a new VM with the image provided for upgrade. For previously created jobs:
 
 * Detach the old worker from, then attach the new worker to, both the source and destination file servers.
 * Create a new migration job to find and migrate differences between the source and destination data.
 
-*Upgrade Windows worker*
+== Upgrade Windows worker
 
 Uninstall the existing application, then install the new executable on the Windows machine. For previously created jobs:
 
