@@ -152,8 +152,8 @@ A worker is a virtual machine that performs actual data operations, for example,
 * Workers are responsible for executing tasks such as scanning directories, copying files, and syncing metadata.
 * Workers enable distributed processing, allowing NDM to scale across large datasets and multiple environments efficiently.
 * Workers relay high-level statistical information about data migration to the control plane.
+* You install and register a worker using NDM.
 * Each worker has the following characteristics:
-** You install and register the worker using NDM
 ** Is associated with one or more file servers
 ** Reports system metrics such as CPU, memory, and status (online or offline) to the control plane
 ** Reports high-level statistical information about data migration to the control plane
