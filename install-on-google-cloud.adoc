@@ -71,7 +71,7 @@ When the VM Migration API is enabled, Google Cloud automatically provisions a se
 +
 `service-<PROJECT_NUMBER>@gcp-sa-vmmigration.iam.gserviceaccount.com` 
 +
-* `++ gcp-sa` is the Google Cloud Platform Service account  
+* `++ gcp-sa` is the Google Cloud service account  
 * `vmmigration` is the VM Migration service identifier
 * `iam.gserviceaccount.com` is the standard domain for Google Cloud service accounts
 

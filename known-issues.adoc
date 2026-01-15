@@ -35,7 +35,7 @@ During data migration, the following error message might appear:
 Source Path: <source-path> & Destination Path: <destination-path> failed due to Inactive job found. Please reactivate or remove the existing job.
 ----
 
-This issue occurs when NDM updates migration paths but can't find an active job associated with them. Recreating the path does not activate the job; you must update it manually.
+This issue occurs when NDM updates the migration paths but can't find an active job associated with them. Recreating the path does not activate the job; you must update it manually.
 
 .Workaround
 Go to (http://<control-plane-IP-address>/jobs-list) in NDM, manually set the job configuration to *Active*, then restart the migration job. 
@@ -92,7 +92,7 @@ If issue persists, restart the worker VM.
 
 === File sizes might differ after migration even if counts match
 
-After data migration has completed, the total number of files is correct, but some files might have a different size compared to the original source. This can happen it the network is interrupted or if there are problems with the server during file transfer.
+After data migration completes, the total number of files is correct, but some files might have a different size compared to the original source. This can happen if the network is interrupted or if there are problems with the server during file transfer.
 
 .Workaround
 

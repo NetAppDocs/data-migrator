@@ -290,7 +290,7 @@ ssh <User_ID>@<control_plane_server_IP>
 sudo su - datamigrator
 cat /opt/datamigrator/openbao/cluster-keys.json
 ----
-. Log in to OpenBaoUI using the root token from Step 2:
+. Log in to the OpenBao UI using the root token from Step 2:
 +
 [source,cli]
 ----

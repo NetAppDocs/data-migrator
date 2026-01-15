@@ -158,7 +158,7 @@ Cutover job status types include:
 
 == Manage Job Run operations
 
-From the *Job Details* page, you can manage *Start*, *Stop*, *Pause*, and *Resume* operations for a job. Use the *Pause* feature to temporarily halt a running job, without canceling it. Then, you can resume the job from the point where it was paused. This makes it a useful feature in scenarios where you need to free up system resources or troubleshoot issues without losing progress.
+From the *Job Details* page, you can manage *Start*, *Stop*, *Pause*, and *Resume* operations for a job. Use the *Pause* feature to temporarily halt a running job, without canceling it. Then, you can resume the job from the point where it was paused. This is a useful feature in scenarios where you need to free up system resources or troubleshoot issues without losing progress.
 
 === Pause or resume a job run
 

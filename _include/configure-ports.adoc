@@ -9,7 +9,7 @@
 | Temporal UI | 8080  | Default port, if enabled
 | PostgreSQL (Temporal database) | 5432 | From Temporal services
 | Redis | 6379 | From workers or control plane services
-| API or UI ingress (your app) | 80 or 443, as applicable  |	
+| API or UI ingress (your application) | 80 or 443, as applicable  |	
 | Grafana | 3000 |	
 |===
 +
@@ -24,6 +24,7 @@
 | 80 or 443 | API or UI, if they call it
 .2+| Outbound to storage |NFS: 2049 |NFS servers 
 
-(Include TCP or UDP port 111 if the portmapper service for Remote Procedure Calls is needed) | SMB: 445  | SMB servers
+*Note*: Include TCP or UDP port 111 if the portmapper service for Remote Procedure Calls is needed 
+| SMB: 445  | SMB servers
 |===
 // 2025 DEC 1, OTHERDOC-168

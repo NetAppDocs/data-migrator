@@ -16,8 +16,8 @@ Learn about the protocols and files server types supported by NetApp Data Migrat
 |===
 | Category | Supported
 
-| Source file server	 | Dell Isilon, ONTAP, Vanilla Linux, Windows, and CVO servers
-| Destination file server | All service levels of ANF, GCNV, and CVO
+| Source file server	 | Dell Isilon, ONTAP, Vanilla Linux, Windows, and Cloud Volume ONTAP servers
+| Destination file server | All service levels of Azure NetApp Files (ANF), Google Cloud NetApp Volumes, and Cloud Volumes ONTAP
 | NFS protocol version| 3.0, 4.1
 | SMB protocol version| 2.0, 3.0, 3.1
 
