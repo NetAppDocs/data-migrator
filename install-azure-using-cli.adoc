@@ -9,7 +9,7 @@ summary:
 :imagesdir: ./media/
 
 [.lead]
-Deploy VMs in Azure using a virtual hard disk (VHD) shared by NetApp using a time-limited shared access signature (SAS) URL. You can then use the Azure CLI and portal to copy these assets to your Azure storage, (optionally) validate integrity, and create deployable, managed images.
+Deploy VMs in Azure using a virtual hard disk (VHD). NetApp shares the VHD by using a time-limited shared access signature (SAS) URL. You can then use the Azure CLI and portal to copy these assets to your Azure storage, (optionally) validate integrity, and create deployable, managed images.
 
 .Steps
 
@@ -90,4 +90,4 @@ az image create \
 
 .What's next?
 
-link:create-control-plane-worker-vm.html[Create the control plane and worker VMs for NDM]
+link:create-azure-control-plane-worker-vm.html[Create the control plane and worker VMs for NDM]

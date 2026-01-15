@@ -28,7 +28,8 @@ Workers are virtual machines running on Linux, which supports the NFS protocol, 
 * Download the control plane image from the NetApp Support Site.
 * If you're using SMB migration, download the Windows Worker Installer from the NetApp Support Site.
 * If you're using NFS migration, download the Worker image from the NetApp Support Site.
-
+* Ensure that the ports for the control plane and workers are enabled:
++
 include::./_include/configure-ports.adoc[]
 
 == Step 1: Enable required APIs

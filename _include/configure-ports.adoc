@@ -1,5 +1,3 @@
-* Ensure that the ports for the control plane and workers are enabled:
-+
 *Control plane*
 +
 [cols="1,1,1"]
@@ -28,5 +26,4 @@
 
 (Include TCP or UDP port 111 if the portmapper service for Remote Procedure Calls is needed) | SMB: 445  | SMB servers
 |===
-
 // 2025 DEC 1, OTHERDOC-168

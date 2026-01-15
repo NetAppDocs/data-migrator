@@ -20,7 +20,7 @@ Understand the usage limits of NetApp Data Migrator (NDM) to help make your migr
 | Number of export paths that can
 run simultaneously	 | 4  | 2
 | Maximum number of files in a directory | 1 million | 1 million
-| Maximum number of workers| NFSv3: 4;  NFSv4.1: 1 | 4
+| Maximum number of workers| 4 | 4
 | Worker sizing| 4 core CPU, 16 GB memory | 16 core CPU, 64 GB memory
 | Control plane sizing| 16 core CPU, 64 GB memory | 16 core CPU, 64 GB memory 
 |===

@@ -33,7 +33,13 @@ sidebar:
       - title: Learn about the install options
         url: /install-options.html
       - title: AWS
-        url: /install-using-aws.html
+        entries:
+        - title: Prepare for installation
+          url: /install-using-aws.html
+        - title: Install AWS CLI and manage assets 
+          url: /install-aws-using-cli.html
+        - title: Create the control plane and worker VMs
+          url: /create-aws-control-plane-worker-vm.html
       - title: Azure
         entries:
         - title: Prepare for installation
@@ -41,7 +47,7 @@ sidebar:
         - title: Install Azure CLI and manage assets 
           url: /install-azure-using-cli.html
         - title: Create the control plane and worker VMs
-          url: /create-control-plane-worker-vm.html
+          url: /create-azure-control-plane-worker-vm.html
       - title: Google Cloud
         url: /install-on-google-cloud.html
       - title: OVA

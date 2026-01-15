@@ -22,23 +22,27 @@ NDM has two main components that you need to install:
 ** For shared message block (SMB) migration, use the Windows Worker Installer on a Windows VM.
 ** For NFS migration, use the Linux Worker.
 
-.Before you begin
+.Steps
 
-Before you can install the NDM control pane and worker, you must have:
-
+. To install the NDM control pane and worker, you must have the following prerequisites::
++
 * An active Azure subscription
 * A Resource group set up in your desired region
 * Sufficient disk space for data storage and VM deployment
 * Azure command line interface (CLI) installed
-
+. Ensure that the ports for the control plane and workers are enabled:
++
 include::./_include/configure-ports.adoc[]
 
-.Steps
-
-. If you do not have the Azure command line interface (CLI) already installed, go to link:install-azure-using-cli.html[Install Azure CLI and manage assets].
+. Choose one of the following options:
 +
-If you already have the Azure CLI installed, go to Step 2.
-
-. link:create-control-plane-worker-vm.html[Create the control plane and worker VMs].
+[cols="1,2", options="header"]
+|===
+|If you... |Go to...
+|Don't have the Azure CLI
+| link:install-azure-using-cli.html[Install Azure CLI and manage assets for NDM]
+| Have the Azure CLI installed
+|link:create-azure-control-plane-worker-vm.html[Create the control plane and worker VMs]
+|===
 
 // 2025 DEC 1, OTHERDOC-168
