@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar
 permalink: learn-about.html
-keywords: ndetapp, data, migrator, ndm, migration, multicloud
+keywords: netapp, data, migrator, ndm, migration, multicloud
 summary: NetApp Data Migrator simplifies and accelerates the transfer of file-based workloads from on-premises or third-party storage systems to NetApp's first-party cloud storage services.
 ---
 = Learn about NDM
@@ -11,7 +11,7 @@ summary: NetApp Data Migrator simplifies and accelerates the transfer of file-ba
 [.lead]
 NetApp Data Migrator (NDM) is an enterprise-grade, multicloud, data migration software application that is designed to simplify and accelerate the transfer of file-based workloads from on-premises or third-party storage systems to NetApp's first-party cloud storage services. NDM helps you to discover your existing storage environments, plan and execute data migrations, and allows you to monitor their progress through an easy-to-use, unified interface.
 
-NDM supports both the NFS and SMB file transfer protocols. You can deploy worker nodes in your environment to maintain control and security during migration. Workers facilitate parallel data transfers, which improves performance and scalability. NDM also includes features such as pre-checks, and incremental sync to ensure smooth and efficient migration with minimal downtime. You can keep your source systems active for most of the migration process, then perform a final cutover when ready. In addition to its operational capabilities, NDM offers robust logging and error handling, allowing you to troubleshoot and recover from issues with no need to restart the entire migration process. NDM is a unified, scalable, and cost-effective migration tool for real-world enterprise migration requirements and eliminates the need for complex custom scripts and disjointed tools.
+NDM supports both the NFS and SMB file transfer protocols. You can deploy worker nodes in your environment to maintain control and security during migration. Workers facilitate parallel data transfers, which improves performance and scalability. NDM also includes features such as pre-checks and incremental sync to provide smooth and efficient migration with minimal downtime. You can keep your source systems active for most of the migration process, then perform a final cutover when ready. In addition to its operational capabilities, NDM offers robust logging and error handling, allowing you to troubleshoot and recover from issues with no need to restart the entire migration process. NDM is a unified, scalable, and cost-effective migration tool for real-world enterprise migration requirements that eliminates the need for complex custom scripts and disjointed tools.
 
 Before you start working with NDM, it’s helpful to first be familiar with the key terminology.
 
@@ -32,13 +32,13 @@ A Cutover job is the last migration step and is required for the final sync betw
 A Cutover job performs the following actions:
 +
 * Stops ongoing migrate jobs for selected paths
-* Performs a final sync to ensure data consistency
+* Performs a final sync to ensure that data is consistent
 * Generates a Chain of Custody (CoC) report for validation
 * Requires your approval to mark the migration as complete 
 
 Discover::
 
-You can use a Discover job to scan and inventory data on a source or destination file server. A Discover job creates a report with details about the files and directories in selected export paths in a source or destination file server. Discovery can help you to understand the scope and complexity of your data before starting migration.
+You can use a Discover job to scan and inventory data on a source or destination file server. A Discover job creates a report with details about the files and directories in selected export paths in a source or destination file server. Discover jobs can help you to understand the scope and complexity of your data before starting migration.
 +
 A Discover job performs the following actions:
 +
@@ -143,7 +143,7 @@ NDM supports three user roles:
 * *Project Viewer*: Provides read-only access to view project details, job statuses, and reports.
 --
 +
-Users authenticate with an email and password, and Role-Based Access Control (RBAC) governs their permissions. This ensures secure, role-appropriate access to sensitive data and operations. NDM uses RBAC to manage user permissions and ensure secure access to resources.
+Users authenticate with an email and password, and Role-Based Access Control (RBAC) governs their permissions. This provides secure, role-appropriate access to sensitive data and operations. NDM uses RBAC to manage user permissions and helps secure access to resources.
 
 Worker::
 
