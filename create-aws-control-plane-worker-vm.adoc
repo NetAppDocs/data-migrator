@@ -140,7 +140,7 @@ Associate the Linux worker with the control plane VM.
 .. Login to the Windows VM using RDP to access NDM.
 * Use Microsoft Windows App (Mac) or Remote Desktop Connection (Windows) to create an RDP session.
 * Learn about link:https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connect-rdp.html[RDP connections^].
-.. Retrieve the private IP address from the newly created control plane VM in Azure.
+.. Retrieve the private IP address from the newly created control plane VM in AWS.
 .. Open any browser and navigate to the NDM UI using the following credentials: 
 * IP address: `https://<control_plane_IP_address>/`
 * Username: admin@datamigrator.local

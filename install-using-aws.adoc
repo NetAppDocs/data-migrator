@@ -38,7 +38,7 @@ NDM has two main components that you need to install:
 |===
 |If you... |Go to...
 |Don't have the AWS CLI
-| link:install-azure-using-cli.html[nstall Azure CLI and manage assets for NDM]
+| link:install-azure-using-cli.html[Install Azure CLI and manage assets for NDM]
 | Have the AWS CLI installed
 |link:create-aws-control-plane-worker-vm.html[Create the control plane and worker VMs]
 |===
