@@ -28,7 +28,7 @@ Next, on the *Select Path* page:
 . Select *Proceed.*
 . You can select a job even if a *Bulk Migrate* job is running in parallel. Select the *checkbox* next to a job name to confirm that you are starting a *Bulk Cutover* job.
 . Select *Submit* to start your *Bulk Cutover* job and a notification message appears, confirming that a *Cutover job has been created*.
-. You can select the *View Job Listing* link next to this message to open the *Job List* page where your new job is listed.
+. You can select the *View Job Listing* link next to this message to open the *Job Config List* page where your new job is listed.
 
 == Approve a Bulk Cutover job
 

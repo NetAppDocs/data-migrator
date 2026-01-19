@@ -47,7 +47,7 @@ aws ec2 import-image \
   --disk-containers '[{"Description":"My VM import","Format":"vhd","UserBucket":{"S3Bucket":"your-s3-bucket","S3Key":"your-image.vhd"}}]' 
 ----
 +
-`Description`: The correct description for your identification.
+`Description`: The description for your VM.
 +
 `Format`: Insert "VHD". This is the format of your file in in the S3 bucket. 
 +

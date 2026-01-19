@@ -19,7 +19,7 @@ The *Job Config List* page provides a comprehensive overview of all migration re
 
 . Log in to NDM.
 . Select *Jobs* from the left navigation bar.
-. Select *Job List*.
+. Select *Job Config List*.
 
 The *Job Config List* page shows a *Jobs Listings* table, which includes the following information:
 

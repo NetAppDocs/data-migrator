@@ -98,4 +98,4 @@ Verify your settings before proceeding with Bulk Migration.
 
 * View the *Precheck Status* of your job, which ensures that the source path contains the correct data and confirms the destination path has sufficient storage and access permissions.
 * Select *Submit* to create a new migration job. A notification message appears, confirming that a *Bulk Migrate job has been created*.
-* You can select the *View Job Listing* link next to the notification message to open the *Job List* page where your new job is listed.
+* You can select the *View Job Listing* link next to the notification message to open the *Job Config List* page where your new job is listed.
