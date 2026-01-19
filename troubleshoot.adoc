@@ -11,7 +11,7 @@ summary:
 [.lead]
 If you experience issues while using NetApp Data Migrator (NDM), these troubleshooting steps and reference commands might be useful. 
 
-== Application access
+== Troubleshoot application access
 
 All credentials are managed from openbao. Replace the IP_ADDRESS with the IP address of your virtual machine (VM).
 
@@ -35,7 +35,7 @@ The initial username is "admin@datamigrator.local" and password is "Welcome@123"
 +
 Keys: POSTGRES_DMADMIN_USER and POSTGRES_DMADMIN_PASSWORD
 
-== kubectl reference commands
+== Use the "kubectl" reference commands
 
 * To get the pods in datamigrator namespace:
 +
@@ -111,7 +111,7 @@ First refer to the instructions provided in this link:https://learn.microsoft.co
 . For the Stored Key, choose *Select your existing created key*.
 . Select *Update*.
 
-== Windows Worker Fails to switch User on SMB file server
+== Windows worker fails to switch user on SMB file server
 
 When a windows worker attempts to connect to an SMB file server using a different set of credentials than those previously used for the same file server, the following error message might appear:
 
