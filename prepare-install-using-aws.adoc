@@ -37,8 +37,8 @@ NDM has two main components that you need to install:
 [cols="1,2", options="header"]
 |===
 |If you... |Go to...
-|Don't have the AWS CLI
+|Don't have the NDM assets
 | link:install-aws-cli.html[Install AWS CLI and manage assets for NDM]
-| Have the AWS CLI installed
+| Have the AWS CLI and NDM assets installed
 |link:create-aws-control-plane-worker-vm.html[Create the control plane and worker VMs]
 |===

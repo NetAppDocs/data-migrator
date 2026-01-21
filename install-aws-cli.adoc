@@ -9,7 +9,7 @@ summary:
 :imagesdir: ./media/
 
 [.lead]
-Deploy VMs in AWS using a virtual hard disk (VHD). NetApp shares the VHD by using a time-limited shared access signature (SAS) URL. After deploying the VMS, you can AWS CLI and portal to copy the VMs to your AWS storage, (optionally) validate integrity, and create deployable, managed images.
+Contact the NetApp NDM team at `ndm-support@netapp.com` to request the AWS Amazon Machine Image (AMI). After NetApp shares the AMI, is is visible in your AWS account under *EC2* > *AMIs* > *Private images*, and you can locate it using the AMI IDs provided. 
 
 .Before you begin
 
@@ -34,7 +34,7 @@ Ensure you have the following prerequisites:
 . Optionally, validate the SHA256 checksums. 
 +
 After you download the VHD file, you can use the checksum calculator to verify the checksum and validate against the checksum file downloaded in <<step-1,Step 1>>.
-. Import the image as an Amazon Machine Image (AMI).
+. Import the image as an AMI.
 +
 This following command creates an AMI from the VHD file. You can use this AMI to create an EC2 instance of the control plane and worker: 
 +
