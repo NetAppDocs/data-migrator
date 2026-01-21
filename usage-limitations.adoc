@@ -37,7 +37,6 @@ run simultaneously	 | 4  | 2
 | Case sensitive files 
 | For SMB, NDM migrates only one of the case-differing files created using NFS in a folder and errors out the other file. This occurs because SMB can’t accept both files. You can run discovery using NFS to identify these case-sensitive files.
 | Directory level migration | NDM supports migration of entire export paths only. It does not support migrating individual directories within an export path.
-| Domain support | There is no domain support, NDM is accessible using an IP address only.
 | Network accessibility | NetApp recommends using NDM in private networks.
 | NFSv4 ACLs | NDM doesn’t stamp access control lists (ACLs) with NFSv4, it only applies basic permissions in the destination. This behavior is similar to NFSv3.
 | Protocol migration - Type | Cross-protocol migration is not supported, for example, NFS to SMB.
