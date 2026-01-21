@@ -1,15 +1,15 @@
 ---
 sidebar: sidebar
-permalink: install-using-azure.html
+permalink: prepare-install-using-aws.html
 keywords: 
 summary: 
 ---
-= Prepare for NDM installation using Azure
+= Prepare to install NDM using AWS
 :icons: font
 :imagesdir: ./media/
 
 [.lead]
-Use Azure to install NetApp Data Migrator (NDM).
+Use AWS to install NetApp Data Migrator (NDM).
 
 .About this task
 
@@ -24,25 +24,21 @@ NDM has two main components that you need to install:
 
 .Steps
 
-. To install the NDM control pane and worker, you must have the following prerequisites::
+. To install the NDM control pane and worker, you must have the following prerequisites:
 +
-* An active Azure subscription
-* A Resource group set up in your desired region
-* Sufficient disk space for data storage and VM deployment
-* Azure command line interface (CLI) installed
-. Ensure that the ports for the control plane and workers are enabled:
-+
-include::./_include/configure-ports.adoc[]
+* An active AWS account with the required permissions
+* A selected AWS region for deployment
+* An S3 bucket for storing VHDs (if using VHD import)
+* AWS command line interface (CLI) installed and configured
+* Sufficient EC2 quota and storage
 
 . Choose one of the following options:
 +
 [cols="1,2", options="header"]
 |===
 |If you... |Go to...
-|Don't have the Azure CLI
-| link:install-azure-using-cli.html[Install Azure CLI and manage assets for NDM]
-| Have the Azure CLI installed
-|link:create-azure-control-plane-worker-vm.html[Create the control plane and worker VMs]
+|Don't have the AWS CLI
+| link:install-aws-cli.html[Install AWS CLI and manage assets for NDM]
+| Have the AWS CLI installed
+|link:create-aws-control-plane-worker-vm.html[Create the control plane and worker VMs]
 |===
-
-// 2025 DEC 1, OTHERDOC-168

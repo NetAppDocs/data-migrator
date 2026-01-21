@@ -1,6 +1,6 @@
 ---
 sidebar: sidebar
-permalink: install-aws-using-cli.html
+permalink: install-aws-cli.html
 keywords: 
 summary: 
 ---

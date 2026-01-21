@@ -1,6 +1,6 @@
 ---
 sidebar: sidebar
-permalink: install-azure-using-cli.html
+permalink: install-azure-cli.html
 keywords: 
 summary: 
 ---
