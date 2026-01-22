@@ -36,9 +36,9 @@ NDM has two main components that you need to install:
 +
 [cols="1,2", options="header"]
 |===
-|If you... |Go to...
+|If you... | You need to...
 |Don't have the NDM assets
-| link:install-aws-cli.html[Install AWS CLI and manage assets for NDM]
+| Contact the NetApp NDM team at `ndm-support@netapp.com` to request the AWS Amazon Machine Image (AMI). Include the Account ID in the email or share with your NetApp contact so that images are shared to that account ID. After NetApp shares the AMI, it is visible in your AWS account under *EC2* > *AMIs* > *Private images*, and you can locate it using the AMI IDs provided.
 | Have the AWS CLI and NDM assets installed
-|link:create-aws-control-plane-worker-vm.html[Create the control plane and worker VMs]
+|Go to link:create-aws-control-plane-worker-vm.html[Create the control plane and worker VMs]
 |===
