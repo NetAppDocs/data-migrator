@@ -9,6 +9,8 @@ summary:
 :imagesdir: ./media/
 
 [.lead]
+// Not ready to add this new topic to the sidebar for the preview + 2 release
+
 Use AWS to install NetApp Data Migrator (NDM).
 
 .About this task
