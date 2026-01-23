@@ -14,11 +14,11 @@ sidebar:
     entries:
     - title: What is NDM?
       url: /overview.html
-    - title: Support matrix for NDM
+    - title: Support matrix
       url: /support-matrix.html
-    - title: Usage limits of NDM
+    - title: Usage limits
       url: /usage-limitations.html
-    - title: Known issues for NDM
+    - title: Known issues
       url: /known-issues.html
   - title: Get started
     entries: 
