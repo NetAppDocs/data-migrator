@@ -165,12 +165,6 @@ For active users or groups in Active Directory, provide usernames or group names
 
 == Reporting 
 
-=== COC report contains files from deleted folders
-The Chain of Custody (COC) report might list files from deleted folders. When you delete a folder in the source, NDM correctly mirrors the deletion by removing the folder from the destination. However, files that were previously contained in that folder might still appear in the COC report.
-
-.Workaround
-
-Check the destination volume because the data is correctly mirrored even though the COC report might show entries from deleted folders.
 
 === Excel displays incorrect permissions in COC report file
 

@@ -83,7 +83,11 @@ The *Management Console* section opens:
 .. Enter a *Username* for accessing NFS export paths. 
 .. Enter the *SMB IP Address*. 
 .. Enter a *Username* for accessing SMB file shares. 
-.. Enter a *Password*. 
+.. Enter a *Password*.
+
++
+NOTE: If a SmartConnect Service IP (SSIP) is configured on the Dell Isilon cluster, you can select the SmartConnect zone domain name from the IP Address drop-down list. When using an SSIP-enabled domain name, the Isilon SmartConnect infrastructure manages connection load balancing and resolves it at the storage layer. NDM does not perform additional load balancing in this configuration.  
+
 . The *Workers* tab opens :
 .. For each zone and protocol combination, assign workers: 
 +
