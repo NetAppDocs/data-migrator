@@ -44,7 +44,7 @@ The *Credentials* page opens.
 * Select a *Protocol Version* for SMB.
 . Select the *Workers* tab.
 .. In the *Associated* column, select the toggle button next to each of the one or more workers you want to associate with a server.
-.. Select *Proceed* to initiate a pre-check operation that tests if the selected one ore more workers have connectivity to NDM.
+.. Select *Proceed* to initiate a pre-check operation that tests if the selected one or more workers have connectivity to NDM.
 . When the pre-check is complete, you should resolve any errors that are flagged. (Refer to File Server Frequently Asked Questions (FAQ) for details on how to resolve errors).
 +
 If the pre-check completes without errors, select the *Job Config* tab, then select *Finish.* The name of your File Server appears under the list of *File Servers*.
@@ -64,12 +64,12 @@ The status of a file servers is listed in the *Status* column of the *File Serve
 +
 The *File Servers* page opens, followed by the *Server Type* page.
 
-. Enter a *Configuration Name* for your Dell Isilon file server. 
-. Select *Dell Isilon* from the Server Type dropdown. 
+. Enter a *Configuration Name* for your Isilon file server. 
+. Select *Dell Isilon* from the *Server Type* dropdown. 
 +
 The *Management Console* section opens:
 . Enter the *Management Host* (hostname or IP address of the Isilon management console). 
-. Enter the *Username* for accessing the Dell Isilon management API. 
+. Enter the *Username* for accessing the Isilon management API. 
 . Enter the *Password*. 
 . Select *Proceed* to fetch the TLS certificate from the Isilon cluster. 
 . Review the *TLS Certificate* details displayed in the modal: 
@@ -86,16 +86,16 @@ The *Management Console* section opens:
 .. Enter a *Password*.
 
 +
-NOTE: If a SmartConnect Service IP (SSIP) is configured on the Dell Isilon cluster, you can select the SmartConnect zone domain name from the IP Address drop-down list. When using an SSIP-enabled domain name, the Isilon SmartConnect infrastructure manages connection load balancing and resolves it at the storage layer. NDM does not perform additional load balancing in this configuration.  
+NOTE: If a SmartConnect Service IP (SSIP) is configured on the Isilon cluster, you can select the SmartConnect zone domain name from the IP Address drop-down list. When using an SSIP-enabled domain name, the Isilon SmartConnect infrastructure manages connection load balancing and resolves it at the storage layer. NDM does not perform additional load balancing in this configuration.  
 
 . The *Workers* tab opens :
 .. For each zone and protocol combination, assign workers: 
 +
 In the *Associated* column, select the toggle button next to each of the one or more workers you want to associate. 
-.. Select *Proceed* to initiate a pre-check operation that tests if the one or more selected workers have connectivity to NDM and the Dell Isilon file server. 
+.. Select *Proceed* to initiate a pre-check operation that tests if the one or more selected workers have connectivity to NDM and the Isilon file server. 
 . When the pre-check is complete, resolve any errors that are flagged.  
 +
-If the pre-check completes without errors, the name of your File Server appears under the list of File Servers and the dropdown for the File servers displayed shows the Zones configured. 
+If the pre-check completes without errors, the name of your file server appears under the list of file servers. The dropdown for the file servers displayed shows the zones configured. 
 --
 ====
 

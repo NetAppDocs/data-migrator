@@ -13,7 +13,7 @@ After installing AWS using the CLI, create the control plane and worker VMs to a
 
 == Step 1: Create the Windows VM
 
-Create a Windows VM to access NDM using the Remote Desktop Protocol:
+Create a Windows VM to access NDM using the Remote Desktop Protocol.
 
 Learn how to link:https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/launch-marketplace-console.html[create the Windows VM^]. Use the following recommended settings:
 
@@ -94,7 +94,7 @@ Connect to the control plane to validate if NDM is active.
 
 .Steps
 . Install the AWS CLI. Refer to the AWS CLI Download instructions.
-. Use SSH to connect to your control plane server. If your server does not have Public IP, follow the steps in the link:https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connect-with-ec2-instance-connect-endpoint.html[AWS documentation^] to configure SSH access. 
+. Use SSH to connect to your control plane server. If your server does not have a public IP address, follow the steps in the link:https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connect-with-ec2-instance-connect-endpoint.html[AWS documentation^] to configure SSH access. 
 . Switch the user to `datamigrator`:
 +
 [source,cli]
@@ -150,7 +150,7 @@ Associate the Linux worker with the control plane VM.
 .. Create a new project by providing a name and an optional description.
 .. Select *View Instructions to Setup Worker* and copy the instructions. 
 .. To associate the Linux worker with the CP,
-Use SSH to connect to your worker server. If your server does not have a public IP, you can use bastion to configure SSH access. 
+Use SSH to connect to your worker server. If your server does not have a public IP address, you can use Bastion to configure SSH access. 
 * Log in as root user:
 +
 [source,cli]

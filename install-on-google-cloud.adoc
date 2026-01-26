@@ -252,7 +252,7 @@ Associate Linux worker with control plane VM.
 .. Add new user details and email ID.
 .. Create a new project by providing a name and an optional description.
 .. Select *View Instructions to Setup Worker* and copy the instructions. 
-.. To associate the Linux worker with the CP, use SSH to connect to your worker server. If your server does not have Public IP, you can use bastion to configure SSH access. 
+.. To associate the Linux worker with the CP, use SSH to connect to your worker server. If your server does not have a public IP address, you can use Bastion to configure SSH access. 
 * Log in as root user:
 +
 [source,cli]

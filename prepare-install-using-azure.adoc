@@ -24,7 +24,7 @@ NDM has two main components that you need to install:
 
 .Steps
 
-. To install the NDM control pane and worker, you must have the following prerequisites::
+. To install the NDM control pane and worker, you must have the following prerequisites:
 +
 * An active Azure subscription
 * A Resource group set up in your desired region

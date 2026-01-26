@@ -13,7 +13,7 @@ After installing Azure using the CLI, create the control plane and worker VMs to
 
 == Step 1: Create the Windows VM
 
-Create a Windows VM to access NDM using the Remote Desktop Protocol:
+Create a Windows VM to access NDM using the Remote Desktop Protocol.
 
 Learn how to link:https://learn.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-portal[create the Windows VM^]. Use the following recommended settings:
 
@@ -97,7 +97,7 @@ Connect to the control plane to validate if NDM is active.
 
 .Steps
 . Install Azure CLI. Refer to the Azure CLI Download instructions.
-. Use SSH to connect to your control plane server. If your server does not have Public IP, follow the steps in the link:https://learn.microsoft.com/en-us/azure/bastion/quickstart-host-portal[Azure bastion documentation^] to configure SSH access
+. Use SSH to connect to your control plane server. If your server does not have a public IP address, follow the steps in the link:https://learn.microsoft.com/en-us/azure/bastion/quickstart-host-portal[Azure Bastion documentation^] to configure SSH access.
 . Switch the user to `datamigrator`:
 +
 [source,cli]
@@ -152,7 +152,7 @@ Associate the Linux worker with the control plane VM.
 .. Add new user details and email ID.
 .. Create a new project by providing a name and an optional description.
 .. Select *View Instructions to Setup Worker* and copy the instructions. 
-.. To associate the Linux worker with the CP, use SSH to connect to your worker server. If your server does not have a public IP, you can use bastion to configure SSH access. 
+.. To associate the Linux worker with the CP, use SSH to connect to your worker server. If your server does not have a public IP address, you can use Bastion to configure SSH access. 
 * Log in as root user:
 +
 [source,cli]

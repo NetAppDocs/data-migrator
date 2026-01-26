@@ -34,7 +34,7 @@ If you encounter issues, contact NetApp support at ng-ndm-support@netapp.com and
 ----
 scp -P 2226 ~/2025.08.19-preview.zip ubuntu@localhost:/tmp
 ----
-. SSH to the control plane and Switch User: 
+. SSH to the control plane and switch user: 
 +
 * Connect to the control plane machine and switch to the "datamigrator" user:
 +

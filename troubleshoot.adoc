@@ -17,7 +17,7 @@ All credentials are managed from openbao. Replace the IP_ADDRESS with the IP add
 
 .Steps
 
-. Fetch the openbao root token. Use SSH to connect to the control plane server from bastion connect from the Azure portal:
+. Fetch the openbao root token. Use SSH to connect to the control plane server from Bastion connect from the Azure portal:
 +
 [source,cli]
 ----
@@ -74,7 +74,7 @@ If you encounter an issue where openbao is sealed, follow these steps to unseal.
 
 .Steps
 
-. Use SSH to connect to the control plane server using bastion connect.
+. Use SSH to connect to the control plane server using Bastion connect.
 . replace OPENBAO_UNSEAL_KEY with your key:
 [source,cli]
 ----
@@ -98,7 +98,7 @@ Restart your virtual machine::
 
 Reset SSH configuration::
 +
-First refer to the instructions provided in this link:https://learn.microsoft.com/en-us/troubleshoot/azure/virtual-machines/linux/troubleshoot-ssh-connection[Microsoft troubleshooting reference^]. However, sometimes issues can occur when opening the SSH bastion portal, which you might be able to resolve in the following way.
+First refer to the instructions provided in this link:https://learn.microsoft.com/en-us/troubleshoot/azure/virtual-machines/linux/troubleshoot-ssh-connection[Microsoft troubleshooting reference^]. However, sometimes issues can occur when opening the SSH Bastion portal, which you might be able to resolve in the following way.
 +
 .Steps
 

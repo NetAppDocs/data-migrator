@@ -48,7 +48,7 @@ Select *Clear all* to remove filters already applied to your job listings.
 
 == Manage Job Level operations
 
-Manage Job Rub operations by accessing the following job level operations on the *Job Config List* page:
+Manage Job Run operations by accessing the following job level operations on the *Job Config List* page:
 
 * Activate and deactivate a job
 * Job Details, which provides you with additional information about your jobs
