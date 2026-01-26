@@ -101,7 +101,7 @@ Connect to the control plane to validate if NDM is active.
 ----
 sudo su - datamigrator
 ----
-. Check the status of boot service and logs:
+. Check the status of the boot service and logs:
 +
 [source,cli]
 ----
