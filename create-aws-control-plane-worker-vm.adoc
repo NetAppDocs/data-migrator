@@ -233,15 +233,6 @@ net stop DatamigratorWorker && start DatamigratorWorker
 
 You should consider the following when installing NDM using AWS:
 
-<missing text?>
-
-The following tables describes the placeholder references:
-
-|===
-| Placeholder | Description
-
-|===
-
 .What's next?
 
 link:configure-ndm.html[Learn about configuring NDM]
