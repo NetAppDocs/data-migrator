@@ -62,7 +62,7 @@ aws ec2 import-image \
 aws ec2 describe-import-image-tasks 
 ----
 +
-This lists all the imports and you can identify your task by the description. After the task completes, the AMI image is available to create the control plane and worker. 
+This lists all the import tasks, and you can identify your task by the description. After the task completes, the AMI image is available to create the control plane and worker. 
 
 .What's next?
 
