@@ -13,7 +13,7 @@ Contact the NetApp NDM team at `ndm-support@netapp.com` to request the AWS Amazo
 
 .Before you begin
 
-Ensure you have the following prerequisites: 
+Ensure that you meet the following prerequisites: 
 
 * You have downloaded and installed the AWS CLI.
 * You have created an S3 bucket to upload the VHD files.
