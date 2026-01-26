@@ -1,0 +1,69 @@
+---
+sidebar: sidebar
+permalink: install-aws-cli.html
+keywords: 
+summary: 
+---
+= Install AWS CLI and manage assets for NDM 
+:icons: font
+:imagesdir: ./media/
+
+[.lead]
+Contact the NetApp NDM team at `ndm-support@netapp.com` to request the AWS Amazon Machine Image (AMI). After NetApp shares the AMI, it is visible in your AWS account under *EC2* > *AMIs* > *Private images*, and you can locate it using the AMI IDs provided. 
+
+.Before you begin
+
+Ensure that you meet the following prerequisites: 
+
+* You have downloaded and installed the AWS CLI.
+* You have created an S3 bucket to upload the VHD files.
+* To support VM import and export operations, you have an IAM Role that is named "vmimport" and has the required policies.
+* You have the AWS account and IAM permissions to perform the following actions: 
+** Access an S3 bucket
+** Create and read an S3 bucket
+** Perform Upload Put requests to an S3 bucket 
+** Perform GetBucketLocation and ListBucket requests
+
+.Steps
+
+[[step-1]]
+. Obtain and upload the AWS images: 
+.. Use the link provided by NetApp to download the control plane and worker .tar.gz images. 
+.. Optionally, use the link provided to download the .sha256 checksum files. 
+. Upload the control plane and worker VHD files to the S3 bucket. 
+. Optionally, validate the SHA256 checksums. 
++
+After you download the VHD file, you can use the checksum calculator to verify the checksum and validate against the checksum file downloaded in <<step-1,Step 1>>.
+. Import the image as an AMI.
++
+The following command creates an AMI from the VHD file. You can use this AMI to create an EC2 instance of the control plane and worker: 
++
+[source,cli]
+----
+aws ec2 import-image \ 
+
+  --description "My VM import" \ 
+
+  --disk-containers '[{"Description":"My VM import","Format":"vhd","UserBucket":{"S3Bucket":"your-s3-bucket","S3Key":"your-image.vhd"}}]' 
+----
++
+`Description`: The description for your VM.
++
+`Format`: Insert "VHD". This is the format of your file in the S3 bucket. 
++
+`S3Bucket`: The name of the S3 bucket.
++
+`S3Key`: The path to the VHD file in the AWS bucket.
+
+. List and confirm the import completion: 
++
+[source,cli]
+----
+aws ec2 describe-import-image-tasks 
+----
++
+This lists all the import tasks, and you can identify your task by the description. After the task completes, the AMI image is available to create the control plane and worker. 
+
+.What's next?
+
+link:create-aws-control-plane-worker-vm.html[Create the control plane and worker VMs for NDM]

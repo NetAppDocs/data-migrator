@@ -11,31 +11,31 @@ summary:
 [.lead]
 If you experience issues while using NetApp Data Migrator (NDM), these troubleshooting steps and reference commands might be useful. 
 
-== Application access
+== Troubleshoot application access
 
 All credentials are managed from openbao. Replace the IP_ADDRESS with the IP address of your virtual machine (VM).
 
 .Steps
 
-. Fetch the openbao root token. SSH into the control plane server from bastion connect from the Azure portal:
+. Fetch the openbao root token. Use SSH to connect to the control plane server from Bastion connect from the Azure portal:
 +
 [source,cli]
 ----
 sudo su - datamigrator
 cat /opt/datamigrator/openbao/cluster-keys.json
 ----
-. Login to openbao UI: Use `https://IP_ADDRESS/ui/` and enter the root token for login. 
+. Log in to the openbao UI: Use `https://IP_ADDRESS/ui/` and enter the root token for login. 
 . Navigate to secrets.
 . Keycloak UI: `https://IP_ADDRESS/keycloak/`
 . NDM UI: `https://IP_ADDRESS/` 
 +
 The initial username is "admin@datamigrator.local" and password is "Welcome@123".
 . Temporal UI: `https://IP_ADDRESS/temporal/ui/`
-. Postgres connection: Use the multipass IP to connect to Postgres database. Get the username and password from openbao. 
+. Postgres connection: Use the multipass IP address to connect to Postgres database. Get the username and password from openbao. 
 +
 Keys: POSTGRES_DMADMIN_USER and POSTGRES_DMADMIN_PASSWORD
 
-== kubectl reference commands
+== Use the "kubectl" reference commands
 
 * To get the pods in datamigrator namespace:
 +
@@ -74,7 +74,7 @@ If you encounter an issue where openbao is sealed, follow these steps to unseal.
 
 .Steps
 
-. SSH into the control plane server using bastion connect.
+. Use SSH to connect to the control plane server using Bastion connect.
 . replace OPENBAO_UNSEAL_KEY with your key:
 [source,cli]
 ----
@@ -98,7 +98,7 @@ Restart your virtual machine::
 
 Reset SSH configuration::
 +
-First refer to the instructions provided in this link:https://learn.microsoft.com/en-us/troubleshoot/azure/virtual-machines/linux/troubleshoot-ssh-connection[Microsoft troubleshooting reference^]. However, sometimes issues can occur when opening the SSH bastion portal, which you might be able to resolve in the following way.
+First refer to the instructions provided in this link:https://learn.microsoft.com/en-us/troubleshoot/azure/virtual-machines/linux/troubleshoot-ssh-connection[Microsoft troubleshooting reference^]. However, sometimes issues can occur when opening the SSH Bastion portal, which you might be able to resolve in the following way.
 +
 .Steps
 
@@ -111,9 +111,9 @@ First refer to the instructions provided in this link:https://learn.microsoft.co
 . For the Stored Key, choose *Select your existing created key*.
 . Select *Update*.
 
-== Windows Worker Fails to switch User on SMB file server
+== Windows worker fails to switch user on SMB file server
 
-When a windows worker attempts to connect to an SMB file server using a different set of credentials than those previously used for the same file server, the following error message might appear:
+When a Windows worker attempts to connect to an SMB file server using a different set of credentials than those previously used for the same file server, the following error message might appear:
 
  System error 1219: Multiple connections to a server or shared resource by the same user, using more than one user name, are not allowed.
 

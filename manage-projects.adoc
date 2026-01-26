@@ -37,7 +37,7 @@ You can quickly edit details about your project, if they need updating.
 
 . Select *Settings* in the top navigation bar.
 . Select the *Projects* tab to view a list of existing projects.
-. Select *(⋮)* next to the details of the project you wish to edit then select *Edit Project* from the dropdown menu.
+. Select *(⋮)* next to the details of the project you want to edit then select *Edit Project* from the dropdown menu.
 . Update the Project Name, Project Description or add new users as required.
 . Select *Submit* to save the changes.
 

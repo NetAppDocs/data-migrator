@@ -4,7 +4,7 @@ permalink: known-issues.html
 keywords: 
 summary: 
 ---
-= Known issues and workarounds
+= Known issues and workarounds for NDM
 :icons: font
 :imagesdir: ./media/
 
@@ -35,7 +35,7 @@ During data migration, the following error message might appear:
 Source Path: <source-path> & Destination Path: <destination-path> failed due to Inactive job found. Please reactivate or remove the existing job.
 ----
 
-This issue occurs when NDM updates migration paths but can't find an active job associated with them. Recreating the path does not activate the job; you must update it manually.
+This issue occurs when NDM updates the migration paths but can't find an active job associated with them. Recreating the path does not activate the job; you must update it manually.
 
 .Workaround
 Go to (http://<control-plane-IP-address>/jobs-list) in NDM, manually set the job configuration to *Active*, then restart the migration job. 
@@ -77,7 +77,7 @@ If they are offline, restart to restore connectivity.
 
 . Check the worker status. 
 +
-If the worker is offline, SSH into the VM and run the following command: 
+If the worker is offline, use SSH to connect to the VM and run the following command: 
 +
 [source,cli]
 ----
@@ -92,7 +92,7 @@ If issue persists, restart the worker VM.
 
 === File sizes might differ after migration even if counts match
 
-After data migration has completed, the total number of files is correct, but some files might have a different size compared to the original source. This can happen it the network is interrupted or if there are problems with the server during file transfer.
+After data migration completes, the total number of files is correct, but some files might have a different size compared to the original source. This can happen if the network is interrupted or if there are problems with the server during file transfer.
 
 .Workaround
 
@@ -165,12 +165,6 @@ For active users or groups in Active Directory, provide usernames or group names
 
 == Reporting 
 
-=== COC report contains files from deleted folders
-The Chain of Custody (COC) report might list files from deleted folders. When you delete a folder in the source, NDM correctly mirrors the deletion by removing the folder from the destination. However, files that were previously contained in that folder might still appear in the COC report.
-
-.Workaround
-
-Check the destination volume because the data is correctly mirrored even though the COC report might show entries from deleted folders.
 
 === Excel displays incorrect permissions in COC report file
 
@@ -189,6 +183,32 @@ To view correct file and folder permissions open the CSV file using one of the f
 * Online CSV viewer 
 
 * Text editor, for example, Notepad++ 
+
+=== No error message when Discovery job fails due to network issues
+
+If the host or destination server goes down during a Bulk Discovery job, NDM might not show an error message. This can give the impression that the job is still running normally.  
+
+.Workaround
+
+Discovery jobs refresh every 30 seconds. If you notice that the file count, directory count, or data size is not updating, this might indicate a network issue.  
+
+. Check network connectivity: 
+
+* Open the worker VM terminal. Ping the IP address of the destination server and if there's no response, the destination might be unreachable.
+
+. Restore the network interface:
+
+* Use SSH to connect to the destination server:
++
+`ssh <destination IP>`
+
+* Run `ipconfig` to find the interface name (for example, eth0). 
+
+* Run `ifup` to bring it back online:
++
+`ifup <interface name>`    
+
+. If required, repeat the Steps 1 and 2 for the source server.
 
 === Unable to switch user on Windows worker
 

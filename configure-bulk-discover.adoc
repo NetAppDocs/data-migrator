@@ -15,10 +15,13 @@ Configure Bulk Discover in NetApp Data Migrator (NDM) to quickly generate an ove
 
 . Log in to NDM.
 . From the left navigation panel, select *Storage Servers*, then select *File Servers* to view a list of available file servers.
-. Select the name of the server on which you wish to perform a bulk discovery then select *Bulk Discover*.
+. Select the name of the server on which you want to perform a bulk discovery then select *Bulk Discover*.
 . Select *Job Schedule*, then select one of the following options:
-  * *Start Now* if you want the discovery to begin immediately.
-  * *Schedule date and time (UTC)* if you want to schedule the discovery process, then enter the date and time when you want the job to start.
+* *Start Now* if you want the discovery to begin immediately.
+* *Schedule date and time (UTC)* if you want to schedule the discovery process, enter the date and time when you want the job to start.
+. Choose one of the following options for *Scan Alternate Data Streams*:
+* Select *Yes* if you want NDM to discover the Alternate Data Streams (ADS) associated with your files. 
+* Select *No* if you don't want NDM to discover the ADS associated with your files. 
 . In the *Excluded Path Patterns* text box, enter paths that you want to exclude from the discovery process. You should enter each path on a new line.
-. Use the *Search bar* to find specific export paths (within the listed paths) that you wish to include in the discovery process, then select the checkbox next to the *Export Path(s)*.  Export paths that are no longer reachable, for example, those that have been deleted or no longer appear in the output of `showmount -e` for NFS, or paths which are not returned during SMB share enumeration, are disabled and cannot be used in the discovery process.
-. Select *Submit* and a notification message appears confirming that the *Bulk Discover Job* has been created.  Select the *View Job Listing* link in this message to view the *Job List* page, where your newly created job is listed in the *Job Listings* table.
+. Use the *Search bar* to find specific export paths (within the listed paths) that you want to include in the discovery process, then select the checkbox next to the *Export Path(s)*.  Export paths that are no longer reachable are disabled and cannot be used in the discovery process. For example, export paths that have been deleted or no longer appear in the output of `showmount -e` for NFS or paths which are not returned during SMB share enumeration are disabled. 
+. Select *Submit* and a notification message appears confirming that the *Bulk Discover Job* has been created.  Select the *View Job Listing* link in this message to view the *Job Config List* page, where your newly created job is listed in the *Job Listings* table.

@@ -30,7 +30,8 @@ Workers are virtual machines running on Linux (which supports the NFS protocol),
 * Download the control plane OVA from the preview link provided.
 * For SMB migration, download the Windows Worker Installer from the preview link provided.
 * For NFS migration, download the Worker OVA from the preview link provided.
-
+* Ensure that the ports for the control plane and workers are enabled:
++
 include::./_include/configure-ports.adoc[]
 
 [[create-control-plane-and-worker-vms]]
@@ -233,7 +234,7 @@ Aug 12 11:33:54 datamigrator systemd[1]: Started datamigrator-worker.service - D
 . Navigate to NDM UI to verify that the worker is registered.
 --
 
-.Windows Worker
+.Windows worker
 --
 . Create a Windows VM and copy the Windows Worker Installer to this Windows VM.
 . Run the Windows Worker Installer that you copied to the Windows VM.
@@ -281,7 +282,7 @@ The control plane credentials are stored inOpenBao. Access the OpenBao andPostgr
 ----
 https://<IP_address>/
 ----
-. SSH into the control plane server to fetch the OpenBao root token:
+. Use SSH to connect to the control plane server to fetch the OpenBao root token:
 +
 [source,cli]
 ----
@@ -289,7 +290,7 @@ ssh <User_ID>@<control_plane_server_IP>
 sudo su - datamigrator
 cat /opt/datamigrator/openbao/cluster-keys.json
 ----
-. Log in to OpenBaoUI using the root token from Step 2:
+. Log in to the OpenBao UI using the root token from Step 2:
 +
 [source,cli]
 ----

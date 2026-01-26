@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar
 permalink: manage-jobs.html
-keywords: 
-summary: 
+keywords: ndm, data migrator, manage, jobs, runs, list, details, run details, pause, stop, resume
+summary: Use job management features in NetApp Data Migrator to initiate and track your Discovery, Migration, and Cutover jobs and job runs.
 ---
 = Manage jobs and job runs in NDM
 :icons: font
@@ -11,17 +11,17 @@ summary:
 [.lead]
 Use job management features in NetApp Data Migrator (NDM) to initiate and track your *Discovery*, *Migration*, and *Cutover* jobs and job runs.
 
-== View Job List
+== View Job Config List
 
-The *Job List* page provides a comprehensive overview of all migration related jobs. Use this page to monitor and manage the status and progress of *Discovery*, *Migration*, and *Cutover* jobs.
+The *Job Config List* page provides a comprehensive overview of all migration related jobs. Use this page to monitor and manage the status and progress of *Discovery*, *Migration*, and *Cutover* jobs.
 
 .Steps
 
 . Log in to NDM.
 . Select *Jobs* from the left navigation bar.
-. Select *Job List*.
+. Select *Job Config List*.
 
-The *Job List* page shows a *Jobs Listings* table, which includes the following information:
+The *Job Config List* page shows a *Jobs Listings* table, which includes the following information:
 
 * *Source*: Location of source file server.
 * *Destination*: Destination file server and export path details (for Migration jobs).
@@ -34,9 +34,9 @@ The *Job List* page shows a *Jobs Listings* table, which includes the following 
 
 Jobs that use manual export paths and the *Export Paths File* is later re-uploaded, any previously run jobs associated with a *now invalid or disabled path* automatically become inactive.
 
-== Job List Filters
+== Job Config List Filters
 
-On the *Job List* page, you can use the *Filters* feature to quickly sort jobs shown in the *Jobs Listings* table. You can choose a combination of filters based on the following options:
+On the *Job Config List* page, you can use the *Filters* feature to quickly sort jobs shown in the *Jobs Listings* table. You can choose a combination of filters based on the following options:
 
 * Source
 * Destination
@@ -48,9 +48,9 @@ Select *Clear all* to remove filters already applied to your job listings.
 
 == Manage Job Level operations
 
-Manage Job Rub operations by accessing the following job level operations on the *Job List* page:
+Manage Job Run operations by accessing the following job level operations on the *Job Config List* page:
 
-* Activate and Deactivate a job
+* Activate and deactivate a job
 * Job Details, which provides you with additional information about your jobs
 * Job Run History, which provides information about previous job runs
 
@@ -58,7 +58,7 @@ Manage Job Rub operations by accessing the following job level operations on the
 
 .Steps
 
-. On the *Job List* page, in the *Job Listings* table, locate the job you want to activate.
+. On the *Job Config List* page, in the *Job Listings* table, locate the job you want to activate.
 . Locate the job you want to activate.
 . Select the action menu next to your job.
 . Select *Activate* from the pop-up menu.
@@ -69,24 +69,51 @@ Manage Job Rub operations by accessing the following job level operations on the
 .Steps
 
 . Select *Jobs* in the left navigation bar.
-. Select *Job List*.
+. Select *Job Config List*.
 . In the *Job Listings* table, locate an *Active* job you want to deactivate and select the action menu next to your job.
 . Select *Deactivate* from the pop-up menu.
 . The job *Status* changes from *Active* to *Inactive*, and execution stops until you reactivate the job.
+
+== Edit job configurations 
+
+.Steps 
+
+. Select *Jobs* in the left navigation bar.
+. Select *Job Config List*.
+. <<view-job-details,Open the Job Details page>> for the job you want to edit.
+. Select *View/Edit Configuration*.
+. Edit the job configuration:
++
+[role="tabbed-block"]
+====
+.Discovery Job
+--
+* Add or remove Excluded Path Patterns.
+* Schedule a job run. 
+--
+.Migration Job
+--
+* Edit any job option. 
+* Add or remove mappings.
+* Schedule a job run.
+--
+====
+. Select *Save*. The new configuration affects future job runs. 
 
 == Delete a Job 
 
 .Steps 
 
 . Select *Jobs* in the left navigation bar.
-. Select *Job List*. 
+. Select *Job Config List*.
 . In the *Job Listings* table, locate the job you want to delete and select the action menu (three dots) next to your job. 
 . Select *Delete* from the action menu.
 . Select *Delete* in the pop-up window to delete the job. You can delete a job only if there is no active run. 
 
+[[view-job-details]]
 == View Job Details
 
-From the *Job List* page, you can access the *Job Details* page to view additional details about individual jobs, such as:
+From the *Job Config List* page, you can access the *Job Details* page to view additional details about individual jobs, such as:
 
 * Job type (Discovery, Migration, or Cutover)
 * Number of files and directories discovered
@@ -96,8 +123,8 @@ From the *Job List* page, you can access the *Job Details* page to view addition
 
 .Steps
 
-. Select *Jobs* on the left navigation bar.
-. Select *Job List*.
+. Select *Jobs* in the left navigation bar.
+. Select *Job Config List*.
 . In the *Job Listings* table, select the action menu next to a job, then select *Details* from the pop-up menu.
 
 == View Job Run History
@@ -131,7 +158,7 @@ Cutover job status types include:
 
 == Manage Job Run operations
 
-From the *Job Details* page, you can manage *Start*, *Stop*, *Pause*, and *Resume* operations for a job. Use the *Pause* feature to temporarily halt a running job, without canceling it. Then, you can resume the job from the point where it was paused. This makes it a useful feature in scenarios where you need to free up system resources or troubleshoot issues without losing progress.
+From the *Job Details* page, you can manage *Start*, *Stop*, *Pause*, and *Resume* operations for a job. Use the *Pause* feature to temporarily halt a running job, without canceling it. Then, you can resume the job from the point where it was paused. This is a useful feature in scenarios where you need to free up system resources or troubleshoot issues without losing progress.
 
 === Pause or resume a job run
 
@@ -211,7 +238,7 @@ From the *Job Run List* page you can monitor, filter, and control job runs. You 
 
 . From the left navigation bar, select *Jobs*.
 . Select *Job Run List*.
-. In the *Job Run List* table, select the checkbox next to one or more job runs to which you wish to apply actions.
+. In the *Job Run List* table, select the checkbox next to one or more job runs to which you want to apply actions.
 . Select *Pause* or *Stop* or *Resume* depending on your requirements.
 
 == Generate a job error report
@@ -229,7 +256,8 @@ You can also generate an error report for a previous job run.
 
 . On the *Job Details* page, in the *Run History* table, select the action menu next to the job run for which you want to generate an error report.
 . Select *Details*.
-. On the *Job Run Details* page, in the *Errors* panel, select *View All*.
+. On the *Job Details* page, in the *Errors* panel, select *View All*.
 . Select *Generate Error Report* to download details about errors in the job run you selected.
 
+// 2026 JAN 12: OTHERDOC-184
 // 2025 NOV 28: OTHERDOC-171 and NADIAA updates

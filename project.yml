@@ -14,11 +14,11 @@ sidebar:
     entries:
     - title: What is NDM?
       url: /overview.html
-    - title: Support matrix for NDM
+    - title: Support matrix
       url: /support-matrix.html
-    - title: Usage limits of NDM
+    - title: Usage limits
       url: /usage-limitations.html
-    - title: Known issues for NDM
+    - title: Known issues
       url: /known-issues.html
   - title: Get started
     entries: 
@@ -32,18 +32,26 @@ sidebar:
       entries:
       - title: Learn about the install options
         url: /install-options.html
-      - title: Install NDM using OVA
-        url: /install-using-ova.html
-      - title: Install NDM using Azure
+      - title: AWS
         entries:
         - title: Prepare for installation
-          url: /install-using-azure.html
-        - title: Install Azure CLI and manage assets 
-          url: /install-azure-using-cli.html
+          url: /prepare-install-using-aws.html
+        #- title: Install AWS CLI and manage assets 
+        #  url: /install-aws-cli.html
         - title: Create the control plane and worker VMs
-          url: /create-control-plane-worker-vm.html
-      - title: Install NDM using Google Cloud
+          url: /create-aws-control-plane-worker-vm.html
+      - title: Azure
+        entries:
+        - title: Prepare for installation
+          url: /prepare-install-using-azure.html
+        - title: Install Azure CLI and manage assets 
+          url: /install-azure-cli.html
+        - title: Create the control plane and worker VMs
+          url: /create-azure-control-plane-worker-vm.html
+      - title: Google Cloud
         url: /install-on-google-cloud.html
+      - title: OVA
+        url: /install-using-ova.html
     - title: Configure NDM
       url: /configure-ndm.html
   - title: Use NDM

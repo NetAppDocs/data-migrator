@@ -11,40 +11,95 @@ summary:
 [.lead]
 You can use NetApp Data Migrator (NDM) to add, configure, and edit file servers that use the NFS or SMB protocols. 
 
-== Add or configure a new file server
+== Add a new file server
+Add a new NFS or SMB file server and configure the worker virtual machines. 
 
 .Steps
+Depending on your system configuration, use the "Other NAS" or "Dell Isilon" workflow option.
 
+[role="tabbed-block"]
+====
+.Other NAS
+--
 . In the left navigation panel, select *Storage Servers*.
-. Select *File Servers*.
-. Select *+Add,* then the *File Servers* page opens*.*
-. Select the *Server Type* tab then:
-. Select the *Credentials* tab.
-. Enter the *Host Name* (or IP address) of the *NFS* or *SMB* server.
+. Select *File Servers* > *+Add*. 
++
+The *File Servers* page opens, followed by the *Server Type* page. 
+. Enter the server name and select *Server Type* as "Other NAS".
++
+The *Credentials* page opens. 
+. Enter the *Host Name* (or IP address) of the NFS or SMB server.
 . If you are using an *NFS* file server:
-* Enter a *Username* for accessing *NFS* file shares.
-* Enter a *Password* (Optional).
-* Select a *Protocol Version* for *NFS*.
-* In the *Export Paths Retrieval Mechanism* panel select:
-* *Auto Discover* to automatically discover export paths
-* *Manual Upload* to upload export paths manually, or in environments where *Auto Discover* is not supported, like the Google Cloud NetApp Volumes (GCNV) Flex service.You need to upload export paths manually after adding a file server. Refer to the next set of instructions which explains how to manually upload export paths.
+* Enter a *Username* for accessing NFS file shares.
+* Optionally, enter a *Password*.
+* Select a *Protocol Version* for NFS.
+* In the *Export Paths Retrieval Mechanism* panel select *Auto Discover* or *Manual Upload*:
++
+*Auto Discover* automatically discovers export paths.
++
+*Manual Upload* uploads export paths manually, or in environments where *Auto Discover* is not supported, such as the Google Cloud NetApp Volumes (GCNV) Flex service. After adding a file server, <<manually-upload-export-paths,you need to upload export paths manually>>.
 . If you are using an *SMB* file server:
-* Enter a *Username* for accessing *SMB* file shares.
+* Enter a *Username* for accessing SMB file shares.
 * Enter a *Password*.
-* Select a *Protocol Version* for *SMB*.
-. Select the *Workers* tab
-. In the *Associated* column, select the toggle button next to the names of worker(s) you wish to associate with a server.
-. Select *Proceed* to initiate a pre-check operation that tests if the selected worker(s) have connectivity to NDM.
+* Select a *Protocol Version* for SMB.
+. Select the *Workers* tab.
+.. In the *Associated* column, select the toggle button next to each of the one or more workers you want to associate with a server.
+.. Select *Proceed* to initiate a pre-check operation that tests if the selected one or more workers have connectivity to NDM.
 . When the pre-check is complete, you should resolve any errors that are flagged. (Refer to File Server Frequently Asked Questions (FAQ) for details on how to resolve errors).
-. If the pre-check completes without errors, select the *Job Config* tab, then select *Finish.* The name of your File Server appears under the list of *File Servers*.
-
++
+If the pre-check completes without errors, select the *Job Config* tab, then select *Finish.* The name of your File Server appears under the list of *File Servers*.
++
 The status of a file servers is listed in the *Status* column of the *File Servers* table. Status types include:
-
++
 * *Active*: There are no errors, and all details have been validated.
 * *In Progress:* Server validation is in progress.
 * *Draft*: No workers have been associated with a file server.
-* *Errored*: There are issues with permissions, no paths available or only “ / ” is available as export path. These can occur if you select *Auto Discovery* for the export path during file server creation.
+* *Errored*: There are issues with permissions, no paths available, or only “ / ” is available as export path. These issues can occur if you select *Auto Discovery* for the export path during file server creation.
+--
 
+.Dell Isilon
+--
+. In the left navigation panel, select *Storage Servers*.
+. Select *File Servers* > *+Add*.
++
+The *File Servers* page opens, followed by the *Server Type* page.
+
+. Enter a *Configuration Name* for your Isilon file server. 
+. Select *Dell Isilon* from the *Server Type* dropdown. 
++
+The *Management Console* section opens:
+. Enter the *Management Host* (host name or IP address of the Isilon management console). 
+. Enter the *Username* for accessing the Isilon management API. 
+. Enter the *Password*. 
+. Select *Proceed* to fetch the TLS certificate from the Isilon cluster. 
+. Review the *TLS Certificate* details displayed in the modal: 
+.. Verify the certificate issuer, validity dates, and fingerprint. 
+.. Select *Accept* to trust the certificate and proceed. 
+.. Select *Reject* to cancel if you don't trust the certificate. 
+. The *Zone Credentials* page opens:
+.. Select one or more *Access Zones* from the available zones discovered. 
+.. For each selected zone, configure the protocol credentials: 
+.. Select the *NFS IP Address* from the dropdown. 
+.. Enter a *Username* for accessing NFS export paths. 
+.. Enter the *SMB IP Address*. 
+.. Enter a *Username* for accessing SMB file shares. 
+.. Enter a *Password*.
+
++
+NOTE: If a SmartConnect Service IP (SSIP) is configured on the Isilon cluster, you can select the SmartConnect zone domain name from the IP Address drop-down list. When using an SSIP-enabled domain name, the Isilon SmartConnect infrastructure manages connection load balancing and resolves it at the storage layer. NDM does not perform additional load balancing in this configuration.  
+
+. The *Workers* tab opens :
+.. For each zone and protocol combination, assign workers: 
++
+In the *Associated* column, select the toggle button next to each of the one or more workers you want to associate. 
+.. Select *Proceed* to initiate a pre-check operation that tests if the one or more selected workers have connectivity to NDM and the Isilon file server. 
+. When the pre-check is complete, resolve any errors that are flagged.  
++
+If the pre-check completes without errors, the name of your file server appears under the list of file servers. The dropdown for the file servers displayed shows the zones configured. 
+--
+====
+
+[[manually-upload-export-paths]]
 == Manually upload export paths
 
 NDM allows you to manually upload export paths for use in data migration. This feature is useful in environments where automatic NFS export path detection is unavailable, for example, the GCNV Flex service. If you selected *Manual Upload* in the *Export Paths Retrieval Mechanism* panel, you need to download and complete the template file provided by NDM after you finish creating a file server.
@@ -61,19 +116,54 @@ NDM allows you to manually upload export paths for use in data migration. This f
 
 When upload is complete, export paths can have one of the following status types:
 
-* Valid: a path that successfully uploaded which you can mount and unmount
-* Invalid: a path that failed to upload.
-* Disable: a path which is available, but not in the file you uploaded.
+* *Valid*: a successfully uploaded path which you can mount and unmount
+* *Invalid*: a path that failed to upload.
+* *Disable*: a path which is available, but not in the file you uploaded.
 
 == Edit file server details
 
-If required, you can quickly make changes to a previously configured file server.
+If required, you can make changes to a previously configured file server.
 
 .Steps
+Edit the file server details using the "Other NAS" or "Dell Isilon" workflow option.
 
+[role="tabbed-block"]
+====
+.Other NAS
+--
 . Select the action menu beside the File Server you want to edit.
 . Select *Edit File Server*. If you selected the *Manual Upload* option for *Upload Export Path Retrieval*, only valid paths are displayed.
 . Select the *Server Type* tab, make your required edits, then select *Proceed*.
 . Select the *Credentials* tab, make any required edits, then select *Proceed*.
-. Select the *Workers* tab, make any required edits, then select *Proceed*.
-. Select the *Job Config* tab, make any required edits, then select *Finish.*
+. Select the *Workers* tab, make any required edits, then select *Submit*.
+--
+.Dell Isilon
+--
+. Select the action menu beside the Parent File Server you want to edit. 
+. Select *Edit File Server*. 
+. Select the *Server Type* tab: 
+
+.. Update the *Configuration Name* if needed.
+.. Update *Username* or *Password* if needed.
+.. Select *Proceed*. 
+
++
+NOTE: You cannot change the *Server Type* (Dell Isilon) and *Management Host*.  
+
+. Select the *Zone Credentials* tab: 
+.. Add new zones by selecting additional zones from the available list. 
+.. Update the protocol credentials for each zone:
++ 
+Update the *NFS IP Address*, *Username*, or *Password* as needed. 
++
+Update the *SMB IP Address*, *Username*, or *Password* as needed. 
+.. Select *Proceed*.
+
+. Select the *Workers* tab: 
+.. Update worker assignments for each zone and protocol by toggling the workers on or off in the *Associated* column. 
+.. Select *Proceed* to run the pre-check validation on any newly assigned workers. 
+. Select the *Job Config* tab: 
+.. Update the *Working Directory* if needed. 
+.. Select *Finish*.
+--
+==== 

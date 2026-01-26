@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar
-permalink: create-control-plane-worker-vm.html
+permalink: create-azure-control-plane-worker-vm.html
 keywords: 
 summary: 
 ---
-= Create the control plane and worker VMs for NDM
+= Use Azure to create the control plane and worker VMs for NDM
 :icons: font
 :imagesdir: ./media/
 
@@ -13,7 +13,7 @@ After installing Azure using the CLI, create the control plane and worker VMs to
 
 == Step 1: Create the Windows VM
 
-Create a Windows VM to access NDM using the Remote Desktop Protocol:
+Create a Windows VM to access NDM using the Remote Desktop Protocol.
 
 Learn how to link:https://learn.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-portal[create the Windows VM^]. Use the following recommended settings:
 
@@ -44,13 +44,13 @@ Learn how to link:https://learn.microsoft.com/en-us/azure/virtual-machines/captu
 * Size: 4 vCPU, 16GB RAM
 * License type: Other
 
-== Step 3 (b)Add the Windows worker installer
+== Step 3 (b)Add the Windows Worker Installer
 
-Add the Windows worker installer for SMB migration.
+Add the Windows Worker Installer for SMB migration.
 
 .Steps
-//. Download the Windows worker installer for Azure from the link:https://mysupport.netapp.com/site/[NetApp Support site^]. 
-. Download the Windows worker installer for Azure from the preview link provided. 
+//. Download the Windows Worker Installer for Azure from the link:https://mysupport.netapp.com/site/[NetApp Support site^]. 
+. Download the Windows Worker Installer for Azure from the preview link provided. 
 
 . Learn how to link:https://learn.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-portal[create a Windows VM^]. Use the following recommended settings:
 +
@@ -59,8 +59,8 @@ Add the Windows worker installer for SMB migration.
 ** Size: 16 vCPUs, 64 GB memory
 ** RDP port 3389 open 
 
-. Move the Windows worker installer to the Windows VM
-* Login to the Windows Worker VM using the Remote Desktop Protocol and copy the Windows worker installer to the Windows VM.
+. Move the Windows Worker Installer to the Windows VM
+* Log in to the Windows worker VM using the Remote Desktop Protocol and copy the Windows Worker Installer to the Windows VM.
 * Use Microsoft Windows App (Mac) or RDP (Windows) to create a remote session. 
 +
 Learn about link:https://learn.microsoft.com/en-us/azure/virtual-machines/windows/connect-rdp[RDP connections^].
@@ -75,9 +75,9 @@ Learn about link:https://learn.microsoft.com/en-us/azure/virtual-machines/window
 Windows worker for MacOS.
 
 .. Install the Microsoft Windows App on your local laptop.
-.. link:https://learn.microsoft.com/en-us/windows-app/get-started-connect-devices-desktops-apps[RDP into the SMB Windows Worker VM^].
+.. link:https://learn.microsoft.com/en-us/windows-app/get-started-connect-devices-desktops-apps[RDP into the SMB Windows worker VM^].
 .. link:https://learn.microsoft.com/en-us/windows-app/device-audio-folder-redirection-teams?tabs=macos#folder-redirection[Mount the local folder which contains the Windows Worker Installer^].
-.. Locate the folder you mounted to the Windows Worker VM under "This PC" on the server.
+.. Locate the folder you mounted to the Windows worker VM under "This PC" on the server.
 .. Move the Windows Worker Installer from the mounted folder to a suitable location on the Windows VM.
 --
 .Windows
@@ -85,8 +85,8 @@ Windows worker for MacOS.
 Windows worker for Windows:
 
 .. Launch a Remote Desktop Connection.
-.. link:https://cat.pdx.edu/platforms/windows/remote-access/file-sharing-rdp-from-windows/[RDP into the SMB Windows Worker VM and mount the local folder containing the Windows Worker Installer^]. 
-.. Locate the folder you mounted to the Windows Worker VM under "This PC" on the server.
+.. link:https://cat.pdx.edu/platforms/windows/remote-access/file-sharing-rdp-from-windows/[RDP into the SMB Windows worker VM and mount the local folder containing the Windows Worker Installer^]. 
+.. Locate the folder you mounted to the Windows worker VM under "This PC" on the server.
 .. Move the Windows Worker Installer from the mounted folder to a suitable location on the Windows VM .
 --
 ====
@@ -97,7 +97,7 @@ Connect to the control plane to validate if NDM is active.
 
 .Steps
 . Install Azure CLI. Refer to the Azure CLI Download instructions.
-. SSH Into your control plane server. If your server does not have Public IP, follow the steps in the link:https://learn.microsoft.com/en-us/azure/bastion/quickstart-host-portal[Azure bastion documentation^] to configure SSH Access. 
+. Use SSH to connect to your control plane server. If your server does not have a public IP address, follow the steps in the link:https://learn.microsoft.com/en-us/azure/bastion/quickstart-host-portal[Azure Bastion documentation^] to configure SSH access.
 . Switch the user to `datamigrator`:
 +
 [source,cli]
@@ -110,7 +110,7 @@ sudo su - datamigrator
 ----
 sudo systemctl status boot-microk8s.service
 ----
-Optionally, check the boot service logs:
+. Optionally, check the boot service logs:
 +
 [source,cli]
 ----
@@ -140,8 +140,8 @@ The default credentials for the NDM UI are:
 --
 Associate the Linux worker with the control plane VM.
 
-.. Login to the Windows VM using RDP to access NDM.
-* Use Microsoft Windows App (Mac) or Remote Desktop Connection (Windows) to create a RDP session.
+.. Log in to the Windows VM using RDP to access NDM.
+* Use Microsoft Windows App (Mac) or Remote Desktop Connection (Windows) to create an RDP session.
 * Learn about link:https://learn.microsoft.com/en-us/azure/virtual-machines/windows/connect-rdp[RDP connections^].
 .. Retrieve the private IP address from the newly created control plane VM in Azure.
 .. Open any browser and navigate to the NDM UI using the following credentials: 
@@ -152,8 +152,7 @@ Associate the Linux worker with the control plane VM.
 .. Add new user details and email ID.
 .. Create a new project by providing a name and an optional description.
 .. Select *View Instructions to Setup Worker* and copy the instructions. 
-.. To associate the Linux worker with the CP,
-SSH into your worker server. If your server does not have a public IP, you can use bastion to configure SSH Access. 
+.. To associate the Linux worker with the CP, use SSH to connect to your worker server. If your server does not have a public IP address, you can use Bastion to configure SSH access. 
 * Log in as root user:
 +
 [source,cli]
@@ -162,7 +161,11 @@ sudo su -
 ----
 * Paste the instructions copied from *View Instructions to Setup Worker* to register the worker VM.
 * Verify the status of the worker:
++
+[source,cli]
+----
 systemctl status datamigrator-worker.service
+----
 * Check the logs:
 +
 [source,cli]
@@ -245,7 +248,6 @@ The following tables describes the placeholder references:
 
 |===
 | Placeholder | Description
-
 | <YOUR_STORAGE_ACCOUNT>	 | Destination storage account name
 | <YOUR_RESOURCE_GROUP>	 | Resource group name
 | <YOUR_AZURE_REGION> | Azure region (e.g., East us)
