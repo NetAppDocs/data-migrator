@@ -83,7 +83,7 @@ $ sudo chmod +x upgrade.sh
 $ ./upgrade.sh <path-to-check-sum-file> <path-to-docker-tar-file> <path-to-helm-tgz-file>
 ----
 +
-You should an output similar to the following example:
+You should see an output similar to the following example:
 +
 ----
 ./upgrade.sh checksums.sha256 datamigrator-2025.08.19-preview.tar datamigrator-2025.08.19-preview.tgz
