@@ -18,7 +18,7 @@ Configure Bulk Discover in NetApp Data Migrator (NDM) to quickly generate an ove
 . Select the name of the server on which you want to perform a bulk discovery then select *Bulk Discover*.
 . Select *Job Schedule*, then select one of the following options:
 * *Start Now* if you want the discovery to begin immediately.
-* *Schedule date and time (UTC)* if you want to schedule the discovery process, then enter the date and time when you want the job to start.
+* *Schedule date and time (UTC)* if you want to schedule the discovery process, enter the date and time when you want the job to start.
 . Choose one of the following options for *Scan Alternate Data Streams*:
 * Select *Yes* if you want NDM to discover the Alternate Data Streams (ADS) associated with your files. 
 * Select *No* if you don't want NDM to discover the ADS associated with your files. 
