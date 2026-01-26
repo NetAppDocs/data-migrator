@@ -57,7 +57,7 @@ Add the Windows worker installer for SMB migration.
 ** RDP port 3389 open 
 
 . Move the Windows worker installer to the Windows VM
-.. Login to the Windows Worker VM using the Remote Desktop Protocol and copy the Windows worker installer to the Windows VM.
+.. Log in to the Windows Worker VM using the Remote Desktop Protocol and copy the Windows worker installer to the Windows VM.
 .. Use Microsoft Windows App (Mac) or RDP (Windows) to create a remote session. 
 +
 Learn about link:https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connect-rdp.html[RDP connections^].
