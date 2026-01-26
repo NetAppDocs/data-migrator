@@ -57,7 +57,7 @@ Add the Windows worker installer for SMB migration.
 ** RDP port 3389 open 
 
 . Move the Windows worker installer to the Windows VM
-.. Login to the Windows Worker VM using the Remote Desktop Protocol and copy the Windows worker installer to the Windows VM.
+.. Log in to the Windows Worker VM using the Remote Desktop Protocol and copy the Windows worker installer to the Windows VM.
 .. Use Microsoft Windows App (Mac) or RDP (Windows) to create a remote session. 
 +
 Learn about link:https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connect-rdp.html[RDP connections^].
@@ -101,7 +101,7 @@ Connect to the control plane to validate if NDM is active.
 ----
 sudo su - datamigrator
 ----
-. Check the status of boot service and logs:
+. Check the status of the boot service and logs:
 +
 [source,cli]
 ----
@@ -137,7 +137,7 @@ The default credentials for the NDM UI are:
 --
 Associate the Linux worker with the control plane VM.
 
-.. Login to the Windows VM using RDP to access NDM.
+.. Log in to the Windows VM using RDP to access NDM.
 * Use Microsoft Windows App (Mac) or Remote Desktop Connection (Windows) to create an RDP session.
 * Learn about link:https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connect-rdp.html[RDP connections^].
 .. Retrieve the private IP address from the newly created control plane VM in AWS.
@@ -232,15 +232,6 @@ net stop DatamigratorWorker && start DatamigratorWorker
 ====
 
 You should consider the following when installing NDM using AWS:
-
-<missing text?>
-
-The following tables describes the placeholder references:
-
-|===
-| Placeholder | Description
-
-|===
 
 .What's next?
 

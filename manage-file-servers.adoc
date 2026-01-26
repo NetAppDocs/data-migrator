@@ -68,14 +68,14 @@ The *File Servers* page opens, followed by the *Server Type* page.
 . Select *Dell Isilon* from the *Server Type* dropdown. 
 +
 The *Management Console* section opens:
-. Enter the *Management Host* (hostname or IP address of the Isilon management console). 
+. Enter the *Management Host* (host name or IP address of the Isilon management console). 
 . Enter the *Username* for accessing the Isilon management API. 
 . Enter the *Password*. 
 . Select *Proceed* to fetch the TLS certificate from the Isilon cluster. 
 . Review the *TLS Certificate* details displayed in the modal: 
 .. Verify the certificate issuer, validity dates, and fingerprint. 
 .. Select *Accept* to trust the certificate and proceed. 
-.. Select *Reject* to cancel if the certificate is not trusted. 
+.. Select *Reject* to cancel if you don't trust the certificate. 
 . The *Zone Credentials* page opens:
 .. Select one or more *Access Zones* from the available zones discovered. 
 .. For each selected zone, configure the protocol credentials: 
@@ -116,7 +116,7 @@ NDM allows you to manually upload export paths for use in data migration. This f
 
 When upload is complete, export paths can have one of the following status types:
 
-* *Valid*: a path that successfully uploaded which you can mount and unmount
+* *Valid*: a successfully uploaded path which you can mount and unmount
 * *Invalid*: a path that failed to upload.
 * *Disable*: a path which is available, but not in the file you uploaded.
 
