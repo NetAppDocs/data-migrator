@@ -137,7 +137,7 @@ The default credentials for the NDM UI are:
 --
 Associate the Linux worker with the control plane VM.
 
-.. Login to the Windows VM using RDP to access NDM.
+.. Log in to the Windows VM using RDP to access NDM.
 * Use Microsoft Windows App (Mac) or Remote Desktop Connection (Windows) to create an RDP session.
 * Learn about link:https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connect-rdp.html[RDP connections^].
 .. Retrieve the private IP address from the newly created control plane VM in AWS.
