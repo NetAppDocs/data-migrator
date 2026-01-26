@@ -231,8 +231,6 @@ net stop DatamigratorWorker && start DatamigratorWorker
 --
 ====
 
-You should consider the following when installing NDM using AWS:
-
 .What's next?
 
 link:configure-ndm.html[Learn about configuring NDM]
