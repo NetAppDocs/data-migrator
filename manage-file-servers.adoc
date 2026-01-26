@@ -116,7 +116,7 @@ NDM allows you to manually upload export paths for use in data migration. This f
 
 When upload is complete, export paths can have one of the following status types:
 
-* *Valid*: a path that successfully uploaded which you can mount and unmount
+* *Valid*: a successfully uploaded path which you can mount and unmount
 * *Invalid*: a path that failed to upload.
 * *Disable*: a path which is available, but not in the file you uploaded.
 
