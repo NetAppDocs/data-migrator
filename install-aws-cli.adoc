@@ -30,7 +30,7 @@ Ensure that you meet the following prerequisites:
 . Obtain and upload the AWS images: 
 .. Use the link provided by NetApp to download the control plane and worker .tar.gz images. 
 .. Optionally, use the link provided to download the .sha256 checksum files. 
-. Upload the control plane and worker VHD files to the S3 Bucket. 
+. Upload the control plane and worker VHD files to the S3 bucket. 
 . Optionally, validate the SHA256 checksums. 
 +
 After you download the VHD file, you can use the checksum calculator to verify the checksum and validate against the checksum file downloaded in <<step-1,Step 1>>.
