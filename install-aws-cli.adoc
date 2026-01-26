@@ -36,7 +36,7 @@ Ensure that you meet the following prerequisites:
 After you download the VHD file, you can use the checksum calculator to verify the checksum and validate against the checksum file downloaded in <<step-1,Step 1>>.
 . Import the image as an AMI.
 +
-This following command creates an AMI from the VHD file. You can use this AMI to create an EC2 instance of the control plane and worker: 
+The following command creates an AMI from the VHD file. You can use this AMI to create an EC2 instance of the control plane and worker: 
 +
 [source,cli]
 ----
