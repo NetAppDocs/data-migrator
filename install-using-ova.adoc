@@ -19,16 +19,16 @@ The control plane, which is always deployed on a Linux virtual machine (VM), ser
 
 Workers are virtual machines running on Linux (which supports the NFS protocol), or Windows (which supports the SMB protocol) and carry out the data migration. You can install multiple workers based on your needs:
 
-* For SMB migration, use the Windows Worker Installer. You must install the Windows Worker Installer on a Windows VM.
+* For SMB migration, use the Windows worker installer. You must install the Windows worker installer on a Windows VM.
 * For NFS migration, use the Linux Worker VM.
 
 .Before you begin
 
 //* Download the control plane OVA from the link:https://mysupport.netapp.com/site/[NetApp Support site^].
-//* For SMB migration, download the Windows Worker Installer from the link:https://mysupport.netapp.com/site/[NetApp Support site^].
+//* For SMB migration, download the Windows worker installer from the link:https://mysupport.netapp.com/site/[NetApp Support site^].
 //* For NFS migration, download the Worker OVA from the link:https://mysupport.netapp.com/site/[NetApp Support site^].
 * Download the control plane OVA from the preview link provided.
-* For SMB migration, download the Windows Worker Installer from the preview link provided.
+* For SMB migration, download the Windows worker installer from the preview link provided.
 * For NFS migration, download the Worker OVA from the preview link provided.
 * Ensure that the ports for the control plane and workers are enabled:
 +
@@ -234,10 +234,10 @@ Aug 12 11:33:54 datamigrator systemd[1]: Started datamigrator-worker.service - D
 . Navigate to NDM UI to verify that the worker is registered.
 --
 
-.Windows Worker
+.Windows worker
 --
-. Create a Windows VM and copy the Windows Worker Installer to this Windows VM.
-. Run the Windows Worker Installer that you copied to the Windows VM.
+. Create a Windows VM and copy the Windows worker installer to this Windows VM.
+. Run the Windows worker installer that you copied to the Windows VM.
 . During installation, manually enter the following values when prompted. You can get the values from the NDM UI under *Home > View Instructions to Setup Worker*:
 +
 * Worker ID

@@ -113,7 +113,7 @@ First refer to the instructions provided in this link:https://learn.microsoft.co
 
 == Windows worker fails to switch user on SMB file server
 
-When a windows worker attempts to connect to an SMB file server using a different set of credentials than those previously used for the same file server, the following error message might appear:
+When a Windows worker attempts to connect to an SMB file server using a different set of credentials than those previously used for the same file server, the following error message might appear:
 
  System error 1219: Multiple connections to a server or shared resource by the same user, using more than one user name, are not allowed.
 

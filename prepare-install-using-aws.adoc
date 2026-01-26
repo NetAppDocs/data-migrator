@@ -21,7 +21,7 @@ NDM has two main components that you need to install:
 
 * *Workers* are virtual machines running on Linux, which supports the NFS protocol, or Windows, which supports the SMB protocol. You can install multiple workers based on your requirements:
 
-** For shared message block (SMB) migration, use the Windows Worker Installer on a Windows VM.
+** For shared message block (SMB) migration, use the Windows worker installer on a Windows VM.
 ** For NFS migration, use the Linux Worker.
 
 .Steps
