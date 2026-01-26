@@ -9,7 +9,7 @@ summary:
 :imagesdir: ./media/
 
 [.lead]
-Contact the NetApp NDM team at `ndm-support@netapp.com` to request the AWS Amazon Machine Image (AMI). After NetApp shares the AMI, is is visible in your AWS account under *EC2* > *AMIs* > *Private images*, and you can locate it using the AMI IDs provided. 
+Contact the NetApp NDM team at `ndm-support@netapp.com` to request the AWS Amazon Machine Image (AMI). After NetApp shares the AMI, it is visible in your AWS account under *EC2* > *AMIs* > *Private images*, and you can locate it using the AMI IDs provided. 
 
 .Before you begin
 
