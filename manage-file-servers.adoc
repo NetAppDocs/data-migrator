@@ -68,7 +68,7 @@ The *File Servers* page opens, followed by the *Server Type* page.
 . Select *Dell Isilon* from the Server Type dropdown. 
 +
 The *Management Console* section opens:
-. Enter the *Management Host* (hostname or IP address of the Isilon management console). 
+. Enter the *Management Host* (host name or IP address of the Isilon management console). 
 . Enter the *Username* for accessing the Dell Isilon management API. 
 . Enter the *Password*. 
 . Select *Proceed* to fetch the TLS certificate from the Isilon cluster. 
