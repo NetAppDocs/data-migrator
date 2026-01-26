@@ -75,7 +75,7 @@ The *Management Console* section opens:
 . Review the *TLS Certificate* details displayed in the modal: 
 .. Verify the certificate issuer, validity dates, and fingerprint. 
 .. Select *Accept* to trust the certificate and proceed. 
-.. Select *Reject* to cancel if the certificate is not trusted. 
+.. Select *Reject* to cancel if you don't trust the certificate. 
 . The *Zone Credentials* page opens:
 .. Select one or more *Access Zones* from the available zones discovered. 
 .. For each selected zone, configure the protocol credentials: 
