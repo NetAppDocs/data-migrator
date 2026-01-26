@@ -42,12 +42,12 @@ Learn how to link:https://repost.aws/knowledge-center/launch-instance-custom-ami
 * Size: 4 vCPU, 16GB RAM
 * License type: Other
 
-== Step 3 (b): Add the Windows worker installer
+== Step 3 (b): Add the Windows Worker Installer
 
-Add the Windows worker installer for SMB migration.
+Add the Windows Worker Installer for SMB migration.
 
 .Steps
-. Download the Windows worker installer for AWS from the preview link provided. 
+. Download the Windows Worker Installer for AWS from the preview link provided. 
 
 . Learn how to link:https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/launch-instances-from-launch-template.html[create a Windows VM^]. Use the following recommended settings:
 +
@@ -56,8 +56,8 @@ Add the Windows worker installer for SMB migration.
 ** Size: 16 vCPUs, 64 GB memory
 ** RDP port 3389 open 
 
-. Move the Windows worker installer to the Windows VM
-.. Log in to the Windows worker VM using the Remote Desktop Protocol and copy the Windows worker installer to the Windows VM.
+. Move the Windows Worker Installer to the Windows VM
+.. Log in to the Windows worker VM using the Remote Desktop Protocol and copy the Windows Worker Installer to the Windows VM.
 .. Use Microsoft Windows App (Mac) or RDP (Windows) to create a remote session. 
 +
 Learn about link:https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connect-rdp.html[RDP connections^].
@@ -73,18 +73,18 @@ Windows worker for MacOS.
 
 .. Install the Microsoft Windows App on your local laptop.
 .. link:https://learn.microsoft.com/en-us/windows-app/get-started-connect-devices-desktops-apps[RDP into the SMB Windows worker VM^].
-.. link:https://learn.microsoft.com/en-us/windows-app/device-audio-folder-redirection-teams?tabs=macos#folder-redirection[Mount the local folder which contains the Windows worker installer^].
+.. link:https://learn.microsoft.com/en-us/windows-app/device-audio-folder-redirection-teams?tabs=macos#folder-redirection[Mount the local folder which contains the Windows Worker Installer^].
 .. Locate the folder you mounted to the Windows worker VM under "This PC" on the server.
-.. Move the Windows worker installer from the mounted folder to a suitable location on the Windows VM.
+.. Move the Windows Worker Installer from the mounted folder to a suitable location on the Windows VM.
 --
 .Windows
 --
 Windows worker for Windows:
 
 .. Launch a Remote Desktop Connection.
-.. link:https://cat.pdx.edu/platforms/windows/remote-access/file-sharing-rdp-from-windows/[RDP into the SMB Windows worker VM and mount the local folder containing the Windows worker installer^]. 
+.. link:https://cat.pdx.edu/platforms/windows/remote-access/file-sharing-rdp-from-windows/[RDP into the SMB Windows worker VM and mount the local folder containing the Windows Worker Installer^]. 
 .. Locate the folder you mounted to the Windows worker VM under "This PC" on the server.
-.. Move the Windows worker installer from the mounted folder to a suitable location on the Windows VM .
+.. Move the Windows Worker Installer from the mounted folder to a suitable location on the Windows VM .
 --
 ====
 
@@ -176,7 +176,7 @@ tail -20f /opt/datamigrator/logs/datamigrator-worker.log
 --
 Associate the Windows worker with the control plane VM.
 
-.. Run the Windows worker installer that you copied to the Windows worker Server.
+.. Run the Windows Worker Installer that you copied to the Windows Worker Server.
 .. Enter the following details when prompted. You can get these details from the NDM UI under *Home > View Instructions to Setup Worker:*
 * Worker ID
 * Worker secret
