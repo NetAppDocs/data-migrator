@@ -54,7 +54,7 @@ After you locate the AMIs, copy them into your account:
 
 Copying the AMI gives you full ownership, avoids dependency on the source account, and is required for cross-region use. 
 | Have the AWS CLI and NDM assets installed
-|Go to link:create-aws-control-plane-worker-vm.html[Create the control plane and worker VMs]
+|Go to link:create-aws-control-plane-worker-vm.html[Create the control plane and worker VMs].
 |===
 
 // 2026 FEB 6, OTHERDOC-169

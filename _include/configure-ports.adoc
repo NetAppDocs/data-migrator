@@ -24,7 +24,7 @@
 | 80 or 443 | API or UI, if they call it
 .2+| Outbound to storage |NFS: 2049 |NFS servers 
 
-*Note*: Include TCP or UDP port 111 if the portmapper service for Remote Procedure Calls is needed 
+*Note*: Include TCP or UDP port 111 if the portmapper service for Remote Procedure Calls is needed.
 | SMB: 445  | SMB servers
 |===
 // 2025 DEC 1, OTHERDOC-168
