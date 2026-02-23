@@ -120,9 +120,9 @@ The export paths and directory paths appear under *Paths*.
 
 When upload is complete, export paths and directory paths can have one of the following status types:
 
-* *Valid*: a successfully uploaded path which you can mount and unmount
-* *Invalid*: a path that failed to upload.
-* *Disable*: a path which is available, but not in the file you uploaded.
+* *Valid*: The path uploaded successfully and you can mount and unmount this path.
+* *Invalid*: The path failed to upload.
+* *Disabled*: The path is available, but not in the file you uploaded.
 
 == Edit file server details
 
