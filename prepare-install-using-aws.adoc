@@ -57,4 +57,4 @@ Copying the AMI gives you full ownership, avoids dependency on the source accoun
 |Go to link:create-aws-control-plane-worker-vm.html[Create the control plane and worker VMs].
 |===
 
-// 2026 FEB 6, OTHERDOC-169
+// 2026 FEB 6, OTHERDOC-192
