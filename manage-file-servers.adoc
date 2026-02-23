@@ -115,10 +115,10 @@ NOTE: Use this option when you need to configure migration at the directory leve
 . Save your export paths and directory paths in the CSV file.
 . Select *Click here to Upload Export Paths*, then select the CSV file containing your export paths and directory paths. 
 +
-The export paths and directory paths then appear under *Paths*.
+The export paths and directory paths appear under *Paths*.
 . If you need to include more export paths or directory paths, add them to your file, then select *Re-Upload Export Paths.*
 
-When upload is complete, export paths can have one of the following status types:
+When upload is complete, export paths and directory paths can have one of the following status types:
 
 * *Valid*: a successfully uploaded path which you can mount and unmount
 * *Invalid*: a path that failed to upload.
