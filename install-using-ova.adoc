@@ -30,7 +30,7 @@ Workers are virtual machines running on Linux (which supports the NFS protocol),
 * Download the control plane OVA from the preview link provided.
 * For SMB migration, download the Windows Worker Installer from the preview link provided.
 * For NFS migration, download the Worker OVA from the preview link provided.
-* Ensure that the ports for the control plane and workers are enabled:
+* Verify that the ports for the control plane and workers are enabled:
 +
 include::./_include/configure-ports.adoc[]
 

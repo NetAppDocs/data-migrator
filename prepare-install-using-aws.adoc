@@ -30,17 +30,31 @@ NDM has two main components that you need to install:
 +
 * An active AWS account with the required permissions
 * A selected AWS region for deployment
-* An S3 bucket for storing VHDs (if using VHD import)
 * AWS command line interface (CLI) installed and configured
 * Sufficient EC2 quota and storage
+
+. Verify that the ports for the control plane and workers are enabled:
++
+include::./_include/configure-ports.adoc[]
 
 . Choose one of the following options:
 +
 [cols="1,2", options="header"]
 |===
-|If you... | You need to...
-|Don't have the NDM assets
-| Contact the NetApp NDM team at `ndm-support@netapp.com` to request the AWS Amazon Machine Image (AMI). Include the Account ID in the email or share it with your NetApp contact so that NetApp can share the images to that account ID. After NetApp shares the AMI, it is visible in your AWS account under *EC2* > *AMIs* > *Private images*, and you can locate it using the AMI IDs provided.
+| If you... | You need to...
+| Don't have the NDM assets
+a| Contact the NetApp NDM team at `ndm-support@netapp.com` to request the AWS Amazon Machine Image (AMI). Include the Account ID and region preference in the email or share it with your NetApp contact so that NetApp can share the images to that account ID. After NetApp shares the AMI, it is visible in your AWS account under *EC2* > *AMIs* > *Private images*, and you can locate it using the AMI IDs provided.
+
+After you locate the AMIs, copy them into your account: 
+
+.. Select the AMI: *Actions* > *Copy AMI* 
+.. Choose the target region (if needed). 
+.. Enable encryption and select your own KMS key. 
+.. Wait for the AMI status to show *Available*. 
+
+Copying the AMI gives you full ownership, avoids dependency on the source account, and is required for cross-region use. 
 | Have the AWS CLI and NDM assets installed
-|Go to link:create-aws-control-plane-worker-vm.html[Create the control plane and worker VMs]
+|Go to link:create-aws-control-plane-worker-vm.html[Create the control plane and worker VMs].
 |===
+
+// 2026 FEB 6, OTHERDOC-192

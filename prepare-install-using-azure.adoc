@@ -30,7 +30,7 @@ NDM has two main components that you need to install:
 * A Resource group set up in your desired region
 * Sufficient disk space for data storage and VM deployment
 * Azure command line interface (CLI) installed
-. Ensure that the ports for the control plane and workers are enabled:
+. Verify that the ports for the control plane and workers are enabled:
 +
 include::./_include/configure-ports.adoc[]
 
