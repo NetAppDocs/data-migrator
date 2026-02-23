@@ -100,9 +100,11 @@ If the pre-check completes without errors, the name of your file server appears 
 ====
 
 [[manually-upload-export-paths]]
-== Manually upload export paths
+== Manually upload export and directory paths
 
-NDM allows you to manually upload export paths for use in data migration. This feature is useful in environments where automatic NFS export path detection is unavailable, for example, the GCNV Flex service. If you selected *Manual Upload* in the *Export Paths Retrieval Mechanism* panel, you need to download and complete the template file provided by NDM after you finish creating a file server.
+NDM allows you to manually upload export paths and directory paths for use in data migration operations for the NFS protocol. This feature is useful in environments where automatic NFS export path detection is unavailable. For example, for with use with the GCNV Flex service or migrating directory paths instead of the entire export path. If you select *Manual Upload* in the *Export Paths Retrieval Mechanism* panel, you need to download and complete the template file provided by NDM after you finish creating a file server.
+
+NOTE: Use this option when you need to configure migration at the directory level. In cases where migration involves specific directories rather than entire exports, enter the directory paths directly into the Excel spreadsheet. This ensures that the migration workflow processes each directory individually, without requiring export level inputs. 
 
 .Steps
 
@@ -110,9 +112,11 @@ NDM allows you to manually upload export paths for use in data migration. This f
 . Select *File Servers.*
 . Select *Click here to Upload Export Paths*.
 . Select *Download Template* to download a CSV file template.
-. Save your export paths in this file.
-. Select *Click here to Upload Export Paths* then select the CSV file containing your export paths, which then appear under *Paths*.
-. If you need to include more export paths, add them to your file, then select *Re-Upload Export Paths.*
+. Save your export paths and directory paths in the CSV file.
+. Select *Click here to Upload Export Paths*, then select the CSV file containing your export paths and directory paths. 
++
+The export paths and directory paths then appear under *Paths*.
+. If you need to include more export paths or directory paths, add them to your file, then select *Re-Upload Export Paths.*
 
 When upload is complete, export paths can have one of the following status types:
 
