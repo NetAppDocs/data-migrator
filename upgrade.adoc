@@ -4,22 +4,21 @@ permalink: upgrade.html
 keywords: 
 summary: 
 ---
-= Upgrade features in NDM
+= Upgrade control plane and workers in NDM
 :icons: font
 :imagesdir: ./media/
 
 [.lead]
-Upgrade a control plane, Linux worker, or Windows worker in NetApp Data Migrator (NDM). 
+You can upgrade a control plane, Linux worker, or Windows worker in NetApp Data Migrator (NDM). 
 
 .Before you begin
 
 * Stop all job runs and make all jobs inactive. 
 * Download the upgrade bundle (tar.gz file) from the NetApp Support Site and save it in your local directory.
-* Verify that the workers that in use are online. Workers that that are offline during an upgrade are not upgraded.
-* If you encounter issues, contact NetApp support at ng-ndm-support@netapp.com and attach the upgrade logs to your communication.  
+* Verify that the workers that are in use are online. Workers that are offline during an upgrade are not upgraded.
 
 == Step 1: Upload the upgrade bundle
-After you upload the upgrade bundle, you can start the upgrade process for the control plane and worker.
+Upload the upgrade bundle from your local directory.
 
 .Steps
 
@@ -45,9 +44,8 @@ During the upgrade, the UI might become temporarily unavailable because the appl
 . Verify that the upgrade status is *Success*.
 . After a successful control plane upgrade, the worker upgrade starts automatically for all online workers. 
 +
-The online workers automatically install and restart with the new version. 
-Offline workers are not be upgraded. 
-. If a worker upgrade does not start automatically, use SSH to connect to the worker and start the upgrade manually:
+NOTE: The online workers automatically install and restart with the new version. Offline workers are not upgraded. 
+. If a worker upgrade doesn't start automatically, use SSH to connect to the worker and start the upgrade manually:
 +
 [role="tabbed-block"]
 ====
@@ -66,17 +64,11 @@ ExecutionPolicy Bypass -File C:\datamigrator\staging\<version>\upgrade.ps1 -Vers
 ----
 --
 ====
-. If the upgrade fails:
 
-* The system automatically rolls back to the previous version. 
-* The UI shows the upgrade status as *Failed*.
-
-+
-<<view-logs,Review the Ansible logs>> on the virtual machine for details. Contact NetApp support at ng-ndm-support@netapp.com and attach the Ansible logs to your communication.
 
 [[view-logs]]
-== Step 3: View logs 
-If you encounter issues during the upgrade, view the logs for details.
+== Step 3: View logs and troubleshoot 
+View the virtual machine logs to support troubleshooting issues that you encounter during the upgrade.
 
 .Steps
 
@@ -92,5 +84,9 @@ tail -f /upgrade/upgrade-<version>.log
 ----
 /opt/datamigrator/upgrade.log
 ----
+
+. If the upgrade fails, the system automatically rolls back to the previous version and the UI shows the upgrade status as *Failed*.
++
+Review the Ansible logs, then contact NetApp support at ng-ndm-support@netapp.com and attach the Ansible logs to your communication.
 
 // 2026 FEB 25, Preview + 3 release

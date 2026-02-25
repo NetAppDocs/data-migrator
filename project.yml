@@ -80,7 +80,7 @@ sidebar:
       url: /manage-jobs.html
     - title: Generate support bundle
       url: /generate-support-bundle.html
-  - title: Upgrade NDM
+  - title: Upgrade control plane and workers
     url: /upgrade.html
   - title: FAQ
     url: /faq.html
