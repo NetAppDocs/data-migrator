@@ -100,13 +100,26 @@ Manage Job Run operations by accessing the following job level operations on the
 ====
 . Select *Save*. The new configuration affects future job runs. 
 
+== Re-run errored files and directories 
+
+If a migration job run completes with errors due to transient issues such as network timeouts, permission problems, use the retry feature to re-process only the failed items without re-running the entire migration. 
+
+.Steps 
+
+. Select *Jobs* in the left navigation bar. 
+. Select *Job Config List*. 
+. In the *Job Listings* table, locate the job that has failed items and select the action menu icon next to your job.
+. Select *Details* from the action menu icon (three dots) to view the job details. 
+. Select *Retry Recent Errors* in the top right corner. 
+. In the pop-up window, select *Proceed with Retry* to start the retry operation. 
+
 == Delete a Job 
 
 .Steps 
 
 . Select *Jobs* in the left navigation bar.
 . Select *Job Config List*.
-. In the *Job Listings* table, locate the job you want to delete and select the action menu (three dots) next to your job. 
+. In the *Job Listings* table, locate the job you want to delete and select the action menu icon (three dots) next to your job. 
 . Select *Delete* from the action menu.
 . Select *Delete* in the pop-up window to delete the job. You can delete a job only if there is no active run. 
 
@@ -259,5 +272,6 @@ You can also generate an error report for a previous job run.
 . On the *Job Details* page, in the *Errors* panel, select *View All*.
 . Select *Generate Error Report* to download details about errors in the job run you selected.
 
+// 2026 FEB 25, Preview + 3 release
 // 2026 JAN 12: OTHERDOC-184
 // 2025 NOV 28: OTHERDOC-171 and NADIAA updates
