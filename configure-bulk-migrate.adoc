@@ -23,24 +23,28 @@ You need to define the servers for Bulk Migrate before you can use the Bulk Migr
 . Select the *File Server Name* for which you want to create the job.
 . Select *Bulk Migrate*.
 
-== Step 2: Configure mapping  
+== Step 2: Add source and destination mappings  
 
 .Steps
 
-. Select the export path in the source that you want to migrate 
-. Optionally, select *Add Directory* if you want to perform a directory level migration.  
+. Select the export path in the source that you want to migrate. 
+. Optionally, select *Add Source Directory* if you want to perform a directory level migration.  
 +
-After you select *Add Directory*, the explorer view appears. This view shows the list of directories at the root level. You can either navigate to the required directory or directly copy paste the path of the required directory into the search bar of the explorer window to navigate to that folder.  
+After you select *Add Source Directory*, the directory explorer view appears. This view shows the list of directories at the root level. You can either navigate to the required directory or directly copy paste the path of the required directory into the search bar of the explorer window to navigate to that folder.  
 
-. Select the destination file server and destination export path.
+. After you select the source directory, select the destination file server and destination export path.
+
+. Optionally, select the directory in the destination export path.
 +
-If you don't select a directory, the migration takes place at the root level of the selected export path.  
+If you don't select a directory in the destination export path, the migration takes place at the root level of the selected export path.
 
-. After you select the source and destination, you can add them as a single mapping. You can create one or more mappings for the same source and destination file servers for different export paths or directories.  
+. After you select the source and destination paths, select *Add Mapping* to add the selected mapping. You can create multiple mappings for different export paths and directories. 
++
+NDM prevents you selecting mappings which have a parent or child connection with an existing mapping in the screen. This avoids conflicts during the migration.   
 
 . Optionally, delete or edit a mapping by selecting the *Edit* or *Delete* option.  
 
-. After you add the mappings, you can create jobConfigs for each mapping  and perform JobRuns based on the selected schedule.  
+. After you add the mappings, select *Proceed*.  
 
 
 == Step 3: Customize the Bulk Migrate job
@@ -78,7 +82,7 @@ a| You can use this option to select files to migrate based on their last modifi
 | Select this option if you want to retain the original file access timestamp, instead of updating it to the migration time.
 
 | Preserve permissions
-| Select this option if you want to retain the original source file and directory permissions on a destination.
+a| Select this option if you want to retain the original source file and directory permissions on a destination.
 
 . Select *Enabled* to preserve the original permissions, including owner, group, and access rights (access control lists for SMB, mode bits for NFS) from a source to a destination. 
 . Select *Disabled* to skip permission preservation. NDM creates files with default destination permissions, which might be useful when migrating between incompatible file systems. 
