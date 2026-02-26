@@ -102,7 +102,7 @@ Manage Job Run operations by accessing the following job level operations on the
 
 == Re-run errored files and directories 
 
-If a migration job run completes with errors due to transient issues such as network timeouts, permission problems, use the retry feature to re-process only the failed items without re-running the entire migration. 
+If a migration job run completes with errors due to transient issues such as network timeouts or permission problems, you can use the retry feature to re-process only the failed items without re-running the entire migration. 
 
 .Steps 
 
