@@ -177,8 +177,15 @@ tail -20f /opt/datamigrator/logs/datamigrator-worker.log
 
 .SMB
 --
-Associate the Windows worker with the control plane VM.
+Add the Active Directory to the Windows VM. Then, associate the Windows worker with control plane VM:
 
+.. Select *Settings* > *Network & Internet* > *Ethernet*.
+.. Select *Network and Sharing Center*.
+.. In the pop-up window, select *Ethernet*.
+.. In the pop-up window, select *Properties*.
+.. In the pop-up window, double-click on *Internet Protocol Version 4 (TCP/IPv4)*.
+.. Select *Use the following DNS server addresses*, then enter the Active Directory server IP in *Preferred DNS server*.
+.. Select OK.
 .. Run the Windows Worker Installer that you copied to the Windows Worker Server.
 .. Enter the following details when prompted. You can get these details from the NDM UI under *Home > View Instructions to Setup Worker:*
 * Worker ID
