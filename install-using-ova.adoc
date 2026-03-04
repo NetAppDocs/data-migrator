@@ -15,9 +15,9 @@ Use OVA (Open Virtual Appliance) templates in a VMWare vSphere environment to in
 
 This procedure has two main components, the control plane and the worker.
 
-The control plane, which is always deployed on a Linux virtual machine (VM), serves as the central location for managing all migration jobs and should be created first.
+The control plane serves as the central location for managing all migration jobs and should be created first. It is always deployed on a Linux virtual machine (VM).
 
-Workers are virtual machines running on Linux (which supports the NFS protocol), or Windows (which supports the SMB protocol) and carry out the data migration. You can install multiple workers based on your needs:
+Workers are virtual machines running on Linux or Windows and they perform the data migration. Linux supports the NFS protocol and Windows supports the SMB protocol. You can install multiple workers based on your needs:
 
 * For SMB migration, use the Windows Worker Installer. You must install the Windows Worker Installer on a Windows VM.
 * For NFS migration, use the Linux Worker VM.
@@ -37,7 +37,7 @@ include::./_include/configure-ports.adoc[]
 [[create-control-plane-and-worker-vms]]
 == Step 1: Create the control plane and worker VMs
 
-Create the control plane and worker virtual machines (VMs) from the OVA files using the setup wizard.
+Use the setup wizard to create the control plane and worker VMs from the OVA files.
 
 .Steps
 
@@ -86,12 +86,12 @@ If you are using your own vCenter, provide the following details for your networ
 . Select *Ready* to complete and review the summary page.
 . Select *Finish* to start the deployment for the control plane VM.
 . Repeat steps 2 to 14 to create the worker VM.
-. Record the server IP addresses for the control plane and the worker VMs. You need these IP addresses when you're setting up the worker VMs later in the procedure.
+. Record the server IP addresses for the control plane and the worker VMs. You need these IP addresses later in the procedure to set up the worker VMs.
 . Use the SSH username and password provided during the OVA deployment to connect using SSH.
 
 == Step 2: Connect to the control plane VM
 
-By establishing an SSH connection to the control plane VM, you can review pod logs and status.
+Review pod logs and status by connecting to the control plane using SSH.
 
 .Steps
 
@@ -114,15 +114,15 @@ sudo su - datamigrator
 ----
 sudo systemctl status boot-microk8s.service
 ----
-. Check the status of the logs:
+. Check the status of the pod logs:
 +
 [source,cli]
 ----
 tail -10f /opt/datamigrator/logs/ndm-first-boot.log
 ----
-The final two lines of output from this command should be similar to the following:
 +
-[source,cli]
+The last two lines in the output should be similar to the following:
++
 ----
 2025-08-13 05:34:29 MicroK8s cloud init setup completed successfully
 2025-08-13 05:34:30 Datamigrator Application Setup Complete
@@ -161,13 +161,13 @@ The default credentials for the NDM UI are:
 * Username: admin@datamigrator.local
 * Password: Welcome@123
 
-== Step 3: Associate worker VM with control plane
+== Step 3: Add the worker VM to the control plane
 
-You need to add the worker VM to the control plane created in <<create-control-plane-and-worker-vms,Step 1>>, for the first time.
+You need to add the worker VM to the control plane created in <<create-control-plane-and-worker-vms,Step 1>> when you first install NDM.
 
 .Steps
 
-Depending on your configuration, select either the Linux worker (NFS) or Windows worker (SMB) steps below. If your configuration includes NFS and SMB, refer to both sets of steps.
+Depending on your migration, select either the Linux worker (NFS) or Windows worker (SMB) steps below. If your migration includes NFS and SMB, refer to both sets of steps.
 
 
 [role="tabbed-block"]
@@ -203,15 +203,15 @@ sudo su -
 ----
 systemctl status datamigrator-worker.service
 ----
-.. Check the status of the logs:
+.. Check the status of the worker logs:
 +
 [source,cli]
 ----
 tail -20f /opt/datamigrator/logs/datamigrator-worker.log
 ----
-.. The output of this command should be similar to the following example:
 +
-[source,cli]
+You should see an output similar to the following example:
++
 ----
 datamigrator-worker.service - Datamigrator Worker Service
      Loaded: loaded (/etc/systemd/system/datamigrator-worker.service; enabled; preset: enabled)
@@ -237,7 +237,7 @@ Aug 12 11:33:54 datamigrator systemd[1]: Started datamigrator-worker.service - D
 .Windows worker
 --
 
-Add the Active Directory to the Windows VM. Then, associate the Windows worker with control plane VM:
+Add the Active Directory to the Windows VM. Then, associate the Windows worker with the control plane VM:
 
 . Select *Settings* > *Network & Internet* > *Ethernet*.
 . Select *Network and Sharing Center*.
@@ -248,7 +248,7 @@ Add the Active Directory to the Windows VM. Then, associate the Windows worker w
 . Select OK.
 . Create a Windows VM and copy the Windows Worker Installer to this Windows VM.
 . Run the Windows Worker Installer that you copied to the Windows VM.
-. During installation, manually enter the following values when prompted. You can get the values from the NDM UI under *Home > View Instructions to Setup Worker*:
+. During installation, manually enter the following values when prompted. You can get the values from the NDM UI by selecting *Home > View Instructions to Setup Worker*:
 +
 * Worker ID
 * Worker secret
@@ -282,7 +282,7 @@ PS C:\Windows\system32> Add-MpPreference -ExclusionPath "C:\datamigrator\mnt"
 
 == Step 4: Manage worker credentials
 
-The control plane credentials are stored inOpenBao. Access the OpenBao andPostgreSQL application components to manage credentials.
+The control plane credentials are stored in OpenBao. Access the OpenBao andPostgreSQL application components to manage credentials.
 
 .Steps
 

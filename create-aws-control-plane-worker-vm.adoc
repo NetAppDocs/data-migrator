@@ -9,7 +9,7 @@ summary:
 :imagesdir: ./media/
 
 [.lead]
-After installing AWS using the CLI, create the control plane and worker VMs to access NDM.
+After installing AWS using the CLI, create the control plane and worker VMs to access NDM. You create a Linux worker VM for NFS migration or a Windows worker VM for SMB migration. If your migration includes both NFS and SMB, you need to create both a Linux and a Windows worker.
 
 == Step 1: Create the Windows VM
 
@@ -24,7 +24,7 @@ Learn how to link:https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/launch-mar
 
 == Step 2: Create the control plane VM
 
-To create the control pane VM, use the previously imported control plane image. 
+To create the control plane VM, use the previously imported control plane image. 
 
 Learn how to link:https://repost.aws/knowledge-center/launch-instance-custom-ami[create a VM from a custom imported image^]. Use the following recommended settings:
 
@@ -32,7 +32,7 @@ Learn how to link:https://repost.aws/knowledge-center/launch-instance-custom-ami
 * Size: 16 vCPU, 64 GB RAM
 * License type: Other
 
-== Step 3 (a): Create the Linux worker VM 
+== Step 3: Create the Linux worker VM 
 
 Create the Linux worker VM for NFS migration using the previously imported worker image.
 
@@ -42,7 +42,7 @@ Learn how to link:https://repost.aws/knowledge-center/launch-instance-custom-ami
 * Size: 4 vCPU, 16GB RAM
 * License type: Other
 
-== Step 3 (b): Add the Windows Worker Installer
+== Step 4: Add the Windows Worker Installer
 
 Add the Windows Worker Installer for SMB migration.
 
@@ -88,7 +88,7 @@ Windows worker for Windows:
 --
 ====
 
-== Step 4: Connect to the control plane VM
+== Step 5: Connect to the control plane VM
 
 Connect to the control plane to validate if NDM is active.
 
@@ -146,11 +146,10 @@ Associate the Linux worker with the control plane VM.
 * Username: admin@datamigrator.local
 * Password: Welcome@123
 .. Reset the password.
-.. Add new user details and email ID.
+.. Add the new user details and email ID.
 .. Create a new project by providing a name and an optional description.
 .. Select *View Instructions to Setup Worker* and copy the instructions. 
-.. To associate the Linux worker with the CP,
-Use SSH to connect to your worker server. If your server does not have a public IP address, you can use Bastion to configure SSH access. 
+.. To associate the Linux worker with the CP, use SSH to connect to your worker server. If your server does not have a public IP address, you can use Bastion to configure SSH access. 
 * Log in as root user:
 +
 [source,cli]
@@ -159,6 +158,7 @@ sudo su -
 ----
 * Paste the instructions copied from *View Instructions to Setup Worker* to register the worker VM.
 * Verify the status of the worker:
++
 [source,cli]
 ----
 systemctl status datamigrator-worker.service
@@ -174,7 +174,7 @@ tail -20f /opt/datamigrator/logs/datamigrator-worker.log
 
 .SMB
 --
-Add the Active Directory to the Windows VM. Then, associate the Windows worker with control plane VM:
+Add the Active Directory to the Windows VM. Then, associate the Windows worker with the control plane VM:
 
 .. Select *Settings* > *Network & Internet* > *Ethernet*.
 .. Select *Network and Sharing Center*.
@@ -184,7 +184,7 @@ Add the Active Directory to the Windows VM. Then, associate the Windows worker w
 .. Select *Use the following DNS server addresses*, then enter the Active Directory server IP in *Preferred DNS server*.
 .. Select OK.
 .. Run the Windows Worker Installer that you copied to the Windows Worker Server.
-.. Enter the following details when prompted. You can get these details from the NDM UI under *Home > View Instructions to Setup Worker:*
+.. Enter the following details when prompted. You can get these details from the NDM UI by selecting *Home > View Instructions to Setup Worker:*
 * Worker ID
 * Worker secret
 * Project ID
@@ -204,12 +204,7 @@ PS C:\Windows\system32> Add-MpPreference -ExclusionPath "C:\datamigrator\mnt"
 
 .. Disable Windows update in Windows services.
 
-.. When installation completes, the worker service starts automatically and you can then locate the Logs at:
-+
-[source,cli]
-----
-C:\datamigrator\logs
-----
+.. When installation completes, the worker service starts automatically and you can locate the Logs in `C:\datamigrator\logs`.
 .. Follow the logs in real-time by opening PowerShell and running the following command:
 +
 [source,cli]
