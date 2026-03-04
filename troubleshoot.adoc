@@ -76,6 +76,7 @@ If you encounter an issue where Openbao is sealed, follow these steps to unseal.
 
 . Use SSH to connect to the control plane server using Bastion connect.
 . replace OPENBAO_UNSEAL_KEY with your key:
++
 [source,cli]
 ----
 sudo su - datamigrator

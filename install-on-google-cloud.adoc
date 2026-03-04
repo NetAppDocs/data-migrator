@@ -110,15 +110,18 @@ gcloud migration vms image-imports create <IMAGE_IMPORT_NAME> \
   --target-project=projects/<PROJECT_ID>/locations/global/targetProjects/<PROJECT_ID> \
   --project=<PROJECT_ID>
 ----
+
 This creates a new GCP VM image from your archive, in the specified region.
 
 == Step 7: List and confirm import completion
 
 Run the following command to list the import tasks and confirm that the import was successful:
+
 [source,cli]
 ----
 gcloud migration vms image-imports list --location=<REGION> --project=<PROJECT_ID>
 ----
+
 Wait for SUCCEEDED status before you proceed to VM creation.
 
 == Step 8: Create VM instances
@@ -170,7 +173,7 @@ Learn how to link:https://cloud.google.com/compute/docs/instances/create-vm-from
 ====
 .MacOS
 --
-Windows worker for MacOS.
+Windows worker for MacOS:
 
 .. Install the Microsoft Windows App on your local laptop.
 .. link:https://learn.microsoft.com/en-us/windows-app/get-started-connect-devices-desktops-apps[RDP into the SMB Windows worker VM^].
@@ -238,7 +241,7 @@ The default credentials for the NDM UI are:
 ====
 .NFS
 --
-Associate Linux worker with the control plane VM.
+Associate Linux worker with the control plane VM:
 
 .. Log in to the Windows VM using RDP to access NDM.
 * Use Microsoft Windows App (Mac) or Remote Desktop Connection (Windows) to create an RDP session.

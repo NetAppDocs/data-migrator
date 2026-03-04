@@ -70,7 +70,7 @@ Learn about link:https://learn.microsoft.com/en-us/azure/virtual-machines/window
 ====
 .MacOS
 --
-Windows worker for MacOS.
+Windows worker for MacOS:
 
 .. Install the Microsoft Windows App on your local laptop.
 .. link:https://learn.microsoft.com/en-us/windows-app/get-started-connect-devices-desktops-apps[RDP into the SMB Windows worker VM^].
@@ -136,7 +136,7 @@ The default credentials for the NDM UI are:
 ====
 .NFS
 --
-Associate the Linux worker with the control plane VM.
+Associate the Linux worker with the control plane VM:
 
 .. Log in to the Windows VM using RDP to access NDM.
 * Use Microsoft Windows App (Mac) or Remote Desktop Connection (Windows) to create an RDP session.

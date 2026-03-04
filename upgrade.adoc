@@ -51,6 +51,7 @@ NOTE: The online workers automatically install and restart with the new version.
 ====
 .Linux worker
 --
+
 [source,cli]
 ----
 sudo /opt/datamigrator/staging/<version>/upgrade.sh <version>
@@ -58,6 +59,7 @@ sudo /opt/datamigrator/staging/<version>/upgrade.sh <version>
 --
 .Windows worker
 --
+
 [source,cli]
 ----
 ExecutionPolicy Bypass -File C:\datamigrator\staging\<version>\upgrade.ps1 -Version <version>

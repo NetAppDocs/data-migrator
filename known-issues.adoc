@@ -87,7 +87,6 @@ systemctl restart datamigrator-worker.service
 +
 If issue persists, restart the worker VM. 
 
- 
 == Validation
 
 === File sizes might differ after migration even if counts match
