@@ -11,18 +11,7 @@ summary:
 [.lead]
 After installing AWS using the CLI, create the control plane and worker VMs to access NDM. You create a Linux worker VM for NFS migration or a Windows worker VM for SMB migration. If your migration includes both NFS and SMB, you need to create both a Linux and a Windows worker.
 
-== Step 1: Create the Windows VM
-
-Create a Windows VM to access NDM using the Remote Desktop Protocol.
-
-Learn how to link:https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/launch-marketplace-console.html[create the Windows VM^]. Use the following recommended settings:
-
-* Image: Microsoft Windows 2022 Datacenter Base 
-* Architecture: 64-bit (x86), Ami: ami-0fc8a85749a35ce56 
-* Size: 16 vCPU, 64 GB memory
-* RDP port 3389 open
-
-== Step 2: Create the control plane VM
+== Step 1: Create the control plane VM
 
 To create the control plane VM, use the previously imported control plane image. 
 
@@ -32,7 +21,7 @@ Learn how to link:https://repost.aws/knowledge-center/launch-instance-custom-ami
 * Size: 16 vCPU, 64 GB RAM
 * License type: Other
 
-== Step 3: Create the Linux worker VM 
+== Step 2: Create the Linux worker VM 
 
 Create the Linux worker VM for NFS migration using the previously imported worker image.
 
@@ -42,7 +31,7 @@ Learn how to link:https://repost.aws/knowledge-center/launch-instance-custom-ami
 * Size: 4 vCPU, 16GB RAM
 * License type: Other
 
-== Step 4: Add the Windows Worker Installer
+== Step 3: Add the Windows Worker Installer
 
 Add the Windows Worker Installer for SMB migration.
 
@@ -88,7 +77,7 @@ Windows worker for Windows:
 --
 ====
 
-== Step 5: Connect to the control plane VM
+== Step 4: Connect to the control plane VM
 
 Connect to the control plane to validate if NDM is active.
 

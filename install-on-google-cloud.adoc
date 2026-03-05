@@ -125,18 +125,9 @@ gcloud migration vms image-imports list --location=<REGION> --project=<PROJECT_I
 Wait for SUCCEEDED status before you proceed to VM creation.
 
 == Step 8: Create VM instances
-You need to create a Windows VM to access NDM using the Remote Desktop Protocol.
+Create a Windows VM to access NDM using the Remote Desktop Protocol.
 
 .Steps
-. Create the control plane VM to access NDM.
-+
-.. Learn how to link:https://cloud.google.com/compute/docs/create-windows-server-vm-instance[create a Windows Server VM instance^]. Use the following recommended settings:
-+
-* Image: Windows Server 2022 Datacenter
-* Size: 16 vCPU, 64 GB RAM
-* RDP port 3389 open.
-+
-.. link:https://cloud.google.com/compute/docs/instances/connecting-to-windows[Connect to the Windows VM created using RDP^]. You can then access NDM.
 
 . Create the control plane VM using the control plane image imported previously.
 +
