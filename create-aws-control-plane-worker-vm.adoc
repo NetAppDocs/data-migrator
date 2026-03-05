@@ -9,7 +9,7 @@ summary:
 :imagesdir: ./media/
 
 [.lead]
-After installing AWS using the CLI, create the control plane and worker VMs to access NDM. You create a Linux worker VM for NFS migration or a Windows worker VM for SMB migration. If your migration includes both NFS and SMB, you need to create both a Linux and a Windows worker.
+After installing AWS using the CLI, create the control plane and worker VMs to access NDM. A Linux worker VM supports NFS migration and a Windows worker VM supports SMB migration. You can create multiple worker VMs based on your needs.
 
 == Step 1: Create the control plane VM
 
