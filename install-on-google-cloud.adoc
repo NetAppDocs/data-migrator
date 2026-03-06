@@ -281,7 +281,7 @@ Add the Active Directory to the Windows VM. Then, associate the Windows worker w
 .. Select *Use the following DNS server addresses*, then enter the Active Directory server IP in *Preferred DNS server*.
 .. Select OK.
 .. Run the Windows Worker Installer that you copied to the Windows Worker Server.
-.. Enter the following details when prompted. You can get these details from the NDM UI by selecting *Home > View Instructions to Setup Worker:*
+.. Enter the following details when prompted. You can get these details from the NDM UI by selecting *Home > View Instructions to Setup Worker*:
 * Worker ID
 * Worker secret
 * Project ID
@@ -306,7 +306,7 @@ PS C:\Windows\system32> Add-MpPreference -ExclusionPath "C:\datamigrator\mnt"
 +
 [source,cli]
 ----
-Get-Content -Path "C:\datamigrator\logs\<log_file_name> -Wait
+Get-Content -Path "C:\datamigrator\logs\<log_file_name>" -Wait
 ----
 .. Open the command prompt (cmd) as Administrator and run the following commands to manage the Service:
 * Start the service:

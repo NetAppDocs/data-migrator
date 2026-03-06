@@ -90,7 +90,7 @@ a| Select this option if you want to retain the original source file and directo
 . Select *Disabled* to skip permission preservation. NDM migrates files with default destination permissions, which might be useful when migrating between incompatible file systems.
 
 | Skip Files modified in last
-| This option to specify files from a time window (in minutes/hours/days) to exclude from your migration. This helps with data inconsistency by ensuring that actively edited files are not transferred mid-update.
+| This option allows you to specify atime window (in minutes, hours, or days) files from to exclude from your migration. This helps prevent data inconsistency by ensuring that actively edited files are not transferred mid-update.
 
 | Upload GID / UID mapping
 a| You can use this option to upload a "Group ID (GID) / User ID (UID) mapping" file to maintain correct file ownership during migration. The uploaded file must follow the format specified in the template provided.

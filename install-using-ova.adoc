@@ -260,7 +260,7 @@ Add the Active Directory to the Windows VM. Then, associate the Windows worker w
 +
 [source,cli]
 ----
-Get-Content -Path "C:\datamigrator\logs\<log_file_name> -Wait"
+Get-Content -Path "C:\datamigrator\logs\<log_file_name>" -Wait
 ----
 
 . Disable Windows defender:
@@ -281,7 +281,7 @@ PS C:\Windows\system32> Add-MpPreference -ExclusionPath "C:\datamigrator\mnt"
 
 == Step 4: Manage worker credentials
 
-The control plane credentials are stored in OpenBao. Access the OpenBao andPostgreSQL application components to manage credentials.
+The control plane credentials are stored in OpenBao. Access the OpenBao and PostgreSQL application components to manage credentials.
 
 .Steps
 

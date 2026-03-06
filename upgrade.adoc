@@ -31,7 +31,7 @@ Upload the upgrade bundle from your local directory.
 Wait for the message to appear that confirms that the upload and validation are complete.
 . Optionally, start the process again by selecting *Start Over* to upload a different file.
 
-== Step 2: Upgrade the control plane and worker
+== Step 2: Upgrade the control plane and workers
 
 Upgrade the control plane followed by the Linux worker or Windows worker.
 
@@ -45,7 +45,7 @@ During the upgrade, the UI might become temporarily unavailable because the appl
 . After a successful control plane upgrade, the worker upgrade starts automatically for all online workers. 
 +
 NOTE: The online workers automatically install and restart with the new version. Offline workers are not upgraded. 
-. If a worker upgrade doesn't start automatically, use SSH to connect to the worker and start the upgrade manually:
+. If a worker upgrade doesn't start automatically, use SSH to connect to the worker and start the upgrade:
 +
 [role="tabbed-block"]
 ====
