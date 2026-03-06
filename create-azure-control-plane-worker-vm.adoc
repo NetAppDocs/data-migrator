@@ -193,7 +193,7 @@ PS C:\Windows\system32> Add-MpPreference -ExclusionPath "C:\datamigrator\mnt"
 
 .. Disable Windows update in Windows services.
 
-.. When installation completes, the worker service starts automatically and you can locate the Logs in `C:\datamigrator\logs`.
+.. When installation completes, the worker service starts automatically and you can locate the logs in `C:\datamigrator\logs`.
 .. Follow the logs in real-time by opening PowerShell and running the following command:
 +
 [source,cli]
