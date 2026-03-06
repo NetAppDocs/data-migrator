@@ -71,7 +71,7 @@ a| Defines specific file paths or directories that should be excluded from proce
 a| Configures how often data syncs incrementally. This ensures that only the changes since the last sync are updated, thereby improving migration efficiency and reducing processing time.
 
 . Select *Off* to disable incremental sync.
-. Select *Set Schedule* to specify a sync schedule. You can choose to sync data hourly, daily or weekly.
+. Select *Set Schedule* to specify a sync schedule. You can choose to sync data hourly, daily, or weekly.
 . Select *Cron Expression* if you are an advanced user and want to define a custom sync schedule using a cron expression, for more granular control over sync timing.
 
 | Migrate File
