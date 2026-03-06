@@ -169,7 +169,6 @@ You need to add the worker VM to the control plane created in <<create-control-p
 
 Depending on your migration, select either the Linux worker (NFS) or Windows worker (SMB) steps below. If your migration includes NFS and SMB, refer to both sets of steps.
 
-
 [role="tabbed-block"]
 ====
 .Linux Worker
@@ -317,5 +316,6 @@ https://<IP_address>/ui/
 
 link:configure-ndm.html[Learn about configuring NDM]
 
+// 2026 FEB 25, Preview + 3 release
 // 2025 DEC 1, OTHERDOC-168
 // 9 OCT 2025, commented out lines with the NSS link and replaced them with "preview link provided" - temporary measure for preview only.
