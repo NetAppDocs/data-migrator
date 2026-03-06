@@ -32,7 +32,7 @@ Add source and destination mappings to specify the source export paths and desti
 . Select the export path in the source that you want to migrate. 
 . Optionally, select *Add Source Directory* if you want to perform a directory level migration.  
 +
-After you select *Add Source Directory*, the directory explorer view appears. This view shows the list of directories at the root level. You can either navigate to the required directory or directly copy paste the path of the required directory into the search bar of the explorer window to navigate to that folder.  
+After you select *Add Source Directory*, the directory explorer view appears. This view shows the list of directories at the root level. You can either navigate to the required directory or directly copy and paste the path of the required directory into the search bar of the explorer window to navigate to that folder.  
 
 . After you select the source directory, select the destination file server and destination export path.
 
