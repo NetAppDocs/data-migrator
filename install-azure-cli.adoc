@@ -19,12 +19,20 @@ Deploy VMs in Azure using a virtual hard disk (VHD). NetApp shares the VHD by us
 * link:https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-macos[Install on macOS^]
 * link:https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-linux[Install on Linux^]
 
-. You can (optionally) authenticate and select your subscription using the following commands:
+. Optionally, authenticate and select your subscription:
 +
 [source,cli]
 ----
 az login --tenant <YOUR_TENANT_ID>
+----
++
+[source,cli]
+----
 az account set --subscription <YOUR_SUBSCRIPTION_ID>
+----
++
+[source,cli]
+----
 az account show
 ----
 . Learn how to link:https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal[create storage and a container in your Azure account^].
