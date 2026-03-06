@@ -82,11 +82,23 @@ tail -f /upgrade/upgrade-<version>.log
 ----
 . SSH to the Linux worker or Windows worker VM and view the logs by using the following path:
 +
+[role="tabbed-block"]
+====
+.Linux worker
+--
 [source,cli]
 ----
 /opt/datamigrator/upgrade.log
 ----
-
+--
+.Windows worker
+--
+[source,cli]
+----
+C:\datamigrator\upgrade.log
+----
+--
+====
 . If the upgrade fails, the system automatically rolls back to the previous version and the UI shows the upgrade status as *Failed*.
 +
 Review the Ansible logs, then contact NetApp support at ng-ndm-support@netapp.com and attach the Ansible logs to your communication.

@@ -51,14 +51,14 @@ NDM prevents you from selecting a mapping which has a parent or child connection
 
 == Step 3: Customize the Bulk Migrate job
 
-You can select various settings from the Options page to customize your Bulk Migrate job, according to your needs.
+You can select various settings from the *Options* page to customize your Bulk Migrate job, according to your needs.
 
 [cols="30,70"]
 |===
 | Option | Description 
 
 | Excluded Path Patterns
-a| This option allows you to define specific file paths or directories that should be excluded from processing. This helps to optimize storage and performance by skipping unnecessary files.
+a| Defines specific file paths or directories that should be excluded from processing. This helps to optimize storage and performance by skipping unnecessary files.
 
 * You can enter multiple path patterns, one per line.
 * You can enter a wildcard (`*`) to match multiple files or folders.
@@ -68,39 +68,39 @@ a| This option allows you to define specific file paths or directories that shou
 ** `*/tmp/*`: Excludes temporary files
 
 | Incremental Sync Schedule
-a| Use this option to configure how often data syncs incrementally. This ensures that only the changes since the last sync are updated, thereby improving migration efficiency and reducing processing time.
+a| Configures how often data syncs incrementally. This ensures that only the changes since the last sync are updated, thereby improving migration efficiency and reducing processing time.
 
 . Select *Off* to disable incremental sync.
 . Select *Set Schedule* to specify a sync schedule. You can choose to sync data hourly, daily or weekly.
-. Select Cron *Expression* if you are an advanced user and want to define a custom sync schedule using a cron expression, for more granular control over sync timing.
+. Select *Cron Expression* if you are an advanced user and want to define a custom sync schedule using a cron expression, for more granular control over sync timing.
 
 | Migrate File
-a| You can use this option to select files to migrate based on their last modified time.
+a| Selects the files to migrate based on their last modified time:
 
-. Select *All* to migrate all files, regardless of their modification date.
-. Select *Exclude file older than (UTC)* to exclude files older than a specified date.
+* Select *All* to migrate all files, regardless of their modification date.
+* Select *Exclude file older than (UTC)* to exclude files older than a specified date.
 
 | Preserve a-time (Access Time) 
-| Select this option if you want to retain the original file access timestamp, instead of updating it to the migration time.
+| Retain the original file access timestamp, instead of updating it to the migration time.
 
 | Preserve permissions
-a| Select this option if you want to retain the original source file and directory permissions on a destination.
+a| Retains the original source file and directory permissions on a destination.
 
-. Select *Enabled* to preserve the original permissions, including owner, group, and access rights (access control lists for SMB, mode bits for NFS) from a source to a destination. 
-. Select *Disabled* to skip permission preservation. NDM migrates files with default destination permissions, which might be useful when migrating between incompatible file systems.
+* Select *Enabled* to preserve the original permissions, including owner, group, and access rights (access control lists for SMB, mode bits for NFS) from a source to a destination. 
+* Select *Disabled* to skip permission preservation. NDM migrates files with default destination permissions, which might be useful when migrating between incompatible file systems.
 
 | Skip Files modified in last
-| This option allows you to specify atime window (in minutes, hours, or days) files from to exclude from your migration. This helps prevent data inconsistency by ensuring that actively edited files are not transferred mid-update.
+| Specifies an atime window (in minutes, hours, or days) files from to exclude from your migration. This helps prevent data inconsistency by ensuring that actively edited files are not transferred mid-update.
 
 | Upload GID / UID mapping
-a| You can use this option to upload a "Group ID (GID) / User ID (UID) mapping" file to maintain correct file ownership during migration. The uploaded file must follow the format specified in the template provided.
+a| Uploads a "Group ID (GID) / User ID (UID) mapping" file to maintain correct file ownership during migration. The uploaded file must follow the format specified in the template provided.
 
 . Select *Download Template* to download a sample file format.
 . Select *Choose a file* to select the mapping file from your local system.
 . Select *Upload* to apply the mapping.
 
 | Upload SID mapping
-a| Use this option to upload a *Security Identifier (SID) mapping* file. SID mapping ensures that user and group permissions are retained accurately when migrating or syncing files between systems. The uploaded file must follow the format specified in the template provided for you to download.
+a| Uploads a *Security Identifier (SID) mapping* file. SID mapping ensures that user and group permissions are retained accurately when migrating or syncing files between systems. The uploaded file must follow the format specified in the template provided for you to download.
 
 . Select *Download Template* to download a sample file format.
 . Select *Choose a file* to select the mapping file from your local system.

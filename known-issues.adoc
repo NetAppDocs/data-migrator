@@ -50,7 +50,7 @@ The UI might show files as migrated, even if the source data has not changed. Th
 
 * If an incremental sync is not scheduled, you can manually trigger an incremental migration.
 
-* For your next bulk migration, enable automatic incremental migrations by choosing either “Schedule” or “Cron Expression” at Step 2 (Options-  Incremental Sync Schedule). This option is disabled, by default.
+* For your next bulk migration, enable automatic incremental migrations by choosing either *Schedule* or *Cron Expression* at Step 2 (Options-  Incremental Sync Schedule). This option is disabled, by default.
 
 After incremental sync has completed, then:
 
