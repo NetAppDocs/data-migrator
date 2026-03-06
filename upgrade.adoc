@@ -38,7 +38,7 @@ Upgrade the control plane followed by the Linux worker or Windows worker.
 .Steps
 . Select *Upgrade*. The system starts upgrading the control plane. This takes approximately five to ten minutes.
 +
-During the upgrade, the UI might become temporarily unavailable because the application is restarting with the new version. Log back into the UI when it becomes accessible again. 
+During the upgrade, the UI might become temporarily unavailable because the application is restarting with the new version. Log back in to the UI when it becomes accessible again. 
 
 . After the upgrade completes, return to the *Upgrade* page. 
 . Verify that the upgrade status is *Success*.
@@ -74,13 +74,13 @@ View the virtual machine logs to support troubleshooting issues that you encount
 
 .Steps
 
-. SSH to the control plane VM and run the following command to view logs:
+. Connect to the control plane VM using SSH and run the following command to view logs:
 +
 [source,cli]
 ----
 tail -f /upgrade/upgrade-<version>.log 
 ----
-. SSH to the Linux worker or Windows worker VM and view the logs by using the following path:
+. Connect to the Linux worker or Windows worker VM using SSH and view the logs by using the following path:
 +
 [source,cli]
 ----
