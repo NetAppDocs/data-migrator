@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar
 permalink: learn-about.html
-keywords: netapp, data, migrator, ndm, migration, multicloud
-summary: NetApp Data Migrator simplifies and accelerates the transfer of file-based workloads from on-premises or third-party storage systems to NetApp's first-party cloud storage services.
+keywords: data migrator, ndm, migration, multicloud, file workloads
+summary: "NDM is an enterprise-grade, multicloud, data migration software application designed for the transfer of file-based workloads from on-premises or third-party storage systems to NetApp's first-party cloud storage services."
 ---
 = Learn about NDM
 :icons: font

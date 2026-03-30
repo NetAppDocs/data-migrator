@@ -15,7 +15,7 @@ indexpage:
     - title: Install and use NDM
       links: 
         - title: Install and setup NDM
-          url: /install-options.html
+          url: /prepare-install-using-aws.html
         - title: Use NDM
           url: /manage-users.html
     - title: More resources

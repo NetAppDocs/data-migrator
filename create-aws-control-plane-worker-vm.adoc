@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar
 permalink: create-aws-control-plane-worker-vm.html
-keywords: 
-summary: 
+keywords: aws, control plane, worker vm, nfs migration, smb migration
+summary: "After installing AWS CLI, create the control plane and Linux and Windows worker VMs for NFS and SMB migrations."
 ---
 = Use AWS to create the control plane and worker VMs for NDM
 :icons: font

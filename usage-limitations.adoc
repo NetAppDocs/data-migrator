@@ -1,15 +1,15 @@
 ---
 sidebar: sidebar
 permalink: usage-limitations.html
-keywords: 
-summary: 
+keywords: usage limits, nfs limits, smb limits, worker sizing, migration restrictions
+summary: "Understand the usage limits of NDM to help make the NFS and SMB migration activities more efficient."
 ---
 = NDM usage limits
 :icons: font
 :imagesdir: ./media/
 
 [.lead]
-Understand the usage limits of NetApp Data Migrator (NDM) to help make your migration activities more efficient.
+Understand the usage limits of NetApp Data Migrator (NDM) to help make the NFS and SMB migration activities more efficient.
 
 
 *Discovery and migration limits*

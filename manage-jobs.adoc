@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar
 permalink: manage-jobs.html
-keywords: ndm, data migrator, manage, jobs, runs, list, details, run details, pause, stop, resume
-summary: Use job management features in NetApp Data Migrator to initiate and track your Discovery, Migration, and Cutover jobs and job runs.
+keywords: job management, discovery jobs, migration jobs, cutover jobs, job runs
+summary: "Use job management features in NDM to initiate and track discovery, migration, and cutover jobs and job runs."
 ---
 = Manage jobs and job runs in NDM
 :icons: font

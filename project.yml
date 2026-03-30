@@ -30,8 +30,6 @@ sidebar:
     entries:
     - title: Install NDM
       entries:
-      - title: Learn about the install options
-        url: /install-options.html
       - title: AWS
         entries:
         - title: Prepare for installation
