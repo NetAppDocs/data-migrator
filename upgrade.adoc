@@ -4,117 +4,103 @@ permalink: upgrade.html
 keywords: 
 summary: 
 ---
-= Upgrade features in NDM
+= Upgrade control plane and workers in NDM
 :icons: font
 :imagesdir: ./media/
 
 [.lead]
-Follow these instructions to upgrade a control plane, Linux worker, or Windows worker in NetApp Data Migrator (NDM). 
+You can upgrade a control plane, Linux worker, or Windows worker in NetApp Data Migrator (NDM). 
 
 .Before you begin
 
-Stop all job runs and make all jobs inactive. Upgrade logs appear in the unzipped folder with the following file name format:
+* Stop all job runs and make all jobs inactive. 
+* Download the upgrade bundle (tar.gz file) from the NetApp Support Site and save it in your local directory.
+* Verify that the workers that are in use are online. Workers that are offline during an upgrade are not upgraded.
 
-----
-upgrade_<timestamp>.log. 
-----
-
-If you encounter issues, contact NetApp support at ng-ndm-support@netapp.com and attach the upgrade logs to your communication.
-
-
-== Upgrade the control plane
+== Step 1: Upload the upgrade bundle
+Upload the upgrade bundle from your local directory.
 
 .Steps
 
-. Copy the upgrade bundle:
+. Log in to the NDM UI, then navigate to the home page.
+. Select the help icon in the top right corner.
+. Select the *Upgrade* tab.
+. Select *Select file*, then select the upgrade bundle tar.gz file. 
+. Select *Upload* after selecting the file.
 +
-* Transfer the upgrade zip file to the control plane machine using `scp`:
-+
-[source,cli]
-----
-scp -P 2226 ~/2025.08.19-preview.zip ubuntu@localhost:/tmp
-----
-. SSH to the control plane and switch user: 
-+
-* Connect to the control plane machine and switch to the "datamigrator" user:
-+
-[source,cli]
-----
-$ sudo su - datamigrator
-----
-. Install, unzip, and extract the bundle:
-+
-.. Navigate to the /tmp directory, install unzip if necessary, and extract the upgrade package:
-+
-[source,cli]
-----
-$ cd /tmp 
-$ sudo apt install unzip 
-$ unzip 2025.08.19-preview.zip
-----
+Wait for the message to appear that confirms that the upload and validation are complete.
+. Optionally, start the process again by selecting *Start Over* to upload a different file.
 
-.. Verify the extracted file:
-+
-After unzipping the upgrade package, you should see the following files in the extracted folder:
-+
-* A checksum file (for example, checksums.sha256)
-* A Docker image tar file (for example, datamigrator-2025.08.23-main.tar)
-* A Helm chart archive (for example, datamigrator-2025.08.23-main.tgz)
-* The upgrade script (upgrade.sh). You can verify the contents of the directory by running the following command:
-+
-[source,cli]
-----
-$ cd 2025.08.19-preview 
-$ ls -lart 
-total 6962656 
--rw-r--r-- 1 datamigrator datamigrator 7129717248 Aug 23 11:16 datamigrator-2025.08.23-main.tar 
--rwxr-xr-x 1 datamigrator datamigrator 7392 Aug 23 11:16 upgrade.sh 
--rw-r--r-- 1 datamigrator datamigrator 6046 Aug 23 11:16 datamigrator-2025.08.23-main.tgz 
--rw-r--r-- 1 datamigrator datamigrator 275 Aug 23 11:17 checksums.sha256
-----
-. Prepare and run the upgrade script:
+== Step 2: Upgrade the control plane and workers
 
-.. Make the upgrade script executable. 
-.. Run the  upgrade script to provide the paths to the checksum file, Docker tar file, and Helm chart archive:
-+
-[source,cli]
-----
-$ sudo chmod +x upgrade.sh
-$ ./upgrade.sh <path-to-check-sum-file> <path-to-docker-tar-file> <path-to-helm-tgz-file>
-----
-+
-You should see an output similar to the following example:
-+
-----
-./upgrade.sh checksums.sha256 datamigrator-2025.08.19-preview.tar datamigrator-2025.08.19-preview.tgz
-----
- 
-
-. Resume the jobs.
-
-. After the upgrade completes, you need to:
-+
-.. Create a new job run for any stopped jobs, because these cannot be restarted.
-.. Reactivate any inactive jobs to ensure that they run as scheduled.
-
-== Upgrade a Linux worker
+Upgrade the control plane followed by the Linux worker or Windows worker.
 
 .Steps
-. Create a new VM with the image provided for upgrade. 
-. Perform the following steps for previously created jobs:
-.. Detach the old worker from both the source and destination file servers.
-.. Attach the new worker to both the source and destination file servers.
-.. Create a new migration job to find and migrate differences between the source and destination data.
+. Select *Upgrade*. The system starts upgrading the control plane. This takes approximately five to ten minutes.
++
+During the upgrade, the UI might become temporarily unavailable because the application is restarting with the new version. Log back in to the UI when it becomes accessible again. 
 
-== Upgrade a Windows worker
+. After the upgrade completes, return to the *Upgrade* page. 
+. Verify that the upgrade status is *Success*.
+. After a successful control plane upgrade, the worker upgrade starts automatically for all online workers. 
++
+NOTE: The online workers automatically install and restart with the new version. Offline workers are not upgraded. 
+. If a worker upgrade doesn't start automatically, use SSH to connect to the worker and start the upgrade:
++
+[role="tabbed-block"]
+====
+.Linux worker
+--
+
+[source,cli]
+----
+sudo /opt/datamigrator/staging/<version>/upgrade.sh <version>
+----
+--
+.Windows worker
+--
+
+[source,cli]
+----
+ExecutionPolicy Bypass -File C:\datamigrator\staging\<version>\upgrade.ps1 -Version <version>
+----
+--
+====
+
+
+[[view-logs]]
+== Step 3: View logs and troubleshoot 
+View the virtual machine logs to support troubleshooting issues that you encounter during the upgrade.
 
 .Steps
-. Uninstall the existing application, then install the new executable on the Windows machine.
-. Perform the following steps for previously created jobs:
-.. Detach the old worker from both the source and destination file servers.
-.. Attach the new worker to both the source and destination file servers.
-.. Create a new migration job to find and migrate differences between the source and destination data.
 
+. Connect to the control plane VM using SSH and run the following command to view logs:
++
+[source,cli]
+----
+tail -f /upgrade/upgrade-<version>.log 
+----
+. Connect to the Linux worker or Windows worker VM using SSH and view the logs by using the following path:
++
+[role="tabbed-block"]
+====
+.Linux worker
+--
+[source,cli]
+----
+/opt/datamigrator/upgrade.log
+----
+--
+.Windows worker
+--
+[source,cli]
+----
+C:\datamigrator\upgrade.log
+----
+--
+====
+. If the upgrade fails, the system automatically rolls back to the previous version and the UI shows the upgrade status as *Failed*.
++
+Review the Ansible logs, then contact NetApp support at ng-ndm-support@netapp.com and attach the Ansible logs to your communication.
 
-
- 
+// 2026 FEB 25, Preview + 3 release

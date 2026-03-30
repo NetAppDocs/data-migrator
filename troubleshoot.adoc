@@ -13,25 +13,25 @@ If you experience issues while using NetApp Data Migrator (NDM), these troublesh
 
 == Troubleshoot application access
 
-All credentials are managed from openbao. Replace the IP_ADDRESS with the IP address of your virtual machine (VM).
+All credentials are managed in OpenBao. Replace the IP_ADDRESS with the IP address of your virtual machine (VM).
 
 .Steps
 
-. Fetch the openbao root token. Use SSH to connect to the control plane server from Bastion connect from the Azure portal:
+. Fetch the OpenBao root token. Use SSH to connect to the control plane server from Bastion connect from the Azure portal:
 +
 [source,cli]
 ----
 sudo su - datamigrator
 cat /opt/datamigrator/openbao/cluster-keys.json
 ----
-. Log in to the openbao UI: Use `https://IP_ADDRESS/ui/` and enter the root token for login. 
+. Log in to the OpenBao UI: Use `https://IP_ADDRESS/ui/` and enter the root token for login. 
 . Navigate to secrets.
 . Keycloak UI: `https://IP_ADDRESS/keycloak/`
 . NDM UI: `https://IP_ADDRESS/` 
 +
 The initial username is "admin@datamigrator.local" and password is "Welcome@123".
 . Temporal UI: `https://IP_ADDRESS/temporal/ui/`
-. Postgres connection: Use the multipass IP address to connect to Postgres database. Get the username and password from openbao. 
+. Postgres connection: Use the multipass IP address to connect to Postgres database. Get the username and password from OpenBao. 
 +
 Keys: POSTGRES_DMADMIN_USER and POSTGRES_DMADMIN_PASSWORD
 
@@ -68,14 +68,15 @@ kubectl get ns
 kubectl get pods -n <NAMESPACE>
 ----
 
-== Unseal Openbao
+== Unseal OpenBao
 
-If you encounter an issue where openbao is sealed, follow these steps to unseal.
+If you encounter an issue where OpenBao is sealed, follow these steps to unseal.
 
 .Steps
 
 . Use SSH to connect to the control plane server using Bastion connect.
 . replace OPENBAO_UNSEAL_KEY with your key:
++
 [source,cli]
 ----
 sudo su - datamigrator
