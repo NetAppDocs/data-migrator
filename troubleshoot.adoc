@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar
 permalink: troubleshoot.html
-keywords: 
-summary: 
+keywords: troubleshooting, kubectl, openbao, application access, diagnostic commands
+summary: "Use troubleshooting steps and reference commands to help troubleshoot NDM issues."
 ---
 = Troubleshoot NDM
 :icons: font

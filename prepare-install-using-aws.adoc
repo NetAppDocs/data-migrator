@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar
 permalink: prepare-install-using-aws.html
-keywords: 
-summary: 
+keywords: aws installation, prerequisites, control plane, worker vm, ec2
+summary: "Prepare to install the NDM control plane and worker VMs by using AWS."
 ---
 = Prepare to install NDM using AWS
 :icons: font
@@ -19,7 +19,7 @@ NDM has two main components that you need to install:
 
 * The *control plane*, which is always deployed on a Linux virtual machine (VM), serves as the central location for managing all migration jobs and should be created first.
 
-* *Workers* are virtual machines running on Linux, which supports the NFS protocol, or Windows, which supports the SMB protocol. You can install multiple workers based on your requirements:
+* *Workers* are virtual machines running on Linux or Windows. Linux supports the NFS protocol and Windows supports the SMB protocol. You can install multiple workers based on your requirements:
 
 ** For shared message block (SMB) migration, use the Windows Worker Installer on a Windows VM.
 ** For NFS migration, use the Linux Worker.

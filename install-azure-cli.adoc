@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar
 permalink: install-azure-cli.html
-keywords: 
-summary: 
+keywords: azure cli, vhd, sas url, managed image, storage account
+summary: "Install the Azure CLI and deploy VMs in Azure using a virtual hard disk (VHD)."
 ---
 = Install Azure CLI and manage assets for NDM 
 :icons: font

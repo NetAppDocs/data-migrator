@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar
 permalink: configure-notifications.html
-keywords: 
-summary: 
+keywords: notifications, smtp, email alerts, real-time alerts, project status
+summary: "Configure NDM to send real-time email alerts about project status changes by setting up an SMTP email server."
 ---
 = Configure real-time notifications for NDM
 :icons: font
@@ -31,4 +31,4 @@ You need to be logged in as an *App admin* user to configure SMTP email server d
 | To Email | Recipient address(es) for alerts
 |===
 
-NOTE: Once SMTP is configured, users are required to re-enter the password when editing SMTP settings. 
+NOTE: After configuring SMTP, users are required to re-enter the password when editing SMTP settings. 

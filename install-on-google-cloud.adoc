@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar
 permalink: install-on-google-cloud.html
-keywords: 
-summary: 
+keywords: google cloud, installation, control plane, worker vm, iam roles
+summary: "Install NDM on Google Cloud by enabling required APIs, preparing storage, configuring IAM roles, and deploying control plane and worker VMs."
 ---
 = Install NDM on Google Cloud 
 :icons: font

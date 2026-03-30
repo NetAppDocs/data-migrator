@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar
 permalink: upgrade.html
-keywords: 
-summary: 
+keywords: upgrade, control plane, worker vm, upgrade bundle, version update
+summary: "Upgrade a control plane, Linux worker, or Windows worker in NDM."
 ---
 = Upgrade control plane and workers in NDM
 :icons: font

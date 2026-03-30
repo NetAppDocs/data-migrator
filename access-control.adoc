@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar
 permalink: access-control.html
-keywords: 
-summary: 
+keywords: role-based access control, rbac, user permissions, app admin, project admin
+summary: "NDM uses role-based access control (RBAC) to manage user permissions with three roles: App Admin, Project Admin, and Project Viewer."
 ---
 = Manage access control for NDM
 :icons: font
