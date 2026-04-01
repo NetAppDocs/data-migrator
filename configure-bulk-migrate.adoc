@@ -9,7 +9,7 @@ summary: "Use Bulk Migrate in NDM to transfer large volumes of data from a sourc
 :imagesdir: ./media/
 
 [.lead]
-Use the Bulk Migrate features in NetApp Data Migrator (NDM) to efficiently transfer large volumes of data from a source to a destination .
+Use the Bulk Migrate features in NetApp Data Migrator (NDM) to efficiently transfer large volumes of data from a source to a destination location.
 
 == Step 1: Configure Bulk Migrate in NDM 
 
