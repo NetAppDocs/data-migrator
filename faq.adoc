@@ -4,7 +4,7 @@ permalink: faq.html
 keywords: frequently asked questions, troubleshooting, connection errors, authentication, protocol errors
 summary: "Find answers to common NDM questions about connection errors, authentication failures, protocol issues, and permission errors."
 ---
-= FAQ for NDM
+= FAQ for NetApp Data Migrator
 :icons: font
 :imagesdir: ./media/
 

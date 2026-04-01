@@ -4,7 +4,7 @@ permalink: install-aws-cli.html
 keywords: aws cli, ami, image import, s3 bucket, vm import
 summary: "Install the AWS CLI and import NDM control plane and worker images as AMIs in your AWS account."
 ---
-= Install AWS CLI and manage assets for NDM 
+= Install AWS CLI and manage assets for NetApp Data Migrator
 :icons: font
 :imagesdir: ./media/
 

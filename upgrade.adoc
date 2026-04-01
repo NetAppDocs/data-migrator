@@ -2,9 +2,9 @@
 sidebar: sidebar
 permalink: upgrade.html
 keywords: upgrade, control plane, worker vm, upgrade bundle, version update
-summary: "Upgrade a control plane, Linux worker, or Windows worker in NDM."
+summary: "Upgrade a control plane, Linux worker, or Windows worker in NetApp Data Migrator."
 ---
-= Upgrade control plane and workers in NDM
+= Upgrade the control plane and workers in NetApp Data Migrator
 :icons: font
 :imagesdir: ./media/
 

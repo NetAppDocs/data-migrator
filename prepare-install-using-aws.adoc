@@ -4,7 +4,7 @@ permalink: prepare-install-using-aws.html
 keywords: aws installation, prerequisites, control plane, worker vm, ec2
 summary: "Prepare to install the NDM control plane and worker VMs by using AWS."
 ---
-= Prepare to install NDM using AWS
+= Prepare to install NetApp Data Migrator using AWS
 :icons: font
 :imagesdir: ./media/
 

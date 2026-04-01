@@ -4,7 +4,7 @@ permalink: access-control.html
 keywords: role-based access control, rbac, user permissions, app admin, project admin
 summary: "NDM uses role-based access control (RBAC) to manage user permissions with three roles: App Admin, Project Admin, and Project Viewer."
 ---
-= Manage access control for NDM
+= Manage access control for NetApp Data Migrator
 :icons: font
 :imagesdir: ./media/
 

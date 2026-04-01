@@ -4,7 +4,7 @@ permalink: configure-bulk-discover.html
 keywords: bulk discover, storage inventory, export paths, data scan, migration planning
 summary: "Configure Bulk Discover in NDM to generate an overview of your entire existing storage capacity before you begin migrating your data."
 ---
-= Plan data migration in NDM using Bulk Discover
+= Plan data migration in NetApp Data Migrator using Bulk Discover
 :icons: font
 :imagesdir: ./media/
 

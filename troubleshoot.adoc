@@ -4,7 +4,7 @@ permalink: troubleshoot.html
 keywords: troubleshooting, kubectl, openbao, application access, diagnostic commands
 summary: "Use troubleshooting steps and reference commands to help troubleshoot NDM issues."
 ---
-= Troubleshoot NDM
+= Troubleshoot NetApp Data Migrator
 :icons: font
 :imagesdir: ./media/
 

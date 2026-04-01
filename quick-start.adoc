@@ -4,7 +4,7 @@ permalink: quick-start.html
 keywords: quick start, installation, ndm setup, first project, control plane
 summary: "To get started with NetApp Data Migrator (NDM), you need to set up control plane and worker VMs using either AWS, Azure, Google Cloud, or Open Virtual Appliance (OVA) templates."
 ---
-= Quick start for NDM
+= Quick start for NetApp Data Migrator
 :icons: font
 :imagesdir: ./media/
 

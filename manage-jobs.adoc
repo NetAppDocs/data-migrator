@@ -4,7 +4,7 @@ permalink: manage-jobs.html
 keywords: job management, discovery jobs, migration jobs, cutover jobs, job runs
 summary: "Use job management features in NDM to initiate and track discovery, migration, and cutover jobs and job runs."
 ---
-= Manage jobs and job runs in NDM
+= Manage jobs and job runs in NetApp Data Migrator
 :icons: font
 :imagesdir: ./media/
 

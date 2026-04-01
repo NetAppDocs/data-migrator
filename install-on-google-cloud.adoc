@@ -4,7 +4,7 @@ permalink: install-on-google-cloud.html
 keywords: google cloud, installation, control plane, worker vm, iam roles
 summary: "Install NDM on Google Cloud by enabling required APIs, preparing storage, configuring IAM roles, and deploying control plane and worker VMs."
 ---
-= Install NDM on Google Cloud 
+= Install NetApp Data Migrator on Google Cloud
 :icons: font
 :imagesdir: ./media/
 

@@ -4,7 +4,7 @@ permalink: configure-bulk-migrate.html
 keywords: bulk migrate, data migration, source mapping, destination mapping, export paths
 summary: "Use Bulk Migrate in NDM to transfer large volumes of data from a source to a destination location."
 ---
-= Perform data migration using NDM
+= Perform data migration using NetApp Data Migrator
 :icons: font
 :imagesdir: ./media/
 

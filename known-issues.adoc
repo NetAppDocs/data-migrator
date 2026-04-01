@@ -4,7 +4,7 @@ permalink: known-issues.html
 keywords: known issues, workarounds, ndm
 summary: "Review the known issues and workarounds for NDM."
 ---
-= Known issues and workarounds for NDM
+= Known issues and workarounds for NetApp Data Migrator
 :icons: font
 :imagesdir: ./media/
 

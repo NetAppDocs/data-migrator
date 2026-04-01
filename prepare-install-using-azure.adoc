@@ -2,9 +2,9 @@
 sidebar: sidebar
 permalink: prepare-install-using-azure.html
 keywords: azure installation, prerequisites, control plane, worker vm, azure cli
-summary: "Prepare to install the NDM control plane and worker VMs by using Azure."
+summary: "Prepare to install the NetApp Data Migrator control plane and worker VMs by using Azure."
 ---
-= Prepare for NDM installation using Azure
+= Prepare to install NetApp Data Migrator using Azure
 :icons: font
 :imagesdir: ./media/
 

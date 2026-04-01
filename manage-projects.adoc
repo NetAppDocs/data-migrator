@@ -4,7 +4,7 @@ permalink: manage-projects.html
 keywords: projects, project management, user roles, create project, project admin
 summary: "Use the Projects tab in the NDM control plane to create, edit, or switch between projects."
 ---
-= Create and manage projects in NDM
+= Create and manage projects in NetApp Data Migrator
 :icons: font
 :imagesdir: ./media/
 

@@ -4,7 +4,7 @@ permalink: create-azure-control-plane-worker-vm.html
 keywords: azure, control plane, worker vm, nfs migration, smb migration
 summary: "After installing Azure CLI, create the control plane and Linux and Windows worker VMs for NFS and SMB migrations."
 ---
-= Use Azure to create the control plane and worker VMs for NDM
+= Use Azure to create the control plane and worker VMs for NetApp Data Migrator
 :icons: font
 :imagesdir: ./media/
 

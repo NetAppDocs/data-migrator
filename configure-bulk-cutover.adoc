@@ -4,7 +4,7 @@ permalink: configure-bulk-cutover.html
 keywords: bulk cutover, final sync, cutover job, chain of custody, migration approval
 summary: "Use Bulk Cutover in NDM to perform the final data sync between source and destination systems."
 ---
-= Configure Bulk Cutover in NDM
+= Configure Bulk Cutover in NetApp Data Migrator
 :icons: font
 :imagesdir: ./media/
 

@@ -4,7 +4,7 @@ permalink: generate-support-bundle.html
 keywords: support bundle, diagnostics, troubleshooting, log files, download report
 summary: "Generate and download an NDM support bundle containing diagnostic logs, error reports, and configuration data for troubleshooting."
 ---
-= Generate NDM support bundle
+= Generate a NetApp Data Migrator support bundle
 :icons: font
 :imagesdir: ./media/
 

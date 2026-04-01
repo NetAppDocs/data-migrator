@@ -4,7 +4,7 @@ permalink: manage-users.html
 keywords: user management, rbac, app admin, user accounts, access control
 summary: "Add and manage NDM users with role-based access control, including creating accounts, assigning roles, and enabling or disabling access."
 ---
-= Add and manage users in NDM
+= Add and manage users in NetApp Data Migrator
 :icons: font
 :imagesdir: ./media/
 

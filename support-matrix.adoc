@@ -4,7 +4,7 @@ permalink: support-matrix.html
 keywords: support matrix, nfs, smb, file servers, protocol versions
 summary: "Learn about the protocols and file server types supported by NDM to help streamline your migration activities."
 ---
-= NDM protocols and file server support matrix
+= Learn about the NetApp Data Migrator protocols and file server support matrix
 :icons: font
 :imagesdir: ./media/
 

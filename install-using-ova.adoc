@@ -4,7 +4,7 @@ permalink: install-using-ova.html
 keywords: ova, vmware vsphere, control plane, worker vm, data migration
 summary: "Install NDM using OVA templates in VMware vSphere by creating the control plane and Linux and Windows worker VMs for NFS and SMB migrations."
 ---
-= Install NDM using OVA
+= Install NetApp Data Migrator using OVA
 :icons: font
 :imagesdir: ./media/
 
