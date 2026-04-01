@@ -12,18 +12,16 @@ sidebar:
     url: /index.html
   - title: Release notes 
     entries:
-    - title: What is NDM?
-      url: /overview.html
+    - title: Known issues
+      url: /known-issues.html
     - title: Support matrix
       url: /support-matrix.html
     - title: Usage limits
       url: /usage-limitations.html
-    - title: Known issues
-      url: /known-issues.html
   - title: Get started
     entries: 
     - title: Learn about NDM
-      url: /learn-about.html
+      url: /learn-about-ndm.html
     - title: Quick start 
       url: /quick-start.html
   - title: Install and setup

@@ -1,0 +1,146 @@
+---
+sidebar: sidebar
+permalink: learn-about-ndm.html
+keywords: data migrator, ndm, migration, multicloud, file workloads
+summary: "NDM is an enterprise-grade, multicloud, data migration software application designed for the transfer of file-based workloads from on-premises or third-party storage systems to NetApp's first-party cloud storage services."
+---
+= Learn about NetApp Data Migrator
+:icons: font
+:imagesdir: ./media/
+
+[.lead]
+NetApp Data Migrator (NDM) is an enterprise-grade, multicloud, data migration software application that simplifies and accelerates the transfer of file-based workloads from on-premises or third-party storage systems to NetApp's first-party cloud storage services. NDM is an independent application that runs on user-managed virtual machines and eliminates the need for complex custom scripts and disjointed tools.
+
+You can use NDM to discover your existing storage environments, generate a quick inventory of files, and create plans to migrate your data from a source storage server to NetApp cloud storage services. After data migration starts, you can monitor migration jobs using the UI. You can also generate Chain of Custody (CoC) reports that use checksums to help verify if your data migrated successfully.
+
+NDM supports NFS and SMB file transfer protocols. You deploy worker nodes in your environment to maintain control and security during migration. The workers facilitate parallel data transfers, which improves performance and scalability. NDM includes features such as pre-checks and incremental sync to provide smooth and efficient migration with minimal downtime. You can keep your source systems active for most of the migration process, then perform a final cutover when ready. NDM also offers robust logging and error handling, allowing you to troubleshoot and recover from issues without having to restart the entire migration process. 
+
+Before you start working with NDM, it's helpful to first be familiar with the key terminology.
+
+Control plane::
+
+You use the control plane to access migration activities. From the control plane, you can perform the following tasks:
++
+* Manage projects, users, jobs, and file servers.
+* Schedule and dispatch job runs to available workers.
+* Monitor job runs, collect logs, and report status.
+* Enforce access control and user permissions.
+* Configure an SMTP email server for real-time notifications.
+
+Cutover::
+
+A Cutover job is the last migration step. It is required for the final sync between source and destination systems. A Cutover job performs the following actions:
++
+* Stops ongoing migrate jobs for selected paths
+* Performs a final sync to ensure that data is consistent
+* Generates a Chain of Custody (CoC) report for validation
+* Requires your approval to mark the migration as complete 
+
+Discover::
+
+You use a Discover job to scan and inventory data on a source or destination file server. A Discover job creates a report with details about the files and directories in selected export paths in a source or destination file server. Discover jobs can help you to understand the scope and complexity of your data before starting migration. A Discover job performs the following actions:
++
+* Analyzes the structure and contents of export paths
+* Collects metadata such as file names, sizes, permissions, and timestamps
+* Generates detailed reports and histograms for planning and auditing
+
+Export path::
+
+An export path represents the location of the data to be included in a Discover, Migrate, or Cutover operation. Export paths are the fundamental units of data being copied in any migration workflow and have the following characteristics:
++
+* Protocol-specific (NFS exports or SMB shares)
+* Validated for accessibility and permissions
+* Used as input for job creation (Discovery, Migrate, Cutover)
+
+Job::
+
+A job is a logical construct of a data migration task. It specifies what to do, where to do it, and how it should be executed. You can reuse jobs and schedule or trigger them manually.
++
+--
+A job includes two main components:
+
+* *Job definition*: A predefined sequence of steps, for example, scan, sync, or report.
+* *Job configuration*: User-defined parameters such as source or destination paths, exclusion rules, and scheduling.
+--
++
+--
+NDM supports three main job types:
+
+* Discovery job: Inventories and analyzes source and destination data.
+* Migrate job: Transfers data from source to destination.
+* Cutover job: Finalizes the migration and switches to the destination system.
+--
+
+Job run::
+
+A job run is a single execution instance of a job. Job runs allow you to monitor, manage, and troubleshoot the execution of migration tasks in real time. A job run includes the following details:
++
+* Has a unique timestamp and execution ID
+* Can be in one of several states: Ready, Running, Paused, Stopped, Errored, Blocked, or Completed
+* Generates logs, metrics, and task-level details
+
+Migrate::
+
+You can use a Migrate job to migrate your data from a source to a destination file server, securely, efficiently, and with minimal disruption. A Migrate job has the following features:
++
+* Performs baseline migration (initial full copy)
+* Supports incremental sync (updates based on changes)
+* Allows you to configure options such as exclusion patterns, permission remapping, and access time preservation
+* Includes pre-checks of permissions, capacity, and connectivity
+
+Project::
+
+A Project is a logical workspace that includes all components and activities related to a specific data migration activity. It serves as the top-level organizational unit within NDM. A project has the following characteristics:
++
+* A unique name and description
+* Associated users with defined roles (Project Admin, Project Viewer)
+* Linked file servers, jobs, workers, and configurations
+
++
+Projects help you to isolate migration efforts, making it easier to manage multiple migrations simultaneously across different teams, departments, or clients.
+
+Storage server (file server)::
+
+A storage (file) server is a critical component in the migration workflow. It stores the data to be migrated or serves as the destination for migrated data.
++
+* NDM supports NFS and SMB file servers
+* Each file server is configured with the following details:
+** A name and server type
+** Authentication credentials
+** Associated workers for executing migration tasks
+
+Task::
+
+A task is the smallest unit of execution within a job run. It represents a discrete operation such as scanning a directory, copying a file, or updating metadata. Tasks provide granularity to help monitor the progress and health of a job run. A task has the following characteristics:
++
+* Automatically generated by the system
+* Executed in sequence or parallel, depending on the job type
+* Tracked individually for success, failure, and retry attempts
+* Assigned to workers for processing
+
+Users::
+
+Users manage data migration activities. App Admin users (administrators) assign roles to other users that determine their level of access and control.
++
+--
+NDM supports three user roles:
+
+* *App Admin*: Provides full administrative privileges that allow you to manage other users, projects, and system settings
+* *Project Admin*: Provides permission to manage specific projects and configure, create, and monitor jobs
+* *Project Viewer*: Provides read-only access to view project details, job statuses, and reports
+--
++
+You authenticate with an email and password, and Role-Based Access Control (RBAC) governs your permissions. This provides secure, role-appropriate access to sensitive data and operations. NDM uses RBAC to manage permissions and helps secure access to resources.
+
+Worker::
+
+A worker is a virtual machine that performs actual data operations, for example, copying data from source to destination.
++
+* Workers are responsible for executing tasks such as scanning directories, copying files, and syncing metadata.
+* Workers enable distributed processing, allowing NDM to scale across large datasets and multiple environments efficiently.
+* Workers relay high-level statistical information about data migration to the control plane.
+* You install and register a worker using NDM.
+* Each worker has the following characteristics:
+** Is associated with one or more file servers
+** Reports system metrics such as CPU, memory, and status (online or offline) to the control plane
+** Reports high-level statistical information about data migration to the control plane
