@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar
 permalink: configure-bulk-cutover.html
-keywords: 
-summary: 
+keywords: bulk cutover, final sync, cutover job, chain of custody, migration approval
+summary: "Use Bulk Cutover in NDM to perform the final data sync between source and destination systems."
 ---
 = Configure Bulk Cutover in NDM
 :icons: font
@@ -13,17 +13,15 @@ Use Bulk Cutover in NetApp Data Migrator (NDM) to perform the final sync between
 
 == Start a Cutover Job
 
-Follow these steps to start a cutover job:
+Follow these steps to start a cutover job.
 
+.Steps
 . Log in to NDM.
 . Select *Storage Servers* in the left navigation pane.
 . From the dropdown menu, select *File Servers*.
 . Select the name of the file server for which you want to create a Cutover Job.
-. Select *Bulk Cutover.*
-
-Next, on the *Select Path* page:
-
-. Select the checkbox next to *Source Path.*
+. Select *Bulk Cutover*.
+. On the *Select Path* page, select the checkbox next to *Source Path*.
 . Select the checkbox next to the source path (confirming the cutover job).
 . Select *Proceed.*
 . You can select a job even if a *Bulk Migrate* job is running in parallel. Select the *checkbox* next to a job name to confirm that you are starting a *Bulk Cutover* job.
@@ -32,8 +30,9 @@ Next, on the *Select Path* page:
 
 == Approve a Bulk Cutover job
 
-Follow these steps to approve a cutover job:
+Follow these steps to approve a cutover job.
 
+.Steps
 . On the *Jobs* page, select the *Job Run List* tab.
 . Select the action menu next to your Cutover job.
 . Select *Review,* then a Cutover Confirmation pop-up box appears.

@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar
 permalink: configure-ndm.html
-keywords: 
-summary: 
+keywords: ndm setup, initial configuration, login, project creation, app admin
+summary: "After installing NDM, log in as App Admin, reset default credentials, and create your first project."
 ---
 = Set up and configure NDM
 :icons: font

@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar
 permalink: manage-file-servers.html
-keywords: 
-summary: 
+keywords: file servers, nfs, smb, worker association, export paths
+summary: "Use NDM to add, configure, and edit file servers that use the NFS or SMB protocols."
 ---
 = Add and manage file servers
 :icons: font

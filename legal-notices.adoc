@@ -1,8 +1,8 @@
 ---
 permalink:  legal-notices.html
 sidebar: sidebar
-keywords: # no keywords
-summary: # no summary
+keywords: legal notices, copyright, trademarks, open source, licenses
+summary: "Legal notices, copyright, trademarks, and open source license information for NetApp Data Migrator."
 ---
 = Legal notices
 :icons: font
