@@ -9,14 +9,19 @@ summary: "After installing NDM, log in as App Admin, reset default credentials, 
 :imagesdir: ./media/
 
 [.lead]
-After you install NetApp Data Migrator (NDM), you need to log in as an App Admin (administrator) using the default username and password. You are then required to change your login credentials, and create your first project.
+After you install NetApp Data Migrator (NDM), you need to log in as an App Admin (administrator) using the default username and password.
+
+== Log into NDM
+Log into NDM, then change your login credentials and create your first project.
 
 .Steps
 
 . Open a web browser and navigate to: `https://<IP_ADDRESS>/`.
-. On the *Welcome* page, in *Username/Email* enter admin@datamigrator.local
-. In *Password* enter Welcome@123
-. Select *Login*, then the *Reset Password* page opens.
+. On the *Welcome* page, enter the default username in *Username/Email* .
+. Enter the default password in *Password* .
+. Select *Login*. 
++
+The *Reset Password* page opens.
 . Enter a new password that meets the following security requirements:
 * Includes at least 8 characters
 * Includes at least one uppercase letter

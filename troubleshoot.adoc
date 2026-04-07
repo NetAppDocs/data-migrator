@@ -29,7 +29,7 @@ cat /opt/datamigrator/openbao/cluster-keys.json
 . Keycloak UI: `https://IP_ADDRESS/keycloak/`
 . NDM UI: `https://IP_ADDRESS/` 
 +
-The initial username is "admin@datamigrator.local" and password is "Welcome@123".
+Log in to the NDM UI using the default username and password.
 . Temporal UI: `https://IP_ADDRESS/temporal/ui/`
 . Postgres connection: Use the multipass IP address to connect to Postgres database. Get the username and password from OpenBao. 
 +

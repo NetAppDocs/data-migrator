@@ -13,7 +13,7 @@ After installing AWS using the CLI, create the control plane and worker VMs to a
 
 == Step 1: Create the control plane VM
 
-To create the control plane VM, use the previously imported control plane image. 
+Create the control plane VM by using the previously imported control plane image. 
 
 Learn how to link:https://repost.aws/knowledge-center/launch-instance-custom-ami[create a VM from a custom imported image^]. Use the following recommended settings:
 
@@ -23,7 +23,7 @@ Learn how to link:https://repost.aws/knowledge-center/launch-instance-custom-ami
 
 == Step 2: Create the Linux worker VM 
 
-Create the Linux worker VM for NFS migration using the previously imported worker image.
+Create the Linux worker VM for NFS migration by using the previously imported worker image.
 
 Learn how to link:https://repost.aws/knowledge-center/launch-instance-custom-ami[create a worker VM from a custom imported image^]. Use the following recommended settings:
 
@@ -63,7 +63,7 @@ Windows worker for MacOS:
 .. Install the Microsoft Windows App on your local laptop.
 .. link:https://learn.microsoft.com/en-us/windows-app/get-started-connect-devices-desktops-apps[RDP into the SMB Windows worker VM^].
 .. link:https://learn.microsoft.com/en-us/windows-app/device-audio-folder-redirection-teams?tabs=macos#folder-redirection[Mount the local folder which contains the Windows Worker Installer^].
-.. Locate the folder you mounted to the Windows worker VM under "This PC" on the server.
+.. Locate the folder you mounted to the Windows worker VM under `This PC` on the server.
 .. Move the Windows Worker Installer from the mounted folder to a suitable location on the Windows VM.
 --
 .Windows
@@ -72,7 +72,7 @@ Windows worker for Windows:
 
 .. Launch a Remote Desktop Connection.
 .. link:https://cat.pdx.edu/platforms/windows/remote-access/file-sharing-rdp-from-windows/[RDP into the SMB Windows worker VM and mount the local folder containing the Windows Worker Installer^]. 
-.. Locate the folder you mounted to the Windows worker VM under "This PC" on the server.
+.. Locate the folder you mounted to the Windows worker VM under `This PC` on the server.
 .. Move the Windows Worker Installer from the mounted folder to a suitable location on the Windows VM .
 --
 ====
@@ -80,6 +80,8 @@ Windows worker for Windows:
 == Step 4: Connect to the control plane VM
 
 Connect to the control plane to validate if NDM is active.
+
+CAUTION: Don't restart or reboot the control plane. If you encounter issues, contact NDM support at ndm-support@netapp.com for assistance.
 
 .Steps
 . Install the AWS CLI. Refer to the AWS CLI Download instructions.
@@ -102,7 +104,7 @@ Optionally, check the boot service logs:
 ----
 tail -10f /opt/datamigrator/logs/ndm-first-boot.log
 ----
-. If you see "Datamigrator Application Setup Complete" in the logs, it indicates the setup is complete.
+. If you see `Datamigrator Application Setup Complete` in the logs, it indicates the setup is complete.
 . Verify that all the pods are up and running:
 +
 [source,cli]
@@ -110,13 +112,7 @@ tail -10f /opt/datamigrator/logs/ndm-first-boot.log
 kubectl get pods -n datamigrator
 ----
 
-. You can now access NDM using RDP with the Windows VM created for NDM access and the control plane private IP address.
-+
-The default credentials for the NDM UI are:
-+
-* URL: `https://<control-plane-private-ip>/`
-* Username: admin@datamigrator.local
-* Password: Welcome@123
+. Access NDM using RDP with the Windows VM created for NDM access, the control plane private IP address, and the default username and password.
 
 . Depending on your migration, select the NFS or SMB tab.
 +
@@ -130,10 +126,7 @@ Associate the Linux worker with the control plane VM:
 * Use Microsoft Windows App (Mac) or Remote Desktop Connection (Windows) to create an RDP session.
 * Learn about link:https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connect-rdp.html[RDP connections^].
 .. Retrieve the private IP address from the newly created control plane VM in AWS.
-.. Open any browser and navigate to the NDM UI using the following credentials: 
-* IP address: `https://<control_plane_IP_address>/`
-* Username: admin@datamigrator.local
-* Password: Welcome@123
+.. Open any browser and navigate to the NDM UI using the default IP address, username, and password.
 .. Reset the password.
 .. Add the new user details and email ID.
 .. Create a new project by providing a name and an optional description.
@@ -175,7 +168,11 @@ Add the Active Directory to the Windows VM. Then, associate the Windows worker w
 .. Run the Windows Worker Installer that you copied to the Windows Worker Server.
 .. Enter the following details when prompted. You can get these details from the NDM UI by selecting *Home > View Instructions to Setup Worker*:
 * Worker ID
++
+NOTE: Use one worker ID per worker. Don't use the same worker ID to set up multiple workers.
 * Worker secret
++
+NOTE: Use one worker secret per worker. Don't use the same worker secret to set up multiple workers. 
 * Project ID
 * Control plane Private IP address
 

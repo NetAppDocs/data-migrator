@@ -93,6 +93,8 @@ If you are using your own vCenter, provide the following details for your networ
 
 Review pod logs and status by connecting to the control plane using SSH.
 
+CAUTION: Don't restart or reboot the control plane. If you encounter issues, contact NDM support at ndm-support@netapp.com for assistance.
+
 .Steps
 
 . Use the SSH username and password provided during the deployment of OVF template to SSH to the VM:
@@ -155,11 +157,7 @@ jobs-service-7d7c8d69db-q8pj5      2/2     Running   0          144m
 reports-service-65cb4f8858-6vqdm   2/2     Running   0          144m
 ----
 
-The default credentials for the NDM UI are:
-
-* URL: `https://<control-plane-private-ip>/`
-* Username: admin@datamigrator.local
-* Password: Welcome@123
+Login in to the NDM UI using the control plane private IP address and the default username and password.
 
 == Step 3: Add the worker VM to the control plane
 
@@ -187,7 +185,7 @@ https://<IP_address>/
 ssh <user_ID>@<worker_server_IP>
 ----
 +
-NOTE: Don’t use the same worker secret and worker ID to create multiple workers.
+NOTE: Use one worker ID per worker. Don't use the same worker ID to set up multiple workers. 
 
 . Login as the root user:
 +
@@ -251,6 +249,8 @@ Add the Active Directory to the Windows VM. Then, associate the Windows worker w
 +
 * Worker ID
 * Worker secret
++
+NOTE: Use one worker secret per worker. Don't use the same worker secret to set up multiple workers. 
 * Control plane IP address
 . After the installation completes, the worker service starts automatically.
 +

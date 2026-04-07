@@ -15,7 +15,7 @@ NetApp Data Migrator (NDM) has the following known issues.
 
 === Job Run status can be confusing when errors occur
 
-Some Migration job runs encounter errors and show a "Completed" migration status, while others show an "Errored" status. This difference can cause confusion when interpreting the Migration job run status. 
+Some Migration job runs encounter errors and show a Completed or Errored status. This can cause confusion when interpreting the Migration job run status. 
 
 Status definitions:
 
@@ -25,9 +25,9 @@ Status definitions:
 
 .Workaround
 
-Verify the job run outcome by checking the job run details for any errors, especially if the status is "Completed". Do not rely only on the status label until after you address this issue.
+Verify the job run outcome by checking the job run details for any errors, especially if the status is Completed. Do not rely only on the status label until after you address this issue.
 
-=== Migrations fail for jobs in "Inactive" state
+=== Migrations fail for jobs in Inactive state
 
 During data migration, the following error message might appear:
 
@@ -38,7 +38,10 @@ Source Path: <source-path> & Destination Path: <destination-path> failed due to 
 This issue occurs when NDM updates the migration paths but can't find an active job associated with them. Recreating the path does not activate the job; you must update it manually.
 
 .Workaround
-Go to (http://<control-plane-IP-address>/jobs-list) in NDM, manually set the job configuration to *Active*, then restart the migration job. 
+
+. Go to (http://<control-plane-IP-address>/jobs-list) in NDM. 
+. Manually set the job configuration to *Active*.
+. Restart the migration job. 
 
 === Incorrect file listing during cutover without delta changes
 
@@ -46,28 +49,28 @@ The UI might show files as migrated, even if the source data has not changed. Th
 
 .Workaround
 
-* If you previously scheduled incremental sync then no action is required because the next sync will run automatically. 
+. If an incremental sync is not scheduled, manually trigger an incremental migration. 
++
+If you previously scheduled incremental sync, you can skip this step because the next sync will run automatically. 
 
-* If an incremental sync is not scheduled, you can manually trigger an incremental migration.
+. For your next bulk migration, enable automatic incremental migrations by choosing either *Schedule* or *Cron Expression* at Step 2 (Options-  Incremental Sync Schedule). This option is disabled by default.
 
-* For your next bulk migration, enable automatic incremental migrations by choosing either *Schedule* or *Cron Expression* at Step 2 (Options-  Incremental Sync Schedule). This option is disabled, by default.
-
-After incremental sync has completed, then:
-
-* If NDM reports 0 files, your source and destination are in sync. 
-* If NDM reports files, re-run the migration until it shows 0 files. Then start cutover.
+. After incremental sync has completed, review the NDM reports:
++
+* If NDM reports zero files, your source and destination are in sync. 
+* If NDM reports files, re-run the migration until the report shows zero files. Then start cutover.
 
 === Update to file server protocol version requires page refresh to update the export path list
 
-When you update a file server protocol version, NDM requires you to perform a page refresh to update the export path list. If you don't, you might cause compatibility issues, delays in fetching the export list, or incomplete updates. This might lead to data inconsistencies, failed synchronization, or errors in accessing the latest export information.  
+When you update a file server protocol version, you must perform a page refresh to update the export path list. If you don't, you might cause compatibility issues, delays in fetching the export list, or incomplete updates. This might lead to data inconsistencies, failed synchronization, or errors in accessing the latest export information.  
 
 .Workaround
 
 Refresh the page whenever you update the file server protocol version. 
 
-=== Job paused or stalled (no progress in Running state) for more than 20 minutes
+=== Job paused or stalled for more than 20 minutes
 
-NDM might require user intervention when network connectivity issues, or issues with source, destination volume stability, or both are observed. The job might be in the "Paused" state, or in the "Running" state without any visible progress. This pause might happen if the source or destination services go down, or if the worker service experiences downtime.
+You  might need to intervene when you observe network connectivity issues, issues with source or destination volume stability, or both. The job might be in the Paused or Running state without any visible progress. This might happen if the source or destination services go down, or if the worker service experiences downtime.
 
 .Workaround
 
@@ -95,20 +98,21 @@ After data migration completes, the total number of files is correct, but some f
 
 .Workaround
 
-Review the migration COC report to identify files marked as errored. Then re-run the migration until the errors are resolved. 
+. Review the migration Chain of Custody (COC) report to identify files marked as errored. 
+. Re-run the migration until the errors are resolved. 
 
-=== Discovery job shows 0 files until control plane is refreshed
+=== Discovery job shows zero files until control plane is refreshed
 
-When running a discovery job, the Job Run Details page might initially show zero files or directories, even though the Discovery report preview displays the actual results.  This happens because the Control Plane updates every 10 minutes. During this interval, the Job Run Details might temporarily show outdated information, even if the job is marked as "Completed." 
+When running a discovery job, the Job Run Details page might initially show zero files or directories, even though the Discovery report preview displays the actual results. This occurs because the Control Plane updates every 10 minutes. During this interval, the Job Run Details might temporarily show outdated information, even if the job is marked as Completed. 
 
 .Workaround
 
-* Wait for the dashboard to refresh (up to 10 minutes) the Job Run Details page, then accurate file and directory counts are displayed. 
+* Wait for the dashboard to refresh (up to 10 minutes) the Job Run Details page and display the accurate file and directory counts. 
 * For immediate confirmation, refer to the Discovery Report Preview, which includes discovered files and directories. 
 
 == Configuration 
 
-=== Migration precheck displays false "Insufficient Space" warning*
+=== Migration precheck displays false Insufficient Space warning
 
 During migration prechecks, you might see the following warning, even if the destination has sufficient space: 
 
@@ -116,30 +120,30 @@ During migration prechecks, you might see the following warning, even if the des
 Insufficient destination space for selected path. Do you still want to proceed with the migration? 
 ---- 
 
-This can happen if you skip the discovery step and NDM uses a general command that reads the entire block device size instead of the actual dataset size. This can trigger a false warning. 
+This can happen if you skip the discovery step and NDM uses a general command that reads the entire block device size instead of the actual dataset size.  
 
 .Workaround
 
-Run Discovery before a Migration run, to ensure disk usage information is available for pre-check operation. If you still see this warning, then: 
+Run Discovery before a Migration run. This ensures that the disk usage information is available for the pre-check operation. If you still see the warning: 
 
-* Confirm that discovery has completed. 
-* Manually verify the destination volume has enough space. 
-* If there is sufficient space, you can safely proceed with data migration. 
+. Confirm that discovery has completed. 
+. Manually verify the destination volume has enough space. 
+. If there is sufficient space, you can safely proceed with data migration. 
 
 === Access permission mismatch when SID mapping is used
 
-NDM might report an error (Missing ACE in target) indicating an access permission mismatch between the source and target systems when SID mapping is used. This issue occurs because SID mapping was not performed at the ROOT level.   
+NDM might report a `Missing ACE in target` error when SID mapping is used. This error indicates an access permission mismatch between the source and target systems because SID mapping was not performed at the root level.   
 
 .Workaround
 
 Provide the CSV mapping for the SID source and target as shown in the following two scenarios:  
 
-Scenario 1:: 
-+
-For users or groups deleted or removed from the source Active Directory, provide the SID in the CSV mapping sheet:
-+
-*Example* 
-+
+[role="tabbed-block"]
+====
+.Scenario 1
+-- 
+Provide the SID in the CSV mapping sheet for users or groups deleted or removed from the source Active Directory, as shown in the following example:
+
 |===
 | sid_source | sid_target
 
@@ -147,29 +151,29 @@ For users or groups deleted or removed from the source Active Directory, provide
 | S-1-5-21-3481156262-2863848796-4292454742-512
 
 |===
+--
 
-Scenario 2:: 
-+
-For active users or groups in Active Directory, provide usernames or group names in the CSV mapping sheet exclusively in lowercase, including the domain prefix, for example, domain\username. 
-+
-*Example*:  
-+
+.Scenario 2
+-- 
+For active users or groups in Active Directory, provide the usernames or group names in the CSV mapping sheet exclusively in lowercase. Include the domain prefix (domain\username), as shown in the following example: 
+
 |===
 | sid_source | sid_target 
 
 | rootdomain\user1 | rootdomain\user2 
 
 |===
-
+--
+====
 
 == Reporting 
 
 
 === Excel displays incorrect permissions in COC report file
 
-When opening the COC report CSV file in Microsoft Excel, some file or folder permissions might appear as #NAME? instead of the actual values, for example, -rwxrwxrwx. 
+When opening the COC report CSV file in Microsoft Excel, some file or folder permissions might appear as #NAME?, for example, -rwxrwxrwx, instead of the actual values. 
 
-This happens because Excel mistakenly treats certain permission strings (starting with - or =) as formulas, leading to display errors. (The CSV file itself is correct, this is only a display issue).  
+This happens because Excel mistakenly treats certain permission strings (starting with - or =) as formulas, leading to display errors. The CSV file itself is correct, this is only a display issue.  
 
 .Workaround
 
@@ -181,31 +185,45 @@ To view correct file and folder permissions open the CSV file using one of the f
 
 * Online CSV viewer 
 
-* Text editor, for example, Notepad++ 
+* Text editor, for example, Notepad++
 
 === No error message when Discovery job fails due to network issues
 
 If the host or destination server goes down during a Bulk Discovery job, NDM might not show an error message. This can give the impression that the job is still running normally.  
 
-.Workaround
-
 Discovery jobs refresh every 30 seconds. If you notice that the file count, directory count, or data size is not updating, this might indicate a network issue.  
 
-. Check network connectivity: 
+.Workaround
 
-* Open the worker VM terminal. Ping the IP address of the destination server and if there's no response, the destination might be unreachable.
+. Check the network connectivity:
++ 
+.. Open the worker VM terminal. 
+.. Ping the IP address of the destination server.
++
+If there is no response, the destination might be unreachable.
 
 . Restore the network interface:
 
-* Use SSH to connect to the destination server:
+.. Use SSH to connect to the destination server:
 +
-`ssh <destination IP>`
+[source,cli]
+----
+ssh <destination_IP>
+----
 
-* Run `ipconfig` to find the interface name (for example, eth0). 
-
-* Run `ifup` to bring it back online:
+.. Find the interface name, for example, eth0:
 +
-`ifup <interface name>`    
+[source,cli]
+----
+ipconfig
+----
+
+.. Bring the network interface back online:
++
+[source,cli]
+----
+ifup <interface_name>
+----
 
 . If required, repeat the Steps 1 and 2 for the source server.
 
@@ -215,27 +233,18 @@ Switching to a different user account on Windows worker might fail due to existi
 
 .Workaround 
 
-
-To remove the previous connection, open Command Prompt on the Windows worker and run the following commands:
-
+. Remove the previous connection by opening Command Prompt on the Windows worker and running the following commands:
++
 [source,cli]
 ----
 net use
 ----
-
++
 [source,cli]
 ----
 net use <IP address> /delete
 ----
 
-You can then switch to the new user account and access the file server. 
-
-== Recommendations for using NDM
-
-* Do not run Migration and Cutover jobs simultaneously. Ensure only one job is active at any time. 
-
-* Use one worker secret code to set up a worker explicitly. 
-
-CAUTION: Don't restart or reboot the control plane. Contact NDM support at ndm-support@netapp.com for assistance.
+. Switch to the new user account and access the file server. 
 
 // 2025 DEC 1, OTHERDOC-166 and NADIAA updates

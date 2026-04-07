@@ -50,9 +50,9 @@ Ensure that the migration API has the required access permission.
 --
 Learn about link:https://cloud.google.com/migrate/virtual-machines/docs/5.0/migrate/image_import#add-disk-to-storage[disk storage permissions^] 
 --
-.Use "vmmigration" service
+.Use the vmmigration service
 --
-Use the "vmmigration" service. 
+Use the `vmmigration` service. 
 
 .Steps
 
@@ -75,7 +75,7 @@ When the VM Migration API is enabled, Google Cloud automatically provisions a se
 * `vmmigration` is the VM Migration service identifier
 * `iam.gserviceaccount.com` is the standard domain for Google Cloud service accounts
 
-. Make yourself an admin user on the "vmmigration" service:
+. Make yourself an admin user on the `vmmigration` service:
 +
 [source,cli]
 ----
@@ -169,7 +169,7 @@ Windows worker for MacOS:
 .. Install the Microsoft Windows App on your local laptop.
 .. link:https://learn.microsoft.com/en-us/windows-app/get-started-connect-devices-desktops-apps[RDP into the SMB Windows worker VM^].
 .. link:https://learn.microsoft.com/en-us/windows-app/device-audio-folder-redirection-teams?tabs=macos#folder-redirection[Mount the local folder which contains the Windows Worker Installer^].
-.. Locate the folder you mounted to the Windows worker VM under "This PC" on the server.
+.. Locate the folder you mounted to the Windows worker VM under `This PC` on the server.
 .. Move the Windows Worker Installer from the mounted folder to a suitable location on the Windows VM.
 --
 .Windows
@@ -178,7 +178,7 @@ Windows worker for Windows:
 
 .. Launch a Remote Desktop Connection.
 .. link:https://cat.pdx.edu/platforms/windows/remote-access/file-sharing-rdp-from-windows/[RDP into the SMB Windows worker VM and mount the local folder containing the Windows Worker Installer^]. 
-.. Locate the folder you mounted to the Windows worker VM under "This PC" on the server.
+.. Locate the folder you mounted to the Windows worker VM under `This PC` on the server.
 .. Move the Windows Worker Installer from the mounted folder to a suitable location on the Windows VM .
 --
 ====
@@ -210,7 +210,7 @@ Optionally, check the boot service logs:
 ----
 tail -10f /opt/datamigrator/logs/ndm-first-boot.log
 ----
-.. If you see "Datamigrator Application Setup Complete" in the logs, this indicates the setup is complete.
+.. If you see `Datamigrator Application Setup Complete` in the logs, this indicates the setup is complete.
 .. Verify that all the pods are up and running:
 +
 [source,cli]
@@ -218,13 +218,7 @@ tail -10f /opt/datamigrator/logs/ndm-first-boot.log
 kubectl get pods -n datamigrator
 ----
 +
-You can now access NDM using RDP with the Windows VM you created for NDM access and the control plane private IP address.
-+
-The default credentials for the NDM UI are:
-+
-* URL: `https://<control-plane-private-ip>/`
-* Username: admin@datamigrator.local
-* Password: Welcome@123
+Access NDM using RDP with the Windows VM you created for NDM access and the control plane private IP address. Login in to the NDM UI using the default username and password.
 
 . Depending on your migration, select the NFS or SMB tab:
 +
@@ -238,10 +232,7 @@ Associate Linux worker with the control plane VM:
 * Use Microsoft Windows App (Mac) or Remote Desktop Connection (Windows) to create an RDP session.
 * link:https://cloud.google.com/compute/docs/instances/connecting-to-windows[Connect to the Windows VM using Remote Desktop Protocol (RDP)^].
 .. Retrieve the private IP address from the newly created control plane VM in GCP.
-.. Open any browser and navigate to the NDM UI using the following credentials: 
-* IP address: `https://<control_plane_IP_address>/`
-* Username: admin@datamigrator.local
-* Password: Welcome@123
+.. Open any browser and navigate to the NDM UI using the control place IP address and the default username and password.
 .. Reset the password.
 .. Add the new user details and email ID.
 .. Create a new project by providing a name and an optional description.
@@ -283,7 +274,11 @@ Add the Active Directory to the Windows VM. Then, associate the Windows worker w
 .. Run the Windows Worker Installer that you copied to the Windows Worker Server.
 .. Enter the following details when prompted. You can get these details from the NDM UI by selecting *Home > View Instructions to Setup Worker*:
 * Worker ID
++
+NOTE: Use one worker ID per worker. Don't use the same worker ID to set up multiple workers.
 * Worker secret
++
+NOTE: Use one worker secret per worker. Don't use the same worker secret to set up multiple workers.
 * Project ID
 * Control plane Private IP address
 
@@ -346,11 +341,11 @@ The following tables describes the placeholder references:
 
 .Related information
 
-* link:https://cloud.google.com/migrate/virtual-machines/docs/5.0/get-started/enable-services#enabling_required_services_on_the_host_project[Enable Image Import APIs^]
-* link:https://cloud.google.com/migrate/virtual-machines/docs/5.0/migrate/image_import#add-disk-to-storage[Add Disk to Storage^]
-* link:https://cloud.google.com/compute/docs/instances/create-vm-from-custom-image[Create VM from Custom Image^]
-* link:https://cloud.google.com/compute/docs/create-windows-server-vm-instance[Create Windows Server VM^]
-* link:https://cloud.google.com/storage/docs/uploading-objects#uploading-an-object[Upload objects to GCS^]
+* link:https://cloud.google.com/migrate/virtual-machines/docs/5.0/get-started/enable-services#enabling_required_services_on_the_host_project[Learn about enabling Image Import APIs^]
+* link:https://cloud.google.com/migrate/virtual-machines/docs/5.0/migrate/image_import#add-disk-to-storage[Learn about adding Disk to Storage^]
+* link:https://cloud.google.com/compute/docs/instances/create-vm-from-custom-image[Learn about creating VM from Custom Image^]
+* link:https://cloud.google.com/compute/docs/create-windows-server-vm-instance[Learn about creating Windows Server VM^]
+* link:https://cloud.google.com/storage/docs/uploading-objects#uploading-an-object[Learn about uploading objects to GCS^]
 
 .What's next?
 
