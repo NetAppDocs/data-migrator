@@ -2,14 +2,14 @@
 sidebar: sidebar
 permalink: manage-jobs.html
 keywords: job management, discovery jobs, migration jobs, cutover jobs, job runs
-summary: "Use job management features in NDM to initiate and track discovery, migration, and cutover jobs and job runs."
+summary: "Use job management features in NetApp Data Migrator to initiate and track discovery, migration, and cutover jobs and job runs."
 ---
 = Manage jobs and job runs in NetApp Data Migrator
 :icons: font
 :imagesdir: ./media/
 
 [.lead]
-Use job management features in NetApp Data Migrator (NDM) to initiate and track your *Discovery*, *Migration*, and *Cutover* jobs and job runs.
+Use job management features in NetApp Data Migrator to initiate and track your *Discovery*, *Migration*, and *Cutover* jobs and job runs.
 
 NOTE: Do not run Migration and Cutover jobs simultaneously. Ensure only one job is active at a time. 
 
@@ -19,7 +19,7 @@ The *Job Config List* page provides a comprehensive overview of all migration re
 
 .Steps
 
-. Log in to NDM.
+. Log in to NetApp Data Migrator.
 . Select *Jobs* from the left navigation bar.
 . Select *Job Config List*.
 
@@ -159,7 +159,7 @@ Migration/Discovery job status types include:
 
 * *Ready:* a job is scheduled to run.
 * *Running:* a job is in the running state.
-* *Paused:* a job run has been paused manually, or by NDM. For example, a job can have a paused status if a worker goes down while the job is running.
+* *Paused:* a job run has been paused manually, or by NetApp Data Migrator. For example, a job can have a paused status if a worker goes down while the job is running.
 * *Completed:* a job is complete.
 * *Errored:* a job run triggers a fatal error.
 * *Failed:* if a worker goes offline while a job is running, the job might enter a failed state.
@@ -258,7 +258,7 @@ From the *Job Run List* page you can monitor, filter, and control job runs. You 
 
 == Generate a job error report
 
-NDM allows you to generate an error report for jobs with an *Errored* status. This can help you to understand the reason for the error(s).
+NetApp Data Migrator allows you to generate an error report for jobs with an *Errored* status. This can help you to understand the reason for the error(s).
 
 .Steps
 

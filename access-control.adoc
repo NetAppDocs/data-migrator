@@ -2,14 +2,14 @@
 sidebar: sidebar
 permalink: access-control.html
 keywords: role-based access control, rbac, user permissions, app admin, project admin
-summary: "NDM uses role-based access control (RBAC) to manage user permissions with three roles: App Admin, Project Admin, and Project Viewer."
+summary: "NetApp Data Migrator uses role-based access control (RBAC) to manage user permissions with three roles: App Admin, Project Admin, and Project Viewer."
 ---
 = Manage access control for NetApp Data Migrator
 :icons: font
 :imagesdir: ./media/
 
 [.lead]
-NetApp Data Migrator (NDM) uses role-based access control (RBAC) to manage user permissions. RBAC allows App Admin users (administrators) to assign any of the following three roles to other users, ensuring secure access control and efficient operations. App Admin users grant permissions to other users based on their responsibilities and access requirements.
+NetApp Data Migrator uses role-based access control (RBAC) to manage user permissions. RBAC allows App Admin users (administrators) to assign any of the following three roles to other users, ensuring secure access control and efficient operations. App Admin users grant permissions to other users based on their responsibilities and access requirements.
 
 * App Admin: This access level allows users to manage overall system settings, user roles, and access permissions.
 * Project Admin: This access level allows users to manage specific migration projects, including job configuration and execution.

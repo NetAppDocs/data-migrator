@@ -1,18 +1,18 @@
 ---
 sidebar: sidebar
-permalink: configure-ndm.html
-keywords: ndm setup, initial configuration, login, project creation, app admin
-summary: "After installing NDM, log in as App Admin, reset default credentials, and create your first project."
+permalink: configure-netapp-data-migrator.html
+keywords: initial configuration, login, project creation, app admin
+summary: "After installing NetApp Data Migrator, log in as App Admin, reset default credentials, and create your first project."
 ---
 = Set up and configure NetApp Data Migrator
 :icons: font
 :imagesdir: ./media/
 
 [.lead]
-After you install NetApp Data Migrator (NDM), you need to log in as an App Admin (administrator) using the default username and password.
+After you install NetApp Data Migrator, you need to log in as an App Admin (administrator) using the default username and password.
 
-== Log into NDM
-Log into NDM, then change your login credentials and create your first project.
+== Log into NetApp Data Migrator
+Log into NetApp Data Migrator, then change your login credentials and create your first project.
 
 .Steps
 
@@ -34,11 +34,11 @@ The *Reset Password* page opens.
 . Select *Create Project,* then enter the following details:
 * *Project Name*: This should be a descriptive name for your project.
 * *Project Description (Optional):* You can provide additional details about your project.
-. Select *Create* to create your new project, which then appears in the notification bar at the top of the NDM control plane.
+. Select *Create* to create your new project, which then appears in the notification bar at the top of the NetApp Data Migrator control plane.
 
-== Log out of NDM
+== Log out of NetApp Data Migrator
 
-After you log out of NDM, you need to use your newly created credentials (email and password) the next time you log in.
+After you log out of NetApp Data Migrator, you need to use your newly created credentials (email and password) the next time you log in.
 
 .Steps
 
@@ -49,4 +49,4 @@ After you log out of NDM, you need to use your newly created credentials (email 
 
 .What's next?
 
-link:manage-projects.html[Learn about using NDM]
+link:manage-projects.html[Learn about using NetApp Data Migrator]

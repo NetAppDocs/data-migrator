@@ -98,4 +98,4 @@ az image create \
 
 .What's next?
 
-link:create-azure-control-plane-worker-vm.html[Create the control plane and worker VMs for NDM]
+link:create-azure-control-plane-worker-vm.html[Create the control plane and worker VMs for NetApp Data Migrator]

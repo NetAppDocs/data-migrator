@@ -1,15 +1,15 @@
 ---
 sidebar: sidebar
 permalink: known-issues.html
-keywords: known issues, workarounds, ndm
-summary: "Review the known issues and workarounds for NDM."
+keywords: known issues, workarounds
+summary: "Review the known issues and workarounds for NetApp Data Migrator."
 ---
 = Known issues and workarounds for NetApp Data Migrator
 :icons: font
 :imagesdir: ./media/
 
 [.lead]
-NetApp Data Migrator (NDM) has the following known issues.
+NetApp Data Migrator has the following known issues.
 
 == Workflows
 
@@ -35,11 +35,11 @@ During data migration, the following error message might appear:
 Source Path: <source-path> & Destination Path: <destination-path> failed due to Inactive job found. Please reactivate or remove the existing job.
 ----
 
-This issue occurs when NDM updates the migration paths but can't find an active job associated with them. Recreating the path does not activate the job; you must update it manually.
+This issue occurs when NetApp Data Migrator updates the migration paths but can't find an active job associated with them. Recreating the path does not activate the job; you must update it manually.
 
 .Workaround
 
-. Go to (http://<control-plane-IP-address>/jobs-list) in NDM. 
+. Go to (http://<control-plane-IP-address>/jobs-list) in NetApp Data Migrator. 
 . Manually set the job configuration to *Active*.
 . Restart the migration job. 
 
@@ -55,10 +55,10 @@ If you previously scheduled incremental sync, you can skip this step because the
 
 . For your next bulk migration, enable automatic incremental migrations by choosing either *Schedule* or *Cron Expression* at Step 2 (Options-  Incremental Sync Schedule). This option is disabled by default.
 
-. After incremental sync has completed, review the NDM reports:
+. After incremental sync has completed, review the NetApp Data Migrator reports:
 +
-* If NDM reports zero files, your source and destination are in sync. 
-* If NDM reports files, re-run the migration until the report shows zero files. Then start cutover.
+* If NetApp Data Migrator reports zero files, your source and destination are in sync. 
+* If NetApp Data Migrator reports files, re-run the migration until the report shows zero files. Then start cutover.
 
 === Update to file server protocol version requires page refresh to update the export path list
 
@@ -120,7 +120,7 @@ During migration prechecks, you might see the following warning, even if the des
 Insufficient destination space for selected path. Do you still want to proceed with the migration? 
 ---- 
 
-This can happen if you skip the discovery step and NDM uses a general command that reads the entire block device size instead of the actual dataset size.  
+This can happen if you skip the discovery step and NetApp Data Migrator uses a general command that reads the entire block device size instead of the actual dataset size.  
 
 .Workaround
 
@@ -132,7 +132,7 @@ Run Discovery before a Migration run. This ensures that the disk usage informati
 
 === Access permission mismatch when SID mapping is used
 
-NDM might report a `Missing ACE in target` error when SID mapping is used. This error indicates an access permission mismatch between the source and target systems because SID mapping was not performed at the root level.   
+NetApp Data Migrator might report a `Missing ACE in target` error when SID mapping is used. This error indicates an access permission mismatch between the source and target systems because SID mapping was not performed at the root level.   
 
 .Workaround
 
@@ -189,7 +189,7 @@ To view correct file and folder permissions open the CSV file using one of the f
 
 === No error message when Discovery job fails due to network issues
 
-If the host or destination server goes down during a Bulk Discovery job, NDM might not show an error message. This can give the impression that the job is still running normally.  
+If the host or destination server goes down during a Bulk Discovery job, NetApp Data Migrator might not show an error message. This can give the impression that the job is still running normally.  
 
 Discovery jobs refresh every 30 seconds. If you notice that the file count, directory count, or data size is not updating, this might indicate a network issue.  
 

@@ -2,14 +2,14 @@
 sidebar: sidebar
 permalink: install-using-ova.html
 keywords: ova, vmware vsphere, control plane, worker vm, data migration
-summary: "Install NDM using OVA templates in VMware vSphere by creating the control plane and Linux and Windows worker VMs for NFS and SMB migrations."
+summary: "Install NetApp Data Migrator using OVA templates in VMware vSphere by creating the control plane and Linux and Windows worker VMs for NFS and SMB migrations."
 ---
 = Install NetApp Data Migrator using OVA
 :icons: font
 :imagesdir: ./media/
 
 [.lead]
-Use OVA (Open Virtual Appliance) templates in a VMWare vSphere environment to install NetApp Data Migrator (NDM).
+Use OVA (Open Virtual Appliance) templates in a VMWare vSphere environment to install NetApp Data Migrator.
 
 .About this task
 
@@ -56,7 +56,7 @@ Use the setup wizard to create the control plane and worker VMs from the OVA fil
 * For *Select virtual disk format*, select *Thin Provision*.
 * For *VM Storage Policy,* select the datastore for the VM files.
 . Select *Select networks* and select the VM's network.
-. Optionally, select *Customize template* to provide a static IP address to the VM. You can use DHCP, the NDM vCenter, or your own vCenter:
+. Optionally, select *Customize template* to provide a static IP address to the VM. You can use DHCP, the NetApp Data Migrator vCenter, or your own vCenter:
 +
 [role="tabbed-block"]
 ====
@@ -64,9 +64,9 @@ Use the setup wizard to create the control plane and worker VMs from the OVA fil
 --
 To use DHCP (Dynamic IP), keep the network settings blank.
 --
-.NDM vCenter
+.NetApp Data Migrator vCenter
 --
-To use the NDM vCenter, locate the reference for the custom properties in*vCenter OVA Deployment Custom Details*.
+To use the NetApp Data Migrator vCenter, locate the reference for the custom properties in*vCenter OVA Deployment Custom Details*.
 --
 .Own vCenter
 --
@@ -93,7 +93,7 @@ If you are using your own vCenter, provide the following details for your networ
 
 Review pod logs and status by connecting to the control plane using SSH.
 
-CAUTION: Don't restart or reboot the control plane. If you encounter issues, contact NDM support at ndm-support@netapp.com for assistance.
+CAUTION: Don't restart or reboot the control plane. If you encounter issues, contact NetApp Data Migrator support at ndm-support@netapp.com for assistance.
 
 .Steps
 
@@ -157,11 +157,11 @@ jobs-service-7d7c8d69db-q8pj5      2/2     Running   0          144m
 reports-service-65cb4f8858-6vqdm   2/2     Running   0          144m
 ----
 
-Login in to the NDM UI using the control plane private IP address and the default username and password.
+Login in to the NetApp Data Migrator UI using the control plane private IP address and the default username and password.
 
 == Step 3: Add the worker VM to the control plane
 
-You need to add the worker VM to the control plane created in <<create-control-plane-and-worker-vms,Step 1>> when you first install NDM.
+You need to add the worker VM to the control plane created in <<create-control-plane-and-worker-vms,Step 1>> when you first install NetApp Data Migrator.
 
 .Steps
 
@@ -171,7 +171,7 @@ Depending on your migration, select either the Linux worker (NFS) or Windows wor
 ====
 .Linux Worker
 --
-. Navigate to the NDM UI on the control plane using the IP address recorded in step 16:
+. Navigate to the NetApp Data Migrator UI on the control plane using the IP address recorded in step 16:
 +
 [source,cli]
 ----
@@ -228,7 +228,7 @@ datamigrator-worker.service - Datamigrator Worker Service
 Aug 12 11:33:54 datamigrator systemd[1]: Started datamigrator-worker.service - Datamigrator Worker Service.----
 ----
 
-. Navigate to NDM UI to verify that the worker is registered.
+. Navigate to NetApp Data Migrator UI to verify that the worker is registered.
 --
 
 .Windows worker
@@ -245,7 +245,7 @@ Add the Active Directory to the Windows VM. Then, associate the Windows worker w
 . Select OK.
 . Create a Windows VM and copy the Windows Worker Installer to this Windows VM.
 . Run the Windows Worker Installer that you copied to the Windows VM.
-. During installation, manually enter the following values when prompted. You can get the values from the NDM UI by selecting *Home > View Instructions to Setup Worker*:
+. During installation, manually enter the following values when prompted. You can get the values from the NetApp Data Migrator UI by selecting *Home > View Instructions to Setup Worker*:
 +
 * Worker ID
 * Worker secret
@@ -285,7 +285,7 @@ The control plane credentials are stored in OpenBao. Access the OpenBao and Post
 
 .Steps
 
-. Navigate to the NDM UI:
+. Navigate to the NetApp Data Migrator UI:
 +
 [source,cli]
 ----
@@ -314,7 +314,7 @@ https://<IP_address>/ui/
 
 .What's next?
 
-link:configure-ndm.html[Learn about configuring NDM]
+link:configure-netapp-data-migrator.html[Learn about configuring NetApp Data Migrator]
 
 // 2026 FEB 25, Preview + 3 release
 // 2025 DEC 1, OTHERDOC-168

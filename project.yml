@@ -21,7 +21,7 @@ sidebar:
   - title: Get started
     entries: 
     - title: Learn about NetApp Data Migrator
-      url: /learn-about-ndm.html
+      url: /learn-about.html
     - title: Quick start 
       url: /quick-start.html
   - title: Install, set up, and upgrade
@@ -53,7 +53,7 @@ sidebar:
       - title: OVA
         url: /install-using-ova.html
     - title: Configure NetApp Data Migrator
-      url: /configure-ndm.html
+      url: /configure-netapp-data-migrator.html
     - title: Upgrade control plane and workers
       url: /upgrade.html
   - title: Use NetApp Data Migrator

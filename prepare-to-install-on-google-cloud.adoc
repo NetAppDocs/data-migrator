@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: prepare-to-install-on-google-cloud.html
 keywords: google cloud, installation, control plane, worker vm, iam roles
-summary: "Prepare to install NDM on Google Cloud by enabling required APIs, preparing storage, configuring IAM roles, and deploying control plane and worker VMs."
+summary: "Prepare to install NetApp Data Migrator on Google Cloud by enabling required APIs, preparing storage, configuring IAM roles, and deploying control plane and worker VMs."
 ---
 = Prepare to install NetApp Data Migrator on Google Cloud
 :icons: font
@@ -10,7 +10,7 @@ summary: "Prepare to install NDM on Google Cloud by enabling required APIs, prep
 
 [.lead]
 ---
-Prepare to install NetApp Data Migrator (NDM) on Google Cloud.
+Prepare to install NetApp Data Migrator on Google Cloud.
 
 .About this task
 

@@ -2,22 +2,22 @@
 sidebar: sidebar
 permalink: manage-projects.html
 keywords: projects, project management, user roles, create project, project admin
-summary: "Use the Projects tab in the NDM control plane to create, edit, or switch between projects."
+summary: "Use the Projects tab in the NetApp Data Migrator control plane to create, edit, or switch between projects."
 ---
 = Create and manage projects in NetApp Data Migrator
 :icons: font
 :imagesdir: ./media/
 
 [.lead]
-You can use the Projects tab in the NetApp Data Migrator (NDM) control plane to create, edit, or switch between projects.
+You can use the Projects tab in the NetApp Data Migrator control plane to create, edit, or switch between projects.
 
 == Create a project
 
-App admin users can create a new project in NDM and assign users with defined roles to that project.
+App admin users can create a new project in NetApp Data Migrator and assign users with defined roles to that project.
 
 .Steps
 
-. Log in to NDM.
+. Log in to NetApp Data Migrator.
 . Select *Settings* in the top navigation bar.
 . Select the *Projects* tab to view a list of existing projects
 . Select *Add Project* and a new window appears.

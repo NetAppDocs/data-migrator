@@ -9,7 +9,7 @@ summary: "Upgrade a control plane, Linux worker, or Windows worker in NetApp Dat
 :imagesdir: ./media/
 
 [.lead]
-You can upgrade a control plane, Linux worker, or Windows worker in NetApp Data Migrator (NDM). 
+You can upgrade a control plane, Linux worker, or Windows worker in NetApp Data Migrator. 
 
 .Before you begin
 
@@ -22,7 +22,7 @@ Upload the upgrade bundle from your local directory.
 
 .Steps
 
-. Log in to the NDM UI, then navigate to the home page.
+. Log in to the NetApp Data Migrator UI, then navigate to the home page.
 . Select the help icon in the top right corner.
 . Select the *Upgrade* tab.
 . Select *Select file*, then select the upgrade bundle tar.gz file. 

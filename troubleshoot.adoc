@@ -2,14 +2,14 @@
 sidebar: sidebar
 permalink: troubleshoot.html
 keywords: troubleshooting, kubectl, openbao, application access, diagnostic commands
-summary: "Use troubleshooting steps and reference commands to help troubleshoot NDM issues."
+summary: "Use troubleshooting steps and reference commands to help troubleshoot NetApp Data Migrator issues."
 ---
 = Troubleshoot NetApp Data Migrator
 :icons: font
 :imagesdir: ./media/
 
 [.lead]
-If you experience issues while using NetApp Data Migrator (NDM), these troubleshooting steps and reference commands might be useful. 
+If you experience issues while using NetApp Data Migrator, these troubleshooting steps and reference commands might be useful. 
 
 == Troubleshoot application access
 
@@ -27,9 +27,9 @@ cat /opt/datamigrator/openbao/cluster-keys.json
 . Log in to the OpenBao UI: Use `https://IP_ADDRESS/ui/` and enter the root token for login. 
 . Navigate to secrets.
 . Keycloak UI: `https://IP_ADDRESS/keycloak/`
-. NDM UI: `https://IP_ADDRESS/` 
+. NetApp Data Migrator UI: `https://IP_ADDRESS/` 
 +
-Log in to the NDM UI using the default username and password.
+Log in to the NetApp Data Migrator UI using the default username and password.
 . Temporal UI: `https://IP_ADDRESS/temporal/ui/`
 . Postgres connection: Use the multipass IP address to connect to Postgres database. Get the username and password from OpenBao. 
 +

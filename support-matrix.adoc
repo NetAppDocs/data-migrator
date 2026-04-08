@@ -2,19 +2,18 @@
 sidebar: sidebar
 permalink: support-matrix.html
 keywords: support matrix, nfs, smb, file servers, protocol versions
-summary: "Learn about the protocols and file server types supported by NDM to help streamline your migration activities."
+summary: "Learn about the protocols and file server types supported by NetApp Data Migrator to help streamline your migration activities."
 ---
 = Learn about the NetApp Data Migrator protocols and file server support matrix
 :icons: font
 :imagesdir: ./media/
 
 [.lead]
-Learn about the protocols and file server types supported by NetApp Data Migrator (NDM) to help streamline your migration activities.
+Learn about the protocols and file server types supported by NetApp Data Migrator to help streamline your migration activities.
 
-*Summary of file server types and protocols supported by NDM*
 
 |===
-| Category | Supported
+| Category | Supported protocols and file servers
 
 | Source file server	 | Dell Isilon, ONTAP, Vanilla Linux, Windows, and Cloud Volumes ONTAP servers
 | Destination file server | All service levels of Azure NetApp Files (ANF), Google Cloud NetApp Volumes (GCNV), Amazon FSx for NetApp ONTAP (FSxN), and Cloud Volumes ONTAP

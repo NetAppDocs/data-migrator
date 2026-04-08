@@ -9,7 +9,7 @@ summary: "After installing AWS CLI, create the control plane and Linux and Windo
 :imagesdir: ./media/
 
 [.lead]
-After installing AWS using the CLI, create the control plane and worker VMs to access NDM. A Linux worker VM supports NFS migration and a Windows worker VM supports SMB migration. You can create multiple worker VMs based on your needs.
+After installing AWS using the CLI, create the control plane and worker VMs to access NetApp Data Migrator. A Linux worker VM supports NFS migration and a Windows worker VM supports SMB migration. You can create multiple worker VMs based on your needs.
 
 == Step 1: Create the control plane VM
 
@@ -79,9 +79,9 @@ Windows worker for Windows:
 
 == Step 4: Connect to the control plane VM
 
-Connect to the control plane to validate if NDM is active.
+Connect to the control plane to validate if NetApp Data Migrator is active.
 
-CAUTION: Don't restart or reboot the control plane. If you encounter issues, contact NDM support at ndm-support@netapp.com for assistance.
+CAUTION: Don't restart or reboot the control plane. If you encounter issues, contact NetApp Data Migrator support at ndm-support@netapp.com for assistance.
 
 .Steps
 . Install the AWS CLI. Refer to the AWS CLI Download instructions.
@@ -112,7 +112,7 @@ tail -10f /opt/datamigrator/logs/ndm-first-boot.log
 kubectl get pods -n datamigrator
 ----
 
-. Access NDM using RDP with the Windows VM created for NDM access, the control plane private IP address, and the default username and password.
+. Access NetApp Data Migrator using RDP with the Windows VM created for NetApp Data Migrator access, the control plane private IP address, and the default username and password.
 
 . Depending on your migration, select the NFS or SMB tab.
 +
@@ -122,11 +122,11 @@ kubectl get pods -n datamigrator
 --
 Associate the Linux worker with the control plane VM:
 
-.. Log in to the Windows VM using RDP to access NDM.
+.. Log in to the Windows VM using RDP to access NetApp Data Migrator.
 * Use Microsoft Windows App (Mac) or Remote Desktop Connection (Windows) to create an RDP session.
 * Learn about link:https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connect-rdp.html[RDP connections^].
 .. Retrieve the private IP address from the newly created control plane VM in AWS.
-.. Open any browser and navigate to the NDM UI using the default IP address, username, and password.
+.. Open any browser and navigate to the NetApp Data Migrator UI using the default IP address, username, and password.
 .. Reset the password.
 .. Add the new user details and email ID.
 .. Create a new project by providing a name and an optional description.
@@ -151,7 +151,7 @@ systemctl status datamigrator-worker.service
 ----
 tail -20f /opt/datamigrator/logs/datamigrator-worker.log
 ----
-* Navigate to the NDM UI and verify that the worker is registered.
+* Navigate to the NetApp Data Migrator UI and verify that the worker is registered.
 --
 
 .SMB
@@ -166,7 +166,7 @@ Add the Active Directory to the Windows VM. Then, associate the Windows worker w
 .. Select *Use the following DNS server addresses*, then enter the Active Directory server IP in *Preferred DNS server*.
 .. Select OK.
 .. Run the Windows Worker Installer that you copied to the Windows Worker Server.
-.. Enter the following details when prompted. You can get these details from the NDM UI by selecting *Home > View Instructions to Setup Worker*:
+.. Enter the following details when prompted. You can get these details from the NetApp Data Migrator UI by selecting *Home > View Instructions to Setup Worker*:
 * Worker ID
 +
 NOTE: Use one worker ID per worker. Don't use the same worker ID to set up multiple workers.
@@ -221,6 +221,6 @@ net stop DatamigratorWorker && start DatamigratorWorker
 
 .What's next?
 
-link:configure-ndm.html[Learn about configuring NDM]
+link:configure-netapp-data-migrator.html[Learn about configuring NetApp Data Migrator]
 
 // 2026 FEB 25, Preview + 3 release

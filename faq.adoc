@@ -2,14 +2,14 @@
 sidebar: sidebar
 permalink: faq.html
 keywords: frequently asked questions, troubleshooting, connection errors, authentication, protocol errors
-summary: "Find answers to common NDM questions about connection errors, authentication failures, protocol issues, and permission errors."
+summary: "Find answers to common NetApp Data Migrator questions about connection errors, authentication failures, protocol issues, and permission errors."
 ---
 = FAQ for NetApp Data Migrator
 :icons: font
 :imagesdir: ./media/
 
 [.lead]
-If you experience an issue while using NetApp Data Migrator (NDM), you might be able to resolve it quickly by reviewing these frequently asked questions (FAQ) by other users.
+If you experience an issue while using NetApp Data Migrator, you might be able to resolve it quickly by reviewing these frequently asked questions (FAQ) by other users.
 
 .What can cause NT_STATUS_IO_TIMEOUT / NT_STATUS_ACCESS_DENIED / NT_STATUS_HOST_UNREACHABLE / NT_STATUS_UNSUCCESSFUL errors?
 

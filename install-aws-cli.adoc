@@ -2,14 +2,14 @@
 sidebar: sidebar
 permalink: install-aws-cli.html
 keywords: aws cli, ami, image import, s3 bucket, vm import
-summary: "Install the AWS CLI and import NDM control plane and worker images as AMIs in your AWS account."
+summary: "Install the AWS CLI and import NetApp Data Migrator control plane and worker images as AMIs in your AWS account."
 ---
 = Install AWS CLI and manage assets for NetApp Data Migrator
 :icons: font
 :imagesdir: ./media/
 
 [.lead]
-Contact the NetApp NDM team at `ndm-support@netapp.com` to request the AWS Amazon Machine Image (AMI). After NetApp shares the AMI, it is visible in your AWS account under *EC2* > *AMIs* > *Private images*, and you can locate it using the AMI IDs provided. 
+Contact the NetApp Data Migrator team at `ndm-support@netapp.com` to request the AWS Amazon Machine Image (AMI). After NetApp shares the AMI, it is visible in your AWS account under *EC2* > *AMIs* > *Private images*, and you can locate it using the AMI IDs provided. 
 
 .Before you begin
 
@@ -66,4 +66,4 @@ You can identify your task by the description. After the task completes, the AMI
 
 .What's next?
 
-link:create-aws-control-plane-worker-vm.html[Create the control plane and worker VMs for NDM]
+link:create-aws-control-plane-worker-vm.html[Create the control plane and worker VMs for NetApp Data Migrator]

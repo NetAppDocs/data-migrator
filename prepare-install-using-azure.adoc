@@ -9,11 +9,11 @@ summary: "Prepare to install the NetApp Data Migrator control plane and worker V
 :imagesdir: ./media/
 
 [.lead]
-Use Azure to install NetApp Data Migrator (NDM).
+Use Azure to install NetApp Data Migrator.
 
 .About this task
 
-NDM has two main components that you need to install:
+NetApp Data Migrator has two main components that you need to install:
 
 * The *control plane*, which is always deployed on a Linux virtual machine (VM), serves as the central location for managing all migration jobs and should be created first.
 
@@ -24,7 +24,7 @@ NDM has two main components that you need to install:
 
 .Steps
 
-. To install the NDM control pane and worker, you must have the following prerequisites:
+. To install the NetApp Data Migrator control pane and worker, you must have the following prerequisites:
 +
 * An active Azure subscription
 * A Resource group set up in your desired region
@@ -40,7 +40,7 @@ include::./_include/configure-ports.adoc[]
 |===
 |If you... |Go to...
 |Don't have the Azure CLI
-| link:install-azure-cli.html[Install Azure CLI and manage assets for NDM]
+| link:install-azure-cli.html[Install Azure CLI and manage assets for NetApp Data Migrator]
 | Have the Azure CLI installed
 |link:create-azure-control-plane-worker-vm.html[Create the control plane and worker VMs]
 |===
