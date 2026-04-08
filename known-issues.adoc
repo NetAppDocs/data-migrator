@@ -39,7 +39,10 @@ This issue occurs when NetApp Data Migrator updates the migration paths but can'
 
 .Workaround
 
-. Go to (http://<control-plane-IP-address>/jobs-list) in NetApp Data Migrator. 
+. Open NetApp Data Migrator:
++
+`https://<private_IP_address>/`..
+. Select *Jobs > *Job Config List*.
 . Manually set the job configuration to *Active*.
 . Restart the migration job. 
 

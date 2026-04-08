@@ -54,7 +54,7 @@ The status of a file servers is listed in the *Status* column of the *File Serve
 * *Active*: There are no errors, and all details have been validated.
 * *In Progress:* Server validation is in progress.
 * *Draft*: No workers have been associated with a file server.
-* *Errored*: There are issues with permissions, no paths available, or only “ / ” is available as export path. These issues can occur if you select *Auto Discovery* for the export path during file server creation.
+* *Errored*: There are issues with permissions, no paths available, or only / is available as the export path. These issues can occur if you select *Auto Discovery* for the export path during file server creation.
 --
 
 .Dell Isilon

@@ -34,10 +34,10 @@ run simultaneously	 | 4  | 2
 | Active destination support
 | NetApp Data Migrator does not support an active destination (when a target storage is actively used or written before Cutover).
 | Case sensitive files 
-| For SMB, NetApp Data Migrator migrates only one of the case-differing files created using NFS in a folder and errors out the other file. This occurs because SMB can’t accept both files. You can run discovery using NFS to identify these case-sensitive files.
+| For SMB, NetApp Data Migrator migrates only one of the case-differing files created using NFS in a folder and errors out the other file. This occurs because SMB can't accept both files. You can run discovery using NFS to identify these case-sensitive files.
 | Directory level migration | NetApp Data Migrator supports migration of entire export paths only. It does not support migrating individual directories within an export path.
 | Network accessibility | NetApp recommends using NetApp Data Migrator in private networks.
-| NFSv4 ACLs | NetApp Data Migrator doesn’t stamp access control lists (ACLs) with NFSv4, it only applies basic permissions in the destination. This behavior is similar to NFSv3.
+| NFSv4 ACLs | NetApp Data Migrator does not stamp access control lists (ACLs) with NFSv4, it only applies basic permissions in the destination. This behavior is similar to NFSv3.
 | Protocol migration - Type | Cross-protocol migration is not supported, for example, NFS to SMB.
 | Protocol migration - Version | Cross-version migration within the same protocol is not supported, for example, NFSv3 to NFSv4.
 | SMB permissions
