@@ -45,7 +45,11 @@ sidebar:
         - title: Create the control plane and worker VMs
           url: /create-azure-control-plane-worker-vm.html
       - title: Google Cloud
-        url: /install-on-google-cloud.html
+        entries:
+        - title: Prepare for installation
+          url: /prepare-to-install-on-google-cloud.html
+        - title: Create Windows VM instance
+          url: /create-windows-vm-on-google-cloud.html
       - title: OVA
         url: /install-using-ova.html
     - title: Configure NetApp Data Migrator

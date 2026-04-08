@@ -19,7 +19,7 @@ indexpage:
         - title: Install using Azure
           url: /prepare-install-using-azure.html
         - title: Install on Google Cloud
-          url: /install-on-google-cloud.html
+          url: /prepare-to-install-on-google-cloud.html
         - title: Install using OVA
           url: /install-using-ova.html
         - title: Use NDM

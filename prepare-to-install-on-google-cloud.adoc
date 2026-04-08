@@ -1,0 +1,139 @@
+---
+sidebar: sidebar
+permalink: prepare-to-install-on-google-cloud.html
+keywords: google cloud, installation, control plane, worker vm, iam roles
+summary: "Prepare to install NDM on Google Cloud by enabling required APIs, preparing storage, configuring IAM roles, and deploying control plane and worker VMs."
+---
+= Prepare to install NetApp Data Migrator on Google Cloud
+:icons: font
+:imagesdir: ./media/
+
+[.lead]
+---
+Prepare to install NetApp Data Migrator (NDM) on Google Cloud.
+
+.About this task
+
+This procedure has two main components, the control plane and the worker.
+
+The control plane serves as the central location for managing all migration jobs and should be created first. It is always deployed on a Linux virtual machine (VM).
+
+Workers are virtual machines that run on Linux or Windows. Linux supports the NFS protocol and Windows supports the SMB protocol. You can install multiple workers based on your needs:
+
+* For SMB migration, use the Windows Worker Installer. You must install the Windows Worker Installer on a Windows VM.
+* For NFS migration, use the Linux Worker.
+
+.Before you begin
+
+* Download the control plane image from the NetApp Support Site.
+* If you're using SMB migration, download the Windows Worker Installer from the NetApp Support Site.
+* If you're using NFS migration, download the Worker image from the NetApp Support Site.
+* Verify that the ports for the control plane and workers are enabled:
++
+include::./_include/configure-ports.adoc[]
+
+== Step 1: Enable required APIs
+
+link:https://cloud.google.com/migrate/virtual-machines/docs/5.0/get-started/enable-services#enabling_required_services_on_the_host_project[Enable all of the APIs required for your project^]. These APIs are mandatory for image import and deployment operations.
+
+== Step 2: Prepare import destination
+
+Learn how to link:https://cloud.google.com/storage/docs/creating-buckets#console[create a Google Cloud Storage (GCS) bucket^], if you have not already created one.
+
+== Step 3: Set Up IAM roles and permissions
+
+Ensure that the migration API has the required access permission. 
+
+[role="tabbed-block"]
+====
+.Update disk permissions
+--
+Learn about link:https://cloud.google.com/migrate/virtual-machines/docs/5.0/migrate/image_import#add-disk-to-storage[disk storage permissions^] 
+--
+.Use the vmmigration service
+--
+Use the `vmmigration` service. 
+
+.Steps
+
+. Assign the service account objectViewer access to your destination Cloud Storage bucket:
++
+[source,cli]
+----
+gcloud storage buckets add-iam-policy-binding gs://<GCS_BUCKET> \
+  --member=serviceAccount:service-<PROJECT_NUMBER>@gcp-sa-vmmigration.iam.gserviceaccount.com \
+  --role=roles/storage.objectViewer
+----
++
+The service account needs roles/storage.objectViewer permission to read the VM image files from your Cloud Storage bucket during the migration process. 
++
+When the VM Migration API is enabled, Google Cloud automatically provisions a service account with the following format:
++
+`service-<PROJECT_NUMBER>@gcp-sa-vmmigration.iam.gserviceaccount.com` 
++
+* `++ gcp-sa` is the Google Cloud service account  
+* `vmmigration` is the VM Migration service identifier
+* `iam.gserviceaccount.com` is the standard domain for Google Cloud service accounts
+
+. Make yourself an admin user on the `vmmigration` service:
++
+[source,cli]
+----
+gcloud projects add-iam-policy-binding <PROJECT_ID> \
+  --member=user:<YOUR_EMAIL> \
+  --role=roles/vmmigration.admin
+----
++
+This gives you VM migration administrative permissions at the project level. 
+--
+====
+
+== Step 4: Obtain and upload images
+
+//* Log into link:https://mysupport.netapp.com/site/[NetApp Support Site^] to download the control plane and worker .tar.gz images as well as (optional) .sha256 checksum files.
+* Go to the preview link provided to download the control plane and worker .tar.gz images as well as (optional) .sha256 checksum files.
+* link:https://cloud.google.com/storage/docs/uploading-objects#uploading-an-object[Upload the tar.gz for worker and control plane to your GCS bucket^].
+
+== Step 5: Validate SHA256 checksums (optional)
+//After you download the tar.gz file, you can optionally use this link:https://emn178.github.io/online-tools/sha256_checksum.html[checksum calculator^] to verify the checksum and validate against the checksum file downloaded from NSS.
+After you download the tar.gz file, you can optionally use this link:https://emn178.github.io/online-tools/sha256_checksum.html[checksum calculator^] to verify the checksum and validate against the checksum file downloaded from the preview site.
+
+== Step 6: Import images using VM migration service
+After you upload the worker and control plane tar.gz files, you can create a VM image for worker and control plane:
+
+[source,cli]
+----
+gcloud migration vms image-imports create <IMAGE_IMPORT_NAME> \
+  --source-file=gs://<GCS_BUCKET>/<IMAGE_NAME>.tar.gz \
+  --image-name=<IMAGE_NAME> \
+  --location=<REGION> \
+  --target-project=projects/<PROJECT_ID>/locations/global/targetProjects/<PROJECT_ID> \
+  --project=<PROJECT_ID>
+----
+
+This creates a new GCP VM image from your archive, in the specified region.
+
+== Step 7: List and confirm import completion
+
+Run the following command to list the import tasks and confirm that the import was successful:
+
+[source,cli]
+----
+gcloud migration vms image-imports list --location=<REGION> --project=<PROJECT_ID>
+----
+
+Wait for SUCCEEDED status before you proceed to VM creation.
+
+.Related information
+
+* link:https://cloud.google.com/migrate/virtual-machines/docs/5.0/get-started/enable-services#enabling_required_services_on_the_host_project[Learn about enabling Image Import APIs^]
+* link:https://cloud.google.com/migrate/virtual-machines/docs/5.0/migrate/image_import#add-disk-to-storage[Learn about adding Disk to Storage^]
+* link:https://cloud.google.com/compute/docs/instances/create-vm-from-custom-image[Learn about creating VM from Custom Image^]
+
+.What's next?
+
+link:create-windows-vm-on-google-cloud.html[Learn about creating Windows VM instance on Google Cloud for NetApp Data Migrator]
+
+// 2026 FEB 25, Preview + 3 release
+// 2025 DEC 1, OTHERDOC-168
+// 9 OCT 2025, commented out lines with the NSS link and replaced them with "preview link provided" - temporary measure for preview only.
