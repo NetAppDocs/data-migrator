@@ -1,0 +1,38 @@
+---
+sidebar: sidebar
+permalink: networking-requirements.html
+keywords: networking requirements, TCP, UDP, control plane, worker, communication
+summary: "Networking requirements for NetApp Data Migrator, including required TCP and UDP ports for control plane and worker communication."
+---
+= Verify NFS and SMB networking access in NetApp Data Migrator
+:icons: font
+:imagesdir: ./media/
+
+[.lead]
+You need to ensure that the worker IP and subnet and the control plane IP and subnet are allowed in the export policy on the storage system. This is required to support NFS and SMB migrations using NetApp Data Migrator.
+
+== Verify NFS access
+
+For NFS, the control plane and worker nodes need to be able to have access the storage system as root clients:
+
+.Steps
+. Perform a manual mount from a worker node to verify volume accessibility: 
++
+[source,cli]
+----
+sudo mount -t nfs <storage-ip>:/<volume-path> /mnt/test 
+ls -la /mnt/test
+----
+
+. Ensure that root access is enabled by verifying that the export policy rule allows superuser access. If necessary, enable root access (no root squash) by modifying the export policy rule. 
+
+== Verify SMB access
+
+For SMB access, the control plane and worker nodes need to be able to access the storage system using the SMB credentials. The SMB user must be part of the Backup operators and Administrators groups. 
+
+.Step
+. Perform a manual mount from a worker node to verify volume accessibility: 
+[source,cli]
+----
+net use Z: \\<storage-ip>\<share> /user:<domain>\<username> <password>
+----

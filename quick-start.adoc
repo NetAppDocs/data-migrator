@@ -12,23 +12,20 @@ summary: "To get started with NetApp Data Migrator, you need to set up control p
 To get started with NetApp Data Migrator, you need to set up control plane and worker virtual machines (VMs) using either AWS, Azure, or Google Cloud services, or Open Virtual Appliance (OVA) templates. Then, define your credentials and create your first project.
 
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png[One] Install NetApp Data Migrator
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png[One]xref:learn-about-install.adoc[Deploy NetApp Data Migrator]
 
 [role="quick-margin-para"]
-Depending on your environment, you install NetApp Data Migrator using AWS, Azure, or Google Cloud services, or OVA templates in a VMWare vSphere environment.
+NetApp Data Migrator uses a control plane and worker nodes. You need to deploy the control plane VM and worker VMs based on the migration protocol you plan to use:
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png[Two] Log in to NetApp Data Migrator
+* Deploy Linux workers for NFS migrations
+* Deploy Windows workers for SMB migrations
+
+NetApp Data Migrator provides images for the control plane and Linux workers. The NetApp Data Migrator team provides an executable for installing Windows workers. You can deploy the control plane VM and worker VMs using OVA templates on VMware vSphere or on a cloud platform such as Azure, GCP, or AWS.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png[Two]xref:configure-data-migrator.adoc[Configure NetApp Data Migrator]
 
 [role="quick-margin-para"]
+Open the control plane VM in your browser using a private IP address. You first log in as an administrator using the default credentials, then update your username and password. 
 
-You acquire the username and default password, log in as an administrator using the default username and password, and change your login credentials.
-
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png[Three] Create your projects
-
-// This step shows an example of using a list under the block title, rather than a paragraph. Note that lists are styled with the `quick-margin-list` role attribute to ensure correct indentation.
-
-You use the Projects tab in the NetApp Data Migrator control plane to create, edit, and switch between projects and workers.
-
-.What's next?
-
-After you create your projects, you can add and manage users and file servers, configure real-time notifications, set migration options, and manage your jobs and job runs.
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png[Three]xref:manage-projects.adoc[Create a project]
+Create your first project. Connect the worker VMs to the control plane, then add the file servers to initiate migration workflows.

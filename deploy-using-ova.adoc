@@ -1,0 +1,25 @@
+---
+sidebar: sidebar
+permalink: deploy-using-ova.html
+keywords: ova installation, prerequisites, control plane, worker vm, ova
+summary: "Learn about installing the NetApp Data Migrator control plane and worker VMs using OVA."
+---
+= Use OVA to deploy control plane and Linux worker for NetApp Data Migrator
+:icons: font
+:imagesdir: ./media/
+
+[.lead]
+Use Open Virtual Appliance (OVA) files to deploy the control plane VM and Linux worker VM for NetApp Data Migrator. The Linux worker supports NFS data migrations.
+
+.Steps
+Navigate to the NetApp Support Site to download:  
+
+Steps 
+
+. Log in to the NSS  
+
+. Search for .... 
+
+Control plane .ova image 
+
+Linux worker .ova image 

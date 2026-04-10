@@ -9,7 +9,7 @@ indexpage:
         - title: Release notes
           url: /known-issues.html
         - title: Learn about NetApp Data Migrator
-          url: /learn-about.html
+          url: /learn-about-data-migrator.html
         - title: Quick start 
           url: /quick-start.html
     - title: Install and use NetApp Data Migrator

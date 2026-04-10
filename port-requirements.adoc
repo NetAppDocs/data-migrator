@@ -1,0 +1,45 @@
+---
+sidebar: sidebar
+permalink: port-requirements.html
+keywords: port requirements, TCP, UDP, control plane, worker, communication
+summary: "Port requirements for NetApp Data Migrator, including required TCP and UDP ports for control plane and worker communication."
+---
+= Port requirements for NetApp Data Migrator
+:icons: font
+:imagesdir: ./media/
+
+[.lead]
+NetApp Data Migrator requires specific TCP ports to be open for communication between the control plane and worker VMs.
+
+The following tables show the ports used for the control plane and the worker virtual machines.
+
+*Control plane*
+
+[cols="1,1,1"]
+|===
+|Service | TCP port | Notes
+
+.2+| Temporal Server | 7233 | Frontend for workers and clients
+| 7234 |	Internode connection, if using clusters
+| Temporal UI | 8080  | Default port, if enabled
+| PostgreSQL (Temporal database) | 5432 | Communication from Temporal services
+| Redis | 6379 | Communication from workers or control plane services
+| API or UI ingress (your application) | 80 or 443, as applicable  |	
+| Grafana | 3000 |	
+|===
+
+*Workers*
+
+[cols="1,1,1"]
+|===
+|Service |TCP port | Connect to...
+
+.3+|Outbound to Control plane | 7233 | Temporal frontend
+| 6379 | Redis
+| 80 or 443 | API or UI, if they call it
+.2+| Outbound to storage |NFS: 2049 |NFS servers 
+
+*Note*: Include TCP or UDP port 111 if you need the portmapper service for Remote Procedure Calls.
+| SMB: 445  | SMB servers
+|===
+// 2025 DEC 1, OTHERDOC-168

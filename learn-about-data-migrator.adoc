@@ -1,6 +1,6 @@
 ---
 sidebar: sidebar
-permalink: learn-about.html
+permalink: learn-about-data-migrator.html
 keywords: netapp, data migrator, migration, multicloud, file workloads
 summary: "NetApp Data Migrator is an enterprise-grade, multicloud, data migration software application designed for the transfer of file-based workloads from on-premises or third-party storage systems to NetApp's first-party cloud storage services."
 ---

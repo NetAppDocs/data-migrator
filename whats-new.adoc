@@ -1,0 +1,12 @@
+---
+sidebar: sidebar
+permalink: whats-new.html
+keywords: 
+summary: 
+---
+= What's new in NetApp Data Migrator
+:icons: font
+:imagesdir: ./media/
+
+[.lead]
+NetApp Data Migrator has the following new features and improvements.

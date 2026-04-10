@@ -12,6 +12,8 @@ sidebar:
     url: /index.html
   - title: Release notes 
     entries:
+    - title: What's new 
+      url: /whats-new.html
     - title: Known issues
       url: /known-issues.html
     - title: Support matrix
@@ -21,37 +23,29 @@ sidebar:
   - title: Get started
     entries: 
     - title: Learn about NetApp Data Migrator
-      url: /learn-about.html
+      url: /learn-about-data-migrator.html
     - title: Quick start 
       url: /quick-start.html
+    - title: Networking requirements
+      entries:
+      - title: Verify networking access 
+        url: /networking-requirements.html
+      - title: Port requirements
+        url: /port-requirements.html
   - title: Install, set up, and upgrade
     entries:
-    - title: Install NetApp Data Migrator
+    - title: Learn about installing NetApp Data Migrator
+      url: /learn-about-install.html
+    - title: Deploy control plane and workers
       entries:
       - title: AWS
-        entries:
-        - title: Prepare for installation
-          url: /prepare-install-using-aws.html
-        #- title: Install AWS CLI and manage assets 
-        #  url: /install-aws-cli.html
-        - title: Create the control plane and worker VMs
-          url: /create-aws-control-plane-worker-vm.html
+        url: /deploy-using-aws.html
       - title: Azure
-        entries:
-        - title: Prepare for installation
-          url: /prepare-install-using-azure.html
-        - title: Install Azure CLI and manage assets 
-          url: /install-azure-cli.html
-        - title: Create the control plane and worker VMs
-          url: /create-azure-control-plane-worker-vm.html
+        url: /deploy-using-azure.html
       - title: Google Cloud
-        entries:
-        - title: Prepare for installation
-          url: /prepare-to-install-on-google-cloud.html
-        - title: Create Windows VM instance
-          url: /create-windows-vm-on-google-cloud.html
+        url: /deploy-using-google-cloud.html
       - title: OVA
-        url: /install-using-ova.html
+        url: /deploy-using-ova.html
     - title: Configure NetApp Data Migrator
       url: /configure-netapp-data-migrator.html
     - title: Upgrade control plane and workers

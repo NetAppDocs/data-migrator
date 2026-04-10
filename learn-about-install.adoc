@@ -1,0 +1,26 @@
+---
+sidebar: sidebar
+permalink: learn-about-install.html
+keywords: aws installation, prerequisites, control plane, worker vm, ec2
+summary: "Learn about installing the NetApp Data Migrator control plane and worker VMs."
+---
+= Learn about installing NetApp Data Migrator
+:icons: font
+:imagesdir: ./media/
+
+[.lead]
+NetApp Data Migrator has the following two components that you need to install to run migration jobs: 
+
+* *Control plane*: The control plane acts as the central management and orchestration layer. You deploy the control plane on a Linux virtual machine (VM), then you deploy the workers.
+
+* *Workers*: Workers are virtual machines that perform the actual data migration. You can deploy multiple workers based on scale and your requirements. The worker type depends on the protocol:  
++
+** A Linux worker supports NFS migrations.
+** A Windows worker supports SMB migrations. 
+
+NetApp Data Migrator provides images for the control plane and Linux workers. The NDM team provides the executable to install Windows workers. 
+
+NOTE: You must run the Windows worker installer on a Windows VM.
+
+You can contact the NetApp NDM team at ndm-support@netapp.com to install the Windows worker, or locate them through the NetApp Support Site. 
+

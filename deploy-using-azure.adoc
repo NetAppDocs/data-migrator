@@ -1,0 +1,44 @@
+---
+sidebar: sidebar
+permalink: deploy-using-azure.html
+keywords: azure installation, prerequisites, control plane, worker vm, azure
+summary: "Learn about installing the NetApp Data Migrator control plane and worker VMs on Azure."
+---
+== Use Azure to deploy control plane and Linux worker for NetApp Data Migrator
+:icons: font
+:imagesdir: ./media/
+
+[.lead]
+Use Azure to deploy the control plane VM and Linux worker VM for NetApp Data Migrator using a virtual hard disk (VHD). The Linux worker supports NFS data migrations.
+
+.Before you begin
+Contact the NetApp Data Migrator team at `ndm-support@netapp.com` to request access to the VHDs. NetApp shares the VHDs using a time-limited shared access signature (SAS) URL, which provides temporary, secure access. 
+
+.About this task
+Repeat the steps below for the control plane and Linux worker VHDs.
+
+.Steps
+. Copy the VHD files to Azure Blob Storage: 
++
+[source,cli]
+----
+az storage blob copy start \ 
+  --source-uri "<PROVIDED_SAS_URL>" \ 
+  --destination-blob "<VHD_FILE_NAME>.vhd" \ 
+Group 1065216673, Grouped object  --destination-container <YOUR_CONTAINER_NAME> \ 
+  --account-name <YOUR_STORAGE_ACCOUNT> \ 
+  --account-key <YOUR_STORAGE_ACCOUNT_KEY> 
+----
+
+. Create a new Azure image from the copied VHD file:
++
+[source,cli]
+----
+az image create \
+  --resource-group <YOUR_RESOURCE_GROUP> \
+  --name <YOUR_IMAGE_NAME> \
+  --source https://<YOUR_STORAGE_ACCOUNT>.blob.core.windows.net/<YOUR_CONTAINER_NAME>/<VHD_FILE_NAME>.vhd \
+  --os-type linux \
+  --location <YOUR_AZURE_REGION>
+----
+ 
