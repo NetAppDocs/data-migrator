@@ -26,10 +26,10 @@ https://<control-plane-private-ip-address>/
 +
 *SMB*: This option is for SMB migrations (Windows workers).
 
-. Connect to the deployed worker VMs with the control plane by following the onscreen instructions. 
+. Use the control plane to connect to the deployed worker VMs by following the onscreen instructions. 
 +
 On the home page, select *View Instruction to Setup Worker*. 
-. After completing the onscreen instructions in the UI, verify that the worker is successfully associated by checking its status in the *Workers* section. 
+. Verify that the worker is successfully associated by checking its status in the *Workers* section. 
 +
 After the workers are successfully associated, you can configure the NetApp Data Migrator environment and run migration jobs. 
 

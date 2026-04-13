@@ -15,7 +15,7 @@ NetApp Data Migrator to supports the following features, files servers, and prot
 
 NetApp Data Migrator supports certain features for NFS and SMB migrations.
 
-.Supported features
+*Supported features*
 
 |===
 | Description | Feature
@@ -51,7 +51,7 @@ a| * File pattern exclusions
 * Scheduling for migration
 |===
 
-.Unsupported features
+*Unsupported features*
 
 |===
 |Description | Feature

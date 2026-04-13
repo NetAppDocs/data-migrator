@@ -12,7 +12,7 @@ summary: "Create VM instances on Google Cloud by enabling required APIs, prepari
 Create a control plane VM using AWS, Azure, or Google Cloud service or OVA templates to access NetApp Data Migrator.
 
 .About this task
-You create a control plane workers VM for NFS and SMB using the deployed control plane image. A Linux worker VM supports NFS migrations and a Windows worker VM supports SMB migrations. You can create multiple worker VMs based on your needs.
+You create control plane workers VM for NFS and SMB using the deployed control plane image. A Linux worker VM supports NFS migrations and a Windows worker VM supports SMB migrations. You can create multiple worker VMs based on your needs.
 
 .Steps
 . Using the deployed control plane image, create a control plane VM with the following recommended configuration:
@@ -48,8 +48,8 @@ a|* AWS: r7i.2xlarge
 |===
 
 . Create  a Windows worker VM to support SMB migrations:
-.. Download Windows Worker Installer from provided link.
-.. Create a Windows VM with following recommended configuration settings:  
+.. Download Windows Worker Installer using the link provided.
+.. Create a Windows VM with the following recommended configuration settings:  
 +
 * Image: Windows Server 2022 Base 
 * Architecture: 64bit 

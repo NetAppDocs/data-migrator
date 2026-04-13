@@ -11,9 +11,6 @@ summary: "Optionally, validate the control plane VM deployment on Google Cloud b
 [.lead]
 Optionally validate the control plane VM deployment for NetApp Data Migrator.
 
-.About this task
-You create a control plane workers VM for NFS and SMB using the deployed control plane image. A Linux worker VM supports NFS migrations and a Windows worker VM supports SMB migrations. You can create multiple worker VMs based on your needs.
-
 .Steps
 . Use SSH to connect to your control plane server:
 +  
@@ -43,4 +40,4 @@ kubectl get pods -n datamigrator
 ----
 
 .What's next? 
-. Learn about link:access-data-migrator-ui.html[accessing the NetApp Data Migrator UI and connecting to the control plane and workers]
+Learn about link:access-data-migrator-ui.html[accessing the NetApp Data Migrator UI and connecting to the control plane and workers]

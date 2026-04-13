@@ -13,7 +13,7 @@ You need to ensure that the worker IP and subnet and the control plane IP and su
 
 == Verify NFS access
 
-For NFS, the control plane and worker nodes need to be able to have access the storage system as root clients:
+For NFS, the control plane and worker nodes need permission to access the storage system as root clients:
 
 .Steps
 . Perform a manual mount from a worker node to verify volume accessibility: 
@@ -28,10 +28,11 @@ ls -la /mnt/test
 
 == Verify SMB access
 
-For SMB access, the control plane and worker nodes need to be able to access the storage system using the SMB credentials. The SMB user must be part of the Backup operators and Administrators groups. 
+For SMB access, the control plane and worker nodes need permission to access the storage system using the SMB credentials. The SMB user must be part of the Backup operators and Administrators groups. 
 
 .Step
-. Perform a manual mount from a worker node to verify volume accessibility: 
+. Perform a manual mount from a worker node to verify volume accessibility:
++ 
 [source,cli]
 ----
 net use Z: \\<storage-ip>\<share> /user:<domain>\<username> <password>

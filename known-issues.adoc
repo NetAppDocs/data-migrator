@@ -11,75 +11,7 @@ summary: "Review the known issues and workarounds for NetApp Data Migrator."
 [.lead]
 NetApp Data Migrator has the following known issues.
 
-== Workflows
-
-=== Job Run status can be confusing when errors occur
-
-Some Migration job runs encounter errors and show a Completed or Errored status. This can cause confusion when interpreting the Migration job run status. 
-
-Status definitions:
-
-* Completed: A job run has finished, but might contain errors.
-
-* Errored: A job run failed due to a critical issue.
-
-.Workaround
-
-Verify the job run outcome by checking the job run details for any errors, especially if the status is Completed. Do not rely only on the status label until after you address this issue.
- 
-
-=== Job paused or stalled for more than 20 minutes
-
-You  might need to intervene when you observe network connectivity issues, issues with source or destination volume stability, or both. The job might be in the Paused or Running state without any visible progress. This might happen if the source or destination services go down, or if the worker service experiences downtime.
-
-.Workaround
-
-. Check the source and destination. 
-+
-If they are offline, restart to restore connectivity.  
-
-. Check the worker status. 
-+
-If the worker is offline, use SSH to connect to the VM and run the following command: 
-+
-[source,cli]
-----
-systemctl restart datamigrator-worker.service
-----
-. Reboot the VM: 
-+
-If issue persists, restart the worker VM. 
-
-== Validation
-
-=== File sizes might differ after migration even if counts match
-
-After data migration completes, the total number of files is correct, but some files might have a different size compared to the original source. This can happen if the network is interrupted or if there are problems with the server during file transfer.
-
-.Workaround
-
-. Review the migration Chain of Custody (COC) report to identify files marked as errored. 
-. Re-run the migration until the errors are resolved.  
-
 == Configuration 
-
-=== Migration precheck displays false Insufficient Space warning
-
-During migration prechecks, you might see the following warning, even if the destination has sufficient space: 
-
-----
-Insufficient destination space for selected path. Do you still want to proceed with the migration? 
----- 
-
-This can happen if you skip the discovery step and NetApp Data Migrator uses a general command that reads the entire block device size instead of the actual dataset size.  
-
-.Workaround
-
-Run Discovery before a Migration run. This ensures that the disk usage information is available for the pre-check operation. If you still see the warning: 
-
-. Confirm that discovery has completed. 
-. Manually verify the destination volume has enough space. 
-. If there is sufficient space, you can safely proceed with data migration. 
 
 === Access permission mismatch when SID mapping is used
 
@@ -117,8 +49,25 @@ For active users or groups in Active Directory, provide the usernames or group n
 --
 ====
 
-== Reporting 
+=== Migration precheck displays false Insufficient Space warning
 
+During migration prechecks, you might see the following warning, even if the destination has sufficient space: 
+
+----
+Insufficient destination space for selected path. Do you still want to proceed with the migration? 
+---- 
+
+This can happen if you skip the discovery step and NetApp Data Migrator uses a general command that reads the entire block device size instead of the actual dataset size.  
+
+.Workaround
+
+Run Discovery before a Migration run. This ensures that the disk usage information is available for the pre-check operation. If you still see the warning: 
+
+. Confirm that discovery has completed. 
+. Manually verify the destination volume has enough space. 
+. If there is sufficient space, you can safely proceed with data migration. 
+
+== Reporting 
 
 === Excel displays incorrect permissions in COC report file
 
@@ -196,6 +145,55 @@ net use
 net use <IP address> /delete
 ----
 
-. Switch to the new user account and access the file server. 
+. Switch to the new user account and access the file server.
+
+== Validation
+
+=== File sizes might differ after migration even if counts match
+
+After data migration completes, the total number of files is correct, but some files might have a different size compared to the original source. This can happen if the network is interrupted or if there are problems with the server during file transfer.
+
+.Workaround
+
+. Review the migration Chain of Custody (COC) report to identify files marked as errored. 
+. Re-run the migration until the errors are resolved.  
+
+== Workflows
+
+=== Job paused or stalled for more than 20 minutes
+
+You  might need to intervene when you observe network connectivity issues, issues with source or destination volume stability, or both. The job might be in the Paused or Running state without any visible progress. This might happen if the source or destination services go down, or if the worker service experiences downtime.
+
+.Workaround
+
+. Check the source and destination. 
++
+If they are offline, restart to restore connectivity.  
+
+. Check the worker status. 
++
+If the worker is offline, use SSH to connect to the VM and run the following command: 
++
+[source,cli]
+----
+systemctl restart datamigrator-worker.service
+----
+. Reboot the VM: 
++
+If issue persists, restart the worker VM.
+
+=== Job run status is confusing when errors occur
+
+Some Migration job runs encounter errors and show a Completed or Errored status. This can cause confusion when interpreting the Migration job run status. 
+
+Status definitions:
+
+* Completed: A job run has finished, but might contain errors.
+
+* Errored: A job run failed due to a critical issue.
+
+.Workaround
+
+Verify the job run outcome by checking the job run details for any errors, especially if the status is Completed. Do not rely only on the status label until after you address this issue.
 
 // 2025 DEC 1, OTHERDOC-166 and NADIAA updates

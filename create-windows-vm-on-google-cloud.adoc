@@ -229,7 +229,7 @@ The following tables describes the placeholder references:
 
 .What's next?
 
-link:configure-netapp-data-migrator.html[Learn about configuring NetApp Data Migrator]
+Learn about link:configure-netapp-data-migrator.html[configuring NetApp Data Migrator]
 
 // 2026 FEB 25, Preview + 3 release
 // 2025 DEC 1, OTHERDOC-168

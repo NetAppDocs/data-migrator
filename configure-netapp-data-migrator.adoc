@@ -51,4 +51,4 @@ After you log out of NetApp Data Migrator, you need to use your newly created cr
 
 .What's next?
 
-link:manage-projects.html[Learn about using NetApp Data Migrator]
+Learn about link:manage-projects.html[using NetApp Data Migrator]
