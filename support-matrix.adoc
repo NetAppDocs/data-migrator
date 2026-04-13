@@ -78,8 +78,7 @@ NetApp Data Migrator can discover but not migrate alternate data streams.
 |===
 | File server | Description
 
-| Source	a| * Any NAS server, for example
-* Dell Isilon 
+| Source	a| * Any NAS server, for example, Dell Isilon 
 * ONTAP
 * Vanilla Linux
 * Windows

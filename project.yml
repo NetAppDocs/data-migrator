@@ -38,7 +38,7 @@ sidebar:
       url: /learn-about-install.html
     - title: Deploy control plane and Linux workers
       url: /deploy-control-plane-and-linux-workers.html
-    - title: Create th control plane VM
+    - title: Create the control plane VM
       url: /create-control-plane-vm.html
     - title: Validate the control plane and worker deployment
       url: /validate-control-plane-vm.html
