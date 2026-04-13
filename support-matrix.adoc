@@ -2,24 +2,104 @@
 sidebar: sidebar
 permalink: support-matrix.html
 keywords: support matrix, nfs, smb, file servers, protocol versions
-summary: "Learn about the protocols and file server types supported by NetApp Data Migrator to help streamline your migration activities."
+summary: "Learn about NetApp Data Migrator features, file, and features support."
 ---
-= Learn about the NetApp Data Migrator protocols and file server support matrix
+= Learn about NetApp Data Migrator features, file, and features support
 :icons: font
 :imagesdir: ./media/
 
 [.lead]
-Learn about the protocols and file server types supported by NetApp Data Migrator to help streamline your migration activities.
+NetApp Data Migrator to supports the following features, files servers, and protocols.
 
+== Supported and unsupported features
 
-|===
-| Category | Supported protocols and file servers
+NetApp Data Migrator supports certain features for NFS and SMB migrations.
 
-| Source file server	 | Dell Isilon, ONTAP, Vanilla Linux, Windows, and Cloud Volumes ONTAP servers
-| Destination file server | All service levels of Azure NetApp Files (ANF), Google Cloud NetApp Volumes (GCNV), Amazon FSx for NetApp ONTAP (FSxN), and Cloud Volumes ONTAP
-| NFS protocol version| 3.0, 4.1
-| SMB protocol version| 2.0, 3.0, 3.1
+.Supported features
 
 |===
+| Description | Feature
+
+| Permissions and audit handling
+a| * Chain of custody reporting 
+* Discretionary Access Control List (DACL)
+* Preserve Access Control List (ACL)
+* User Identifier (UID) and Security Identifier (SID) remapping 
+
+| File system objects and links 
+a|* Hard link handling 
++
+NetApp Data Migrator migrates objects and links as separate files. 
+* Symbolic links
++
+Only supported for NFS migrations
+| File metadata preservation 
+
+a| * Preserve access time
+* Preserve creation time
+* Preserve modified time
+* Preserve permissions
+ 
+| Migration behavior and data consistency 
+a| * Delete propagation 
+* Incremental migration 
+* Support for open files 
+* Switchover support 
+
+| Migration control and execution 
+a| * File pattern exclusions
+* Scheduling for migration
+|===
+
+.Unsupported features
+
+|===
+|Description | Feature
+
+| Permissions and audit handling
+| System Access Control List (SACL) 
+| File system objects and links 
+a|* Follow NTFS junctions 
+* Symbolic links
++
+Unsupported for SMB migrations
+
+* Alternate data streams
++  
+NetApp Data Migrator can discover but not migrate alternate data streams.
+| File metadata preservation 
+| Selective file attributes
+| Migration behavior and data consistency 
+| Migration of snapshots 
+|===
+
+== Supported file servers
+
+|===
+| File server | Description
+
+| Source	a| * Any NAS server, for example
+* Dell Isilon 
+* ONTAP
+* Vanilla Linux
+* Windows
+* Cloud Volumes ONTAP servers
+| Destination a| * All service levels of Azure NetApp Files (ANF)
+* Google Cloud NetApp Volumes (GCNV)
+* Amazon FSx for NetApp ONTAP (FSxN)
+* Cloud Volumes ONTAP
+|===
+
+== Supported migration protocols
+
+|===
+| Protocol | Supported versions
+
+| NFS | 3.0, 4.1, 4.2
+| SMB | 2.0, 3.0, 3.1
+
+|===
+
+
 
 // 2025 DEC 1, OTHERDOC-166 and NADIAA updates

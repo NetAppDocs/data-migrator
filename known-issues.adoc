@@ -26,50 +26,7 @@ Status definitions:
 .Workaround
 
 Verify the job run outcome by checking the job run details for any errors, especially if the status is Completed. Do not rely only on the status label until after you address this issue.
-
-=== Migrations fail for jobs in Inactive state
-
-During data migration, the following error message might appear:
-
-----
-Source Path: <source-path> & Destination Path: <destination-path> failed due to Inactive job found. Please reactivate or remove the existing job.
-----
-
-This issue occurs when NetApp Data Migrator updates the migration paths but can't find an active job associated with them. Recreating the path does not activate the job; you must update it manually.
-
-.Workaround
-
-. Open NetApp Data Migrator:
-+
-`https://<private_IP_address>/`..
-. Select *Jobs > *Job Config List*.
-. Manually set the job configuration to *Active*.
-. Restart the migration job. 
-
-=== Incorrect file listing during cutover without delta changes
-
-The UI might show files as migrated, even if the source data has not changed. This is a display issue and does not affect actual data integrity. 
-
-.Workaround
-
-. If an incremental sync is not scheduled, manually trigger an incremental migration. 
-+
-If you previously scheduled incremental sync, you can skip this step because the next sync will run automatically. 
-
-. For your next bulk migration, enable automatic incremental migrations by choosing either *Schedule* or *Cron Expression* at Step 2 (Options-  Incremental Sync Schedule). This option is disabled by default.
-
-. After incremental sync has completed, review the NetApp Data Migrator reports:
-+
-* If NetApp Data Migrator reports zero files, your source and destination are in sync. 
-* If NetApp Data Migrator reports files, re-run the migration until the report shows zero files. Then start cutover.
-
-=== Update to file server protocol version requires page refresh to update the export path list
-
-When you update a file server protocol version, you must perform a page refresh to update the export path list. If you don't, you might cause compatibility issues, delays in fetching the export list, or incomplete updates. This might lead to data inconsistencies, failed synchronization, or errors in accessing the latest export information.  
-
-.Workaround
-
-Refresh the page whenever you update the file server protocol version. 
+ 
 
 === Job paused or stalled for more than 20 minutes
 
@@ -102,16 +59,7 @@ After data migration completes, the total number of files is correct, but some f
 .Workaround
 
 . Review the migration Chain of Custody (COC) report to identify files marked as errored. 
-. Re-run the migration until the errors are resolved. 
-
-=== Discovery job shows zero files until control plane is refreshed
-
-When running a discovery job, the Job Run Details page might initially show zero files or directories, even though the Discovery report preview displays the actual results. This occurs because the Control Plane updates every 10 minutes. During this interval, the Job Run Details might temporarily show outdated information, even if the job is marked as Completed. 
-
-.Workaround
-
-* Wait for the dashboard to refresh (up to 10 minutes) the Job Run Details page and display the accurate file and directory counts. 
-* For immediate confirmation, refer to the Discovery Report Preview, which includes discovered files and directories. 
+. Re-run the migration until the errors are resolved.  
 
 == Configuration 
 

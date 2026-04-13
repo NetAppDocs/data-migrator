@@ -162,8 +162,6 @@ Add the Active Directory to the Windows VM. Then, associate the Windows worker w
 +
 NOTE: Use one worker ID per worker. Don't use the same worker ID to set up multiple workers.
 * Worker secret
-+
-NOTE: Use one worker secret per worker. Don't use the same worker secret to set up multiple workers.
 * Project ID
 * Control plane Private IP address
 

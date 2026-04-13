@@ -249,8 +249,6 @@ Add the Active Directory to the Windows VM. Then, associate the Windows worker w
 +
 * Worker ID
 * Worker secret
-+
-NOTE: Use one worker secret per worker. Don't use the same worker secret to set up multiple workers. 
 * Control plane IP address
 . After the installation completes, the worker service starts automatically.
 +

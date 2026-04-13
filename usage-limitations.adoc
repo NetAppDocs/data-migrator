@@ -14,12 +14,11 @@ Understand the usage limits of NetApp Data Migrator to help make your migration 
 *Discovery and migration limits*
 
 |===
-| Category | NFS | SMB 
+| Description | NFS | SMB 
 
 | Number of export paths that can
 run simultaneously	 | 4  | 2
 | Maximum number of files in a directory | 1 million | 1 million
-| Maximum number of workers| 4 | 4
 | Worker sizing| 4 core CPU, 16 GB memory | 16 core CPU, 64 GB memory
 | Control plane sizing| 16 core CPU, 64 GB memory | 16 core CPU, 64 GB memory 
 |===
@@ -29,7 +28,7 @@ run simultaneously	 | 4  | 2
 
 [cols="30,70"]
 |===
-| Category | Limits
+| Description | Limits
 
 | Active destination support
 | NetApp Data Migrator does not support an active destination (when a target storage is actively used or written before Cutover).
@@ -41,7 +40,7 @@ run simultaneously	 | 4  | 2
 | Protocol migration - Type | Cross-protocol migration is not supported, for example, NFS to SMB.
 | Protocol migration - Version | Cross-version migration within the same protocol is not supported, for example, NFSv3 to NFSv4.
 | SMB permissions
-| Migration of SMB SACL (audit permissions) is not supported.
+| NetApp Data Migrator does not support migration of SMB System Access Control List (SACL) (audit permissions).
 |  SMB files with trailing spaces  
 | When migrating over SMB, NetApp Data Migrator errors out files with names that contain trailing spaces because SMB does not permit these file names. 
 | SMB special files | NetApp Data Migrator discovers redirects (symbolic links, hard links, junction points, Alternate Data Streams (ADS), and volume mount points) and reports them after discovery. Migration of ADS, sparse files, and SMB redirects is not supported.
