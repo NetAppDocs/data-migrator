@@ -1,6 +1,6 @@
 ---
 sidebar: sidebar
-permalink: deploy-control-plane-and-workers.html
+permalink: deploy-control-plane-and-linux-workers.html
 keywords: aws installation, prerequisites, control plane, worker vm, ec2
 summary: "Learn about installing the NetApp Data Migrator control plane and worker VMs."
 ---
