@@ -54,7 +54,6 @@ Amazon Machine Images (AMIs). The Linux worker supports NFS data migrations.
 --
 Repeat the steps below for the control plane and Linux worker VHDs.
 
-.Steps
 . Copy the VHD files to Azure Blob Storage: 
 +
 [source,cli]

@@ -4,12 +4,12 @@ permalink: create-control-plane-vm.html
 keywords: google cloud, installation, control plane, worker vm, iam roles
 summary: "Create VM instances on Google Cloud by enabling required APIs, preparing storage, configuring IAM roles, and deploying control plane and worker VMs."
 ---
-= Create a control plane VM to access NetApp Data Migrator
+= Create the control plane VM to access NetApp Data Migrator
 :icons: font
 :imagesdir: ./media/
 
 [.lead]
-Create a control plane VM using AWS, Azure, or Google Cloud service or OVA templates to access NetApp Data Migrator.
+Create the control plane VM using AWS, Azure, or Google Cloud service or OVA templates to access NetApp Data Migrator.
 
 .About this task
 You create control plane workers VM for NFS and SMB using the deployed control plane image. A Linux worker VM supports NFS migrations and a Windows worker VM supports SMB migrations. You can create multiple worker VMs based on your needs.
