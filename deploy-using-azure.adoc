@@ -12,7 +12,7 @@ summary: "Learn about installing the NetApp Data Migrator control plane and work
 Use Azure to deploy the control plane VM and Linux worker VM for NetApp Data Migrator using a virtual hard disk (VHD). The Linux worker supports NFS data migrations.
 
 .Before you begin
-Contact the NetApp Data Migrator team at `ndm-support@netapp.com` to request access to the VHDs. NetApp shares the VHDs using a time-limited shared access signature (SAS) URL, which provides temporary, secure access. 
+
 
 .About this task
 Repeat the steps below for the control plane and Linux worker VHDs.

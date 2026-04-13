@@ -1,0 +1,166 @@
+---
+sidebar: sidebar
+permalink: deploy-control-plane-and-workers.html
+keywords: aws installation, prerequisites, control plane, worker vm, ec2
+summary: "Learn about installing the NetApp Data Migrator control plane and worker VMs."
+---
+= Deploy control plane and Linux worker for NetApp Data Migrator
+:icons: font
+:imagesdir: ./media/
+
+[.lead]
+Deploy the control plane VM and Linux worker VM for NetApp Data Migrator using AWS, Azure, or Google Cloud services or Open Virtual Appliance (OVA) templates. The Linux worker supports NFS data migrations.
+
+
+.Before you begin
+If you are using AWS or Azure, contact the NetApp Data Migrator team at `ndm-support@netapp.com` to request the Amazon Machine Images (AMIs) or virtual hard disks (VHDs).
+
+[role="tabbed-block"]
+====
+.AWS
+--
+Request the AMIs. Include the Account ID and region preference in the email or share it with your NetApp contact so that NetApp can share the images to that account ID.
+--
+
+.Azure
+--
+Request access to the VHDs. NetApp shares the VHDs using a time-limited shared access signature (SAS) URL, which provides temporary, secure access. 
+--
+====
+
+.Steps
+
+Chose the AWS, Azure, Google Cloud tab, or OVA tab depending on your deploy option.
+
+[role="tabbed-block"]
+====
+.AWS
+--
+After requesting access to the AMIs, you copy the AMIs into your AWS account. Copying the AMIs gives you full ownership, avoids dependency on the source account, and is required for cross-region use.
+
+Repeat the steps below for the control plane and Linux worker Amazon Machine Images (AMIs). 
+
+Amazon Machine Images (AMIs). The Linux worker supports NFS data migrations. 
+ 
+. Use the AMI IDs provided to locate the AMIs in your AWS account under *EC2* > *AMIs* > *Private images*.
+. Copy the AMIs into your account: 
+.. Select the AMI, then select *Actions* > *Copy AMI* 
+.. Choose the target region (if needed). 
+.. Enable encryption and select your own KMS key. 
+.. Wait for the AMI status to show *Available*. 
+--
+
+.Azure
+--
+Repeat the steps below for the control plane and Linux worker VHDs.
+
+.Steps
+. Copy the VHD files to Azure Blob Storage: 
++
+[source,cli]
+----
+az storage blob copy start \ 
+  --source-uri "<PROVIDED_SAS_URL>" \ 
+  --destination-blob "<VHD_FILE_NAME>.vhd" \ 
+Group 1065216673, Grouped object  --destination-container <YOUR_CONTAINER_NAME> \ 
+  --account-name <YOUR_STORAGE_ACCOUNT> \ 
+  --account-key <YOUR_STORAGE_ACCOUNT_KEY> 
+----
+
+. Create a new Azure image from the copied VHD file:
++
+[source,cli]
+----
+az image create \
+  --resource-group <YOUR_RESOURCE_GROUP> \
+  --name <YOUR_IMAGE_NAME> \
+  --source https://<YOUR_STORAGE_ACCOUNT>.blob.core.windows.net/<YOUR_CONTAINER_NAME>/<VHD_FILE_NAME>.vhd \
+  --os-type linux \
+  --location <YOUR_AZURE_REGION>
+----
+ 
+--
+
+.Google Cloud
+--  
+. Verify that the Google Cloud APIs required to import images and deploy the control plane and worker VMs are enabled. For more information, refer to the link:https://docs.cloud.google.com/migrate/virtual-machines/docs/5.0/get-started/enable-services#enabling_required_services_on_the_host_project[Google Cloud documentation^].
+
+. Create a Google Cloud Storage (GCS) bucket if one does not already exist. This bucket is used to store the image archives (.tar.gz) during the import operation. 
++
+Learn how to link:https://cloud.google.com/storage/docs/creating-buckets#console[create a Google Cloud Storage (GCS) bucket^].
+
+. Set up the IAM roles and permissions. This ensures that the VM migration API has the required access permissions and the VM migration service can access the GCS bucket and create images. 
++
+.. Assign the service account objectViewer access to your destination Cloud Storage bucket:
++
+[source,cli]
+----
+gcloud storage buckets add-iam-policy-binding gs://<GCS_BUCKET> \
+  --member=serviceAccount:service-<PROJECT_NUMBER>@gcp-sa-vmmigration.iam.gserviceaccount.com \
+  --role=roles/storage.objectViewer
+----
++
+The service account needs roles/storage.objectViewer permission to read the VM image files from your Cloud Storage bucket during the migration process. 
++
+When the VM Migration API is enabled, Google Cloud automatically provisions a service account with the following format:
++
+`service-<PROJECT_NUMBER>@gcp-sa-vmmigration.iam.gserviceaccount.com` 
++
+* `++ gcp-sa` is the Google Cloud service account  
+* `vmmigration` is the VM Migration service identifier
+* `iam.gserviceaccount.com` is the standard domain for Google Cloud service accounts
+
+.. Make yourself an admin user on the `vmmigration` service:
++
+[source,cli]
+----
+gcloud projects add-iam-policy-binding <PROJECT_ID> \
+  --member=user:<YOUR_EMAIL> \
+  --role=roles/vmmigration.admin
+----
++
+This gives you VM migration administrative permissions at the project level. 
+
+. Obtain and upload the image files:
+
+.. Log in to link:https://mysupport.netapp.com/site/[NetApp Support site^] and download the control plane `.tar.gz` image and the Linux worker `.tar.gz` image files.
+.. Upload `.tar.gz` files to your GCS bucket. 
+
+. After the image archives are uploaded to GCS, create VM images using the VM Migration Service by running the following command for each image (control plane and Linux worker).
++
+[source,cli]
+----
+gcloud migration vms image-imports create <IMAGE_IMPORT_NAME> \ 
+  --source-file=gs://<GCS_BUCKET>/<IMAGE_NAME>.tar.gz \ 
+  --image-name=<IMAGE_NAME> \ 
+  --location=<REGION> \ 
+  --target 
+Group 34776889, Grouped object-project=projects/<PROJECT_ID>/locations/global/targetProjects/<PROJECT_ID> \ 
+ --project=<PROJECT_ID>
+----
++
+This command creates a new GCP VM image from the provided archive in the specified region. 
+
+. List image import operations and confirm completion:
++
+[source,cli]
+----
+gcloud migration vms image-imports list --location=<REGION> --project=<PROJECT_ID>
+----
+
+--
+
+.OVA
+--
+. Log in to the NSS  
+
+. Search for .... 
++
+Control plane .ova image 
++
+Linux worker .ova image 
+--
+====
+  
+.What's next?
+Learn about link:create-control-plane-vm.html[creating a control plane VM]

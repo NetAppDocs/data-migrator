@@ -24,3 +24,5 @@ NOTE: You must run the Windows worker installer on a Windows VM.
 
 You can contact the NetApp NDM team at ndm-support@netapp.com to install the Windows worker, or locate them through the NetApp Support Site. 
 
+.What's next?
+Learn about link:deploy-control-plane-and-linux-workers.html[deploying a control plane VM and Linux worker VM]

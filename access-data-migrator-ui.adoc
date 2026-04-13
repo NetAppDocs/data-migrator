@@ -1,0 +1,37 @@
+---
+sidebar: sidebar
+permalink: access-data-migrator-ui.html
+keywords: google cloud, installation, control plane, worker vm, iam roles
+summary: "Create VM instances on Google Cloud by enabling required APIs, preparing storage, configuring IAM roles, and deploying control plane and worker VMs."
+---
+= Access the NetApp Data Migrator UI 
+:icons: font
+:imagesdir: ./media/
+
+[.lead]
+After you deploy the control plane VM and verify that the services and pods are running successfully, you can access the NetApp Data Migrator UI and connect to the control plane and workers.
+
+.Before you begin
+You have the private IP address, which you obtained when you deployed the control plane VM. You use the control plane VM private IP address to access the UI. 
+
+.Steps
+. Navigate to the control plane using a web browser: 
++
+https://<control-plane-private-ip-address>/ 
+
+. Use the default username and password to log in.
+. Based on your migration type, select one of the following tabs:  
++
+*NFS*: This option is for NFS migrations (Linux workers).
++
+*SMB*: This option is for SMB migrations (Windows workers).
+
+. Connect to the deployed worker VMs with the control plane by following the onscreen instructions. 
++
+On the home page, select *View Instruction to Setup Worker*. 
+. After completing the onscreen instructions in the UI, verify that the worker is successfully associated by checking its status in the *Workers* section. 
++
+After the workers are successfully associated, you can configure the NetApp Data Migrator environment and run migration jobs. 
+
+.What's next?
+Learn about link:configure-netapp-data-migrator.html[configuring NetApp Data Migrator]

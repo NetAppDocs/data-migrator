@@ -36,16 +36,14 @@ sidebar:
     entries:
     - title: Learn about installing NetApp Data Migrator
       url: /learn-about-install.html
-    - title: Deploy control plane and workers
-      entries:
-      - title: AWS
-        url: /deploy-using-aws.html
-      - title: Azure
-        url: /deploy-using-azure.html
-      - title: Google Cloud
-        url: /deploy-using-google-cloud.html
-      - title: OVA
-        url: /deploy-using-ova.html
+    - title: Deploy control plane and Linux workers
+      url: /deploy-control-plane-and-linux-workers.html
+    - title: Create control plane VM
+      url: /create-control-plane-vm.html
+    - title: Validate control plane and worker deployment
+      url: /validate-control-plane-vm.html
+    - title: Access NetApp Data Migrator UI
+      url: /access-data-migrator-ui.html
     - title: Configure NetApp Data Migrator
       url: /configure-netapp-data-migrator.html
     - title: Upgrade control plane and workers

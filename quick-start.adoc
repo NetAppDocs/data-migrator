@@ -16,10 +16,10 @@ To get started with NetApp Data Migrator, you need to set up control plane and w
 
 [role="quick-margin-para"]
 NetApp Data Migrator uses a control plane and worker nodes. You need to deploy the control plane VM and worker VMs based on the migration protocol you plan to use:
-
++
 * Deploy Linux workers for NFS migrations
 * Deploy Windows workers for SMB migrations
-
++
 NetApp Data Migrator provides images for the control plane and Linux workers. The NetApp Data Migrator team provides an executable for installing Windows workers. You can deploy the control plane VM and worker VMs using OVA templates on VMware vSphere or on a cloud platform such as Azure, GCP, or AWS.
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png[Two]xref:configure-data-migrator.adoc[Configure NetApp Data Migrator]
