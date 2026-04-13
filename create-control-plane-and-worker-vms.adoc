@@ -1,6 +1,6 @@
 ---
 sidebar: sidebar
-permalink: create-control-plane-vm.html
+permalink: create-control-plane-and-worker-vms.html
 keywords: google cloud, installation, control plane, worker vm, iam roles
 summary: "Create VM instances on Google Cloud by enabling required APIs, preparing storage, configuring IAM roles, and deploying control plane and worker VMs."
 ---
@@ -25,7 +25,7 @@ a|* Image: Custom imported image for the control plane
 * Network interface card type: gVNIC
 * Size: 8 vCPU, 64 GB RAM
 * Storage: 1 TiB
-| Hyper scaler
+| Hyperscaler
 a|* AWS: r7i.2xlarge instance
 * Azure VM size : Standard_E8ds_v5 
 * Google Cloud machine type : c3-highmem-8  
@@ -41,7 +41,7 @@ a|* Image: Custom imported image for the control plane
 * Network interface card type: gVNIC
 * Size: 4 vCPU, 16 GB RAM
 * Storage: 100 GB
-| Hyper scaler
+| Hyperscaler
 a|* AWS: r7i.2xlarge
 * Azure VM size : Standard_E8ds_v5 
 * Google Cloud machine type : c3-highmem-8  

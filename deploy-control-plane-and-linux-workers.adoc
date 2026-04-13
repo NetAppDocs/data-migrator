@@ -155,4 +155,4 @@ gcloud migration vms image-imports list --location=<REGION> --project=<PROJECT_I
 ====
   
 .What's next?
-Learn about link:create-control-plane-vm.html[creating a control plane VM]
+Learn about link:create-control-plane-and-worker-vms.html[creating a control plane VM]
