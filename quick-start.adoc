@@ -15,7 +15,7 @@ To get started with NetApp Data Migrator, you need to set up control plane and w
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png[One]xref:learn-about-install.adoc[Install and set up NetApp Data Migrator]
 
 [role="quick-margin-para"]
-NetApp Data Migrator uses a control plane and worker nodes. You need to deploy the control plane VM and worker VMs based on the migration protocol you plan to use. You can use NFS, SMB, or both protocols for your migration. Then create the control plane VM and access the NetApp Data Migrator UI. 
+NetApp Data Migrator uses a control plane and worker nodes. First deploy the control plane VM and worker VMs based on the migration protocol you plan to use. You can use NFS, SMB, or both protocols for your migration. Then create the control plane VM and access the NetApp Data Migrator UI. 
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png[Two]xref:configure-data-migrator.adoc[Configure NetApp Data Migrator]
 
