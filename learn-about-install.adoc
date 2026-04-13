@@ -20,7 +20,7 @@ NetApp Data Migrator has the following two components that you need to install t
 
 NetApp Data Migrator provides images for the control plane and Linux workers. The NDM team provides the executable to install Windows workers. You can contact the NetApp NDM team at ndm-support@netapp.com to install the Windows worker, or locate them through the NetApp Support Site. 
 
-You can deploy a control plane virtual machine (VM) and Linux worker VM using the AWS, Azure, or Google Cloud service or Open Virtual Appliance (OVA) templates. You deploy a Windows worker VM using the Windows Worker Installer. You must run the Windows worker installer on a Windows VM.
+You deploy the control plane virtual machine (VM) and Linux worker VM using the AWS, Azure, or Google Cloud service or Open Virtual Appliance (OVA) templates. Then you create the control plane and worker VMs to access NetApp Data Migrator. You create the control plane VM and Linux worker VM using the images that you deployed, and the Windows worker VM using the Windows Worker Installer.
 
 .What's next?
 Learn about link:deploy-control-plane-and-linux-workers.html[deploying a control plane VM and Linux worker VM]
