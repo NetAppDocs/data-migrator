@@ -9,4 +9,4 @@ summary:
 :imagesdir: ./media/
 
 [.lead]
-NetApp Data Migrator has the following new features and improvements.
+Learn about what's new in NetApp Data Migrator.

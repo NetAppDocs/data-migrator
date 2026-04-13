@@ -9,9 +9,9 @@ summary: "NetApp Data Migrator is an enterprise-grade, multicloud, data migratio
 :imagesdir: ./media/
 
 [.lead]
-NetApp Data Migrator is an enterprise-grade, multicloud, data migration software application that simplifies and accelerates the transfer of file-based workloads from on-premises or third-party storage systems to NetApp's first-party cloud storage services. NetApp Data Migrator is an independent application that runs on user-managed virtual machines and eliminates the need for complex custom scripts and disjointed tools.
+NetApp Data Migrator is an enterprise grade, multicloud, data migration software application that simplifies and accelerates the transfer of file-based workloads from on-premises or third-party storage systems to NetApp's first-party cloud storage services. NetApp Data Migrator is an independent application that runs on user-managed virtual machines and eliminates the need for complex custom scripts and disjointed tools.
 
-You can use NetApp Data Migrator to discover your existing storage environments, generate a quick inventory of files, and create plans to migrate your data from a source storage server to NetApp cloud storage services. After data migration starts, you can monitor migration jobs using the UI. You can also generate Chain of Custody (CoC) reports that use checksums to help verify if your data migrated successfully.
+You can use NetApp Data Migrator to discover your existing storage environments, generate a quick inventory of files, and create plans to migrate your data from a source storage server to NetApp cloud storage services. After data migration starts, you can monitor migration jobs using the UI. You can also generate Chain of Custody (CoC) reports that use checksums to help verify your data migration operations.
 
 NetApp Data Migrator supports NFS and SMB file transfer protocols. You deploy worker nodes in your environment to maintain control and security during migration. The workers facilitate parallel data transfers, which improves performance and scalability. NetApp Data Migrator includes features such as pre-checks and incremental sync to provide smooth and efficient migration with minimal downtime. You can keep your source systems active for most of the migration process, then perform a final cutover when ready. NetApp Data Migrator also offers robust logging and error handling, allowing you to troubleshoot and recover from issues without having to restart the entire migration process. 
 
@@ -19,7 +19,7 @@ Before you start working with NetApp Data Migrator, it's helpful to first be fam
 
 Control plane::
 
-You use the control plane to access migration activities. From the control plane, you can perform the following tasks:
+The control plane gives you access to the migration activities. From the control plane, you can perform the following tasks:
 +
 * Manage projects, users, jobs, and file servers.
 * Schedule and dispatch job runs to available workers.
@@ -38,7 +38,7 @@ A Cutover job is the last migration step. It is required for the final sync betw
 
 Discover::
 
-You use a Discover job to scan and inventory data on a source or destination file server. A Discover job creates a report with details about the files and directories in selected export paths in a source or destination file server. Discover jobs can help you to understand the scope and complexity of your data before starting migration. A Discover job performs the following actions:
+A Discover job scans and inventories data on a source or destination file server. It creates a report with details about the files and directories in selected export paths in a source or destination file server, which helps you to understand the scope and complexity of your data before starting migration. A Discover job performs the following actions:
 +
 * Analyzes the structure and contents of export paths
 * Collects metadata such as file names, sizes, permissions, and timestamps
@@ -81,7 +81,7 @@ A job run is a single execution instance of a job. Job runs allow you to monitor
 
 Migrate::
 
-You can use a Migrate job to migrate your data from a source to a destination file server, securely, efficiently, and with minimal disruption. A Migrate job has the following features:
+A Migrate job migrates your data from a source to a destination file server, securely, efficiently, and with minimal disruption. It has the following features:
 +
 * Performs baseline migration (initial full copy)
 * Supports incremental sync (updates based on changes)

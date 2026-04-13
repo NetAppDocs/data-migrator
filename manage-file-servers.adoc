@@ -15,7 +15,7 @@ You can use NetApp Data Migrator to add, configure, and edit file servers that u
 Add a new NFS or SMB file server and configure the worker virtual machines. 
 
 .Steps
-Depending on your system configuration, use the "Other NAS" or "Dell Isilon" workflow option.
+Depending on your system configuration, use the Other NAS or Dell Isilon workflow option.
 
 [role="tabbed-block"]
 ====
@@ -25,7 +25,7 @@ Depending on your system configuration, use the "Other NAS" or "Dell Isilon" wor
 . Select *File Servers* > *+Add*. 
 +
 The *File Servers* page opens, followed by the *Server Type* page. 
-. Enter the server name and select *Server Type* as "Other NAS".
+. Enter the server name, then select *Server Type* as Other NAS.
 +
 The *Credentials* page opens. 
 . Enter the *Host Name* (or IP address) of the NFS or SMB server.
@@ -129,7 +129,7 @@ When upload is complete, export paths and directory paths can have one of the fo
 If required, you can make changes to a previously configured file server.
 
 .Steps
-Edit the file server details using the "Other NAS" or "Dell Isilon" workflow option.
+Edit the file server details using the Other NAS or Dell Isilon workflow option.
 
 [role="tabbed-block"]
 ====

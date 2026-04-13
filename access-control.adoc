@@ -21,7 +21,7 @@ The following table provides a summary of actions and user role permissions.
 |===
 | *Action* | *Description* | App Admin | Project Admin | Project Viewer
 
-| AgentDeployment | User can access the *"View Instruction To Setup Worker"* button. | Yes | Yes | No
+| AgentDeployment | User can access the *View Instruction To Setup Worker* button. | Yes | Yes | No
 | CreateUser | User can create new user accounts. | Yes | No | No
 | ListUsers | User can create new user accounts.| Yes  | Yes | Yes  
 | ManageConfig | User can create new user accounts. | Yes | Yes | No

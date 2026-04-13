@@ -2,9 +2,9 @@
 sidebar: sidebar
 permalink: support-matrix.html
 keywords: support matrix, nfs, smb, file servers, protocol versions
-summary: "Learn about NetApp Data Migrator features, file, and features support."
+summary: "Learn about NetApp Data Migrator support for features, file servers, and protocols."
 ---
-= Learn about NetApp Data Migrator features, file, and features support
+= Learn about NetApp Data Migrator support for features, file servers, and protocols
 :icons: font
 :imagesdir: ./media/
 

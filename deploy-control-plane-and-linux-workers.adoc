@@ -4,12 +4,12 @@ permalink: deploy-control-plane-and-linux-workers.html
 keywords: aws installation, prerequisites, control plane, worker vm, ec2
 summary: "Learn about installing the NetApp Data Migrator control plane and worker VMs."
 ---
-= Deploy control plane and Linux worker for NetApp Data Migrator
+= Deploy the control plane and Linux worker VM for NetApp Data Migrator
 :icons: font
 :imagesdir: ./media/
 
 [.lead]
-Deploy the control plane VM and Linux worker VM for NetApp Data Migrator using AWS, Azure, or Google Cloud services or Open Virtual Appliance (OVA) templates. The Linux worker supports NFS data migrations.
+Deploy the control plane worker virtual machine (VM) and Linux worker VM for NetApp Data Migrator using AWS, Azure, or Google Cloud services or Open Virtual Appliance (OVA) templates. The Linux worker supports NFS data migrations.
 
 
 .Before you begin
@@ -30,7 +30,7 @@ Request access to the VHDs. NetApp shares the VHDs using a time-limited shared a
 
 .Steps
 
-Chose the AWS, Azure, Google Cloud tab, or OVA tab depending on your deploy option.
+Choose the AWS, Azure, Google Cloud tab, or OVA tab depending on your deploy option.
 
 [role="tabbed-block"]
 ====
@@ -39,8 +39,6 @@ Chose the AWS, Azure, Google Cloud tab, or OVA tab depending on your deploy opti
 After requesting access to the AMIs, you copy the AMIs into your AWS account. Copying the AMIs gives you full ownership, avoids dependency on the source account, and is required for cross-region use.
 
 Repeat the steps below for the control plane and Linux worker Amazon Machine Images (AMIs). 
-
-Amazon Machine Images (AMIs). The Linux worker supports NFS data migrations. 
  
 . Use the AMI IDs provided to locate the AMIs in your AWS account under *EC2* > *AMIs* > *Private images*.
 . Copy the AMIs into your account: 
@@ -151,13 +149,8 @@ gcloud migration vms image-imports list --location=<REGION> --project=<PROJECT_I
 
 .OVA
 --
-. Log in to the NSS  
-
-. Search for .... 
-+
-Control plane .ova image 
-+
-Linux worker .ova image 
+. Log in to link:https://mysupport.netapp.com/site/[NetApp Support site^]  
+. Download the control plane `.ova` image and the Linux worker `.ova` image files. 
 --
 ====
   
