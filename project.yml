@@ -24,6 +24,8 @@ sidebar:
     entries: 
     - title: Learn about NetApp Data Migrator
       url: /learn-about-data-migrator.html
+    - title: Decide whether to use NetApp Data Migrator
+      url: /decide-to-use-data-migrator.html 
     - title: Quick start 
       url: /quick-start.html
     - title: Networking requirements

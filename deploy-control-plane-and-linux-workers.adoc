@@ -4,13 +4,12 @@ permalink: deploy-control-plane-and-linux-workers.html
 keywords: aws installation, prerequisites, control plane, worker vm, ec2
 summary: "Learn about installing the NetApp Data Migrator control plane and worker VMs."
 ---
-= Deploy the control plane and Linux worker VM for NetApp Data Migrator
+= Deploy the control plane and Linux worker VMs for NetApp Data Migrator
 :icons: font
 :imagesdir: ./media/
 
 [.lead]
 Deploy the control plane worker virtual machine (VM) and Linux worker VM for NetApp Data Migrator using AWS, Azure, or Google Cloud services or Open Virtual Appliance (OVA) templates. The Linux worker supports NFS data migrations.
-
 
 .Before you begin
 If you are using AWS or Azure, contact the NetApp Data Migrator team at `ndm-support@netapp.com` to request the Amazon Machine Images (AMIs) or virtual hard disks (VHDs).
