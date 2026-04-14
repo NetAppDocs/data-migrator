@@ -43,7 +43,7 @@ include::./_include/configure-ports.adoc[]
 |===
 | If you... | You need to...
 | Don't have the NetApp Data Migrator assets
-a| Contact the NetApp Data Migrator team at `ndm-support@netapp.com` to request the AWS Amazon Machine Image (AMI). Include the Account ID and region preference in the email or share it with your NetApp contact so that NetApp can share the images to that account ID. After NetApp shares the AMI, it is visible in your AWS account under *EC2* > *AMIs* > *Private images*, and you can locate it using the AMI IDs provided.
+a| Contact the NetApp Data Migrator team at `ng-ndm-downloads@netapp.com` to request the AWS Amazon Machine Image (AMI). Include the Account ID and region preference in the email or share it with your NetApp contact so that NetApp can share the images to that account ID. After NetApp shares the AMI, it is visible in your AWS account under *EC2* > *AMIs* > *Private images*, and you can locate it using the AMI IDs provided.
 
 After you locate the AMIs, copy them into your account: 
 

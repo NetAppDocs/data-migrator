@@ -12,7 +12,7 @@ summary: "Learn about installing the NetApp Data Migrator control plane and work
 Deploy the control plane worker virtual machine (VM) and Linux worker VM for NetApp Data Migrator using AWS, Azure, or Google Cloud services or Open Virtual Appliance (OVA) templates. The Linux worker supports NFS data migrations.
 
 .Before you begin
-If you are using AWS or Azure, contact the NetApp Data Migrator team at `ndm-support@netapp.com` to request the Amazon Machine Images (AMIs) or virtual hard disks (VHDs).
+If you are using AWS or Azure, contact the NetApp Data Migrator team at `ng-ndm-downloads@netapp.com` to request the Amazon Machine Images (AMIs) or virtual hard disks (VHDs).
 
 [role="tabbed-block"]
 ====

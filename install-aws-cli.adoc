@@ -9,7 +9,7 @@ summary: "Install the AWS CLI and import NetApp Data Migrator control plane and 
 :imagesdir: ./media/
 
 [.lead]
-Contact the NetApp Data Migrator team at `ndm-support@netapp.com` to request the AWS Amazon Machine Image (AMI). After NetApp shares the AMI, it is visible in your AWS account under *EC2* > *AMIs* > *Private images*, and you can locate it using the AMI IDs provided. 
+Contact the NetApp Data Migrator team at `ng-ndm-downloads@netapp.com` to request the AWS Amazon Machine Image (AMI). After NetApp shares the AMI, it is visible in your AWS account under *EC2* > *AMIs* > *Private images*, and you can locate it using the AMI IDs provided. 
 
 .Before you begin
 

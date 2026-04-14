@@ -56,6 +56,8 @@ Restore access to NetApp Data Migrator for a disabled user, allowing them to log
 
 Reset the password for an existing user.
 
+NOTE: To reset the password for an App Admin user when there is no other App Admin available, contact ng-ndm-downloads@netapp.com to obtain the password reset script.
+
 .Steps
 
 . Select the *Settings* icon in the navigation bar.

@@ -89,7 +89,7 @@ Windows worker for Windows:
 
 Connect to the control plane to validate if NetApp Data Migrator is active.
 
-CAUTION: Don't restart or reboot the control plane. If you encounter issues, contact NetApp Data Migrator support at ndm-support@netapp.com for assistance.
+CAUTION: Don't restart or reboot the control plane. If you encounter issues, contact NetApp Data Migrator support at ng-ndm-downloads@netapp.com for assistance.
 
 .Steps
 . Install Azure CLI. Refer to the Azure CLI Download instructions.
