@@ -34,4 +34,4 @@ On the home page, select *View Instruction to Setup Worker*.
 After the workers are successfully connected, you can configure the NetApp Data Migrator environment and run migration jobs. 
 
 .What's next?
-Learn about link:configure-netapp-data-migrator.html[configuring NetApp Data Migrator]
+Learn about link:configure-data-migrator.html[configuring NetApp Data Migrator]

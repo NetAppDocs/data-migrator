@@ -1,6 +1,6 @@
 ---
 sidebar: sidebar
-permalink: configure-netapp-data-migrator.html
+permalink: configure-data-migrator.html
 keywords: initial configuration, login, project creation, app admin
 summary: "After installing NetApp Data Migrator, log in as App Admin, reset default credentials, and create your first project."
 ---
