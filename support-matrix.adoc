@@ -1,55 +1,95 @@
 ---
 sidebar: sidebar
-permalink: contact-support.html
+permalink: support-matrix.html
 keywords: support matrix, nfs, smb, file servers, protocol versions
 summary: "Learn about NetApp Data Migrator support for features, file servers, and protocols."
 ---
-= Get support for NetApp Data Migrator
+= Learn about NetApp Data Migrator support for features, file servers, and protocols
 :icons: font
 :imagesdir: ./media/
 
 [.lead]
-If you are a new NetApp customer, to create a NetApp account complete the registration process to access NetApp Support. 
+NetApp Data Migrator to supports the following features, files servers, and protocols.
 
-== Step 1: Register for an account 
+== Supported and unsupported features
 
-Complete the NetApp account registration. It can take up to one business day for your new NetApp Support Site account to be upgraded from *Guest access* to *Full access*.
+NetApp Data Migrator supports certain features for NFS and SMB migrations.
 
-.Steps
+*Supported features*
 
-. Register for an account on the link:https://mysupport.netapp.com/site/user/registration[NetApp Support Site^] using your business email.
-. Select *Submit*.
-. Authenticate the registration initiation by entering the onetime password sent to your email. 
-. On the registration completion page, provide the required details: 
+|===
+| Description | Feature
+
+| Permissions and audit handling
+a| * Chain of custody reporting 
+* Discretionary Access Control List (DACL)
+* Preserve Access Control List (ACL)
+* User Identifier (UID) and Security Identifier (SID) remapping 
+
+| File system objects and links 
+a|* Hard link handling 
 +
-.. For User Access Level, select *NetApp Customer/End User*.
-.. In the Serial Number field, enter `NDMNSSREG`.
-
-. Select *Submit*. A confirmation window appears indicating that the user registration has been submitted successfully. 
-
-If you encounter any issues during registration or want to check the status of your registration, link:https://mysupport.netapp.com/site/help[open a support ticket].
-
-== Step 2: Install NetApp Data Migrator
-
-Learn about link:learn-about-install.html[installing NetApp Data Migrator].
- 
-== Step 3: Register your NetApp Data Migrator product 
-
-Register your NetApp Data Migrator product to enable the software.
-
-.Steps
-. Select *Help (?)* > *About* > *Serial Number*
-. In the *About NDM* dialog box, record the NDM Instance ID. 
+NetApp Data Migrator migrates objects and links as separate files. 
+* Symbolic links
 +
-This is a 20-digit number, starting with 975.
+Only supported for NFS migrations
+| File metadata preservation 
 
-. Go to the link:https://register.netapp.com[NetApp support site registration page^].
-. Select *I am not a registered NetApp Customer*. 
-. Fill in the required product registration details: 
+a| * Preserve access time
+* Preserve creation time
+* Preserve modified time
+* Preserve permissions
+
+| Migration behavior and data consistency 
+a| * Delete propagation 
+* Incremental migration 
+* Support for open files 
+* Switchover support 
+
+| Migration control and execution 
+a| * File pattern exclusions
+* Scheduling for migration
+|===
+
+*Unsupported features*
+
+|===
+|Description | Feature
+
+| Permissions and audit handling
+| System Access Control List (SACL) 
+| File system objects and links 
+a|* Follow NTFS junctions 
+* Symbolic links
 +
-.. Leave the *NetApp Reference SN* field blank 
-.. From the Product Line dropdown, select *NDM*. 
-.. From the Billing Provider dropdown, select *Azure NetApp Files*.
-.. Enter the 20-digit NDM Instance ID in the *NDM Serial #* field.
-.. Complete the remaining required fields, then select *Submit*. 
-. After submission, you receive a registration confirmation email. Follow the instructions in the email to confirm the registration.
+Unsupported for SMB migrations
+
+* Alternate data streams
++  
+NetApp Data Migrator can discover but not migrate alternate data streams.
+| File metadata preservation 
+| Selective file attributes
+| Migration behavior and data consistency 
+| Migration of snapshots 
+|===
+
+== Supported file servers
+
+|===
+| File server | Description
+
+| Source	a| Any NAS server, for example, Dell Isilon, ONTAP, Vanilla Linux, Windows, Cloud Volumes ONTAP
+| Destination a| All service levels of Azure NetApp Files (ANF), Google Cloud NetApp Volumes (GCNV), Amazon FSx for NetApp ONTAP (FSxN), Cloud Volumes ONTAP
+|===
+
+== Supported migration protocols
+
+|===
+| Protocol | Supported versions
+
+| NFS | 3.0, 4.1, 4.2
+| SMB | 2.0, 3.0, 3.1
+
+|===
+
+// 2025 DEC 1, OTHERDOC-166 and NADIAA updates

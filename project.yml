@@ -80,9 +80,9 @@ sidebar:
     url: /faq.html
   - title: Get help
     entries:
+    - title: Register for support
+      url: /register-for-support.html
     - title: Troubleshoot
       url: /troubleshoot.html
-    - title: Contact support
-      url: /contact-support.html
   - title: Legal notices
     url: /legal-notices.html
