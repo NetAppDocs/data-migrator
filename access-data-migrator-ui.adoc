@@ -12,7 +12,7 @@ summary: "Create VM instances on Google Cloud by enabling required APIs, prepari
 After you deploy the control plane VM and verify that the services and pods are running successfully, access the NetApp Data Migrator UI and connect to the control plane, Linux workers, and Windows workers.
 
 .Before you begin
-You have the control plane VM private IP address, which you obtained when you link:deploy-control-plane-and-linux-workers.html[deployed the control plane VM]. You use the control plane VM private IP address to access the UI. 
+Verify that you have the control plane VM private IP address, which you obtained when you link:deploy-control-plane-and-linux-workers.html[deployed the control plane VM]. You use the control plane VM private IP address to access the UI. 
 
 .Steps
 . Navigate to the control plane using a web browser: 
@@ -26,10 +26,10 @@ https://<control-plane-private-ip-address>/
 +
 *SMB*: This option is for SMB migrations (Windows workers).
 
-. Use the control plane to connect to the deployed worker VMs by following the onscreen instructions. 
+. Follow the onscreen instructions to use the control plane to connect to the deployed worker VMs. 
 +
 On the home page, select *View Instruction to Setup Worker*. 
-. Verify that the worker is successfully connected by checking the status in the *Workers* section. 
+. Check the status in the *Workers* section to verify that the worker is successfully connected. 
 +
 After the workers are successfully connected, you can configure the NetApp Data Migrator environment and run migration jobs. 
 

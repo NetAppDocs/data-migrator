@@ -9,7 +9,7 @@ summary: "Learn about NetApp Data Migrator support for features, file servers, a
 :imagesdir: ./media/
 
 [.lead]
-NetApp Data Migrator to supports the following features, files servers, and protocols.
+NetApp Data Migrator supports the following features, files servers, and protocols.
 
 == Supported and unsupported features
 
@@ -57,7 +57,9 @@ a| * File pattern exclusions
 |Description | Feature
 
 | Permissions and audit handling
-| System Access Control List (SACL) 
+| System Access Control List (SACL)
+
+Unsupported for SMB migrations only
 | File system objects and links 
 a|* Follow NTFS junctions 
 * Symbolic links

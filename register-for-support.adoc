@@ -4,7 +4,7 @@ permalink: register-for-support.html
 keywords: support matrix, nfs, smb, file servers, protocol versions
 summary: "Learn about NetApp Data Migrator support for features, file servers, and protocols."
 ---
-= Register for support for NetApp Data Migrator
+= Register for NetApp Data Migrator support
 :icons: font
 :imagesdir: ./media/
 
@@ -39,7 +39,7 @@ Register your NetApp Data Migrator product to enable the software.
 
 .Steps
 . Select *Help (?)* > *About* > *Serial Number*
-. In the *About NDM* dialog box, record the NDM Instance ID. 
+. In the *About NDM* dialog box, record the NetApp Data Migrator Instance ID. 
 +
 This is a 20-digit number, starting with 975.
 

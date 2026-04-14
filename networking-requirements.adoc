@@ -9,11 +9,11 @@ summary: "Networking requirements for NetApp Data Migrator, including required T
 :imagesdir: ./media/
 
 [.lead]
-You need to ensure that the worker IP and subnet and the control plane IP and subnet are allowed in the export policy on the storage system. This is required to support NFS and SMB migrations using NetApp Data Migrator.
+You need to ensure that the IP address and subnet for both the control plane and workers are allowed in the export policy on the storage system. This is required to support NFS and SMB migrations using NetApp Data Migrator.
 
 == Verify NFS access
 
-For NFS, the control plane and worker nodes need permission to access the storage system as root clients:
+For NFS, the control plane and worker nodes need permission to access the storage system as root clients.
 
 .Steps
 . Perform a manual mount from a worker node to verify volume accessibility: 

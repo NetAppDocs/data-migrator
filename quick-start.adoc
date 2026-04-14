@@ -25,12 +25,12 @@ NetApp Data Migrator supports NFS and SMB file transfer protocols. Determine tha
 [role="quick-margin-para"]
 Review link:decide-to-use-data-migrator.html[Decide whether to use NetApp Data Migrator] and link:networking-requirements.html[Networking requirements].
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png[Two]xref:learn-about-install.adoc[Install and set up NetApp Data Migrator]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png[Two]xref:learn-about-install.adoc[Install and set up]
 
 [role="quick-margin-para"]
 NetApp Data Migrator uses a control plane and worker nodes. First you deploy the control plane VM and worker VMs based on your migration needs. For NFS, you deploy a Linux worker and for SMB, you deploy a Windows worker. You can use NFS or SMB, or both protocols. After deployment, you create the control plane VM and worker VMs and access the NetApp Data Migrator UI.
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png[Three]xref:configure-data-migrator.adoc[Configure NetApp Data Migrator]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png[Three]xref:configure-data-migrator.adoc[Configure]
 
 [role="quick-margin-para"]
 You first log in as an administrator using the default credentials, then update your username and password. 

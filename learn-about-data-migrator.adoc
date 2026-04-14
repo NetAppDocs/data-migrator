@@ -137,4 +137,4 @@ A worker is a virtual machine that performs actual data operations, for example,
 ** Reports high-level statistical information about data migration to the control plane
 
 .What's next?
-Learn about link:decide-to-use-data-migrator.html[deciding whether to use NetApp Data Migrator for your data migration operations]
+link:decide-to-use-data-migrator.html[Decide whether to use NetApp Data Migrator for your data migration operations]

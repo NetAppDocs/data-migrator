@@ -242,7 +242,7 @@ On the *Job Run Details* page you can also generate detailed reports that provid
 
 The Migration Activity page shows the ten oldest files currently being migrated. It also shows the total number of files in progress and provides an option to download a CSV file containing a complete list of these files. 
 
-.Steps: 
+.Steps 
 
 . From the *Run History* table, select *Job Run Details* for a running job.
 . Select *Migration Activity*.
