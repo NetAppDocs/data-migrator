@@ -9,7 +9,7 @@ summary: "Review the known issues and workarounds for NetApp Data Migrator."
 :imagesdir: ./media/
 
 [.lead]
-NetApp Data Migrator has the following known issues.
+Known issues identify problems that might prevent you from using this release of the product successfully. Read these known issues carefully.
 
 == Configuration 
 

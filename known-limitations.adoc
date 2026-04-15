@@ -9,11 +9,11 @@ summary: "Understand the known limitations for NetApp Data Migrator to help make
 :imagesdir: ./media/
 
 [.lead]
-Understand the known limitations for NetApp Data Migrator to help make your migration activities more efficient.
+NFS and SMB protocol limitations and features that do not work or do not work well with this version are listed here. Read these limitations carefully.
 
-*Discovery and migration limits*
+== Discovery and migration limitations
 
-[cols="1,2a" options="header"]
+[cols="1,2,2a" options="header"]
 |===
 | Description | NFS | SMB 
 
@@ -25,7 +25,7 @@ run simultaneously	 | 4  | 2
 |===
 
 
-*Other usage limits*
+== Feature limitations
 
 [cols="1,2a" options="header"]
 |===
