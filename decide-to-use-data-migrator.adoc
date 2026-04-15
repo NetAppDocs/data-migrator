@@ -9,7 +9,7 @@ summary: "Use this decision matrix to determine whether to use NetApp Data Migra
 :imagesdir: ./media/
 
 [.lead]
-Use the following decision matrix to determine whether to use NetApp Data Migrator or SnapMirror for your data migration operations. For example, if you are migrating NFS and SMB files from an ONTAP on-premises system running ONTAP 9.11.1 or later to Google Cloud NetApp Volumes, you should use NetApp Data Migrator.
+Use the following decision matrix to determine whether to use NetApp Data Migrator or SnapMirror for your data migration operations. For example, if you are migrating NFS and SMB files from an ONTAP on-premises system running ONTAP 9.11.1 to Google Cloud NetApp Volumes, you should use NetApp Data Migrator.
 
 [cols="1,1,1,1,1,1,1a" options="header"]
 |===
@@ -17,21 +17,21 @@ Use the following decision matrix to determine whether to use NetApp Data Migrat
 
 | *ONTAP on-premises* 
 
-Beginning with ONTAP 9.11.1 | SnapMirror |SnapMirror | SnapMirror | SnapMirror | NetApp Data Migrator | SnapMirror 
+Beginning with ONTAP 9.10.1 | SnapMirror |SnapMirror | SnapMirror | SnapMirror | NetApp Data Migrator | SnapMirror 
 
 |*ONTAP on-premises* 
 
-For ONTAP 9.10.1 and earlier | NetApp Data Migrator | NetApp Data Migrator | NetApp Data Migrator | NetApp Data Migrator | NetApp Data Migrator | NetApp Data Migrator 
+For ONTAP 9.9.1 and earlier | NetApp Data Migrator | NetApp Data Migrator | NetApp Data Migrator | NetApp Data Migrator | NetApp Data Migrator | NetApp Data Migrator 
 
 | *Non-NetApp storage systems and arrays* | NetApp Data Migrator | NetApp Data Migrator | NetApp Data Migrator | NetApp Data Migrator | NetApp Data Migrator | NetApp Data Migrator  
 
 | *Cloud Volumes ONTAP*  
 
-Beginning with ONTAP 9.11.1 | SnapMirror | SnapMirror | SnapMirror | SnapMirror | NetApp Data Migrator | SnapMirror 
+Beginning with ONTAP 9.10.1 | SnapMirror | SnapMirror | SnapMirror | SnapMirror | NetApp Data Migrator | SnapMirror 
 
 | *Cloud Volumes ONTAP* 
 
-For ONTAP 9.10.1 and earlier 
+For ONTAP 9.9.1 and earlier 
 
 | NetApp Data Migrator | NetApp Data Migrator | NetApp Data Migrator | NetApp Data Migrator| NetApp Data Migrator | NetApp Data Migrator 
 
