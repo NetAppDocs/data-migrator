@@ -35,3 +35,5 @@ After the workers are successfully connected, you can configure the NetApp Data 
 
 .What's next?
 Learn about link:configure-data-migrator.html[configuring NetApp Data Migrator]
+
+// 2026 APRIL 15, GA release

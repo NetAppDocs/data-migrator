@@ -43,3 +43,5 @@ For ONTAP 9.10.1 and earlier
 .Related information
 
 Learn about link:https://docs.netapp.com/us-en/ontap/data-protection/snapmirror-disaster-recovery-concept.html[SnapMirror volume replication^]
+
+// 15 APRIL 2026, GA release

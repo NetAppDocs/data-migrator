@@ -42,4 +42,5 @@ The following tables list the ports that the control plane and worker virtual ma
 *Note*: Include TCP or UDP port 111 if you need the portmapper service for Remote Procedure Calls.
 |Outbound to storage | SMB: 445  | | SMB servers
 |===
+// 15 APRIL 2026, GA release
 // 2025 DEC 1, OTHERDOC-168

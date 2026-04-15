@@ -65,3 +65,5 @@ NOTE: To reset the password for an App Admin user when there is no other App Adm
 . Select the *(⋮)* icon beside the details of the user whose password needs to be reset then select *Reset Password* from the dropdown menu. A message appears confirming that the password reset has been successful.
 . Select the *Copy* link (next to the password field) to copy the temporary password which is displayed in a masked format.
 . Share the copied temporary password with the user.
+
+// 15 APRIL 2026, GA release

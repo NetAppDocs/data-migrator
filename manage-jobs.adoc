@@ -265,6 +265,7 @@ You can also generate an error report for a previous job run.
 . On the *Job Details* page, in the *Errors* panel, select *View All*.
 . Select *Generate Error Report* to download details about errors in the job run you selected.
 
+// 2026 APRIL 15, GA release
 // 2026 FEB 25, Preview + 3 release
 // 2026 JAN 12: OTHERDOC-184
 // 2025 NOV 28: OTHERDOC-171 and NADIAA updates

@@ -51,4 +51,5 @@ run simultaneously	 | 4  | 2
 
 |===
 
+// 15 APRIL 2026, GA release
 // 2025 DEC 1, OTHERDOC-166 and NADIAA updates

@@ -33,3 +33,5 @@ The following table provides a summary of actions and user role permissions.
 | SaveSmtp | User can add/edit SMTP details.| Yes | No | No
 
 |===
+
+// 2026 APRIL 15, GA release

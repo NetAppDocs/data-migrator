@@ -37,3 +37,4 @@ For SMB access, the control plane and worker nodes need permission to access the
 ----
 net use Z: \\<storage-ip>\<share> /user:<domain>\<username> <password>
 ----
+// 2026 APRIL 15, GA release

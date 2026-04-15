@@ -53,3 +53,5 @@ This is a 20-digit number, starting with 975.
 .. Enter the 20-digit NDM Instance ID in the *NDM Serial #* field.
 .. Complete the remaining required fields, then select *Submit*. 
 . After submission, you receive a registration confirmation email. Follow the instructions in the email to confirm the registration.
+
+// 2026 APRIL 15, GA release

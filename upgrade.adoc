@@ -67,7 +67,6 @@ ExecutionPolicy Bypass -File C:\datamigrator\staging\<version>\upgrade.ps1 -Vers
 --
 ====
 
-
 [[view-logs]]
 == Step 3: View logs and troubleshoot 
 View the virtual machine logs to support troubleshooting issues that you encounter during the upgrade.

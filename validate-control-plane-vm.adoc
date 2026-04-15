@@ -41,3 +41,5 @@ kubectl get pods -n datamigrator
 
 .What's next? 
 Learn about link:access-data-migrator-ui.html[accessing the NetApp Data Migrator UI and connecting to the control plane and workers]
+
+// 15 APRIL 2026, GA release

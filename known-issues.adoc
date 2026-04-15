@@ -49,6 +49,29 @@ For active users or groups in Active Directory, provide the usernames or group n
 --
 ====
 
+=== Bulk migration limitation for same level directories 
+
+When using the Bulk Migrate feature, you cannot create multiple migration jobs together for directories that are at the same level in the source and destination directory hierarchy. For example, sibling folders in the same share operation for a source and destination. Attempting to include such directories in a single bulk migration configuration causes the job creation to fail. 
+
+.Workaround 
+Create migration jobs one at a time for directories that are at the same level, instead of adding them together. 
+
+=== Directory level migration inherited permission stamping 
+
+In directory level migrations, inherited permissions on a selected root directory are not stamped on the destination. Because NetApp Data Migrator does not apply the inherited permissions for the root directory, child directories and files that rely on inheritance also do not receive the inherited permissions. 
+
+This issue affects only inherited permission propagation from the root directory. NetApp Data Migrator correctly stamps explicit permissions set directly on files and directories (noninherited permissions) during migration. 
+
+.Workaround 
+After the migration completes, manually reapply or reset the inherited permissions on the root directory at the destination. This allows the correct inherited permissions to propagate to all child directories and files
+
+=== Incorrect UID/GID Mapping in NFS 
+
+During NFS migrations, if the UID and GID mapping CSV file contains numeric user IDs or group IDs that do not exist on the destination system, NetApp Data Migrator applies (stamps) these values as is. NetApp Data Migrator does not validate whether the specified UID or GID exists on the destination and does not report any error or warning in the UI. This can result in file migration with incorrect ownership. 
+
+.Workaround 
+Ensure that all UID and GID values specified in the mapping CSV correspond to valid and existing users and groups on the destination system before starting the migration. Manually verify user and group existence on the destination to avoid NetApp Data Migrator applying incorrect ownership during migration. 
+
 === Migration precheck displays false Insufficient Space warning
 
 During migration prechecks, you might see the following warning, even if the destination has sufficient space: 
@@ -196,4 +219,5 @@ Status definitions:
 
 Verify the job run outcome by checking the job run details for any errors, especially if the status is Completed. Do not rely only on the status label until after you address this issue.
 
+// 2026 APRIL 15, GA release
 // 2025 DEC 1, OTHERDOC-166 and NADIAA updates

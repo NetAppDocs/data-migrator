@@ -71,6 +71,4 @@ Choose one of the following options:
 * Optionally, learn about link:validate-control-plane-vm.html[validating the control plane VM]
 * Learn about link:access-data-migrator-ui.html[accessing the NetApp Data Migrator UI and connecting to the control plane and workers]
 
-// 2026 FEB 25, Preview + 3 release
-// 2025 DEC 1, OTHERDOC-168
-// 9 OCT 2025, commented out lines with the NSS link and replaced them with "preview link provided" - temporary measure for preview only.
+// 2026 APRIL 15, GA release
