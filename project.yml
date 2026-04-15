@@ -14,12 +14,12 @@ sidebar:
       entries:
       - title: What's new 
         url: /whats-new.html
-      - title: Known issues
-        url: /known-issues.html
       - title: Support matrix
         url: /support-matrix.html
-      - title: Usage limits
-        url: /usage-limitations.html
+      - title: Known issues
+        url: /known-issues.html
+      - title: Known limitations
+        url: /known-limitations.html
     - title: Get started
       entries: 
       - title: Learn about NetApp Data Migrator

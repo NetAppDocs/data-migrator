@@ -1,15 +1,15 @@
 ---
 sidebar: sidebar
-permalink: usage-limitations.html
-keywords: usage limits, nfs limits, smb limits, worker sizing, migration restrictions
-summary: "Understand the usage limits of NetApp Data Migrator to help make your migration activities more efficient."
+permalink: known-limitations.html
+keywords: known, limitations, nfs limits, smb limits, worker sizing, migration restrictions
+summary: "Understand the known limitations for NetApp Data Migrator to help make your migration activities more efficient."
 ---
-= Learn about the NetApp Data Migrator usage limits
+= Learn about the known limitations for NetApp Data Migrator usage 
 :icons: font
 :imagesdir: ./media/
 
 [.lead]
-Understand the usage limits of NetApp Data Migrator to help make your migration activities more efficient.
+Understand the known limitations for NetApp Data Migrator to help make your migration activities more efficient.
 
 *Discovery and migration limits*
 
