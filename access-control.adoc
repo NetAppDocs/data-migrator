@@ -17,20 +17,20 @@ NetApp Data Migrator uses role-based access control (RBAC) to manage user permis
 
 The following table provides a summary of actions and user role permissions.
 
-[cols="1,2,1,1,1", options="header"]
+[cols="1,2,1,1,1a", options="header"]
 |===
 | *Action* | *Description* | App Admin | Project Admin | Project Viewer
 
 | AgentDeployment | User can access the *View Instruction To Setup Worker* button. | Yes | Yes | No
-| CreateUser | User can create new user accounts. | Yes | No | No
-| ListUsers | User can create new user accounts.| Yes  | Yes | Yes  
-| ManageConfig | User can create new user accounts. | Yes | Yes | No
-| ManageJob | User can create new user accounts. | Yes | Yes | No
+| CreateUser | User can create new user accounts | Yes | No | No
+| ListUsers | User can create new user accounts | Yes  | Yes | Yes  
+| ManageConfig | User can create new user accounts | Yes | Yes | No
+| ManageJob | User can create new user accounts | Yes | Yes | No
 | Reports | User can access buttons for downloading reports | Yes | Yes | Yes
 | Update Project | User can edit a project | Yes | Yes| No   
-| ViewProject | User can access the projects listing page.  | Yes | Yes | Yes
-| CreateProject | User can create a project.  | Yes | No | No
-| SaveSmtp | User can add/edit SMTP details.| Yes | No | No
+| ViewProject | User can access the projects listing page  | Yes | Yes | Yes
+| CreateProject | User can create a project  | Yes | No | No
+| SaveSmtp | User can add/edit SMTP details| Yes | No | No
 
 |===
 

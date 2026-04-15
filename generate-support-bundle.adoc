@@ -19,6 +19,7 @@ NetApp Data Migrator allows you to generate a support bundle to help troubleshoo
 . Select the *Generate Support Bundle* button. When the bundle is ready, the *Download Report* button becomes active.
 . Select the *Download Report* button to download the support bundle.
 
+[cols="1,2a" options="header"]
 |===
 | *Role* | *Access scope*
 | App Admin | All projects

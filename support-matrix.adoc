@@ -17,6 +17,7 @@ NetApp Data Migrator supports certain features for NFS and SMB migrations.
 
 *Supported features*
 
+[cols="1,2a" options="header"]
 |===
 | Description | Feature
 
@@ -53,6 +54,7 @@ a| * File pattern exclusions
 
 *Unsupported features*
 
+[cols="1,2a" options="header"]
 |===
 |Description | Feature
 
@@ -77,6 +79,7 @@ NetApp Data Migrator can discover but not migrate alternate data streams.
 
 == Supported file servers
 
+[cols="1,2a" options="header"]
 |===
 | File server | Description
 
@@ -86,6 +89,7 @@ NetApp Data Migrator can discover but not migrate alternate data streams.
 
 == Supported migration protocols
 
+[cols="1,2a" options="header"]
 |===
 | Protocol | Supported versions
 

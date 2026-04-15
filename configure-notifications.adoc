@@ -20,6 +20,7 @@ You need to be logged in as an *App admin* user to configure SMTP email server d
 . Select *Settings* in the navigation bar.
 . Select the *SMTP* tab and complete the fields shown in the following table.
 
+[cols="1,2a" options="header"]
 |===
 | Field | Description
 

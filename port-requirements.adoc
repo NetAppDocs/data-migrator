@@ -15,7 +15,7 @@ The following tables list the ports that the control plane and worker virtual ma
 
 *Control plane*
 
-[cols="1,1,1,1"]
+[cols="1,1,1,1a" options="header"]
 |===
 |Service | TCP port |  From | To
 
@@ -30,7 +30,7 @@ The following tables list the ports that the control plane and worker virtual ma
 
 *Workers*
 
-[cols="1,1,1,1"]
+[cols="1,1,1,1a" options="header"]
 |===
 |Service |TCP port |  From | To
 

@@ -20,6 +20,7 @@ You create the control plane VM and Linux worker VM using the images that you de
 .Steps
 . Use the deployed control plane image to create a control plane VM with the following recommended configuration:
 +
+[cols="1,2a" options="header"]
 |===
 | Description | Recommended setting
 
@@ -36,6 +37,7 @@ a|* AWS: r7i.2xlarge instance
 
 . Use the deployed Linux worker image to create the Linux worker VM to support NFS migration with the following recommended configuration:
 +
+[cols="1,2a" options="header"]
 |===
 | Description | Recommended setting
 

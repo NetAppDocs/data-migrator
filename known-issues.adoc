@@ -27,6 +27,7 @@ Provide the CSV mapping for the SID source and target as shown in the following 
 -- 
 Provide the SID in the CSV mapping sheet for users or groups deleted or removed from the source Active Directory, as shown in the following example:
 
+[cols="1,1a" options="header"]
 |===
 | sid_source | sid_target
 
@@ -40,6 +41,7 @@ Provide the SID in the CSV mapping sheet for users or groups deleted or removed 
 -- 
 For active users or groups in Active Directory, provide the usernames or group names in the CSV mapping sheet exclusively in lowercase. Include the domain prefix (domain\username), as shown in the following example: 
 
+[cols="1,1a" options="header"]
 |===
 | sid_source | sid_target 
 

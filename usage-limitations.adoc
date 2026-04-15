@@ -13,6 +13,7 @@ Understand the usage limits of NetApp Data Migrator to help make your migration 
 
 *Discovery and migration limits*
 
+[cols="1,2a" options="header"]
 |===
 | Description | NFS | SMB 
 
@@ -26,7 +27,7 @@ run simultaneously	 | 4  | 2
 
 *Other usage limits*
 
-[cols="30,70"]
+[cols="1,2a" options="header"]
 |===
 | Description | Limits
 
