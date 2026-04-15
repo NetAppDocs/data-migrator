@@ -25,16 +25,16 @@ The *Job Config List* page provides a comprehensive overview of all migration re
 
 The *Job Config List* page shows a *Jobs Listings* table, which includes the following information:
 
-* *Source*: Location of source file server.
-* *Destination*: Destination file server and export path details (for Migration jobs).
-* *Protocol*: Protocol used by the job (*NFS* or *SMB*).
-* *Next Schedule*: Next scheduled execution time (if applicable).
-* *Runs*: Number of times the job has been executed.
-* *Type*: Job type (*Discovery, Migration, or Cutover*).
-* *Status*: The current state of a job can be either *Active* or *Inactive*. Jobs that use manual export paths with an *invalid* or *disable* status automatically become *Inactive*. Refer to *Add and Manage file servers* for more details.
+* *Source*: The location of source file server.
+* *Destination*: The destination file server and export path details for Migration jobs.
+* *Protocol*: The protocol used by the job (NFS or SMB).
+* *Next Schedule*: The next scheduled execution time (if applicable).
+* *Runs*: The number of times the job has been executed.
+* *Type*: The job type (Discovery, Migration, or Cutover).
+* *Status*: The current state of a job can be either Active or Inactive. Jobs that use manual export paths with an invalid or disabled status automatically become inactive. Refer to link:manage-file-servers.html[Add and manage file servers] for more details.
 * *Updated On*: Job update timestamp.
 
-Jobs that use manual export paths and the *Export Paths File* is later re-uploaded, any previously run jobs associated with a *now invalid or disabled path* automatically become inactive.
+Jobs that use manual export paths or the export paths file are later re-uploaded. Any previously run jobs associated with a now invalid or disabled path automatically become inactive.
 
 == Job Config List Filters
 
@@ -48,40 +48,31 @@ On the *Job Config List* page, you can use the *Filters* feature to quickly sort
 
 Select *Clear all* to remove filters already applied to your job listings.
 
-== Manage Job Level operations
-
-Manage Job Run operations by accessing the following job level operations on the *Job Config List* page:
-
-* Activate and deactivate a job
-* Job Details, which provides you with additional information about your jobs
-* Job Run History, which provides information about previous job runs
-
 == Activate a Job
 
 .Steps
 
-. On the *Job Config List* page, in the *Job Listings* table, locate the job you want to activate.
-. Locate the job you want to activate.
+. Locate the job you want to activate in the *Job Listings* table on the *Job Config List* page.
 . Select the action menu next to your job.
 . Select *Activate* from the pop-up menu.
-. The job *Status* changes from *Inactive* to *Active*.
++
+The job *Status* changes from *Inactive* to *Active*.
 
 == Deactivate a Job
 
 .Steps
 
-. Select *Jobs* in the left navigation bar.
-. Select *Job Config List*.
-. In the *Job Listings* table, locate an *Active* job you want to deactivate and select the action menu next to your job.
+. Select *Jobs* > *Job Config List*.
+. In the *Job Listings* table, locate the *Active* job that you want to deactivate and select the action menu next to the job.
 . Select *Deactivate* from the pop-up menu.
-. The job *Status* changes from *Active* to *Inactive*, and execution stops until you reactivate the job.
++
+The job *Status* changes from *Active* to *Inactive*, and execution stops until you reactivate the job.
 
 == Edit job configurations 
 
 .Steps 
 
-. Select *Jobs* in the left navigation bar.
-. Select *Job Config List*.
+. Select *Jobs* > *Job Config List*.
 . <<view-job-details,Open the Job Details page>> for the job you want to edit.
 . Select *View/Edit Configuration*.
 . Edit the job configuration:
@@ -90,14 +81,14 @@ Manage Job Run operations by accessing the following job level operations on the
 ====
 .Discovery Job
 --
-* Add or remove Excluded Path Patterns.
-* Schedule a job run. 
+* Add or remove Excluded Path Patterns
+* Schedule a job run
 --
 .Migration Job
 --
-* Edit any job option. 
-* Add or remove mappings.
-* Schedule a job run.
+* Edit any job option
+* Add or remove mappings
+* Schedule a job run
 --
 ====
 . Select *Save*. The new configuration affects future job runs. 
@@ -108,8 +99,7 @@ If a migration job run completes with errors due to transient issues such as net
 
 .Steps 
 
-. Select *Jobs* in the left navigation bar. 
-. Select *Job Config List*. 
+. Select *Jobs* > *Job Config List*. 
 . In the *Job Listings* table, locate the job that has failed items and select the action menu icon next to your job.
 . Select *Details* from the action menu icon (three dots) to view the job details. 
 . Select *Retry Recent Errors* in the top right corner. 
@@ -119,11 +109,10 @@ If a migration job run completes with errors due to transient issues such as net
 
 .Steps 
 
-. Select *Jobs* in the left navigation bar.
-. Select *Job Config List*.
+. Select *Jobs* > *Job Config List*.
 . In the *Job Listings* table, locate the job you want to delete and select the action menu icon (three dots) next to your job. 
 . Select *Delete* from the action menu.
-. Select *Delete* in the pop-up window to delete the job. You can delete a job only if there is no active run. 
+. Select *Delete* in the pop-up window to delete the job. You can only delete a job if there is no active run. 
 
 [[view-job-details]]
 == View Job Details
@@ -138,8 +127,7 @@ From the *Job Config List* page, you can access the *Job Details* page to view a
 
 .Steps
 
-. Select *Jobs* in the left navigation bar.
-. Select *Job Config List*.
+. Select *Jobs* > *Job Config List*.
 . In the *Job Listings* table, select the action menu next to a job, then select *Details* from the pop-up menu.
 
 == View Job Run History
@@ -155,43 +143,51 @@ On the *Job Details* page, the *Run History* table provides you with the followi
 * Status
 * Errors (if any)
 
-Migration/Discovery job status types include:
+The migration and discovery job status types include:
 
-* *Ready:* a job is scheduled to run.
-* *Running:* a job is in the running state.
-* *Paused:* a job run has been paused manually, or by NetApp Data Migrator. For example, a job can have a paused status if a worker goes down while the job is running.
-* *Completed:* a job is complete.
-* *Errored:* a job run triggers a fatal error.
-* *Failed:* if a worker goes offline while a job is running, the job might enter a failed state.
+* *Ready*: A job is scheduled to run.
+* *Running*: A job is in the running state.
+* *Paused*: A job run has been paused manually or by NetApp Data Migrator. For example, a job can have a paused status if a worker goes down while the job is running.
+* *Completed*: A job is complete.
+* *Errored*: A job run triggers a fatal error.
+* *Failed*: If a worker goes offline while a job is running, the job might enter a failed state.
 
-Cutover job status types include:
+The cutover job status types include:
 
-* *Blocked:* a cutover job is waiting for a user response.
-* *Rejected:* a cutover job has been reviewed and rejected by a user.
-* *Approved:* a cutover job has been reviewed and approved by a user. 
-* *Stopped:* a job has stopped running.
+* *Blocked*: The job is waiting for a user response.
+* *Rejected*: The job has been reviewed and rejected by a user.
+* *Approved*: The job has been reviewed and approved by a user. 
+* *Stopped*: The job has stopped running.
 
 == Manage Job Run operations
 
-From the *Job Details* page, you can manage *Start*, *Stop*, *Pause*, and *Resume* operations for a job. Use the *Pause* feature to temporarily halt a running job, without canceling it. Then, you can resume the job from the point where it was paused. This is a useful feature in scenarios where you need to free up system resources or troubleshoot issues without losing progress.
+From the *Job Details* page, you can manage *Start*, *Stop*, *Pause*, and *Resume* operations for a job. Use the *Pause* feature to temporarily halt a running job, without canceling it. Then you can resume the job from the point where it was paused. This is a useful feature in scenarios where you need to free up system resources or troubleshoot issues without losing progress.
 
 === Pause or resume a job run
 
 .Steps
 
 . On the *Job Details* page, in the *Run History* table, select the action menu next to a job run whose status is *Running*.
-. Select *Pause* from the pop-up menu and the job run status changes to *Paused*.
-. To *Resume*, select the action menu next to the paused job run; the status changes to *Running* and it continues to run from the step where it was paused.
-
-You can use the *Stop* option to permanently terminate a job run that is in progress. This action is useful when a job run is no longer required. You cannot resume a job run that is stopped but you have the option to start a new job run from the beginning.
+. Select *Pause* from the pop-up menu.
++
+The job run status changes to *Paused*.
+. To Resume the job run, select *Resume* from the action menu next to the paused job run. 
++
+The status changes to *Running* and the job continues to run from the step where it was paused.
 
 === Stop or start a job run
+
+You can use the stop option to permanently terminate a job run that is in progress. This action is useful when a job run is no longer required. You cannot resume a job run that is stopped but you have the option to start a new job run from the beginning.
 
 .Steps
 
 . On the *Job Details* page, in the *Run History* table, select the action menu next to a job run whose status is *Running*.
-. Select *Stop* from the pop-up menu and the job run status changes to *Stopped*.
-. To start a new job run, select *Adhoc Run* and the job run status changes to *Running*.
+. Select *Stop* from the pop-up menu.
++
+The job run status changes to *Stopped*.
+. To start a new job run, select *Adhoc Run*.
++
+The job run status changes to *Running*.
 
 == Access Job Run Details
 
@@ -202,29 +198,29 @@ From the *Run History* table, access the *Job Run Details* page where you can vi
 . On the *Job Details* page, in the *Run History* table, select the action menu next to a job run.
 . Select *Details* from the pop-up menu.
 
-You can view a summary of key job run metrics in the top tile on the *Job Run Details* page, including:
+You can view the following summary of key job run metrics in the top tile on the *Job Run Details* page:
 
-* *Discovery/Migration:* job run type and status.
-* *Files:* the number of files found during the discovery process.
-* *Directories:* the number of directories found during the discovery process.
-* *Elapsed Time:* how long the discovery process took.
-* *Data Discovered:* the total size of discovered files.
+* *Discovery/Migration*: The job run type and status.
+* *Files*: The number of files found during the discovery process.
+* *Directories*: The number of directories found during the discovery process.
+* *Elapsed Time*: How long the discovery process took.
+* *Data Discovered*: The total size of discovered files.
 
-The middle tile on the *Job Run Details* page provides a summary of key Task metrics including:
+The middle tile on the *Job Run Details* page provides the following summary of key Task metrics:
 
-* *Workers:* The number of workers assigned to the job.
-* *Tasks:* The number of tasks being executed.
-* *Task Status Indicators:*
-* *Pending*: The number of Tasks waiting to be executed.
-* *Running*: The number of Tasks currently in progress.
-* *Completed*: The number of tasks that have successfully completed.
-* *Errored*: The number of tasks that encountered issues during execution.
+* *Workers*: The number of workers assigned to the job.
+* *Tasks*: The number of tasks being executed.
+* *Task Status Indicators*:
+** *Pending*: The number of Tasks waiting to be executed.
+** *Running*: The number of Tasks currently in progress.
+** *Completed*: The number of tasks that have successfully completed.
+** *Errored*: The number of tasks that encountered issues during execution.
 
 The lower left tile on the *Job Run Details* page provides information such as:
 
-* *Job Name:* the name assigned to the job.
-* *Source Path:* the path to the file being used for data discovery.
-* *Protocol:* the protocol being used for discovery (*NFS* or *SMB*).
+* *Job Name*: The name assigned to the job.
+* *Source Path*: The path to the file being used for data discovery.
+* *Protocol*: The protocol being used for discovery (NFS or SMB).
 
 The lower right tile on the *Job Run Details* page lists the number of errors that occurred during migration (if any). Select *View All* to access the *Errors* page, where you can find more detailed information about these errors.
 
@@ -232,8 +228,7 @@ On the *Job Run Details* page you can also generate detailed reports that provid
 
 .Steps
 
-. Select *Discovery Report*.
-. Select *Preview* to view a Histogram of job report data.
+. Select *Discovery Report* > *Preview* to view a histogram of job report data.
 . Select *Download as CSV* to export a report in CSV format, which you can analyze using a spreadsheet application.
 . Select *Download as PDF* to export a report in PDF format, which is ideal for document sharing.
 . Select *View Logs* to view or download the log files using Grafana.
@@ -249,7 +244,7 @@ The Migration Activity page shows the ten oldest files currently being migrated.
 
 == Generate a job error report
 
-NetApp Data Migrator allows you to generate an error report for jobs with an *Errored* status. This can help you to understand the reason for the error(s).
+NetApp Data Migrator allows you to generate an error report for jobs with an *Errored* status. This can help you to understand why an error occurred.
 
 .Steps
 

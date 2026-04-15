@@ -11,26 +11,26 @@ summary: "NetApp Data Migrator uses role-based access control (RBAC) to manage u
 [.lead]
 NetApp Data Migrator uses role-based access control (RBAC) to manage user permissions. RBAC allows App Admin users (administrators) to assign any of the following three roles to other users, ensuring secure access control and efficient operations. App Admin users grant permissions to other users based on their responsibilities and access requirements.
 
-* App Admin: This access level allows users to manage overall system settings, user roles, and access permissions.
-* Project Admin: This access level allows users to manage specific migration projects, including job configuration and execution.
-* Project Viewer: This access level provides users with read-only access to monitor migration progress, logs, and reports. This role is intended for users who need to monitor and observe the progress of data migration projects but are not required to perform actions that could alter or interfere with a project.
+* *App Admin*: This access level allows users to manage overall system settings, user roles, and access permissions.
+* *Project Admin*: This access level allows users to manage specific migration projects, including job configuration and execution.
+* *Project Viewer*: This access level provides users with read-only access to monitor migration progress, logs, and reports. This role is intended for users who need to monitor and observe the progress of data migration projects but are not required to perform actions that could alter or interfere with a project.
 
 The following table provides a summary of actions and user role permissions.
 
 [cols="1,2,1,1,1a", options="header"]
 |===
-| *Action* | *Description* | App Admin | Project Admin | Project Viewer
+| Action | Description | App Admin | Project Admin | Project Viewer
 
-| AgentDeployment | User can access the *View Instruction To Setup Worker* button. | Yes | Yes | No
-| CreateUser | User can create new user accounts | Yes | No | No
-| ListUsers | User can create new user accounts | Yes  | Yes | Yes  
-| ManageConfig | User can create new user accounts | Yes | Yes | No
-| ManageJob | User can create new user accounts | Yes | Yes | No
-| Reports | User can access buttons for downloading reports | Yes | Yes | Yes
-| Update Project | User can edit a project | Yes | Yes| No   
-| ViewProject | User can access the projects listing page  | Yes | Yes | Yes
-| CreateProject | User can create a project  | Yes | No | No
-| SaveSmtp | User can add/edit SMTP details| Yes | No | No
+| Agent deployment | User can access *View Instruction To Setup Worker* | Yes | Yes | No
+| Create a user | User can create new user accounts | Yes | No | No
+| List users | User can view a list of users | Yes  | Yes | Yes  
+| Manage configuration | User can manage configuration settings | Yes | Yes | No
+| Manage job | User can manage migration jobs | Yes | Yes | No
+| Reports | User can access options for downloading reports | Yes | Yes | Yes
+| Update project | User can edit a project | Yes | Yes| No   
+| View a project | User can access the projects listing page  | Yes | Yes | Yes
+| Create a project | User can create a project  | Yes | No | No
+| Save SMTP | User can add or edit SMTP details| Yes | No | No
 
 |===
 

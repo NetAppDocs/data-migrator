@@ -9,7 +9,7 @@ summary: "Port requirements for NetApp Data Migrator, including required TCP and
 :imagesdir: ./media/
 
 [.lead]
-Ensure that certain TCP ports are open to allow communication between the control plane and worker VMs in NetApp Data Migrator.
+You need to ensure that certain TCP ports are open to allow communication between the control plane and worker VMs in NetApp Data Migrator.
 
 The following tables list the ports that the control plane and worker virtual machines use to communicate.
 

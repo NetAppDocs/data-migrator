@@ -40,7 +40,9 @@ Disable access to NetApp Data Migrator for other users. This prevents users from
 
 . Select the *Settings* icon in the navigation bar.
 . Select the *Users* tab to view a list of registered users.
-. Select the *(⋮)* icon beside the details of the user who is being disabled then select *Disable Access* from the dropdown menu. The user status changes from *Active* to *Inactive* and they can't log into NetApp Data Migrator.
+. Select the *(⋮)* icon beside the details of the user who is being disabled, then select *Disable Access* from the dropdown menu. 
++
+The user status changes from *Active* to *Inactive* and they can't log into NetApp Data Migrator.
 
 == Enable a user
 
@@ -50,7 +52,9 @@ Restore access to NetApp Data Migrator for a disabled user, allowing them to log
 
 . Select *Settings* icon in the navigation bar.
 . Select the *Users* tab to view a list of registered users.
-. Select the *(⋮)* icon beside the details of the user who is being enabled then select *Enable Access* from the dropdown menu. The user status changes from *Inactive* to *Active,* allowing them to log into NetApp Data Migrator.
+. Select the *(⋮)* icon beside the details of the user who is being enabled, then select *Enable Access* from the dropdown menu.
++
+The user status changes from *Inactive* to *Active,* allowing them to log into NetApp Data Migrator.
 
 == Reset a user password
 
@@ -62,7 +66,9 @@ NOTE: To reset the password for an App Admin user when there is no other App Adm
 
 . Select the *Settings* icon in the navigation bar.
 . Select the *Users* tab to view a list of registered users.
-. Select the *(⋮)* icon beside the details of the user whose password needs to be reset then select *Reset Password* from the dropdown menu. A message appears confirming that the password reset has been successful.
+. Select the *(⋮)* icon beside the details of the user whose password needs to be reset, then select *Reset Password* from the dropdown menu. 
++
+A message appears confirming that the password reset has been successful.
 . Select the *Copy* link (next to the password field) to copy the temporary password which is displayed in a masked format.
 . Share the copied temporary password with the user.
 
