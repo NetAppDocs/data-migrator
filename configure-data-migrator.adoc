@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar
 permalink: configure-data-migrator.html
-keywords: initial configuration, login, project creation, app admin
-summary: "After installing NetApp Data Migrator, log in as App Admin, reset default credentials, and create your first project."
+keywords: configure, log, in, project, create, app admin
+summary: "Log in as an App Admin (administrator) using the default credentials and update your username and password."
 ---
 = Configure NetApp Data Migrator
 :icons: font
@@ -11,8 +11,9 @@ summary: "After installing NetApp Data Migrator, log in as App Admin, reset defa
 [.lead]
 After you install NetApp Data Migrator, you need to log in as an App Admin (administrator) using the default username and password.
 
-== Log into NetApp Data Migrator
-Log into NetApp Data Migrator, then change your login credentials and create your first project.
+[[log-in]]
+== Log in to NetApp Data Migrator
+Log in to NetApp Data Migrator, then change your login credentials and create your first project.
 
 .Steps
 
@@ -30,13 +31,15 @@ The *Reset Password* page opens.
 * Includes at least one lowercase letter
 * Includes at least one number
 * Includes at least one special character
-. Select *Reset Password,* then *Your Details* page opens.
-. Enter your *First Name*, *Last Name,* and *Email* address.
-. Select *Proceed,* then *Create a New Project* page opens.
-. Select *Create Project,* then enter the following details:
-* *Project Name*: This should be a descriptive name for your project.
-* *Project Description (Optional):* You can provide additional details about your project.
-. Select *Create* to create your new project, which then appears in the notification bar at the top of the NetApp Data Migrator control plane.
+. Select *Reset Password*. The *Your Details* page opens.
+. Enter your *First Name*, *Last Name*, and *Email* address.
+. Select *Proceed*. The *Create a New Project* page opens.
+. Select *Create Project*, then enter the following details:
+* *Project Name*: Enter a descriptive name for your project.
+* *Project Description (Optional)*: You can provide additional details about your project.
+. Select *Create*.
++
+The new project appears in the notification bar at the top of the NetApp Data Migrator control plane.
 
 == Log out of NetApp Data Migrator
 
@@ -45,8 +48,8 @@ After you log out of NetApp Data Migrator, you need to use your newly created cr
 .Steps
 
 . Select the *User* icon (next to *Settings*).
-. Select *Logout,* then the *Welcome* page opens.
-. Enter the *Email* address and *Password* you registered previously.
+. Select *Logout*. The *Welcome* page opens.
+. In *Email* and *Password*, enter the email address and password that you registered when you <<log-in,logged in>>.
 . Select *Login*.
 
 .What's next?

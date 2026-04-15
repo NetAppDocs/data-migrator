@@ -11,9 +11,9 @@ summary: "Configure NetApp Data Migrator to send real-time email alerts about pr
 [.lead]
 You can configure NetApp Data Migrator to email you real-time alerts about changes to the status of your projects.
 
-.About this task
+.Before you begin
 
-You need to be logged in as an *App admin* user to configure SMTP email server details.
+Verify that you are logged in as an *App Admin* user. This user level is required to configure SMTP email server details.
 
 .Steps
 

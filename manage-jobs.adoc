@@ -11,7 +11,7 @@ summary: "Use job management features in NetApp Data Migrator to initiate and tr
 [.lead]
 Use job management features in NetApp Data Migrator to initiate and track your *Discovery*, *Migration*, and *Cutover* jobs and job runs.
 
-NOTE: Do not run Migration and Cutover jobs simultaneously. Ensure only one job is active at a time. 
+NOTE: Do not run Migration and Cutover jobs simultaneously. Ensure that only one job is active at a time. 
 
 == View Job Config List
 
@@ -244,7 +244,7 @@ The Migration Activity page shows the ten oldest files currently being migrated.
 
 == Generate a job error report
 
-NetApp Data Migrator allows you to generate an error report for jobs with an *Errored* status. This can help you to understand why an error occurred.
+You can generate an error report for jobs with an *Errored* status. The report can help you to understand why an error occurred.
 
 .Steps
 

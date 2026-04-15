@@ -25,7 +25,7 @@ Create a new user and share the temporary password.
 . Select *Settings* in the navigation bar.
 . Select the *Users* tab to view a list of registered users.
 . Select *Add User*.
-. Enter the *First Name*, *Last Name,* and *Email* address of the new user.
+. Enter the *First Name*, *Last Name*, and *Email* address for the new user.
 . If the new user requires administrator permissions, select the *App Admin* checkbox.
 . Select *Submit* to create the user. A message appears confirming that the new user has been successfully created.
 . Select the *Copy* link (next to the password field) to copy the temporary password, which is displayed in a masked format.
@@ -42,7 +42,7 @@ Disable access to NetApp Data Migrator for other users. This prevents users from
 . Select the *Users* tab to view a list of registered users.
 . Select the *(⋮)* icon beside the details of the user who is being disabled, then select *Disable Access* from the dropdown menu. 
 +
-The user status changes from *Active* to *Inactive* and they can't log into NetApp Data Migrator.
+The user status changes from *Active* to *Inactive* and they can't log in to NetApp Data Migrator.
 
 == Enable a user
 
@@ -54,7 +54,7 @@ Restore access to NetApp Data Migrator for a disabled user, allowing them to log
 . Select the *Users* tab to view a list of registered users.
 . Select the *(⋮)* icon beside the details of the user who is being enabled, then select *Enable Access* from the dropdown menu.
 +
-The user status changes from *Inactive* to *Active,* allowing them to log into NetApp Data Migrator.
+The user status changes from *Inactive* to *Active*. The user can now log in to NetApp Data Migrator.
 
 == Reset a user password
 

@@ -37,7 +37,7 @@ Choose the AWS, Azure, Google Cloud tab, or OVA tab depending on your deploy opt
 --
 After requesting access to the AMIs, you copy the AMIs into your AWS account. Copying the AMIs gives you full ownership, avoids dependency on the source account, and is required for cross-region use.
 
-Repeat the steps below for the control plane and Linux worker Amazon Machine Images (AMIs). 
+Repeat the following steps for the control plane and Linux worker Amazon Machine Images (AMIs). 
  
 . Use the AMI IDs provided to locate the AMIs in your AWS account under *EC2* > *AMIs* > *Private images*.
 . Copy the AMIs into your account: 
@@ -49,7 +49,7 @@ Repeat the steps below for the control plane and Linux worker Amazon Machine Ima
 
 .Azure
 --
-Repeat the steps below for the control plane and Linux worker VHDs.
+Repeat the following steps for the control plane and Linux worker VHDs.
 
 . Copy the VHD files to Azure Blob Storage: 
 +
@@ -81,11 +81,11 @@ az image create \
 --  
 . Verify that the Google Cloud APIs required to import images and deploy the control plane and worker VMs are enabled. For more information, refer to the link:https://docs.cloud.google.com/migrate/virtual-machines/docs/5.0/get-started/enable-services#enabling_required_services_on_the_host_project[Google Cloud documentation^].
 
-. Create a Google Cloud Storage (GCS) bucket if one does not already exist. This bucket is used to store the image archives (.tar.gz) during the import operation. 
+. Create a Google Cloud Storage bucket if one does not already exist. This bucket is used to store the image archives (.tar.gz) during the import operation. 
 +
-Learn how to link:https://cloud.google.com/storage/docs/creating-buckets#console[create a Google Cloud Storage (GCS) bucket^].
+Learn how to link:https://cloud.google.com/storage/docs/creating-buckets#console[create a Google Cloud Storage bucket^].
 
-. Set up the IAM roles and permissions. This ensures that the VM migration API has the required access permissions and the VM migration service can access the GCS bucket and create images. 
+. Set up the IAM roles and permissions. This ensures that the VM migration API has the required access permissions and the VM migration service can access the Google Cloud Storage bucket and create images. 
 +
 .. Assign the service account objectViewer access to your destination Cloud Storage bucket:
 +
@@ -120,22 +120,20 @@ This gives you VM migration administrative permissions at the project level.
 . Obtain and upload the image files:
 
 .. Log in to link:https://mysupport.netapp.com/site/[NetApp Support site^] and download the control plane `.tar.gz` image and the Linux worker `.tar.gz` image files.
-.. Upload `.tar.gz` files to your GCS bucket. 
+.. Upload the `.tar.gz` files to your Google Cloud Storage bucket. 
 
-. After the image archives are uploaded to GCS, create VM images using the VM Migration Service by running the following command for each image (control plane and Linux worker).
+. After the image archives are uploaded to Google Cloud Storage, create VM images using the VM Migration Service by running the following command for each image (control plane and Linux worker).
 +
 [source,cli]
 ----
-gcloud migration vms image-imports create <IMAGE_IMPORT_NAME> \ 
-  --source-file=gs://<GCS_BUCKET>/<IMAGE_NAME>.tar.gz \ 
-  --image-name=<IMAGE_NAME> \ 
-  --location=<REGION> \ 
-  --target 
-Group 34776889, Grouped object-project=projects/<PROJECT_ID>/locations/global/targetProjects/<PROJECT_ID> \ 
- --project=<PROJECT_ID>
+--source-file=gs://<GCS_BUCKET>/<IMAGE_NAME>.tar.gz \
+  --image-name=<IMAGE_NAME> \
+  --location=<REGION> \
+  --target-project=projects/<PROJECT_ID>/locations/global/targetProjects/<PROJECT_ID> \
+  --project=<PROJECT_ID>
 ----
 +
-This command creates a new GCP VM image from the provided archive in the specified region. 
+This command creates a new Google Cloud Platform VM image from the provided archive in the specified region. 
 
 . List image import operations and confirm completion:
 +

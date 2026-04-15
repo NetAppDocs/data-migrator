@@ -13,7 +13,7 @@ You can use the Projects tab in the NetApp Data Migrator control plane to create
 
 == Create a project
 
-App admin users can create a new project in NetApp Data Migrator and assign users with defined roles to that project.
+App Admin users can create a new project in NetApp Data Migrator and assign users with defined roles to that project.
 
 .Steps
 
