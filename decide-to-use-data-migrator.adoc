@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: decide-to-use-data-migrator.html
 keywords: netapp data migrator, snapmirror, data migration, ontap
- summary: "Use this decision matrix to determine whether to use NetApp Data Migrator or SnapMirror for your data migration scenarios."
+summary: "Use this decision matrix to determine whether to use NetApp Data Migrator or SnapMirror for your data migration scenarios."
 ---
 = Decide whether to use NetApp Data Migrator
 :icons: font
