@@ -13,9 +13,9 @@ NetApp Data Migrator has the following known issues.
 
 == Configuration 
 
-=== Access permission mismatch when SID mapping is used
+=== Access permission mismatch when using SID mapping
 
-NetApp Data Migrator might report a `Missing ACE in target` error when SID mapping is used. This error indicates an access permission mismatch between the source and target systems because SID mapping was not performed at the root level.   
+NetApp Data Migrator might report a `Missing ACE in target` error when using SID mapping. This error indicates an access permission mismatch between the source and target systems because SID mapping was not performed at the root level.   
 
 .Workaround
 
@@ -65,14 +65,14 @@ This issue affects only inherited permission propagation from the root directory
 .Workaround 
 After the migration completes, manually reapply or reset the inherited permissions on the root directory at the destination. This allows the correct inherited permissions to propagate to all child directories and files
 
-=== Incorrect UID/GID Mapping in NFS 
+=== Incorrect UID/GID mapping in NFS 
 
 During NFS migrations, if the UID and GID mapping CSV file contains numeric user IDs or group IDs that do not exist on the destination system, NetApp Data Migrator applies (stamps) these values as is. NetApp Data Migrator does not validate whether the specified UID or GID exists on the destination and does not report any error or warning in the UI. This can result in file migration with incorrect ownership. 
 
 .Workaround 
 Ensure that all UID and GID values specified in the mapping CSV correspond to valid and existing users and groups on the destination system before starting the migration. Manually verify user and group existence on the destination to avoid NetApp Data Migrator applying incorrect ownership during migration. 
 
-=== Migration precheck displays false Insufficient Space warning
+=== Migration precheck displays false insufficient space warning
 
 During migration prechecks, you might see the following warning, even if the destination has sufficient space: 
 
@@ -94,7 +94,7 @@ Run Discovery before a Migration run. This ensures that the disk usage informati
 
 === Excel displays incorrect permissions in COC report file
 
-When opening the COC report CSV file in Microsoft Excel, some file or folder permissions might appear as #NAME?, for example, -rwxrwxrwx, instead of the actual values. 
+When opening the Chain of Custody (CoC) report CSV file in Microsoft Excel, some file or folder permissions might appear as #NAME?, for example, -rwxrwxrwx, instead of the actual values. 
 
 This happens because Excel mistakenly treats certain permission strings (starting with - or =) as formulas, leading to display errors. The CSV file itself is correct, this is only a display issue.  
 
@@ -110,7 +110,7 @@ To view correct file and folder permissions open the CSV file using one of the f
 
 * Text editor, for example, Notepad++
 
-=== No error message when Discovery job fails due to network issues
+=== No error message when Bulk Discovery job fails due to network issues
 
 If the host or destination server goes down during a Bulk Discovery job, NetApp Data Migrator might not show an error message. This can give the impression that the job is still running normally.  
 
@@ -178,7 +178,7 @@ After data migration completes, the total number of files is correct, but some f
 
 .Workaround
 
-. Review the migration Chain of Custody (COC) report to identify files marked as errored. 
+. Review the migration COC report to identify files marked as errored. 
 . Re-run the migration until the errors are resolved.  
 
 == Workflows

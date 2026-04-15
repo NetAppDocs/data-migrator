@@ -11,7 +11,7 @@ summary: "To get started with NetApp Data Migrator, you need to set up control p
 [.lead]
 Getting started with NetApp Data Migrator includes a few steps.
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png[One]xref:learn-about-data-migrator.adoc[Learn about NetApp Data Migrator]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png[One]Learn about NetApp Data Migrator
 
 [role="quick-margin-para"]
 NetApp Data Migrator supports NFS and SMB file transfer protocols. Determine that NetApp Data Migrator supports your data migration needs and choose the deployment option that suits your environment:
@@ -23,19 +23,30 @@ NetApp Data Migrator supports NFS and SMB file transfer protocols. Determine tha
 * Open Virtual Appliance (OVA) templates
 
 [role="quick-margin-para"]
-Review link:decide-to-use-data-migrator.html[Decide whether to use NetApp Data Migrator] and link:networking-requirements.html[Networking requirements].
+Review link:decide-to-use-data-migrator.html[Decide whether to use NetApp Data Migrator] and the link:networking-requirements.html[Networking requirements].
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png[Two]xref:learn-about-install.adoc[Install and set up]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png[Two]Install and set up
 
 [role="quick-margin-para"]
 NetApp Data Migrator uses a control plane and worker nodes. First you deploy the control plane VM and worker VMs based on your migration needs. For NFS, you deploy a Linux worker and for SMB, you deploy a Windows worker. You can use NFS or SMB, or both protocols. After deployment, you create the control plane VM and worker VMs and access the NetApp Data Migrator UI.
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png[Three]xref:configure-data-migrator.adoc[Configure]
+[role="quick-margin-para"]
+link:learn-about-install.html[Learn about installing NetApp Data Migrator]
 
 [role="quick-margin-para"]
-You first log in as an administrator using the default credentials, then update your username and password. 
+Learn how to:
+[role="quick-margin-list"]
+. link:deploy-control-plane-and-linux-workers.html[Deploy the control plane VM and Linux worker VM]
+. link:create-control-plane-and-worker-vms.html[Create the control plane VM and worker VMs]
+. link:access-data-migrator-ui.html[Access the NetApp Data Migrator UI]
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png[Four]xref:manage-projects.adoc[Create a project]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png[Three]Configure and manage
 
 [role="quick-margin-para"]
-Create your first project, then add the file servers to initiate migration workflows.
+You first log in as an administrator using the default credentials and update your username and password. Then you can create your first project and add the file servers to initiate migration workflows.
+
+[role="quick-margin-para"]
+Learn how to:
+[role="quick-margin-list"]
+. link:configure-data-migrator.html[Configure NetApp Data Migrator]
+. link:manage-projects.html[Create and manage projects in NetApp Data Migrator]

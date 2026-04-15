@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: generate-support-bundle.html
 keywords: support bundle, diagnostics, troubleshooting, log files, download report
-summary: "Generate and download an NetApp Data Migrator support bundle containing diagnostic logs, error reports, and configuration data for troubleshooting."
+summary: "Generate and download a NetApp Data Migrator support bundle containing diagnostic logs, error reports, and configuration data for troubleshooting."
 ---
 = Generate a NetApp Data Migrator support bundle
 :icons: font

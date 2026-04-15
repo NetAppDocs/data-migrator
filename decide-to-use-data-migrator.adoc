@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar
 permalink: decide-to-use-data-migrator.html
-keywords: aws installearn-about-installlation, prerequisites, control plane, worker vm, ec2
-summary: "Learn about installing the NetApp Data Migrator control plane and worker VMs."
+keywords: netapp data migrator, snapmirror, data migration, ontap
+ summary: "Use this decision matrix to determine whether to use NetApp Data Migrator or SnapMirror for your data migration scenarios."
 ---
 = Decide whether to use NetApp Data Migrator
 :icons: font

@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar
 permalink: access-data-migrator-ui.html
-keywords: google cloud, installation, control plane, worker vm, iam roles
-summary: "Create VM instances on Google Cloud by enabling required APIs, preparing storage, configuring IAM roles, and deploying control plane and worker VMs."
+keywords: netapp, data, migrator, ui, control, plane, access, worker, linux, windows
+summary: "Access the NetApp Data Migrator UI after deployment, sign in to the control plane, and connect deployed Linux and Windows workers."
 ---
 = Access the NetApp Data Migrator UI 
 :icons: font
@@ -34,6 +34,6 @@ On the home page, select *View Instruction to Setup Worker*.
 After the workers are successfully connected, you can configure the NetApp Data Migrator environment and run migration jobs. 
 
 .What's next?
-Learn about link:configure-data-migrator.html[configuring NetApp Data Migrator]
+After learning about accessing the NetApp Data Migrator UI, you can link:configure-data-migrator.html[configure NetApp Data Migrator].
 
 // 2026 APRIL 15, GA release

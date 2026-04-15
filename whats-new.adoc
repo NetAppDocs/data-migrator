@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar
 permalink: whats-new.html
-keywords: 
-summary: 
+keywords: netapp, data, migrator, whats new, release, notes
+summary: "Learn what's new in this doc site.
 ---
 = What's new in NetApp Data Migrator
 :icons: font

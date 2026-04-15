@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar
 permalink: register-for-support.html
-keywords: support matrix, nfs, smb, file servers, protocol versions
-summary: "Learn about NetApp Data Migrator support for features, file servers, and protocols."
+keywords: netapp, data, migrator, support, register, account
+summary: "Create a NetApp account and complete the registration process to access NetApp Support."
 ---
 = Register for NetApp Data Migrator support
 :icons: font
@@ -50,7 +50,7 @@ This is a 20-digit number, starting with 975.
 .. Leave the *NetApp Reference SN* field blank 
 .. From the Product Line dropdown, select *NDM*. 
 .. From the Billing Provider dropdown, select *Azure NetApp Files*.
-.. Enter the 20-digit NDM Instance ID in the *NDM Serial #* field.
+.. Enter the 20-digit NetApp Data Migrator Instance ID in the *NDM Serial #* field.
 .. Complete the remaining required fields, then select *Submit*. 
 . After submission, you receive a registration confirmation email. Follow the instructions in the email to confirm the registration.
 

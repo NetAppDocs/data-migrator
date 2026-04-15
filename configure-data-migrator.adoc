@@ -4,7 +4,7 @@ permalink: configure-data-migrator.html
 keywords: initial configuration, login, project creation, app admin
 summary: "After installing NetApp Data Migrator, log in as App Admin, reset default credentials, and create your first project."
 ---
-= Set up and configure NetApp Data Migrator
+= Configure NetApp Data Migrator
 :icons: font
 :imagesdir: ./media/
 
@@ -51,4 +51,4 @@ After you log out of NetApp Data Migrator, you need to use your newly created cr
 
 .What's next?
 
-Learn about link:manage-projects.html[using NetApp Data Migrator]
+After learning about configuring NetApp Data Migrator, you can link:manage-projects.html[use NetApp Data Migrator].

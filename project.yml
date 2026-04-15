@@ -8,81 +8,81 @@ settings:
 
 sidebar: 
   entries:
-  - title: NetApp Data Migrator docs
-    url: /index.html
-  - title: Release notes 
-    entries:
-    - title: What's new 
-      url: /whats-new.html
-    - title: Known issues
-      url: /known-issues.html
-    - title: Support matrix
-      url: /support-matrix.html
-    - title: Usage limits
-      url: /usage-limitations.html
-  - title: Get started
-    entries: 
-    - title: Learn about NetApp Data Migrator
-      url: /learn-about-data-migrator.html
-    - title: Decide whether to use NetApp Data Migrator
-      url: /decide-to-use-data-migrator.html 
-    - title: Quick start 
-      url: /quick-start.html
-    - title: Networking requirements
+    - title: NetApp Data Migrator docs
+      url: /index.html
+    - title: Release notes 
       entries:
-      - title: Verify networking access 
-        url: /networking-requirements.html
-      - title: Port requirements
-        url: /port-requirements.html
-  - title: Install, set up, and upgrade
-    entries:
-    - title: Learn about installing NetApp Data Migrator
-      url: /learn-about-install.html
-    - title: Deploy control plane and Linux workers
-      url: /deploy-control-plane-and-linux-workers.html
-    - title: Create the control plane and worker VMs
-      url: /create-control-plane-and-worker-vms.html
-    - title: Validate the control plane and worker deployment
-      url: /validate-control-plane-vm.html
-    - title: Access NetApp Data Migrator UI
-      url: /access-data-migrator-ui.html
-    - title: Configure NetApp Data Migrator
-      url: /configure-data-migrator.html
-    - title: Upgrade control plane and workers
-      url: /upgrade.html
-  - title: Use NetApp Data Migrator
-    entries: 
-    - title: Create and manage projects
-      url: /manage-projects.html
-    - title: Manage users
+      - title: What's new 
+        url: /whats-new.html
+      - title: Known issues
+        url: /known-issues.html
+      - title: Support matrix
+        url: /support-matrix.html
+      - title: Usage limits
+        url: /usage-limitations.html
+    - title: Get started
       entries: 
-      - title: Add and manage users
-        url: /manage-users.html
-      - title: Manage access control
-        url: /access-control.html
-    - title: Add and manage file servers
-      url: /manage-file-servers.html
-    - title: Configure real-time notifications
-      url: /configure-notifications.html
-    - title: Manage migration options
+      - title: Learn about NetApp Data Migrator
+        url: /learn-about-data-migrator.html
+      - title: Decide whether to use NetApp Data Migrator
+        url: /decide-to-use-data-migrator.html 
+      - title: Quick start 
+        url: /quick-start.html
+      - title: Networking requirements
+        entries:
+        - title: Verify networking access 
+          url: /networking-requirements.html
+        - title: Port requirements
+          url: /port-requirements.html
+    - title: Install, set up, and upgrade
       entries:
-      - title: Plan data migration
-        url: /configure-bulk-discover.html
-      - title: Configure Bulk Migrate
-        url: /configure-bulk-migrate.html
-      - title: Configure Bulk Cutover
-        url: /configure-bulk-cutover.html
-    - title: Manage jobs and job runs
-      url: /manage-jobs.html
-    - title: Generate support bundle
-      url: /generate-support-bundle.html
-  - title: FAQ
-    url: /faq.html
-  - title: Get help
-    entries:
-    - title: Register for support
-      url: /register-for-support.html
-    - title: Troubleshoot
-      url: /troubleshoot.html
-  - title: Legal notices
-    url: /legal-notices.html
+      - title: Learn about installing NetApp Data Migrator
+        url: /learn-about-install.html
+      - title: Deploy control plane and Linux workers
+        url: /deploy-control-plane-and-linux-workers.html
+      - title: Create the control plane and worker VMs
+        url: /create-control-plane-and-worker-vms.html
+      - title: Validate the control plane and worker deployment
+        url: /validate-control-plane-vm.html
+      - title: Access NetApp Data Migrator UI
+        url: /access-data-migrator-ui.html
+      - title: Configure NetApp Data Migrator
+        url: /configure-data-migrator.html
+      - title: Upgrade control plane and workers
+        url: /upgrade.html
+    - title: Use NetApp Data Migrator
+      entries: 
+      - title: Create and manage projects
+        url: /manage-projects.html
+      - title: Manage users
+        entries: 
+        - title: Add and manage users
+          url: /manage-users.html
+        - title: Manage access control
+          url: /access-control.html
+      - title: Add and manage file servers
+        url: /manage-file-servers.html
+      - title: Configure real-time notifications
+        url: /configure-notifications.html
+      - title: Manage migration options
+        entries:
+        - title: Plan data migration
+          url: /configure-bulk-discover.html
+        - title: Configure Bulk Migrate
+          url: /configure-bulk-migrate.html
+        - title: Configure Bulk Cutover
+          url: /configure-bulk-cutover.html
+      - title: Manage jobs and job runs
+        url: /manage-jobs.html
+      - title: Generate support bundle
+        url: /generate-support-bundle.html
+    - title: FAQ
+      url: /faq.html
+    - title: Get help
+      entries:
+      - title: Register for support
+        url: /register-for-support.html
+      - title: Troubleshoot
+        url: /troubleshoot.html
+    - title: Legal notices
+      url: /legal-notices.html
