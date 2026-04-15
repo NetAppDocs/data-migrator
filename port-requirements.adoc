@@ -19,13 +19,12 @@ The following tables list the ports that the control plane and worker virtual ma
 |===
 |Service | TCP port |  From | To
 
-| Temporal Server | 7233 | Workers and clients | 
-| Temporal Server | 7234 || Internode connection, if using clusters
-| Temporal UI | 8080  | Default port, if enabled | 
-| PostgreSQL (Temporal database) | 5432 |Temporal services | 
-| Redis | 6379 |Workers or control plane services |  
-| API or UI ingress (your application) | 80 or 443, as applicable  | |	
-| Grafana | 3000 | |	
+| Temporal Server | 7233 or 7234 | Workers and clients | Control plane 
+| Temporal UI | 8080  | Default port, if enabled | Control plane 
+| PostgreSQL (Temporal database) | 5432 |Temporal Services (from the control plane) | Control plane
+| Redis | 6379 |Workers or control plane services | Control plane
+| API or UI ingress (your application) | 80 or 443 | Browser or any external client | Control plane
+| Grafana | 3000 | Browser | Control plane
 |===
 
 *Workers*
@@ -34,13 +33,14 @@ The following tables list the ports that the control plane and worker virtual ma
 |===
 |Service |TCP port |  From | To
 
-|Outbound to control plane | 7233 | | Temporal frontend
-|Outbound to control plane | 6379 | | Redis
-|Outbound to control plane | 80 or 443 | | API or UI, if they call it
-|Outbound to storage |NFS: 2049 | | NFS servers 
+|Outbound to control plane | 7233 | Services in the control plane | Temporal frontend
+|Outbound to control plane | 6379 | Services in the control plane | Redis
+|Outbound to control plane | 80 or 443 | Browser | API or UI (if you call it)
+|Outbound to storage | 2049 | Worker | NFS servers 
 
 *Note*: Include TCP or UDP port 111 if you need the portmapper service for Remote Procedure Calls.
-|Outbound to storage | SMB: 445  | | SMB servers
+|Outbound to storage | 445  | Worker | SMB servers
 |===
+
 // 15 APRIL 2026, GA release
 // 2025 DEC 1, OTHERDOC-168
