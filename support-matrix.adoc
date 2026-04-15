@@ -17,7 +17,7 @@ NetApp Data Migrator supports certain features for NFS and SMB migrations. Some 
 
 [cols="1,2a,1,1" options="header"]
 |===
-| Description | Feature | NFS | SMB
+| Description | Feature | NFS support | SMB support
 
 .5+| Permissions and audit handling
 | Chain of custody reporting
@@ -102,7 +102,7 @@ NetApp Data Migrator supports the following file servers as source and destinati
 
 [cols="1,2a" options="header"]
 |===
-| File server | Description
+| Description | Supported file server
 
 | Source	a| Any NAS server, for example, Dell Isilon, ONTAP, Vanilla Linux, Windows, Cloud Volumes ONTAP
 | Destination a| All service levels of Azure NetApp Files (ANF), Google Cloud NetApp Volumes (GCNV), Amazon FSx for NetApp ONTAP (FSxN), Cloud Volumes ONTAP
