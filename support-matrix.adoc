@@ -11,7 +11,7 @@ summary: "Learn about NetApp Data Migrator support for features, file servers, a
 [.lead]
 NetApp Data Migrator supports the following features, files servers, and protocols.
 
-== Supported and unsupported features for NFS and SMB migrations
+== Supported and unsupported features
 
 NetApp Data Migrator supports certain features for NFS and SMB migrations. Some features are not supported. Review the following tables to understand which features are supported and unsupported.
 

@@ -39,7 +39,7 @@ Register your NetApp Data Migrator product to enable the software.
 
 .Steps
 . On the NetApp Data Migrator home page, select *Help (?)* > *About* > *Serial Number*
-. In the *About NDM* dialog box, record the NetApp Data Migrator Instance ID. 
+. In the *About NDM* dialog box, record the NetApp Data Migrator instance ID. 
 +
 This is a 20-digit number, starting with 975.
 
@@ -47,10 +47,10 @@ This is a 20-digit number, starting with 975.
 . Select *I am not a registered NetApp Customer*. 
 . Fill in the required product registration details: 
 +
-.. Leave the *NetApp Reference SN* field blank 
+.. Leave the *NetApp Reference SN* field blank.
 .. From the Product Line dropdown, select *NDM*. 
 .. From the Billing Provider dropdown, select *Azure NetApp Files*.
-.. Enter the 20-digit NetApp Data Migrator Instance ID in the *NDM Serial #* field.
+.. Enter the 20-digit NetApp Data Migrator instance ID in the *NDM Serial #* field.
 .. Complete the remaining required fields, then select *Submit*. 
 . After submission, you receive a registration confirmation email. Follow the instructions in the email to confirm the registration.
 
