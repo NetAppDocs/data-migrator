@@ -72,6 +72,7 @@ a|* Follow NTFS junctions
 +  
 NetApp Data Migrator can discover but not migrate alternate data streams.
 | File metadata preservation 
+| Selective file attributes
 | Migration behavior and data consistency 
 | Migration of snapshots 
 |===
