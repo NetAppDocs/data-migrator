@@ -38,7 +38,7 @@ Learn about link:learn-about-install.html[installing NetApp Data Migrator].
 Register your NetApp Data Migrator product to enable the software.
 
 .Steps
-. Select *Help (?)* > *About* > *Serial Number*
+. On the NetApp Data Migrator home page, select *Help (?)* > *About* > *Serial Number*
 . In the *About NDM* dialog box, record the NetApp Data Migrator Instance ID. 
 +
 This is a 20-digit number, starting with 975.

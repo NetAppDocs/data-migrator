@@ -13,87 +13,67 @@ NetApp Data Migrator supports the following features, files servers, and protoco
 
 == Supported and unsupported features for NFS and SMB migrations
 
-NetApp Data Migrator supports certain features for NFS and SMB migrations. Some features are not supported. Review the following table to understand which features are supported and unsupported.
+NetApp Data Migrator supports certain features for NFS and SMB migrations. Some features are not supported. Review the following tables to understand which features are supported and unsupported.
 
-[cols="1,2a,1,1" options="header"]
+*Supported features*
+
+[cols="1,2a" options="header"]
 |===
-| Description | Feature | NFS support | SMB support
+| Description | Supported feature
 
-.5+| Permissions and audit handling
-| Chain of custody reporting
-| Yes
-| Yes
-| Discretionary Access Control List (DACL)
-| Yes
-| Yes
-| Preserve Access Control List (ACL)
-| Yes
-| Yes
+| Permissions and audit handling
+a| * Chain of custody reporting 
+* Discretionary Access Control List (DACL)
+* Preserve Access Control List (ACL)
+* User Identifier (UID) and Security Identifier (SID) remapping 
+
+| File system objects and links 
+a|* Hard link handling 
++
+NetApp Data Migrator migrates objects and links as separate files. 
+* Symbolic links
++
+*Note*: Supported for NFS migrations
+| File metadata preservation 
+
+a| * Preserve access time
+* Preserve creation time
+* Preserve modified time
+* Preserve permissions
+
+| Migration behavior and data consistency 
+a| * Delete propagation 
+* Incremental migration 
+* Support for open files 
+* Switchover support 
+
+| Migration control and execution 
+a| * File pattern exclusions
+* Scheduling for migration
+|===
+
+*Unsupported features*
+
+[cols="1,2a" options="header"]
+|===
+|Description | Unsupported feature
+
+| Permissions and audit handling
 | System Access Control List (SACL)
-| Yes
-| No
-| User Identifier (UID) and Security Identifier (SID) remapping 
-| Yes
-| Yes
-.4+| File system objects and links 
-| Alternate data streams
 
+*Note*: Unsupported for SMB migrations
+| File system objects and links 
+a|* Follow NTFS junctions 
+* Symbolic links
++
+*Note*: Unsupported for SMB migrations
+
+* Alternate data streams
++  
 NetApp Data Migrator can discover but not migrate alternate data streams.
-| No
-| No
-| Follow NTFS junctions
-| No
-| No
-| Hard link handling 
-
-NetApp Data Migrator migrates objects and links as separate files.
-| Yes
-| Yes
-| Symbolic links
-| Yes
-| No
-.5+| File metadata preservation 
-
-| Preserve access time
-| Yes
-| Yes
-| Preserve creation time
-| Yes
-| Yes
-| Preserve modified time
-| Yes
-| Yes
-| Preserve permissions
-| Yes
-| Yes
-| Selective file attributes
-| No
-| No
-
-.5+| Migration behavior and data consistency 
-| Delete propagation
-| Yes
-| Yes 
-| Incremental migration
-| Yes
-| Yes
-| Migration of snapshots
-| No
-| No
-| Support for open files
-| Yes
-| Yes
-| Switchover support
-| Yes
-| Yes
-
-.2+| Migration control and execution 
-| File pattern exclusions
-| Yes
-| Yes
-| Scheduling for migration
-| Yes
-| Yes
+| File metadata preservation 
+| Migration behavior and data consistency 
+| Migration of snapshots 
 |===
 
 == Supported file servers
