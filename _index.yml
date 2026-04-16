@@ -18,8 +18,8 @@ indexpage:
           url: /learn-about-install.html
         - title: Upgrade control plane and workers
           url: /upgrade.html
-        - title: Create projects
-          url: /create-projects.html
+        - title: Create and manage projects
+          url: /manage-project.html
         - title: Use NetApp Data Migrator
           url: /manage-users.html
     - title: More resources
