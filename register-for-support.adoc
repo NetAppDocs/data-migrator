@@ -27,7 +27,7 @@ Complete the NetApp account registration. It can take up to one business day for
 
 . Select *Submit*. A confirmation window appears indicating that the user registration has been submitted successfully. 
 
-If you encounter any issues during registration or want to check the status of your registration, link:https://mysupport.netapp.com/site/help[open a support ticket].
+If you encounter any issues during registration or want to check the status of your registration, link:https://mysupport.netapp.com/site/help[open a support ticket^].
 
 == Step 2: Install NetApp Data Migrator
 
