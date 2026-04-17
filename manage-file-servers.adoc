@@ -14,13 +14,14 @@ You can use NetApp Data Migrator to add, configure, and edit file servers that u
 == Add a new file server
 Add a new NFS or SMB file server and configure the worker virtual machines. 
 
-.Steps
 Depending on your system configuration, use the Other NAS or Dell Isilon workflow option.
 
 [role="tabbed-block"]
 ====
 .Other NAS
 --
+.Steps
+
 . In the left navigation panel, select *Storage Servers*.
 . Select *File Servers* > *+Add*. 
 +
@@ -59,6 +60,8 @@ The status of a file servers is listed in the *Status* column of the *File Serve
 
 .Dell Isilon
 --
+.Steps
+
 . In the left navigation panel, select *Storage Servers*.
 . Select *File Servers* > *+Add*.
 +
@@ -128,13 +131,14 @@ When upload is complete, export paths and directory paths can have one of the fo
 
 If required, you can make changes to a previously configured file server.
 
-.Steps
 Edit the file server details using the Other NAS or Dell Isilon workflow option.
 
 [role="tabbed-block"]
 ====
 .Other NAS
 --
+.Steps
+
 . Select the action menu beside the File Server you want to edit.
 . Select *Edit File Server*. If you selected the *Manual Upload* option for *Upload Export Path Retrieval*, only valid paths are displayed.
 . Select the *Server Type* tab, make your required edits, then select *Proceed*.
@@ -143,6 +147,8 @@ Edit the file server details using the Other NAS or Dell Isilon workflow option.
 --
 .Dell Isilon
 --
+.Steps
+
 . Select the action menu beside the Parent File Server you want to edit. 
 . Select *Edit File Server*. 
 . Select the *Server Type* tab: 

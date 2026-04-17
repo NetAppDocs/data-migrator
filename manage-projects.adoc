@@ -18,9 +18,8 @@ App Admin users can create a new project in NetApp Data Migrator and assign user
 .Steps
 
 . Log in to NetApp Data Migrator.
-. Select *Settings* in the top navigation bar.
-. Select the *Projects* tab to view a list of existing projects
-. Select *Add Project* and a new window appears.
+. Select *Settings* > *Projects* to view a list of existing projects.
+. Select *Add Project* and a new window appears.
 . Enter your *Project Name* and *Project Description (optional)*.
 . Add users to your project:
 * Select a *User* from the dropdown list.

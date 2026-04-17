@@ -17,7 +17,7 @@ Verify that you have the control plane VM private IP address, which you obtained
 .Steps
 . Navigate to the control plane using a web browser: 
 +
-`https://<control-plane-private-ip-address>/ `
+`\https://<control-plane-private-ip-address>/`
 
 . Use the default username and password to log in.
 . Based on your migration type, select one of the following tabs:  

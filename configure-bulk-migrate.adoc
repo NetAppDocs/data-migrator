@@ -18,8 +18,7 @@ You need to define the servers for Bulk Migrate before you can use the Bulk Migr
 .Steps
 
 . Log in to NetApp Data Migrator.
-. Select *Storage Servers* in the left navigation pane.
-. Select *File Servers.*
+. Select *Storage Servers* > *File Servers*.
 . Select the *File Server Name* for which you want to create the job.
 . Select *Bulk Migrate*.
 

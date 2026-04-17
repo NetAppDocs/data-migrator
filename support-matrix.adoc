@@ -4,19 +4,18 @@ permalink: support-matrix.html
 keywords: support matrix, nfs, smb, file servers, protocol versions
 summary: "Learn about NetApp Data Migrator support for features, file servers, and protocols."
 ---
-= Learn about NetApp Data Migrator support for features, file servers, and protocols
+= NetApp Data Migrator support for features, file servers, and protocols
 :icons: font
 :imagesdir: ./media/
 
 [.lead]
-NetApp Data Migrator supports the following features, files servers, and protocols.
+NetApp Data Migrator supports certain features, file servers, and protocols.
 
 == Supported and unsupported features
 
-NetApp Data Migrator supports certain features for NFS and SMB migrations. Some features are not supported. Review the following tables to understand which features are supported and unsupported.
+NetApp Data Migrator supports a range of features for NFS and SMB migrations. Some features are not supported.
 
-*Supported features*
-
+=== Supported features
 [cols="1,2a" options="header"]
 |===
 | Description | Supported feature
@@ -52,7 +51,7 @@ a| * File pattern exclusions
 * Scheduling for migration
 |===
 
-*Unsupported features*
+=== Unsupported features
 
 [cols="1,2a" options="header"]
 |===
@@ -79,7 +78,7 @@ NetApp Data Migrator can discover but not migrate alternate data streams.
 
 == Supported file servers
 
-NetApp Data Migrator supports the following file servers as source and destination for data migration.
+NetApp Data Migrator supports certain file servers as source and destination for data migration.
 
 [cols="1,2a" options="header"]
 |===
@@ -91,7 +90,7 @@ NetApp Data Migrator supports the following file servers as source and destinati
 
 == Supported NFS and SMB migration protocols
 
-NetApp Data Migrator supports the following NFS and SMB protocol versions for data migration.
+NetApp Data Migrator supports certain NFS and SMB protocol versions for data migration.
 
 [cols="1,2a" options="header"]
 |===

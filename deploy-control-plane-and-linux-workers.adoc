@@ -27,8 +27,6 @@ Request access to the VHDs. NetApp shares the VHDs using a time-limited shared a
 --
 ====
 
-.Steps
-
 Choose the AWS, Azure, Google Cloud tab, or OVA tab depending on your deploy option.
 
 [role="tabbed-block"]
@@ -38,7 +36,9 @@ Choose the AWS, Azure, Google Cloud tab, or OVA tab depending on your deploy opt
 After requesting access to the AMIs, you copy the AMIs into your AWS account. Copying the AMIs gives you full ownership, avoids dependency on the source account, and is required for cross-region use.
 
 Repeat the following steps for the control plane and Linux worker Amazon Machine Images (AMIs). 
- 
+
+.Steps
+
 . Use the AMI IDs provided to locate the AMIs in your AWS account under *EC2* > *AMIs* > *Private images*.
 . Copy the AMIs into your account: 
 .. Select the AMI, then select *Actions* > *Copy AMI* 
@@ -50,6 +50,8 @@ Repeat the following steps for the control plane and Linux worker Amazon Machine
 .Azure
 --
 Repeat the following steps for the control plane and Linux worker VHDs.
+
+.Steps
 
 . Copy the VHD files to Azure Blob Storage: 
 +
@@ -78,7 +80,9 @@ az image create \
 --
 
 .Google Cloud
---  
+--
+.Steps
+
 . Verify that the Google Cloud APIs required to import images and deploy the control plane and worker VMs are enabled. For more information, refer to the link:https://docs.cloud.google.com/migrate/virtual-machines/docs/5.0/get-started/enable-services#enabling_required_services_on_the_host_project[Google Cloud documentation^].
 
 . Create a Google Cloud Storage bucket if one does not already exist. This bucket is used to store the image archives (.tar.gz) during the import operation. 
@@ -146,6 +150,8 @@ gcloud migration vms image-imports list --location=<REGION> --project=<PROJECT_I
 
 .OVA
 --
+.Steps
+
 . Log in to link:https://mysupport.netapp.com/site/[NetApp Support site^]  
 . Download the control plane `.ova` image and the Linux worker `.ova` image files. 
 --

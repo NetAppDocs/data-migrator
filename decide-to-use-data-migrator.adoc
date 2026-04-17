@@ -9,36 +9,36 @@ summary: "Use this decision matrix to determine whether to use NetApp Data Migra
 :imagesdir: ./media/
 
 [.lead]
-Use the following decision matrix to determine whether to use NetApp Data Migrator or SnapMirror for your data migration operations. For example, if you are migrating NFS and SMB files from an ONTAP on-premises system running ONTAP 9.12.1 to the Google Cloud NetApp Volumes Flex service (ATOM based), you should use NetApp Data Migrator.
+Use the decision matrix to determine whether to use NetApp Data Migrator or SnapMirror for your NFS and SMB data migration operations. For example, if you are migrating NFS and SMB files from an ONTAP on-premises source running ONTAP 9.12.1 to a Google Cloud NetApp Volumes Flex service destination, you should use NetApp Data Migrator.
 
-[cols="1,1,1,1,1,1,1a" options="header"]
+[cols="2,1,1,1,1,1,1a" options="header"]
 |===
-|NFS and SMB files |Amazon FSx for NetApp ONTAP |Azure NetApp Files hardware | Cloud Volumes ONTAP | Google Cloud NetApp Volumes hardware| Google Cloud NetApp Volumes Flex (ATOM based) | Google Cloud NetApp Volumes Flex (VSA based) 
+| On-premises or third-party storage system source |Amazon FSx for NetApp ONTAP |Azure NetApp Files hardware | Cloud Volumes ONTAP | Google Cloud NetApp Volumes hardware| Google Cloud NetApp Volumes Flex | Google Cloud NetApp Volumes Flex (VSA based) 
 
-| *ONTAP on-premises* 
+| ONTAP on-premises
 
 Beginning with ONTAP 9.10.1 | SnapMirror |SnapMirror | SnapMirror | SnapMirror | NetApp Data Migrator | SnapMirror 
 
-|*ONTAP on-premises* 
+| ONTAP on-premises 
 
 For ONTAP 9.9.1 and earlier | NetApp Data Migrator | NetApp Data Migrator | NetApp Data Migrator | NetApp Data Migrator | NetApp Data Migrator | NetApp Data Migrator 
 
-| *Non-NetApp storage systems and arrays* | NetApp Data Migrator | NetApp Data Migrator | NetApp Data Migrator | NetApp Data Migrator | NetApp Data Migrator | NetApp Data Migrator  
+| Non-NetApp storage systems and arrays | NetApp Data Migrator | NetApp Data Migrator | NetApp Data Migrator | NetApp Data Migrator | NetApp Data Migrator | NetApp Data Migrator  
 
-| *Cloud Volumes ONTAP*  
+| Cloud Volumes ONTAP 
 
 Beginning with ONTAP 9.10.1 | SnapMirror | SnapMirror | SnapMirror | SnapMirror | NetApp Data Migrator | SnapMirror 
 
-| *Cloud Volumes ONTAP* 
+| Cloud Volumes ONTAP 
 
 For ONTAP 9.9.1 and earlier 
 
 | NetApp Data Migrator | NetApp Data Migrator | NetApp Data Migrator | NetApp Data Migrator| NetApp Data Migrator | NetApp Data Migrator 
 
-|*Google Cloud NetApp Volumes Flex (ATOM based)* | Not applicable | Not applicable | NetApp Data Migrator | NetApp Data Migrator 
+| Google Cloud NetApp Volumes Flex | Not applicable | Not applicable | NetApp Data Migrator | NetApp Data Migrator 
 | Not applicable | NetApp Data Migrator 
 
-| *Migrating data without permissions* | NetApp Data Migrator | NetApp Data Migrator | NetApp Data Migrator | NetApp Data Migrator | NetApp Data Migrator | NetApp Data Migrator 
+| Migrating data without permissions | NetApp Data Migrator | NetApp Data Migrator | NetApp Data Migrator | NetApp Data Migrator | NetApp Data Migrator | NetApp Data Migrator 
 |===
 
 .Related information

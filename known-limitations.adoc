@@ -4,7 +4,7 @@ permalink: known-limitations.html
 keywords: known, limitations, nfs limits, smb limits, worker sizing, migration restrictions
 summary: "Understand the known limitations for NetApp Data Migrator to help make your migration activities more efficient."
 ---
-= Learn about the known limitations for NetApp Data Migrator 
+= Known limitations for NetApp Data Migrator 
 :icons: font
 :imagesdir: ./media/
 

@@ -19,7 +19,7 @@ Log in to NetApp Data Migrator, then change your login credentials and create yo
 
 . Open a web browser and navigate to NetApp Data Migrator:
 +
-`https://<private_IP_address>/`.
+`\https://<private_IP_address>/`
 . On the *Welcome* page, enter the default username in *Username/Email* .
 . Enter the default password in *Password* .
 . Select *Login*. 

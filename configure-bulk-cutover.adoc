@@ -17,8 +17,7 @@ Follow these steps to start a cutover job.
 
 .Steps
 . Log in to NetApp Data Migrator.
-. Select *Storage Servers* in the left navigation pane.
-. From the dropdown menu, select *File Servers*.
+. Select *Storage Servers* > *File Servers*.
 . Select the name of the file server for which you want to create a Cutover Job.
 . Select *Bulk Cutover*.
 . On the *Select Path* page, select the checkbox next to *Source Path*.

@@ -22,12 +22,11 @@ Create a new user and share the temporary password.
 .Steps
 
 . Log in to NetApp Data Migrator.
-. Select *Settings* in the navigation bar.
-. Select the *Users* tab to view a list of registered users.
+. Select *Settings* > *Users* to view a list of registered users.
 . Select *Add User*.
 . Enter the *First Name*, *Last Name*, and *Email* address for the new user.
 . If the new user requires administrator permissions, select the *App Admin* checkbox.
-. Select *Submit* to create the user. A message appears confirming that the new user has been successfully created.
+. Select *Submit*.
 . Select the *Copy* link (next to the password field) to copy the temporary password, which is displayed in a masked format.
 . Select *Close*.
 . Share the copied temporary password with the new user who can then use it to log in. At first login, they will be prompted to change their password.

@@ -4,7 +4,7 @@ permalink: known-issues.html
 keywords: known issues, workarounds
 summary: "Review the known issues and workarounds for NetApp Data Migrator."
 ---
-= Learn about the known issues for NetApp Data Migrator
+= Known issues for NetApp Data Migrator
 :icons: font
 :imagesdir: ./media/
 

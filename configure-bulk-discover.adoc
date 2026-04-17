@@ -14,7 +14,7 @@ Configure Bulk Discover in NetApp Data Migrator to quickly generate an overview 
 .Steps
 
 . Log in to NetApp Data Migrator.
-. From the left navigation panel, select *Storage Servers*, then select *File Servers* to view a list of available file servers.
+. Select *Storage Servers* > *File Servers* to view a list of available file servers.
 . Select the name of the server on which you want to perform a bulk discovery then, select *Bulk Discover*.
 . Select *Job Schedule*, then select one of the following options:
 * *Start Now* if you want the discovery to begin immediately.
