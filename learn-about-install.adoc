@@ -9,18 +9,18 @@ summary: "Learn about installing the NetApp Data Migrator control plane and work
 :imagesdir: ./media/
 
 [.lead]
-NetApp Data Migrator has the following two components that you need to install to run migration jobs: 
+You need to install two components, a control plane and workers, to run NFS and SMB migration jobs with NetApp Data Migrator. 
 
-* *Control plane*: The control plane acts as the central management and orchestration layer. You deploy the control plane on a Linux virtual machine (VM), then you deploy the workers.
+* *Control plane*: The control plane acts as the central management and control layer. You deploy the control plane on a Linux virtual machine (VM), then you deploy the workers.
 
 * *Workers*: Workers are virtual machines that perform the actual data migration. You can deploy multiple workers based on scale and your requirements. The worker type depends on the protocol:  
 +
 ** A Linux worker supports NFS migrations.
 ** A Windows worker supports SMB migrations. 
 
-You deploy the control plane virtual machine (VM) and Linux worker VM using the AWS, Azure, or Google Cloud service or Open Virtual Appliance (OVA) templates. The NetApp Data Migrator team provides the Amazon Machine Images (AMIs) for AWS and virtual hard disks (VHDs) for Azure and the Windows Worker Installer to install Windows workers.
+You deploy the control plane virtual machine (VM) and Linux worker VM using the AWS, Azure, or Google Cloud service or using Open Virtual Appliance (OVA) templates. The NetApp Data Migrator team provides the Amazon Machine Images (AMIs) for AWS and virtual hard disks (VHDs) for Azure. You download the Google Cloud or OVA images from the NetApp Support site.
 
-After deployment, you create the control plane and worker VMs to access NetApp Data Migrator. You create the control plane VM and Linux worker VM using the images that you deployed, and the Windows worker VM using the Windows Worker Installer.
+After deployment, you create the control plane and worker VMs to access NetApp Data Migrator. You create the control plane VM and Linux worker VM using the images that you deployed. You create a Windows worker VM using the Windows Worker Installer, which you download from the NetApp Support site.
 
 .What's next?
 After learning about installing NetApp Data Migrator, you can link:deploy-control-plane-and-linux-workers.html[deploy a control plane VM and Linux worker VM].

@@ -61,8 +61,8 @@ a|* AWS: r7i.2xlarge
 * Google Cloud machine type : c3-highmem-8  
 |===
 
-. Create a Windows worker VM to support SMB migrations:
-.. Download Windows Worker Installer using the link provided.
+. Create a Windows worker VM to support SMB migrations using the Windows Worker Installer:
+
 .. Create a Windows VM with the following recommended configuration settings:  
 +
 * Image: Windows Server 2022 Base 
