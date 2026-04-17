@@ -67,9 +67,9 @@ This issue affects only inherited permission propagation from the root directory
 .Workaround 
 After the migration completes, manually reapply or reset the inherited permissions on the root directory at the destination. This allows the correct inherited permissions to propagate to all child directories and files
 
-=== Incorrect UID/GID mapping in NFS 
+=== Validation of manual upload of UID and GID mapping in NFS 
 
-During NFS migrations, if the UID and GID mapping CSV file contains numeric user IDs or group IDs that do not exist on the destination system, NetApp Data Migrator applies (stamps) these values as is. NetApp Data Migrator does not validate whether the specified UID or GID exists on the destination and does not report any error or warning in the UI. This can result in file migration with incorrect ownership. 
+During NFS migrations, if the UID and GID mapping CSV file contains numeric user IDs or group IDs that do not exist on the destination system, NetApp Data Migrator applies (stamps) these values as is. NetApp Data Migrator does not validate whether the specified UID or GID exists on the destination and does not report any error or warning in the UI. This can result in file migration with incorrect ownership. You need to provide the correct UID and GID mapping. 
 
 .Workaround 
 Ensure that all UID and GID values specified in the mapping CSV correspond to valid and existing users and groups on the destination system before starting the migration. Manually verify user and group existence on the destination to avoid NetApp Data Migrator applying incorrect ownership during migration. 

@@ -12,21 +12,24 @@ summary: "Learn about installing the NetApp Data Migrator control plane and work
 Deploy the control plane virtual machine (VM) and Linux worker VM for NetApp Data Migrator using AWS, Azure, or Google Cloud services or Open Virtual Appliance (OVA) templates. The Linux worker supports NFS data migrations.
 
 .Before you begin
-If you are using AWS or Azure, contact the NetApp Data Migrator team at ng-ndm-downloads@netapp.com to request the Amazon Machine Images (AMIs) or virtual hard disks (VHDs).
+For AWS and Azure, you need to request access to the AWS or Azure images. Send an email from your company email to ng-ndm-downloads@netapp.com requesting access to the AWS or Azure images with the following information:
 
-[role="tabbed-block"]
+* Attach a screenshot of your NetApp Support Site My Profile page, which shows your access level including your company email ID. 
+* Indicate whether you want to deploy in Azure or AWS. 
+* For AWS, include your AWS account information and the region where the Amazon Machine Images(AMIs) will be deployed. 
+
+You will receive an email from ng-ndm-downloads@netapp.com with the NetApp Data Migrator details. 
+
+[NOTE]
 ====
-.AWS
---
-Request the AMIs. Include the Account ID and region preference in the email or share it with your NetApp contact so that NetApp can share the images to that account ID.
---
+For Azure, the pre-signed URL is only valid for two days. 
 
-.Azure
---
-Request access to the VHDs. NetApp shares the VHDs using a time-limited shared access signature (SAS) URL, which provides temporary, secure access. 
---
+For AWS, we will share AMIs with the AWS account you provided in the original email. 
 ====
 
+If you are using Google Cloud or OVA, download the image from the link:https://mysupport.netapp.com/site/downloads[NetApp Support Site^] and proceed with deployment. 
+
+.About this task
 Choose the AWS, Azure, Google Cloud tab, or OVA tab depending on your deploy option.
 
 [role="tabbed-block"]

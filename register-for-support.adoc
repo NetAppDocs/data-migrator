@@ -49,7 +49,9 @@ This is a 20-digit number, starting with 975.
 +
 .. Leave the *NetApp Reference SN* field blank.
 .. From the Product Line dropdown, select *NDM*. 
-.. From the Billing Provider dropdown, select *Azure NetApp Files*.
+.. From the Billing Provider dropdown, select *NetApp*.
++
+NOTE: There is no billing for this product.
 .. Enter the 20-digit NetApp Data Migrator instance ID in the *NDM Serial #* field.
 .. Complete the remaining required fields, then select *Submit*. 
 . After submission, you receive a registration confirmation email. Follow the instructions in the email to confirm the registration.

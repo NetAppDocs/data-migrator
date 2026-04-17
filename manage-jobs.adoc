@@ -82,7 +82,9 @@ From the Job Listings table, you can activate or deactivate a job.
 * Schedule a job run
 --
 ====
-. Select *Save*. The new configuration affects future job runs. 
+. Select *Save*. The new configuration affects future job runs.
+
+NOTE: Changing the configuration, for example, disabling preserve permissions, after baseline migration is completed might result in an inconsistent state during subsequent migrations. Instead of changing the configuration, you should delete the current job and start a new job.
 
 == Re-run errored files and directories 
 
@@ -145,7 +147,7 @@ The cutover job status types include:
 From the *Job Details* page, you can manage *Start*, *Stop*, *Pause*, and *Resume* operations for a job. Use the *Pause* feature to temporarily halt a running job, without canceling it. Then you can resume the job from the point where it was paused. This is a useful feature in scenarios where you need to free up system resources or troubleshoot issues without losing progress.
 
 .Steps
-. On the *Job Details* page, in the *Run History* table, select the action menu next to the job.
+. On the *Job Details* page, in the *Run History* table, select the action menu next to a running job.
 . Pause or resume a job run:
 .. Select *Pause*.
 .. To Resume the job run, select *Resume*. 
@@ -155,6 +157,7 @@ The job status changes to *Running* and the job continues to run from the step w
 . Stop or start a job run:
 +
 You can use the stop option to permanently terminate a job run that is in progress. This action is useful when a job run is no longer required. You cannot resume a job run that is stopped but you have the option to start a new job run from the beginning.
+
 .. Select *Stop*.
 +
 The job run status changes to *Stopped*.

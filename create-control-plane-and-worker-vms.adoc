@@ -12,7 +12,7 @@ summary: "Create the control plane virtual machine (VM) and Linux and Windows wo
 Create the control plane virtual machine (VM) and Linux and Windows worker VMs to access NetApp Data Migrator.
 
 .Before you begin
-Contact the NetApp Data Migrator team at ng-ndm-downloads@netapp.com to request the Windows Worker Installer.
+For SMB migrations only, download the Windows Worker Installer from the link:https://mysupport.netapp.com/site/downloads[NetApp Support Site^]. 
 
 .About this task
 You create the control plane VM and Linux worker VM using the images that you deployed using AWS, Azure, or Google Cloud service or OVA templates. You create the Windows worker VM using the Windows Worker Installer. The Linux worker VM supports NFS migrations and the Windows worker VM supports SMB migrations. You can create multiple worker VMs based on your needs.
@@ -28,7 +28,7 @@ You create the control plane VM and Linux worker VM using the images that you de
 a|* Image: Custom imported image for the control plane
 * Network interface card type: gVNIC
 * Size: 8 vCPU, 64 GB RAM
-* Storage: 200 TiB
+* Storage: 200 GiB
 +
 --
 For storage planning, you should allocate approximately 1.1 GB of disk space for every one million files. You can estimate the total disk requirement by multiplying the expected number of files (in millions) by 1.1. For example, if you expect around 5 million files, the estimated disk space required for file metadata would be 5 × 1.1 GB = 5.5 GB. 
