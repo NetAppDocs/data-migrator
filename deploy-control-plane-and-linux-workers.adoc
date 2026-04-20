@@ -112,7 +112,7 @@ This gives you VM migration administrative permissions at the project level.
 
 . Obtain and upload the image files:
 
-.. Log in to link:https://mysupport.netapp.com/site/[NetApp Support site^] and download the control plane `.tar.gz` image and the Linux worker `.tar.gz` image files.
+.. Download the control plane `.tar.gz` image file and the Linux worker `.tar.gz` image file from the link:https://mysupport.netapp.com/site/[NetApp Support site^].
 .. Upload the `.tar.gz` files to your Google Cloud Storage bucket. 
 
 . After the image archives are uploaded to Google Cloud Storage, create VM images using the VM Migration Service by running the following command for each image (control plane and Linux worker).
@@ -139,10 +139,9 @@ gcloud migration vms image-imports list --location=<REGION> --project=<PROJECT_I
 
 .OVA
 --
-.Steps
+.Step
 
-. Log in to link:https://mysupport.netapp.com/site/[NetApp Support site^]  
-. Download the control plane `.ova` image and the Linux worker `.ova` image files. 
+Download the control plane `.ova` image file and the Linux worker `.ova` image file from the link:https://mysupport.netapp.com/site/[NetApp Support site^]. 
 --
 ====
   
