@@ -1,15 +1,15 @@
 ---
 sidebar: sidebar
 permalink: register-for-account.html
-keywords: netapp, data, migrator, support, register, account
-summary: "Create a NetApp account and complete the registration process to access NetApp Support."
+keywords: netapp, data, migrator, new, support, register, account
+summary: "If you are a new NetApp customer, you need to create a NetApp account and complete the registration process."
 ---
 = Register for a NetApp Data Migrator account
 :icons: font
 :imagesdir: ./media/
 
 [.lead]
-If you are a new NetApp customer, you need to create a NetApp account and complete the registration process to access NetApp Support. 
+If you are a new NetApp customer, you need to create a NetApp account and complete the registration process. If you already have a NetApp account, you can proceed to link:deploy-control-plane-and-linux-workers.html[Deploy the control plane and Linux worker VMs for NetApp Data Migrator].
 
 NOTE: It can take up to one business day for your new NetApp Support Site account to be upgraded from *Guest access* to *Full access*.
 

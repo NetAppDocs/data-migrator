@@ -7,7 +7,7 @@ indexpage:
     - title: Get started
       links: 
         - title: Release notes
-          url: /known-issues.html
+          url: /whats-new.html
         - title: Learn about NetApp Data Migrator
           url: /learn-about-data-migrator.html
         - title: Quick start 
