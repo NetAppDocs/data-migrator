@@ -28,7 +28,7 @@ NOTE: It can take up to one business day for your new NetApp Support Site accoun
 If you encounter any issues during registration or want to check the status of your registration, link:https://mysupport.netapp.com/site/help[open a support ticket^].
 
 .What's next?
-After learning about installing NetApp Data Migrator, link:deploy-control-plane-and-linux-workers.html[deploy the control plane and Linux worker VMs].
+After learning about registering for an account, you can link:deploy-control-plane-and-linux-workers.html[deploy the control plane and Linux worker VMs].
  
 
 // 2026 APRIL 15, GA release
