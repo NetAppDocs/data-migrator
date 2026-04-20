@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: access-data-migrator-ui.html
+keywords: netapp, data, migrator, ui, control, plane, access, worker, linux, windows
+summary: "Access the NetApp Data Migrator UI after deployment, sign in to the control plane, and connect deployed Linux and Windows workers."
+---
+= Access the NetApp Data Migrator UI 
+:icons: font
+:imagesdir: ./media/
+
+[.lead]
+After you deploy the control plane VM and verify that the services and pods are running successfully, access the NetApp Data Migrator UI and connect to the control plane, Linux workers, and Windows workers.
+
+.Before you begin
+Verify that you have the control plane VM private IP address, which you obtained when you link:deploy-control-plane-and-linux-workers.html[deployed the control plane VM]. You use the control plane VM private IP address to access the UI. 
+
+.Steps
+. Navigate to the control plane using a web browser: 
++
+`\https://<control-plane-private-ip-address>/`
+
+. Use the default username and password to log in.
+. Based on your migration type, select one of the following tabs:  
++
+*NFS*: This option is for NFS migrations (Linux workers).
++
+*SMB*: This option is for SMB migrations (Windows workers).
+
+. Follow the onscreen instructions to use the control plane to connect to the deployed worker VMs. 
++
+On the home page, select *View Instruction to Setup Worker*. 
+. Check the status in the *Workers* section to verify that the worker is successfully connected. 
++
+After the workers are successfully connected, you can configure the NetApp Data Migrator environment and run migration jobs. 
+
+.What's next?
+After learning about accessing the NetApp Data Migrator UI, you can link:configure-data-migrator.html[configure NetApp Data Migrator].
+
+// 2026 APRIL 15, GA release

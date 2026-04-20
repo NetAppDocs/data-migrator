@@ -1,0 +1,85 @@
+---
+sidebar: sidebar
+permalink: create-control-plane-and-worker-vms.html
+keywords: aws, azure, google cloud, ova, control plane, worker vm, images, linux, windows
+summary: "Create the control plane virtual machine (VM) and Linux and Windows worker VMs to access NetApp Data Migrator."
+---
+= Create the control plane and worker VMs to access NetApp Data Migrator
+:icons: font
+:imagesdir: ./media/
+
+[.lead]
+Create the control plane virtual machine (VM) and Linux and Windows worker VMs to access NetApp Data Migrator.
+
+.Before you begin
+For SMB migrations only, download the Windows Worker Installer from the link:https://mysupport.netapp.com/site/downloads[NetApp Support Site^]. 
+
+.About this task
+You create the control plane VM and Linux worker VM using the images that you deployed using AWS, Azure, or Google Cloud service or OVA templates. You create the Windows worker VM using the Windows Worker Installer. The Linux worker VM supports NFS migrations and the Windows worker VM supports SMB migrations. You can create multiple worker VMs based on your needs.
+
+.Steps
+. Use the deployed control plane image to create a control plane VM with the following recommended configuration:
++
+[cols="1,2a" options="header"]
+|===
+| Description | Recommended setting
+
+| VM configuration
+a|* Image: Custom imported image for the control plane
+* Network interface card type: gVNIC
+* Size: 8 vCPU, 64 GB RAM
+* Storage: 200 GiB
++
+--
+For storage planning, you should allocate approximately 1.1 GB of disk space for every one million files. You can estimate the total disk requirement by multiplying the expected number of files (in millions) by 1.1. For example, if you expect around 5 million files, the estimated disk space required for file metadata would be 5 × 1.1 GB = 5.5 GB. 
+
+Additionally, you should allocate the following storage:
+
+* A extra 50 GB for Docker images, operating system storage, and other system level components
+* Provision additional buffer space to accommodate future growth and operational overhead
+--
+| Hyperscaler
+a|* AWS: r7i.2xlarge instance
+* Azure VM size : Standard_E8ds_v5 
+* Google Cloud machine type : c3-highmem-8  
+|===
+
+. Use the deployed Linux worker image to create the Linux worker VM to support NFS migration with the following recommended configuration:
++
+[cols="1,2a" options="header"]
+|===
+| Description | Recommended setting
+
+| VM configuration
+a|* Image: Custom imported image for the Linux worker
+* Network interface card type: gVNIC
+* Size: 4 vCPU, 16 GB RAM
+* Storage: 100 GB
+| Hyperscaler
+a|* AWS: r7i.2xlarge
+* Azure VM size : Standard_E8ds_v5 
+* Google Cloud machine type : c3-highmem-8  
+|===
+
+. Create a Windows worker VM to support SMB migrations using the Windows Worker Installer:
+
+.. Create a Windows VM with the following recommended configuration settings:  
++
+* Image: Windows Server 2022 Base 
+* Architecture: 64bit 
+* Size: 16 vCPU, 64 GB RAM 
+* Network interface card type: gVNIC 
+* Ensure Remote Desktop Protocol (RDP) (3389) is open 
+.. Create a remote working session using RDP.
++
+Learn about link:https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connect-rdp.html[RDP connections^].
+.. Copy and run the Windows Worker Installer on the control plane VM. 
+
+.What's next?
+
+After learning about creating the control plane and worker VMs, you can choose one of the following options:
+
+* Optionally, link:validate-control-plane-vm.html[Validate the control plane VM]
+* link:access-data-migrator-ui.html[Access the NetApp Data Migrator UI and connecting to the control plane and workers]
+
+// 2026 APRIL 15, GA release

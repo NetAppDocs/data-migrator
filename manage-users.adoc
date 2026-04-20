@@ -2,14 +2,14 @@
 sidebar: sidebar
 permalink: manage-users.html
 keywords: user management, rbac, app admin, user accounts, access control
-summary: "Add and manage NDM users with role-based access control, including creating accounts, assigning roles, and enabling or disabling access."
+summary: "Add and manage NetApp Data Migrator users with role-based access control, including creating accounts, assigning roles, and enabling or disabling access."
 ---
-= Add and manage users in NDM
+= Add and manage users in NetApp Data Migrator
 :icons: font
 :imagesdir: ./media/
 
 [.lead]
-NetApp Data Migrator (NDM) uses link:access-control.html[Role-Based Access Control (RBAC)] to provide secure and efficient management of data migration activities. After setting up control and worker virtual machines (VMs), App Admin users can create and assign roles to new users. This allows new users to log in, view or manage projects, and perform other migration activities, depending on their permissions.
+NetApp Data Migrator uses link:access-control.html[Role-Based Access Control (RBAC)] to provide secure and efficient management of data migration activities. After setting up control and worker virtual machines (VMs), App Admin users can create and assign roles to new users. This allows new users to log in, view or manage projects, and perform other migration activities, depending on their permissions.
 
 .About this task
 
@@ -21,45 +21,54 @@ Create a new user and share the temporary password.
 
 .Steps
 
-. Log in to NDM.
-. Select *Settings* in the navigation bar.
-. Select the *Users* tab to view a list of registered users.
+. Log in to NetApp Data Migrator.
+. Select *Settings* > *Users* to view a list of registered users.
 . Select *Add User*.
-. Enter the *First Name*, *Last Name,* and *Email* address of the new user.
+. Enter the *First Name*, *Last Name*, and *Email* address for the new user.
 . If the new user requires administrator permissions, select the *App Admin* checkbox.
-. Select *Submit* to create the user. A message appears confirming that the new user has been successfully created.
+. Select *Submit*.
 . Select the *Copy* link (next to the password field) to copy the temporary password, which is displayed in a masked format.
 . Select *Close*.
 . Share the copied temporary password with the new user who can then use it to log in. At first login, they will be prompted to change their password.
 
 == Disable an existing user
 
-Disable access to NDM for other users. This prevents users from logging in but does not delete user data or previous migration jobs or logs associated with that user.
+Disable access to NetApp Data Migrator for other users. This prevents users from logging in but does not delete user data or previous migration jobs or logs associated with that user.
 
 .Steps
 
 . Select the *Settings* icon in the navigation bar.
 . Select the *Users* tab to view a list of registered users.
-. Select the *(⋮)* icon beside the details of the user who is being disabled then select *Disable Access* from the dropdown menu. The user status changes from *Active* to *Inactive* and they can't log into NetApp Data Migrator.
+. Select the *(⋮)* icon beside the details of the user who is being disabled, then select *Disable Access* from the dropdown menu. 
++
+The user status changes from *Active* to *Inactive* and they can't log in to NetApp Data Migrator.
 
 == Enable a user
 
-Restore access to NDM for a disabled user, allowing them to log in and perform actions based on their assigned permissions.
+Restore access to NetApp Data Migrator for a disabled user, allowing them to log in and perform actions based on their assigned permissions.
 
 .Steps
 
 . Select *Settings* icon in the navigation bar.
 . Select the *Users* tab to view a list of registered users.
-. Select the *(⋮)* icon beside the details of the user who is being enabled then select *Enable Access* from the dropdown menu. The user status changes from *Inactive* to *Active,* allowing them to log into NDM.
+. Select the *(⋮)* icon beside the details of the user who is being enabled, then select *Enable Access* from the dropdown menu.
++
+The user status changes from *Inactive* to *Active*. The user can now log in to NetApp Data Migrator.
 
 == Reset a user password
 
 Reset the password for an existing user.
 
+NOTE: To reset the password for an App Admin user when there is no other App Admin available, contact ng-ndm-downloads@netapp.com to obtain the password reset script.
+
 .Steps
 
 . Select the *Settings* icon in the navigation bar.
 . Select the *Users* tab to view a list of registered users.
-. Select the *(⋮)* icon beside the details of the user whose password needs to be reset then select *Reset Password* from the dropdown menu. A message appears confirming that the password reset has been successful.
+. Select the *(⋮)* icon beside the details of the user whose password needs to be reset, then select *Reset Password* from the dropdown menu. 
++
+A message appears confirming that the password reset has been successful.
 . Select the *Copy* link (next to the password field) to copy the temporary password which is displayed in a masked format.
 . Share the copied temporary password with the user.
+
+// 15 APRIL 2026, GA release

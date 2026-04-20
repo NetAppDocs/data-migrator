@@ -2,30 +2,31 @@
 sidebar: sidebar
 permalink: manage-file-servers.html
 keywords: file servers, nfs, smb, worker association, export paths
-summary: "Use NDM to add, configure, and edit file servers that use the NFS or SMB protocols."
+summary: "Use NetApp Data Migrator to add, configure, and edit file servers that use the NFS or SMB protocols."
 ---
 = Add and manage file servers
 :icons: font
 :imagesdir: ./media/
 
 [.lead]
-You can use NetApp Data Migrator (NDM) to add, configure, and edit file servers that use the NFS or SMB protocols. 
+You can use NetApp Data Migrator to add, configure, and edit file servers that use the NFS or SMB protocols. 
 
 == Add a new file server
 Add a new NFS or SMB file server and configure the worker virtual machines. 
 
-.Steps
-Depending on your system configuration, use the "Other NAS" or "Dell Isilon" workflow option.
+Depending on your system configuration, use the Other NAS or Dell Isilon workflow option.
 
 [role="tabbed-block"]
 ====
 .Other NAS
 --
+.Steps
+
 . In the left navigation panel, select *Storage Servers*.
 . Select *File Servers* > *+Add*. 
 +
 The *File Servers* page opens, followed by the *Server Type* page. 
-. Enter the server name and select *Server Type* as "Other NAS".
+. Enter the server name, then select *Server Type* as Other NAS.
 +
 The *Credentials* page opens. 
 . Enter the *Host Name* (or IP address) of the NFS or SMB server.
@@ -44,7 +45,7 @@ The *Credentials* page opens.
 * Select a *Protocol Version* for SMB.
 . Select the *Workers* tab.
 .. In the *Associated* column, select the toggle button next to each of the one or more workers you want to associate with a server.
-.. Select *Proceed* to initiate a pre-check operation that tests if the selected one or more workers have connectivity to NDM.
+.. Select *Proceed* to initiate a pre-check operation that tests if the selected one or more workers have connectivity to NetApp Data Migrator.
 . When the pre-check is complete, you should resolve any errors that are flagged. (Refer to File Server Frequently Asked Questions (FAQ) for details on how to resolve errors).
 +
 If the pre-check completes without errors, select the *Job Config* tab, then select *Finish.* The name of your File Server appears under the list of *File Servers*.
@@ -54,11 +55,13 @@ The status of a file servers is listed in the *Status* column of the *File Serve
 * *Active*: There are no errors, and all details have been validated.
 * *In Progress:* Server validation is in progress.
 * *Draft*: No workers have been associated with a file server.
-* *Errored*: There are issues with permissions, no paths available, or only “ / ” is available as export path. These issues can occur if you select *Auto Discovery* for the export path during file server creation.
+* *Errored*: There are issues with permissions, no paths available, or only / is available as the export path. These issues can occur if you select *Auto Discovery* for the export path during file server creation.
 --
 
 .Dell Isilon
 --
+.Steps
+
 . In the left navigation panel, select *Storage Servers*.
 . Select *File Servers* > *+Add*.
 +
@@ -86,13 +89,13 @@ The *Management Console* section opens:
 .. Enter a *Password*.
 
 +
-NOTE: If a SmartConnect Service IP (SSIP) is configured on the Isilon cluster, you can select the SmartConnect zone domain name from the IP Address drop-down list. When using an SSIP-enabled domain name, the Isilon SmartConnect infrastructure manages connection load balancing and resolves it at the storage layer. NDM does not perform additional load balancing in this configuration.  
+NOTE: If a SmartConnect Service IP (SSIP) is configured on the Isilon cluster, you can select the SmartConnect zone domain name from the IP Address drop-down list. When using an SSIP-enabled domain name, the Isilon SmartConnect infrastructure manages connection load balancing and resolves it at the storage layer. NetApp Data Migrator does not perform additional load balancing in this configuration.  
 
 . The *Workers* tab opens :
 .. For each zone and protocol combination, assign workers: 
 +
 In the *Associated* column, select the toggle button next to each of the one or more workers you want to associate. 
-.. Select *Proceed* to initiate a pre-check operation that tests if the one or more selected workers have connectivity to NDM and the Isilon file server. 
+.. Select *Proceed* to initiate a pre-check operation that tests if the one or more selected workers have connectivity to NetApp Data Migrator and the Isilon file server. 
 . When the pre-check is complete, resolve any errors that are flagged.  
 +
 If the pre-check completes without errors, the name of your file server appears under the list of file servers. The dropdown for the file servers displayed shows the zones configured. 
@@ -102,7 +105,7 @@ If the pre-check completes without errors, the name of your file server appears 
 [[manually-upload-export-paths]]
 == Manually upload export and directory paths
 
-NDM allows you to manually upload export paths and directory paths for use in data migration operations for the NFS protocol. This feature is useful in environments where automatic NFS export path detection is unavailable. For example, for use with the GCNV Flex service or when migrating directory paths instead of the entire export path. If you select *Manual Upload* in the *Export Paths Retrieval Mechanism* panel, you need to download and complete the template file provided by NDM after you finish creating a file server.
+NetApp Data Migrator allows you to manually upload export paths and directory paths for use in data migration operations for the NFS protocol. This feature is useful in environments where automatic NFS export path detection is unavailable. For example, for use with the GCNV Flex service or when migrating directory paths instead of the entire export path. If you select *Manual Upload* in the *Export Paths Retrieval Mechanism* panel, you need to download and complete the template file provided by NetApp Data Migrator after you finish creating a file server.
 
 NOTE: Use this option when you need to configure migration at the directory level. In cases where migration involves specific directories rather than entire exports, enter the directory paths directly into the Excel spreadsheet. This ensures that the migration workflow processes each directory individually, without requiring export level inputs. 
 
@@ -128,13 +131,14 @@ When upload is complete, export paths and directory paths can have one of the fo
 
 If required, you can make changes to a previously configured file server.
 
-.Steps
-Edit the file server details using the "Other NAS" or "Dell Isilon" workflow option.
+Edit the file server details using the Other NAS or Dell Isilon workflow option.
 
 [role="tabbed-block"]
 ====
 .Other NAS
 --
+.Steps
+
 . Select the action menu beside the File Server you want to edit.
 . Select *Edit File Server*. If you selected the *Manual Upload* option for *Upload Export Path Retrieval*, only valid paths are displayed.
 . Select the *Server Type* tab, make your required edits, then select *Proceed*.
@@ -143,6 +147,8 @@ Edit the file server details using the "Other NAS" or "Dell Isilon" workflow opt
 --
 .Dell Isilon
 --
+.Steps
+
 . Select the action menu beside the Parent File Server you want to edit. 
 . Select *Edit File Server*. 
 . Select the *Server Type* tab: 

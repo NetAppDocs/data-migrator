@@ -2,18 +2,39 @@
 sidebar: sidebar
 permalink: troubleshoot.html
 keywords: troubleshooting, kubectl, openbao, application access, diagnostic commands
-summary: "Use troubleshooting steps and reference commands to help troubleshoot NDM issues."
+summary: "Use troubleshooting steps and reference commands to help troubleshoot NetApp Data Migrator issues."
 ---
-= Troubleshoot NDM
+= Troubleshoot NetApp Data Migrator
 :icons: font
 :imagesdir: ./media/
 
 [.lead]
-If you experience issues while using NetApp Data Migrator (NDM), these troubleshooting steps and reference commands might be useful. 
+If you experience issues while using NetApp Data Migrator, these troubleshooting steps and reference commands might be useful. 
+
+== SMB mount failure when using host name 
+
+When configuring a directory level migration, the SMB mount might fail if the SMB file server host name is provided as a URL. This can occur when the control plane virtual machine (VM) does not have the correct DNS configuration to resolve the SMB file server host name. The mount failure might appear with an error similar to `mount failed: Resource temporarily unavailable`.
+
+You can workaround this issue by using the IP address of the SMB file server instead of the host name in the migration configuration.
+
+.Steps
+. Resolve the hostname to an IP address:
++
+[source,cli] 
+----
+nslookup
+----
+. Configure the SMB file server host name field using the resolved IP address. 
+
+. Retry the directory level migration configuration. 
++
+After switching to the IP address, the mount operation should succeed. 
 
 == Troubleshoot application access
 
-All credentials are managed in OpenBao. Replace the IP_ADDRESS with the IP address of your virtual machine (VM).
+All credentials are managed in OpenBao. 
+
+In the following steps, replace `<IP_ADDRESS>` with the IP address of your virtual machine (VM).
 
 .Steps
 
@@ -27,9 +48,9 @@ cat /opt/datamigrator/openbao/cluster-keys.json
 . Log in to the OpenBao UI: Use `https://IP_ADDRESS/ui/` and enter the root token for login. 
 . Navigate to secrets.
 . Keycloak UI: `https://IP_ADDRESS/keycloak/`
-. NDM UI: `https://IP_ADDRESS/` 
+. NetApp Data Migrator UI: `https://IP_ADDRESS/` 
 +
-The initial username is "admin@datamigrator.local" and password is "Welcome@123".
+Log in to the NetApp Data Migrator UI using the default username and password.
 . Temporal UI: `https://IP_ADDRESS/temporal/ui/`
 . Postgres connection: Use the multipass IP address to connect to Postgres database. Get the username and password from OpenBao. 
 +
@@ -88,7 +109,7 @@ kubectl exec openbao-2 -n openbao -- bao operator unseal $OPENBAO_UNSEAL_KEY
 
 == Troubleshoot Azure VM access
 
-You should be able to successfully create and connect to your Azure VM. However, if you experience problems, it might help to restart your virtual machine or reset your SSH configuration. 
+You should be able to successfully create and connect to your Azure VM. However, if you experience problems, try restarting your virtual machine or reset your SSH configuration. 
 
 Restart your virtual machine::
 +
@@ -116,9 +137,9 @@ First refer to the instructions provided in this link:https://learn.microsoft.co
 
 When a Windows worker attempts to connect to an SMB file server using a different set of credentials than those previously used for the same file server, the following error message might appear:
 
- System error 1219: Multiple connections to a server or shared resource by the same user, using more than one user name, are not allowed.
+`System error 1219: Multiple connections to a server or shared resource by the same user, using more than one user name, are not allowed.`
 
-This happens because windows does not allow multiple simultaneous connections to the same network resource using different credentials. Even if the previous connection is inactive, it might still be cached or held by the system.
+This happens because Windows does not allow multiple simultaneous connections to the same network resource using different credentials. Even if the previous connection is inactive, it might still be cached or held by the system.
 
 Follow these steps to resolve this issue:
 
@@ -128,11 +149,15 @@ Follow these steps to resolve this issue:
 ----
 net use
 ----
+
 . Delete any existing connection to the target server:
 +
 [source,cli]
----- 
+----
 net use <share> /delete
 ----
+
 . Reboot to clear any remaining cached credentials or sessions.
 . Reconnect using your desired credentials.
+
+// 2026 APRIL 15, GA release

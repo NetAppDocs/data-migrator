@@ -2,28 +2,20 @@
 sidebar: sidebar
 permalink: generate-support-bundle.html
 keywords: support bundle, diagnostics, troubleshooting, log files, download report
-summary: "Generate and download an NDM support bundle containing diagnostic logs, error reports, and configuration data for troubleshooting."
+summary: "Generate and download a NetApp Data Migrator support bundle containing diagnostic logs, error reports, and configuration data for troubleshooting."
 ---
-= Generate NDM support bundle
+= Generate a NetApp Data Migrator support bundle
 :icons: font
 :imagesdir: ./media/
 
 [.lead]
-NetApp Data Migrator (NDM) allows you to generate a support bundle to help troubleshoot any issues you experience. This bundle contains diagnostic information such as log files, error reports, and configuration data. 
+NetApp Data Migrator allows you to generate a support bundle to help troubleshoot any issues you experience. This bundle contains diagnostic information such as log files, error reports, and configuration data. 
 
 .Steps
 
-. Log in to NDM.
+. Log in to NetApp Data Migrator.
 . Select *Help* in the navigation bar then select the Support Bundle option.
-. Select *Date, Other Metrics*.
-. Select the *Generate Support Bundle* button. When the bundle is ready, the *Download Report* button becomes active.
-. Select the *Download Report* button to download the support bundle.
-
-|===
-| *Role* | *Access scope*
-| App Admin | All projects
-| Project Admin | Assigned projects only
-| Project Viewer | Server authentication username
-|===
-
-
+. Select *Date*. Enter the date range that you want to include in the support bundle.
+. Select *Other Metrics*. Enter the other metrics that you want to include in the support bundle.
+. Select *Generate Support Bundle*. When the bundle is ready, *Download Report* becomes active.
+. Select *Download Report*.

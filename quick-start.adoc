@@ -1,35 +1,52 @@
 ---
 sidebar: sidebar
 permalink: quick-start.html
-keywords: quick start, installation, ndm setup, first project, control plane
-summary: "To get started with NetApp Data Migrator (NDM), you need to set up control plane and worker VMs using either AWS, Azure, Google Cloud, or Open Virtual Appliance (OVA) templates."
+keywords: quick start, installation, first project, control plane
+summary: "To get started with NetApp Data Migrator, you need to set up control plane and worker VMs using either AWS, Azure, Google Cloud, or Open Virtual Appliance (OVA) templates."
 ---
-= Quick start for NDM
+= Quick start for NetApp Data Migrator
 :icons: font
 :imagesdir: ./media/
 
 [.lead]
-To get started with NetApp Data Migrator (NDM), you need to set up control plane and worker virtual machines (VMs) using either AWS, Azure, Google Cloud, or Open Virtual Appliance (OVA) templates. Then, define your credentials and create your first project.
+Getting started with NetApp Data Migrator includes a few steps.
 
-
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png[One] Install NDM
-
-[role="quick-margin-para"]
-Depending on your environment, you can install NDM using AWS, Azure, Google Cloud, or OVA templates in a VMWare vSphere environment.
-
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png[Two] Log in to NDM
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png[One]Learn about NetApp Data Migrator
 
 [role="quick-margin-para"]
+NetApp Data Migrator supports NFS and SMB file transfer protocols. Determine that NetApp Data Migrator supports your data migration needs and choose the deployment option that suits your environment:
 
-Next, you need to acquire the default password, log in as an administrator using the default username and password, and change your login credentials.
-
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png[Three] Create your first project
-
-// This step shows an example of using a list under the block title, rather than a paragraph. Note that lists are styled with the `quick-margin-list` role attribute to ensure correct indentation.
+[role="quick-margin-list"]
+* AWS
+* Azure
+* Google Cloud services
+* Open Virtual Appliance (OVA) templates
 
 [role="quick-margin-para"]
-Use the Projects tab in the NDM control plane to quickly and easily create, edit, and switch between projects and workers.
+Review link:decide-to-use-data-migrator.html[Decide whether to use NetApp Data Migrator] and the link:networking-requirements.html[Networking requirements].
 
-.What's next?
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png[Two]Install and set up
 
-After you have created you first project, you are then able to add/manage users and file servers, configure real-time notifications, set migration options and manage your jobs and job runs.
+[role="quick-margin-para"]
+NetApp Data Migrator uses a control plane and worker nodes. First you deploy the control plane VM and worker VMs based on your migration needs. For NFS, you deploy a Linux worker and for SMB, you deploy a Windows worker. You can use NFS or SMB, or both protocols. After deployment, you create the control plane VM and worker VMs and access the NetApp Data Migrator UI.
+
+[role="quick-margin-para"]
+link:learn-about-install.html[Learn about installing NetApp Data Migrator]
+
+[role="quick-margin-para"]
+Learn how to:
+[role="quick-margin-list"]
+. link:deploy-control-plane-and-linux-workers.html[Deploy the control plane VM and Linux worker VM]
+. link:create-control-plane-and-worker-vms.html[Create the control plane VM and worker VMs]
+. link:access-data-migrator-ui.html[Access the NetApp Data Migrator UI]
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png[Three]Configure and manage
+
+[role="quick-margin-para"]
+You first log in as an administrator using the default credentials and update your username and password. Then you can create your first project and add the file servers to initiate migration workflows.
+
+[role="quick-margin-para"]
+Learn how to:
+[role="quick-margin-list"]
+. link:configure-data-migrator.html[Configure NetApp Data Migrator]
+. link:manage-projects.html[Create and manage projects in NetApp Data Migrator]

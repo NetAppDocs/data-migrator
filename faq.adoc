@@ -2,39 +2,35 @@
 sidebar: sidebar
 permalink: faq.html
 keywords: frequently asked questions, troubleshooting, connection errors, authentication, protocol errors
-summary: "Find answers to common NDM questions about connection errors, authentication failures, protocol issues, and permission errors."
+summary: "Find answers to common NetApp Data Migrator questions about connection errors, authentication failures, protocol issues, and permission errors."
 ---
-= FAQ for NDM
+= FAQ for NetApp Data Migrator
 :icons: font
 :imagesdir: ./media/
 
 [.lead]
-If you experience an issue while using NetApp Data Migrator (NDM), you might be able to resolve it quickly by reviewing these frequently asked questions (FAQ) by other users.
+If you experience an issue while using NetApp Data Migrator, you might be able to resolve it quickly by reviewing these frequently asked questions (FAQ) by other users.
 
 .What can cause NT_STATUS_IO_TIMEOUT / NT_STATUS_ACCESS_DENIED / NT_STATUS_HOST_UNREACHABLE / NT_STATUS_UNSUCCESSFUL errors?
 
 This error can occur if you enter incorrect host information. Ensure that the server hostname or IP address is correct and that the server is reachable. Verify your network connectivity and that your DNS can be resolved, if required.
 
-.What can cause this error Wrong credentials - NT_STATUS_LOGON_FAILURE?
+.What can cause a Wrong credentials - NT_STATUS_LOGON_FAILURE error?
 
 Incorrect username or password entries can cause authentication and login failures. Ensure you have entered correct login details.
 
-.What does 'Unsupported protocol versions' of NFS or SMB mean?
+.What does Unsupported protocol versions of NFS or SMB mean?
 
 This means that the protocol version used by the file server is not supported. Check the compatibility of the protocol versions and upgrade or configure the file server as necessary.
 
-.What can cause the 'Invalid export path' error?
+.What can cause an 'Invalid export path' error?
 
 Ensure that the export path is correctly entered and exists on the server.
 
-.What can cause the 'Invalid working directory' error?
+.What can cause an 'Invalid working directory' error?
 
 Check that you have entered correct working directory for the selected export path.
 
 .Why do I get a 'write permission' error on the working directory?
 
 This error occurs when the correct export path and working directory are specified, but the necessary write permissions are not granted. Without the correct write access, the file server pre-check will fail, and the user will not be able to run jobs. Check that the user experiencing the error has the required write access.
-
-.What is the difference between 'Stop' and 'Deactivate'?
-
-Stop terminates an ongoing job run. Deactivate makes a job unavailable until you reactivate it.

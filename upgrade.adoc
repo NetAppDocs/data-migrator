@@ -2,14 +2,14 @@
 sidebar: sidebar
 permalink: upgrade.html
 keywords: upgrade, control plane, worker vm, upgrade bundle, version update
-summary: "Upgrade a control plane, Linux worker, or Windows worker in NDM."
+summary: "Upgrade a control plane, Linux worker, or Windows worker in NetApp Data Migrator."
 ---
-= Upgrade control plane and workers in NDM
+= Upgrade the control plane and workers in NetApp Data Migrator
 :icons: font
 :imagesdir: ./media/
 
 [.lead]
-You can upgrade a control plane, Linux worker, or Windows worker in NetApp Data Migrator (NDM). 
+You can upgrade a control plane, Linux worker, or Windows worker in NetApp Data Migrator. 
 
 .Before you begin
 
@@ -22,7 +22,7 @@ Upload the upgrade bundle from your local directory.
 
 .Steps
 
-. Log in to the NDM UI, then navigate to the home page.
+. Log in to the NetApp Data Migrator UI, then navigate to the home page.
 . Select the help icon in the top right corner.
 . Select the *Upgrade* tab.
 . Select *Select file*, then select the upgrade bundle tar.gz file. 
@@ -67,7 +67,6 @@ ExecutionPolicy Bypass -File C:\datamigrator\staging\<version>\upgrade.ps1 -Vers
 --
 ====
 
-
 [[view-logs]]
 == Step 3: View logs and troubleshoot 
 View the virtual machine logs to support troubleshooting issues that you encounter during the upgrade.
@@ -101,6 +100,6 @@ C:\datamigrator\upgrade.log
 ====
 . If the upgrade fails, the system automatically rolls back to the previous version and the UI shows the upgrade status as *Failed*.
 +
-Review the Ansible logs, then contact NetApp support at ng-ndm-support@netapp.com and attach the Ansible logs to your communication.
+Review the Ansible logs, then contact NetApp support and attach the Ansible logs to your communication.
 
 // 2026 FEB 25, Preview + 3 release

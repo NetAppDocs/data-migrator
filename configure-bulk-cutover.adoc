@@ -2,31 +2,34 @@
 sidebar: sidebar
 permalink: configure-bulk-cutover.html
 keywords: bulk cutover, final sync, cutover job, chain of custody, migration approval
-summary: "Use Bulk Cutover in NDM to perform the final data sync between source and destination systems."
+summary: "Use Bulk Cutover in NetApp Data Migrator to perform the final data sync between source and destination systems."
 ---
-= Configure Bulk Cutover in NDM
+= Configure Bulk Cutover in NetApp Data Migrator
 :icons: font
 :imagesdir: ./media/
 
 [.lead]
-Use Bulk Cutover in NetApp Data Migrator (NDM) to perform the final sync between your source and destination systems. When baseline migrations are complete and incremental syncs are running, you can merge multiple paths into one cutover job.
+Use Bulk Cutover in NetApp Data Migrator to perform the final sync between your source and destination systems. When baseline migrations are complete and incremental syncs are running, you can merge multiple paths into one cutover job.
 
 == Start a Cutover Job
 
 Follow these steps to start a cutover job.
 
 .Steps
-. Log in to NDM.
-. Select *Storage Servers* in the left navigation pane.
-. From the dropdown menu, select *File Servers*.
+. Log in to NetApp Data Migrator.
+. Select *Storage Servers* > *File Servers*.
 . Select the name of the file server for which you want to create a Cutover Job.
 . Select *Bulk Cutover*.
 . On the *Select Path* page, select the checkbox next to *Source Path*.
 . Select the checkbox next to the source path (confirming the cutover job).
 . Select *Proceed.*
-. You can select a job even if a *Bulk Migrate* job is running in parallel. Select the *checkbox* next to a job name to confirm that you are starting a *Bulk Cutover* job.
-. Select *Submit* to start your *Bulk Cutover* job and a notification message appears, confirming that a *Cutover job has been created*.
-. You can select the *View Job Listing* link next to this message to open the *Job Config List* page where your new job is listed.
+. Select the checkbox next to a job name to confirm that you are starting a *Bulk Cutover* job.
++
+NOTE: You can select a job when a  Bulk Migrate job is running in parallel.
+. Select *Submit* to start your Bulk Cutover job.
++
+The *Cutover job has been created* confirmation message appears.
+. You can select the *View Job Listing* link next to this message to open the Job Config List page where your new job is listed.
 
 == Approve a Bulk Cutover job
 
@@ -35,7 +38,13 @@ Follow these steps to approve a cutover job.
 .Steps
 . On the *Jobs* page, select the *Job Run List* tab.
 . Select the action menu next to your Cutover job.
-. Select *Review,* then a Cutover Confirmation pop-up box appears.
-. Select the *Download CoC Report* link to download. Review this report to verify if the cutover was successful and all data has successfully migrated from source to destination.
-. Select the checkbox next to *I have reviewed and verified the COC document and all other essential information.*
-. If you are satisfied with the information in the COC report, select *Confirm* to approve the *Bulk Cutover* and the *Status* changes to *Complete.* 
+. Select *Review*.
++
+The *Cutover Confirmation* pop-up box appears.
+. Select the *Download CoC Report* link. 
++
+Review the report to verify if the cutover was successful and if all data has successfully migrated from source to destination.
+. Select the checkbox next to *I have reviewed and verified the COC document and all other essential information*.
+. If you are satisfied with the information in the COC report, select *Confirm* to approve the *Bulk Cutover*. 
++
+The status changes to *Complete.* 

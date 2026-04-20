@@ -2,24 +2,25 @@
 sidebar: sidebar
 permalink: configure-notifications.html
 keywords: notifications, smtp, email alerts, real-time alerts, project status
-summary: "Configure NDM to send real-time email alerts about project status changes by setting up an SMTP email server."
+summary: "Configure NetApp Data Migrator to send real-time email alerts about project status changes by setting up an SMTP email server."
 ---
-= Configure real-time notifications for NDM
+= Configure real-time notifications for NetApp Data Migrator
 :icons: font
 :imagesdir: ./media/
 
 [.lead]
-You can configure NetApp Data Migrator (NDM) to email you real-time alerts about changes to the status of your projects.
+You can configure NetApp Data Migrator to email you real-time alerts about changes to the status of your projects.
 
-.About this task
+.Before you begin
 
-You need to be logged in as an *App admin* user to configure SMTP email server details.
+Verify that you are logged in as an *App Admin* user. This user level is required to configure SMTP email server details.
 
 .Steps
 
 . Select *Settings* in the navigation bar.
 . Select the *SMTP* tab and complete the fields shown in the following table.
 
+[cols="1,2a" options="header"]
 |===
 | Field | Description
 

@@ -2,29 +2,28 @@
 sidebar: sidebar
 permalink: manage-projects.html
 keywords: projects, project management, user roles, create project, project admin
-summary: "Use the Projects tab in the NDM control plane to create, edit, or switch between projects."
+summary: "Use the Projects tab in the NetApp Data Migrator control plane to create, edit, or switch between projects."
 ---
-= Create and manage projects in NDM
+= Create and manage projects in NetApp Data Migrator
 :icons: font
 :imagesdir: ./media/
 
 [.lead]
-You can use the Projects tab in the NetApp Data Migrator (NDM) control plane to create, edit, or switch between projects.
+You can use the Projects tab in the NetApp Data Migrator control plane to create, edit, or switch between projects.
 
 == Create a project
 
-App admin users can create a new project in NDM and assign users with defined roles to that project.
+App Admin users can create a new project in NetApp Data Migrator and assign users with defined roles to that project.
 
 .Steps
 
-. Log in to NDM.
-. Select *Settings* in the top navigation bar.
-. Select the *Projects* tab to view a list of existing projects
-. Select *Add Project* and a new window appears.
+. Log in to NetApp Data Migrator.
+. Select *Settings* > *Projects* to view a list of existing projects.
+. Select *Add Project* and a new window appears.
 . Enter your *Project Name* and *Project Description (optional)*.
 . Add users to your project:
 * Select a *User* from the dropdown list.
-* Assign a *Role* to the user (*App Admin*, *Project Admin* or *Project Viewer*).
+* Assign a *Role* to the user (*App Admin*, *Project Admin*, or *Project Viewer*).
 * Select *+Add*.
 . Select *Save and Confirm.*
 . Select *Submit* and a confirmation message appears, stating that the project has been successfully created.
@@ -37,8 +36,8 @@ You can quickly edit details about your project, if they need updating.
 
 . Select *Settings* in the top navigation bar.
 . Select the *Projects* tab to view a list of existing projects.
-. Select *(⋮)* next to the details of the project you want to edit then select *Edit Project* from the dropdown menu.
-. Update the Project Name, Project Description or add new users as required.
+. Select *(⋮)* next to the details of the project you want to edit, then select *Edit Project* from the dropdown menu.
+. Update the Project Name, Project Description, or add new users as required.
 . Select *Submit* to save the changes.
 
 == Switch between projects

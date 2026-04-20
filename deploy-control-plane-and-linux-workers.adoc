@@ -1,0 +1,164 @@
+---
+sidebar: sidebar
+permalink: deploy-control-plane-and-linux-workers.html
+keywords: aws installation, prerequisites, control plane, worker vm, ec2
+summary: "Learn about installing the NetApp Data Migrator control plane and worker VMs."
+---
+= Deploy the control plane and Linux worker VMs for NetApp Data Migrator
+:icons: font
+:imagesdir: ./media/
+
+[.lead]
+Deploy the control plane virtual machine (VM) and Linux worker VM for NetApp Data Migrator using AWS, Azure, or Google Cloud services or Open Virtual Appliance (OVA) templates. The Linux worker supports NFS data migrations.
+
+.Before you begin
+For AWS and Azure, request access to the AWS or Azure images. You need to provide the following information when requesting access:
+
+* Attach a screenshot of your NetApp Support Site My Profile page, which shows your access level including your company email ID. 
+* Indicate whether you want to deploy in Azure or AWS. 
+* For AWS, include your AWS account information and the region where the Amazon Machine Images (AMIs) will be deployed. 
+
+You will receive an email with the NetApp Data Migrator details. For AWs, copy the AMIs into your AWS account. This process gives you full ownership, avoids dependency on the source account, and is required for cross-region use.
+
+[NOTE]
+====
+For AWS, the AMIs are shared with the AWS account that you provided in the original email.
+
+For Azure, the pre-signed URL is only valid for two days. 
+====
+
+If you are using Google Cloud or OVA, download the image from the link:https://mysupport.netapp.com/site/downloads[NetApp Support Site^] and proceed with deployment.
+
+.About this task
+Choose the AWS, Azure, Google Cloud tab, or OVA tab depending on your deploy option.
+
+[role="tabbed-block"]
+====
+.AWS
+--
+Repeat the following steps for the control plane and Linux worker Amazon Machine Images (AMIs). 
+
+.Steps
+
+. Use the AMI IDs provided to locate the AMIs in your AWS account under *EC2* > *AMIs* > *Private images*.
+. Copy the AMIs into your account: 
+.. Select the AMI, then select *Actions* > *Copy AMI* 
+.. Choose the target region (if needed). 
+.. Enable encryption and select your own KMS key. 
+.. Wait for the AMI status to show *Available*. 
+--
+
+.Azure
+--
+Repeat the following steps for the control plane and Linux worker VHDs.
+
+.Steps
+
+. Copy the VHD files to Azure Blob Storage: 
++
+[source,cli]
+----
+az storage blob copy start \ 
+  --source-uri "<PROVIDED_SAS_URL>" \ 
+  --destination-blob "<VHD_FILE_NAME>.vhd" \ 
+Group 1065216673, Grouped object  --destination-container <YOUR_CONTAINER_NAME> \ 
+  --account-name <YOUR_STORAGE_ACCOUNT> \ 
+  --account-key <YOUR_STORAGE_ACCOUNT_KEY> 
+----
+
+. Create a new Azure image from the copied VHD file:
++
+[source,cli]
+----
+az image create \
+  --resource-group <YOUR_RESOURCE_GROUP> \
+  --name <YOUR_IMAGE_NAME> \
+  --source https://<YOUR_STORAGE_ACCOUNT>.blob.core.windows.net/<YOUR_CONTAINER_NAME>/<VHD_FILE_NAME>.vhd \
+  --os-type linux \
+  --location <YOUR_AZURE_REGION>
+----
+ 
+--
+
+.Google Cloud
+--
+.Steps
+
+. Verify that the Google Cloud APIs required to import images and deploy the control plane and worker VMs are enabled. For more information, refer to the link:https://docs.cloud.google.com/migrate/virtual-machines/docs/5.0/get-started/enable-services#enabling_required_services_on_the_host_project[Google Cloud documentation^].
+
+. Create a Google Cloud Storage bucket if one does not already exist. This bucket is used to store the image archives (.tar.gz) during the import operation. 
++
+Learn how to link:https://cloud.google.com/storage/docs/creating-buckets#console[create a Google Cloud Storage bucket^].
+
+. Set up the IAM roles and permissions. This ensures that the VM migration API has the required access permissions and the VM migration service can access the Google Cloud Storage bucket and create images. 
++
+.. Assign the service account objectViewer access to your destination Cloud Storage bucket:
++
+[source,cli]
+----
+gcloud storage buckets add-iam-policy-binding gs://<GCS_BUCKET> \
+  --member=serviceAccount:service-<PROJECT_NUMBER>@gcp-sa-vmmigration.iam.gserviceaccount.com \
+  --role=roles/storage.objectViewer
+----
++
+The service account needs roles/storage.objectViewer permission to read the VM image files from your Cloud Storage bucket during the migration process. 
++
+When the VM Migration API is enabled, Google Cloud automatically provisions a service account with the following format:
++
+`service-<PROJECT_NUMBER>@gcp-sa-vmmigration.iam.gserviceaccount.com` 
++
+* `++ gcp-sa` is the Google Cloud service account  
+* `vmmigration` is the VM Migration service identifier
+* `iam.gserviceaccount.com` is the standard domain for Google Cloud service accounts
+
+.. Make yourself an admin user on the `vmmigration` service:
++
+[source,cli]
+----
+gcloud projects add-iam-policy-binding <PROJECT_ID> \
+  --member=user:<YOUR_EMAIL> \
+  --role=roles/vmmigration.admin
+----
++
+This gives you VM migration administrative permissions at the project level. 
+
+. Obtain and upload the image files:
+
+.. Log in to link:https://mysupport.netapp.com/site/[NetApp Support site^] and download the control plane `.tar.gz` image and the Linux worker `.tar.gz` image files.
+.. Upload the `.tar.gz` files to your Google Cloud Storage bucket. 
+
+. After the image archives are uploaded to Google Cloud Storage, create VM images using the VM Migration Service by running the following command for each image (control plane and Linux worker).
++
+[source,cli]
+----
+--source-file=gs://<GCS_BUCKET>/<IMAGE_NAME>.tar.gz \
+  --image-name=<IMAGE_NAME> \
+  --location=<REGION> \
+  --target-project=projects/<PROJECT_ID>/locations/global/targetProjects/<PROJECT_ID> \
+  --project=<PROJECT_ID>
+----
++
+This command creates a new Google Cloud Platform VM image from the provided archive in the specified region. 
+
+. List image import operations and confirm completion:
++
+[source,cli]
+----
+gcloud migration vms image-imports list --location=<REGION> --project=<PROJECT_ID>
+----
+
+--
+
+.OVA
+--
+.Steps
+
+. Log in to link:https://mysupport.netapp.com/site/[NetApp Support site^]  
+. Download the control plane `.ova` image and the Linux worker `.ova` image files. 
+--
+====
+  
+.What's next?
+After learning about deploying a control plane VM and Linux worker VM, you can link:create-control-plane-and-worker-vms.html[create the control plane and worker VMs].
+
+// 2026 APRIL 15, GA release

@@ -2,24 +2,23 @@
 sidebar: sidebar
 permalink: configure-bulk-migrate.html
 keywords: bulk migrate, data migration, source mapping, destination mapping, export paths
-summary: "Use Bulk Migrate in NDM to transfer large volumes of data from a source to a destination location."
+summary: "Use Bulk Migrate in NetApp Data Migrator to transfer large volumes of data from a source to a destination location."
 ---
-= Perform data migration using NDM
+= Perform data migration using NetApp Data Migrator
 :icons: font
 :imagesdir: ./media/
 
 [.lead]
-Use the Bulk Migrate features in NetApp Data Migrator (NDM) to efficiently transfer large volumes of data from a source to a destination location.
+Use the Bulk Migrate features in NetApp Data Migrator to transfer large volumes of data from a source to a destination location.
 
-== Step 1: Configure Bulk Migrate in NDM 
+== Step 1: Configure Bulk Migrate in NetApp Data Migrator 
 
 You need to define the servers for Bulk Migrate before you can use the Bulk Migrate features.
 
 .Steps
 
-. Log in to NDM.
-. Select *Storage Servers* in the left navigation pane.
-. Select *File Servers.*
+. Log in to NetApp Data Migrator.
+. Select *Storage Servers* > *File Servers*.
 . Select the *File Server Name* for which you want to create the job.
 . Select *Bulk Migrate*.
 
@@ -42,7 +41,7 @@ If you don't select a directory in the destination export path, the migration ta
 
 . After you select the source and destination paths, select *Add Mapping* to add the selected mapping. You can create multiple mappings for different export paths and directories. 
 +
-NDM prevents you from selecting a mapping which has a parent or child connection with an existing mapping. This avoids conflicts during the migration.   
+NetApp Data Migrator prevents you from selecting a mapping which has a parent or child connection with an existing mapping. This avoids conflicts during the migration.   
 
 . Optionally, delete or edit a mapping by selecting the *Edit* or *Delete* option.  
 
@@ -53,22 +52,22 @@ NDM prevents you from selecting a mapping which has a parent or child connection
 
 You can select various settings from the *Options* page to customize your Bulk Migrate job, according to your needs.
 
-[cols="30,70"]
+[cols="1,2a" options="header"]
 |===
 | Option | Description 
 
 | Excluded Path Patterns
-a| Defines specific file paths or directories that should be excluded from processing. This helps to optimize storage and performance by skipping unnecessary files.
+a| Defines the specific file paths or directories to be excluded from processing. This helps to optimize storage and performance by skipping unnecessary files.
 
 * You can enter multiple path patterns, one per line.
 * You can enter a wildcard (`*`) to match multiple files or folders.
 * Example exclusions:
-** `*/snapshots/*`: Excludes all files and folders inside any "snapshots" directory
+** `*/snapshots/*`: Excludes all files and folders inside any snapshots directory
 ** `*/logs/*`: Excludes log files
 ** `*/tmp/*`: Excludes temporary files
 
 | Incremental Sync Schedule
-a| Configures how often data syncs incrementally. This ensures that only the changes since the last sync are updated, thereby improving migration efficiency and reducing processing time.
+a| Configures how often data syncs incrementally. This ensures that only the changes since the last sync are updated, which improves migration efficiency and reduces processing time.
 
 * Select *Off* to disable incremental sync.
 * Select *Set Schedule* to specify a sync schedule. You can choose to sync data hourly, daily, or weekly.
@@ -87,7 +86,7 @@ a| Selects the files to migrate based on their last modified time.
 a| Retains the original source file and directory permissions on a destination.
 
 * Select *Enabled* to preserve the original permissions, including owner, group, and access rights (access control lists for SMB, mode bits for NFS) from a source to a destination. 
-* Select *Disabled* to skip permission preservation. NDM migrates files with default destination permissions, which might be useful when migrating between incompatible file systems.
+* Select *Disabled* to skip permission preservation. NetApp Data Migrator migrates files with default destination permissions, which is useful when migrating between incompatible file systems.
 
 | Skip Files modified in last
 | Specifies files from a time window (in minutes, hours, or days) to exclude from your migration. This helps prevent data inconsistency by ensuring that actively edited files are not transferred mid-update.
@@ -116,8 +115,10 @@ Verify your settings, then proceed with a bulk migration job.
 
 .Steps
 
-. View the *Precheck Status* of your job, which ensures that the source path contains the correct data and confirms the destination path has sufficient storage and access permissions.
-. Select *Submit* to create a new migration job. A notification message appears confirming that a *Bulk Migrate job has been created*.
+. View the *Precheck Status* of your job. Ensure that the source path contains the correct data and confirm that the destination path has sufficient storage and access permissions.
+. Select *Submit* to create a new migration job.
++
+The *Bulk Migrate job has been created* confirmation message appears.
 . Select the *View Job Listing* link next to the notification message to open the *Job Config List* page where your new job is listed.
 
 // 2026 FEB 25, Preview + 3 release
