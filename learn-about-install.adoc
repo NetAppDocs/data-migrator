@@ -9,7 +9,7 @@ summary: "Learn about installing the NetApp Data Migrator control plane and work
 :imagesdir: ./media/
 
 [.lead]
-You need to install two components, a control plane and workers, to run NFS and SMB migration jobs with NetApp Data Migrator. 
+You need to install a control plane and workers to run NFS and SMB migration jobs using NetApp Data Migrator. 
 
 * *Control plane*: The control plane acts as the central management and control layer. You deploy the control plane on a Linux virtual machine (VM), then you deploy the workers.
 
@@ -18,9 +18,9 @@ You need to install two components, a control plane and workers, to run NFS and 
 ** A Linux worker supports NFS migrations.
 ** A Windows worker supports SMB migrations. 
 
-You deploy the control plane virtual machine (VM) and Linux worker VM using the AWS, Azure, or Google Cloud service or using Open Virtual Appliance (OVA) templates. The NetApp Data Migrator team provides the Amazon Machine Images (AMIs) for AWS and virtual hard disks (VHDs) for Azure. You download the Google Cloud or OVA images from the NetApp Support site.
+First you deploy the control plane virtual machine (VM) and Linux worker VM using the AWS, Azure, or Google Cloud service or using Open Virtual Appliance (OVA) templates. You download the NetApp Data Migrator images required for deployment from the NetApp Support site. 
 
-After deployment, you create the control plane and worker VMs to access NetApp Data Migrator. You create the control plane VM and Linux worker VM using the images that you deployed. You create a Windows worker VM using the Windows Worker Installer, which you download from the NetApp Support site.
+After deployment, you create the control plane and worker VMs to access NetApp Data Migrator. You create the control plane VM and Linux worker VM using the deployed images. You create the Windows worker VM using the Windows Worker Installer, which you download from the NetApp Support site.
 
 .What's next?
 After learning about installing NetApp Data Migrator, you can link:register-for-account.html[register for an account].
