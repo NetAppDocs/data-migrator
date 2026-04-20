@@ -13,6 +13,6 @@ Learn about what's new in NetApp Data Migrator.
 
 == 22 April 2026
 
-NetApp Data Migrator 2026.4.0 offers a new solution for migrating data files. You can use NetApp Data Migrator to migrate data from on-premises or third-party storage systems to NetApp cloud storage services. NetApp Data Migrator supports the NFS and SMB file transfer protocols.
+NetApp Data Migrator 2026.04.0 offers a new solution for migrating data files. You can use NetApp Data Migrator to migrate data from on-premises or third-party storage systems to NetApp cloud storage services. NetApp Data Migrator supports the NFS and SMB file transfer protocols.
 
 link:learn-about-data-migrator.html[Learn more about NetApp Data Migrator]
