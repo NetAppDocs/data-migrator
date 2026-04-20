@@ -12,22 +12,22 @@ summary: "Learn about installing the NetApp Data Migrator control plane and work
 Deploy the control plane virtual machine (VM) and Linux worker VM for NetApp Data Migrator using AWS, Azure, or Google Cloud services or Open Virtual Appliance (OVA) templates. The Linux worker supports NFS data migrations.
 
 .Before you begin
-For AWS and Azure, you need to request access to the AWS or Azure images. Send an email from your company email to ng-ndm-downloads@netapp.com requesting access to the AWS or Azure images with the following information:
+For AWS and Azure, request access to the AWS or Azure images. You need to provide the following information when requesting access:
 
 * Attach a screenshot of your NetApp Support Site My Profile page, which shows your access level including your company email ID. 
 * Indicate whether you want to deploy in Azure or AWS. 
 * For AWS, include your AWS account information and the region where the Amazon Machine Images (AMIs) will be deployed. 
 
-You will receive an email from ng-ndm-downloads@netapp.com with the NetApp Data Migrator details. 
+You will receive an email with the NetApp Data Migrator details. For AWs, copy the AMIs into your AWS account. This process gives you full ownership, avoids dependency on the source account, and is required for cross-region use.
 
 [NOTE]
 ====
-For Azure, the pre-signed URL is only valid for two days. 
+For AWS, the AMIs are shared with the AWS account that you provided in the original email.
 
-For AWS, the AMIs are shared with the AWS account that you provided in the original email. 
+For Azure, the pre-signed URL is only valid for two days. 
 ====
 
-If you are using Google Cloud or OVA, download the image from the link:https://mysupport.netapp.com/site/downloads[NetApp Support Site^] and proceed with deployment. 
+If you are using Google Cloud or OVA, download the image from the link:https://mysupport.netapp.com/site/downloads[NetApp Support Site^] and proceed with deployment.
 
 .About this task
 Choose the AWS, Azure, Google Cloud tab, or OVA tab depending on your deploy option.
@@ -36,8 +36,6 @@ Choose the AWS, Azure, Google Cloud tab, or OVA tab depending on your deploy opt
 ====
 .AWS
 --
-After requesting access to the AMIs, you copy the AMIs into your AWS account. Copying the AMIs gives you full ownership, avoids dependency on the source account, and is required for cross-region use.
-
 Repeat the following steps for the control plane and Linux worker Amazon Machine Images (AMIs). 
 
 .Steps

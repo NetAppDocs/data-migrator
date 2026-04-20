@@ -9,33 +9,7 @@ summary: "Create a NetApp account and complete the registration process to acces
 :imagesdir: ./media/
 
 [.lead]
-If you are a new NetApp customer, you need to create a NetApp account and complete the registration process to access NetApp Support. 
-
-== Step 1: Register for an account 
-
-Complete the NetApp account registration. It can take up to one business day for your new NetApp Support Site account to be upgraded from *Guest access* to *Full access*.
-
-.Steps
-
-. Register for an account on the link:https://mysupport.netapp.com/site/user/registration[NetApp Support Site^] using your business email.
-. Select *Submit*.
-. Authenticate the registration initiation by entering the onetime password sent to your email. 
-. On the registration completion page, provide the required details: 
-+
-.. For User Access Level, select *NetApp Customer/End User*.
-.. In the Serial Number field, enter `NDMNSSREG`.
-
-. Select *Submit*. A confirmation window appears indicating that the user registration has been submitted successfully. 
-
-If you encounter any issues during registration or want to check the status of your registration, link:https://mysupport.netapp.com/site/help[open a support ticket^].
-
-== Step 2: Install NetApp Data Migrator
-
-Learn about link:learn-about-install.html[installing NetApp Data Migrator].
- 
-== Step 3: Register your NetApp Data Migrator product 
-
-Register your NetApp Data Migrator product to enable the software.
+Register your NetApp Data Migrator product to access NetApp Support.
 
 .Steps
 . On the NetApp Data Migrator home page, select *Help (?)* > *About* > *Serial Number*
