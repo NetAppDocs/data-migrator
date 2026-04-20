@@ -23,4 +23,4 @@ You deploy the control plane virtual machine (VM) and Linux worker VM using the 
 After deployment, you create the control plane and worker VMs to access NetApp Data Migrator. You create the control plane VM and Linux worker VM using the images that you deployed. You create a Windows worker VM using the Windows Worker Installer, which you download from the NetApp Support site.
 
 .What's next?
-After learning about installing NetApp Data Migrator, you can link:deploy-control-plane-and-linux-workers.html[deploy a control plane VM and Linux worker VM].
+After learning about installing NetApp Data Migrator, you can link:register-for-account.html[register for an account].

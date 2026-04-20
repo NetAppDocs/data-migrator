@@ -24,8 +24,6 @@ sidebar:
       entries: 
       - title: Learn about NetApp Data Migrator
         url: /learn-about-data-migrator.html
-      - title: Register for an account
-        url: /register-for-account.html
       - title: Decide whether to use NetApp Data Migrator
         url: /decide-to-use-data-migrator.html 
       - title: Quick start 
@@ -40,6 +38,8 @@ sidebar:
       entries:
       - title: Learn about installing NetApp Data Migrator
         url: /learn-about-install.html
+      - title: Register for an account
+        url: /register-for-account.html
       - title: Deploy control plane and Linux workers
         url: /deploy-control-plane-and-linux-workers.html
       - title: Create the control plane and worker VMs

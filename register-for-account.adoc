@@ -11,9 +11,7 @@ summary: "Create a NetApp account and complete the registration process to acces
 [.lead]
 If you are a new NetApp customer, you need to create a NetApp account and complete the registration process to access NetApp Support. 
 
-== Step 1: Register for an account 
-
-Complete the NetApp account registration. It can take up to one business day for your new NetApp Support Site account to be upgraded from *Guest access* to *Full access*.
+NOTE: It can take up to one business day for your new NetApp Support Site account to be upgraded from *Guest access* to *Full access*.
 
 .Steps
 

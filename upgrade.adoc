@@ -100,6 +100,6 @@ C:\datamigrator\upgrade.log
 ====
 . If the upgrade fails, the system automatically rolls back to the previous version and the UI shows the upgrade status as *Failed*.
 +
-Review the Ansible logs, then contact NetApp support at ng-ndm-downloads@netapp.com and attach the Ansible logs to your communication.
+Review the Ansible logs, then contact NetApp support and attach the Ansible logs to your communication.
 
 // 2026 FEB 25, Preview + 3 release
