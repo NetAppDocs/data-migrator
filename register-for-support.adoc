@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: register-for-support.html
 keywords: netapp, data, migrator, support, register, account
-summary: "Create a NetApp account and complete the registration process to access NetApp Support."
+summary: "Register your NetApp Data Migrator product to access NetApp Support."
 ---
 = Register for NetApp Data Migrator support
 :icons: font

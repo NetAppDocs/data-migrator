@@ -12,22 +12,10 @@ summary: "Learn about installing the NetApp Data Migrator control plane and work
 Deploy the control plane virtual machine (VM) and Linux worker VM for NetApp Data Migrator using AWS, Azure, or Google Cloud services or Open Virtual Appliance (OVA) templates. The Linux worker supports NFS data migrations.
 
 .Before you begin
-For AWS and Azure, request access to the AWS or Azure images. You need to provide the following information when requesting access:
+Download the NetApp Data Migrator images from the link:https://mysupport.netapp.com/site/downloads[NetApp support site^]:
 
-* Attach a screenshot of your NetApp Support Site My Profile page, which shows your access level including your company email ID. 
-* Indicate whether you want to deploy in Azure or AWS. 
-* For AWS, include your AWS account information and the region where the Amazon Machine Images (AMIs) will be deployed. 
-
-You will receive an email with the NetApp Data Migrator details. For AWs, copy the AMIs into your AWS account. This process gives you full ownership, avoids dependency on the source account, and is required for cross-region use.
-
-[NOTE]
-====
-For AWS, the AMIs are shared with the AWS account that you provided in the original email.
-
-For Azure, the pre-signed URL is only valid for two days. 
-====
-
-If you are using Google Cloud or OVA, download the image from the link:https://mysupport.netapp.com/site/downloads[NetApp Support Site^] and proceed with deployment.
+. Select *NetApp Data Migrator*.
+. Follow the instructions on the NetApp Data Migrator downloads page to access the NetApp Data Migrator images.
 
 .About this task
 Choose the AWS, Azure, Google Cloud tab, or OVA tab depending on your deploy option.
@@ -124,7 +112,7 @@ This gives you VM migration administrative permissions at the project level.
 
 . Obtain and upload the image files:
 
-.. Log in to link:https://mysupport.netapp.com/site/[NetApp Support site^] and download the control plane `.tar.gz` image and the Linux worker `.tar.gz` image files.
+.. Download the control plane `.tar.gz` image file and the Linux worker `.tar.gz` image file from the link:https://mysupport.netapp.com/site/[NetApp Support site^].
 .. Upload the `.tar.gz` files to your Google Cloud Storage bucket. 
 
 . After the image archives are uploaded to Google Cloud Storage, create VM images using the VM Migration Service by running the following command for each image (control plane and Linux worker).
@@ -151,10 +139,9 @@ gcloud migration vms image-imports list --location=<REGION> --project=<PROJECT_I
 
 .OVA
 --
-.Steps
+.Step
 
-. Log in to link:https://mysupport.netapp.com/site/[NetApp Support site^]  
-. Download the control plane `.ova` image and the Linux worker `.ova` image files. 
+Download the control plane `.ova` image file and the Linux worker `.ova` image file from the link:https://mysupport.netapp.com/site/[NetApp Support site^]. 
 --
 ====
   
