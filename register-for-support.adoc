@@ -1,0 +1,33 @@
+---
+sidebar: sidebar
+permalink: register-for-support.html
+keywords: netapp, data, migrator, support, register, account
+summary: "Register your NetApp Data Migrator product to access NetApp Support."
+---
+= Register for NetApp Data Migrator support
+:icons: font
+:imagesdir: ./media/
+
+[.lead]
+Register your NetApp Data Migrator product to access NetApp Support.
+
+.Steps
+. On the NetApp Data Migrator home page, select *Help (?)* > *About* > *Serial Number*
+. In the *About NDM* dialog box, record the NetApp Data Migrator instance ID. 
++
+This is a 20-digit number, starting with 975.
+
+. Go to the link:https://register.netapp.com[NetApp support site registration page^].
+. Select *I am not a registered NetApp Customer*. 
+. Fill in the required product registration details: 
++
+.. Leave the *NetApp Reference SN* field blank.
+.. From the Product Line dropdown, select *NDM*. 
+.. From the Billing Provider dropdown, select *NetApp*.
++
+NOTE: There is no billing for this product.
+.. Enter the 20-digit NetApp Data Migrator instance ID in the *NDM Serial #* field.
+.. Complete the remaining required fields, then select *Submit*. 
+. After submission, you receive a registration confirmation email. Follow the instructions in the email to confirm the registration.
+
+// 2026 APRIL 15, GA release

@@ -1,0 +1,225 @@
+---
+sidebar: sidebar
+permalink: known-issues.html
+keywords: known issues, workarounds
+summary: "Review the known issues and workarounds for NetApp Data Migrator."
+---
+= Known issues for NetApp Data Migrator
+:icons: font
+:imagesdir: ./media/
+
+[.lead]
+Known issues identify problems that might prevent you from using this release of the product successfully. Read these known issues carefully.
+
+== Configuration 
+
+=== Access permission mismatch when using SID mapping
+
+NetApp Data Migrator might report a `Missing ACE in target` error when using SID mapping. This error indicates an access permission mismatch between the source and target systems because SID mapping was not performed at the root level.   
+
+.Workaround
+
+Provide the CSV mapping for the SID source and target as shown in the following two scenarios:  
+
+[role="tabbed-block"]
+====
+.Scenario 1
+-- 
+Provide the SID in the CSV mapping sheet for users or groups deleted or removed from the source Active Directory, as shown in the following example:
+
+[cols="1,1a" options="header"]
+|===
+| sid_source | sid_target
+
+| S-1-5-21-2444020195-1862089444-1769087368-1000 
+| S-1-5-21-3481156262-2863848796-4292454742-512
+
+|===
+--
+
+.Scenario 2
+-- 
+For active users or groups in Active Directory, provide the usernames or group names in the CSV mapping sheet exclusively in lowercase. Include the domain prefix (domain\username), as shown in the following example: 
+
+[cols="1,1a" options="header"]
+|===
+| sid_source | sid_target 
+
+| rootdomain\user1 | rootdomain\user2 
+
+|===
+--
+====
+
+=== Bulk migration limitation for same level directories 
+
+When using the Bulk Migrate feature, you cannot create multiple migration jobs together for directories that are at the same level in the source and destination directory hierarchy. For example, sibling folders in the same share operation for a source and destination. Attempting to include such directories in a single bulk migration configuration causes the job creation to fail. 
+
+.Workaround 
+Create migration jobs one at a time for directories that are at the same level, instead of adding them together. 
+
+=== Directory level migration inherited permission stamping 
+
+In directory level migrations, inherited permissions on a selected root directory are not stamped on the destination. Because NetApp Data Migrator does not apply the inherited permissions for the root directory, child directories and files that rely on inheritance also do not receive the inherited permissions. 
+
+This issue affects only inherited permission propagation from the root directory. NetApp Data Migrator correctly stamps explicit permissions set directly on files and directories (noninherited permissions) during migration. 
+
+.Workaround 
+After the migration completes, manually reapply or reset the inherited permissions on the root directory at the destination. This allows the correct inherited permissions to propagate to all child directories and files
+
+=== Validation of manual upload of UID and GID mapping in NFS 
+
+During NFS migrations, if the UID and GID mapping CSV file contains numeric user IDs or group IDs that do not exist on the destination system, NetApp Data Migrator applies (stamps) these values as is. NetApp Data Migrator does not validate whether the specified UID or GID exists on the destination and does not report any error or warning in the UI. This can result in file migration with incorrect ownership. You need to provide the correct UID and GID mapping. 
+
+.Workaround 
+Ensure that all UID and GID values specified in the mapping CSV correspond to valid and existing users and groups on the destination system before starting the migration. Manually verify user and group existence on the destination to avoid NetApp Data Migrator applying incorrect ownership during migration. 
+
+=== Migration precheck displays false insufficient space warning
+
+During migration prechecks, you might see the following warning, even if the destination has sufficient space: 
+
+----
+Insufficient destination space for selected path. Do you still want to proceed with the migration? 
+---- 
+
+This can happen if you skip the discovery step and NetApp Data Migrator uses a general command that reads the entire block device size instead of the actual dataset size.  
+
+.Workaround
+
+Run Discovery before a Migration run. This ensures that the disk usage information is available for the pre-check operation. If you still see the warning: 
+
+. Confirm that discovery has completed. 
+. Manually verify the destination volume has enough space. 
+. If there is sufficient space, you can safely proceed with data migration. 
+
+== Reporting 
+
+=== Excel displays incorrect permissions in COC report file
+
+When opening the Chain of Custody (CoC) report CSV file in Microsoft Excel, some file or folder permissions might appear as #NAME?, for example, -rwxrwxrwx, instead of the actual values. 
+
+This happens because Excel mistakenly treats certain permission strings (starting with - or =) as formulas, leading to display errors. The CSV file itself is correct, this is only a display issue.  
+
+.Workaround
+
+To view correct file and folder permissions open the CSV file using one of the following applications: 
+
+* Google Sheets 
+
+* Apple Numbers 
+
+* Online CSV viewer 
+
+* Text editor, for example, Notepad++
+
+=== No error message when Bulk Discovery job fails due to network issues
+
+If the host or destination server goes down during a Bulk Discovery job, NetApp Data Migrator might not show an error message. This can give the impression that the job is still running normally.  
+
+Discovery jobs refresh every 30 seconds. If you notice that the file count, directory count, or data size is not updating, this might indicate a network issue.  
+
+.Workaround
+
+. Check the network connectivity:
++ 
+.. Open the worker VM terminal. 
+.. Ping the IP address of the destination server.
++
+If there is no response, the destination might be unreachable.
+
+. Restore the network interface:
+
+.. Use SSH to connect to the destination server:
++
+[source,cli]
+----
+ssh <destination_IP>
+----
+
+.. Find the interface name, for example, eth0:
++
+[source,cli]
+----
+ipconfig
+----
+
+.. Bring the network interface back online:
++
+[source,cli]
+----
+ifup <interface_name>
+----
+
+. If required, repeat the Steps 1 and 2 for the source server.
+
+=== Unable to switch user on Windows worker
+
+Switching to a different user account on Windows worker might fail due to existing network connections. This can prevent access to the file server. 
+
+.Workaround 
+
+. Remove the previous connection by opening Command Prompt on the Windows worker and running the following commands:
++
+[source,cli]
+----
+net use
+----
++
+[source,cli]
+----
+net use <IP address> /delete
+----
+
+. Switch to the new user account and access the file server.
+
+== Validation
+
+=== File sizes might differ after migration even if counts match
+
+After data migration completes, the total number of files is correct, but some files might have a different size compared to the original source. This can happen if the network is interrupted or if there are problems with the server during file transfer.
+
+.Workaround
+
+. Review the migration COC report to identify files marked as errored. 
+. Re-run the migration until the errors are resolved.  
+
+== Workflows
+
+=== Job paused or stalled for more than 20 minutes
+
+You  might need to intervene when you observe network connectivity issues, issues with source or destination volume stability, or both. The job might be in the Paused or Running state without any visible progress. This might happen if the source or destination services go down, or if the worker service experiences downtime.
+
+.Workaround
+
+. Check the source and destination. 
++
+If they are offline, restart to restore connectivity.  
+
+. Check the worker status. 
++
+If the worker is offline, use SSH to connect to the VM and run the following command: 
++
+[source,cli]
+----
+systemctl restart datamigrator-worker.service
+----
+. Reboot the VM: 
++
+If issue persists, restart the worker VM.
+
+=== Job run status is confusing when errors occur
+
+Some Migration job runs encounter errors and show a Completed or Errored status. This can cause confusion when interpreting the Migration job run status. 
+
+Status definitions:
+
+* Completed: A job run has finished, but might contain errors.
+
+* Errored: A job run failed due to a critical issue.
+
+.Workaround
+
+Verify the job run outcome by checking the job run details for any errors, especially if the status is Completed. Do not rely only on the status label until after you address this issue.
+
+// 2026 APRIL 15, GA release
+// 2025 DEC 1, OTHERDOC-166 and NADIAA updates

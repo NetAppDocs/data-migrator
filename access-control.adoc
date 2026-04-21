@@ -1,0 +1,37 @@
+---
+sidebar: sidebar
+permalink: access-control.html
+keywords: role-based access control, rbac, user permissions, app admin, project admin
+summary: "NetApp Data Migrator uses role-based access control (RBAC) to manage user permissions, allowing App Admin users to assign roles to other users."
+---
+= Manage access control for NetApp Data Migrator
+:icons: font
+:imagesdir: ./media/
+
+[.lead]
+NetApp Data Migrator uses role-based access control (RBAC) to manage user permissions. RBAC allows App Admin users (administrators) to assign any of the following three roles to other users, ensuring secure access control and efficient operations. App Admin users grant permissions to other users based on their responsibilities and access requirements.
+
+* *App Admin*: This access level allows users to manage overall system settings, user roles, and access permissions.
+* *Project Admin*: This access level allows users to manage specific migration projects, including job configuration and execution.
+* *Project Viewer*: This access level provides users with read-only access to monitor migration progress, logs, and reports. This role is intended for users who need to monitor and observe the progress of data migration projects but are not required to perform actions that could alter or interfere with a project.
+
+The following table provides a summary of actions and user role permissions.
+
+[cols="1,2,1,1,1a", options="header"]
+|===
+| Action | Description | App Admin | Project Admin | Project Viewer
+
+| Agent deployment | User can access *View Instruction To Setup Worker* | Yes | Yes | No
+| Create a user | User can create new user accounts | Yes | No | No
+| List users | User can view a list of users | Yes  | Yes | Yes  
+| Manage configuration | User can manage configuration settings | Yes | Yes | No
+| Manage job | User can manage migration jobs | Yes | Yes | No
+| Reports | User can access options for downloading reports | Yes | Yes | Yes
+| Update project | User can edit a project | Yes | Yes| No   
+| View a project | User can access the projects listing page  | Yes | Yes | Yes
+| Create a project | User can create a project  | Yes | No | No
+| Save SMTP | User can add or edit SMTP details| Yes | No | No
+
+|===
+
+// 2026 APRIL 15, GA release

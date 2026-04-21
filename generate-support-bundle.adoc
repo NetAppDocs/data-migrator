@@ -1,0 +1,21 @@
+---
+sidebar: sidebar
+permalink: generate-support-bundle.html
+keywords: support bundle, diagnostics, troubleshooting, log files, download report
+summary: "Generate and download a NetApp Data Migrator support bundle containing diagnostic logs, error reports, and configuration data for troubleshooting."
+---
+= Generate a NetApp Data Migrator support bundle
+:icons: font
+:imagesdir: ./media/
+
+[.lead]
+NetApp Data Migrator allows you to generate a support bundle to help troubleshoot any issues you experience. This bundle contains diagnostic information such as log files, error reports, and configuration data. 
+
+.Steps
+
+. Log in to NetApp Data Migrator.
+. Select *Help* in the navigation bar then select the Support Bundle option.
+. Select *Date*. Enter the date range that you want to include in the support bundle.
+. Select *Other Metrics*. Enter the other metrics that you want to include in the support bundle.
+. Select *Generate Support Bundle*. When the bundle is ready, *Download Report* becomes active.
+. Select *Download Report*.

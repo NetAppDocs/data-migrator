@@ -1,0 +1,45 @@
+---
+sidebar: sidebar
+permalink: validate-control-plane-vm.html
+keywords: google cloud, installation, control plane, worker vm, iam roles
+summary: "Optionally, validate the control plane VM deployment on Google Cloud by checking service status, logs, and pod health."
+---
+= Optionally, validate the control plane VM deployment for NetApp Data Migrator
+:icons: font
+:imagesdir: ./media/
+
+[.lead]
+Optionally validate the control plane VM deployment for NetApp Data Migrator.
+
+.Steps
+. Use SSH to connect to your control plane server:
++  
+[source,cli]
+----
+sudo su - datamigrator
+----
+. Check the status of the boot service and logs:
++
+[source,cli]
+----
+sudo systemctl status boot-microk8s.service
+----
+Optionally, check the boot service logs:
++
+[source,cli]
+----
+tail -10f /opt/datamigrator/logs/ndm-first-boot.log
+----
++
+If the setup is complete, you see `Datamigrator Application Setup Complete` in the logs.
+. Verify that all the pods are up and running:
++
+[source,cli]
+----
+kubectl get pods -n datamigrator
+----
+
+.What's next? 
+After learning about validating the control plane VM, you can link:access-data-migrator-ui.html[access the NetApp Data Migrator UI].
+
+// 15 APRIL 2026, GA release

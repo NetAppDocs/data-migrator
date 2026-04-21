@@ -1,12 +1,12 @@
 ---
 permalink:  legal-notices.html
 sidebar: sidebar
-keywords: # no keywords
-summary: # no summary
+keywords: legal notices, copyright, trademarks, open source, licenses
+summary: "Legal notices, copyright, trademarks, and open source license information for NetApp Data Migrator."
 ---
 = Legal notices
 :icons: font
-:imagesdir: ../media/
+:imagesdir: ./media/
 
 // Include the common notices
 include::https://raw.githubusercontent.com/NetAppDocs/common/main/_include/common-legal-notices.adoc[]
@@ -15,3 +15,4 @@ include::https://raw.githubusercontent.com/NetAppDocs/common/main/_include/commo
 include::https://raw.githubusercontent.com/NetAppDocs/common/main/_include/open-source-notice-intro.adoc[]
 
 // Add required link(s)
+link:./media/data_migraotor_notice_2026.04.0_GA.pdf[Notice for NetApp Data Migrator^]

@@ -1,0 +1,124 @@
+---
+sidebar: sidebar
+permalink: configure-bulk-migrate.html
+keywords: bulk migrate, data migration, source mapping, destination mapping, export paths
+summary: "Use Bulk Migrate in NetApp Data Migrator to transfer large volumes of data from a source to a destination location."
+---
+= Perform data migration using NetApp Data Migrator
+:icons: font
+:imagesdir: ./media/
+
+[.lead]
+Use the Bulk Migrate features in NetApp Data Migrator to transfer large volumes of data from a source to a destination location.
+
+== Step 1: Configure Bulk Migrate in NetApp Data Migrator 
+
+You need to define the servers for Bulk Migrate before you can use the Bulk Migrate features.
+
+.Steps
+
+. Log in to NetApp Data Migrator.
+. Select *Storage Servers* > *File Servers*.
+. Select the *File Server Name* for which you want to create the job.
+. Select *Bulk Migrate*.
+
+== Step 2: Add source and destination mappings  
+
+Add source and destination mappings to specify the source export paths and destination export paths for your migration.
+
+.Steps
+
+. Select the export path in the source that you want to migrate. 
+. Optionally, select *Add Source Directory* if you want to perform a directory level migration.  
++
+After you select *Add Source Directory*, the directory explorer view appears. This view shows the list of directories at the root level. You can either navigate to the required directory or directly copy and paste the path of the required directory into the search bar of the explorer window to navigate to that folder.  
+
+. After you select the source directory, select the destination file server and destination export path.
+
+. Optionally, select the directory in the destination export path.
++
+If you don't select a directory in the destination export path, the migration takes place at the root level of the selected export path.
+
+. After you select the source and destination paths, select *Add Mapping* to add the selected mapping. You can create multiple mappings for different export paths and directories. 
++
+NetApp Data Migrator prevents you from selecting a mapping which has a parent or child connection with an existing mapping. This avoids conflicts during the migration.   
+
+. Optionally, delete or edit a mapping by selecting the *Edit* or *Delete* option.  
+
+. After you add the mappings, select *Proceed*.  
+
+
+== Step 3: Customize the Bulk Migrate job
+
+You can select various settings from the *Options* page to customize your Bulk Migrate job, according to your needs.
+
+[cols="1,2a" options="header"]
+|===
+| Option | Description 
+
+| Excluded Path Patterns
+a| Defines the specific file paths or directories to be excluded from processing. This helps to optimize storage and performance by skipping unnecessary files.
+
+* You can enter multiple path patterns, one per line.
+* You can enter a wildcard (`*`) to match multiple files or folders.
+* Example exclusions:
+** `*/snapshots/*`: Excludes all files and folders inside any snapshots directory
+** `*/logs/*`: Excludes log files
+** `*/tmp/*`: Excludes temporary files
+
+| Incremental Sync Schedule
+a| Configures how often data syncs incrementally. This ensures that only the changes since the last sync are updated, which improves migration efficiency and reduces processing time.
+
+* Select *Off* to disable incremental sync.
+* Select *Set Schedule* to specify a sync schedule. You can choose to sync data hourly, daily, or weekly.
+* Select *Cron Expression* if you are an advanced user and want to define a custom sync schedule using a cron expression, for more granular control over sync timing.
+
+| Migrate File
+a| Selects the files to migrate based on their last modified time.
+
+* Select *All* to migrate all files, regardless of their modification date.
+* Select *Exclude file older than (UTC)* to exclude files older than a specified date.
+
+| Preserve a-time (Access Time) 
+| Retains the original file access timestamp, instead of updating it to the migration time.
+
+| Preserve permissions
+a| Retains the original source file and directory permissions on a destination.
+
+* Select *Enabled* to preserve the original permissions, including owner, group, and access rights (access control lists for SMB, mode bits for NFS) from a source to a destination. 
+* Select *Disabled* to skip permission preservation. NetApp Data Migrator migrates files with default destination permissions, which is useful when migrating between incompatible file systems.
+
+| Skip Files modified in last
+| Specifies files from a time window (in minutes, hours, or days) to exclude from your migration. This helps prevent data inconsistency by ensuring that actively edited files are not transferred mid-update.
+
+| Upload GID / UID mapping
+a| Uploads a Group ID (GID) or User ID (UID) mapping file to maintain correct file ownership during migration. The uploaded file must follow the format specified in the template provided.
+
+. Select *Download Template* to download a sample file format.
+. Select *Choose a file* to select the mapping file from your local system.
+. Select *Upload* to apply the mapping.
+
+| Upload SID mapping
+a| Uploads a Security Identifier (SID) mapping file. SID mapping ensures that user and group permissions are retained accurately when migrating or syncing files between systems. The uploaded file must follow the format specified in the template provided for you to download.
+
+. Select *Download Template* to download a sample file format.
+. Select *Choose a file* to select the mapping file from your local system.
+. Select *Upload* to apply the mapping.
+
+|===
+
+After selecting your options, select *Proceed* to open the *Review and Submit* page.
+
+== Step 4: Review and submit
+
+Verify your settings, then proceed with a bulk migration job.
+
+.Steps
+
+. View the *Precheck Status* of your job. Ensure that the source path contains the correct data and confirm that the destination path has sufficient storage and access permissions.
+. Select *Submit* to create a new migration job.
++
+The *Bulk Migrate job has been created* confirmation message appears.
+. Select the *View Job Listing* link next to the notification message to open the *Job Config List* page where your new job is listed.
+
+// 2026 FEB 25, Preview + 3 release

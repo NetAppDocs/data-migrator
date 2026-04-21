@@ -1,14 +1,30 @@
 indexpage:
-  title: # Unquoted string 
-  lead: # Quoted string
-  summary: # Quoted string 
-  keywords: # Unquoted comma-delimited list of keywords 
+  title: NetApp Data Migrator documentation
+  lead: NetApp Data Migrator is an enterprise grade, multicloud, data migration software application that simplifies the migration of unstructured file data from on-premises or third-party storage systems to public cloud storage services powered by NetApp. NetApp Data Migrator is an independent application that runs on user-managed virtual machines and eliminates the need for complex custom scripts and disjointed tools.
+  summary: NetApp Data Migrator is an enterprise grade, multicloud, data migration software application that simplifies the migration of unstructured file data from on-premises or third-party storage systems to public cloud storage services powered by NetApp. NetApp Data Migrator is an independent application that runs on user-managed virtual machines and eliminates the need for complex custom scripts and disjointed tools.
+  keywords: netapp, data, migrator, documentation
   tiles: 
-    # Tile definition 
-    - title: # Quoted or unquoted string
+    - title: Get started
       links: 
-        # Link definition
-        - title: # Quoted or unquoted string
-          url: # Path to target
-        # Next link on this tile (title/url pair)
-    # Next tile on this page (title/links)
+        - title: Release notes
+          url: /whats-new.html
+        - title: Learn about NetApp Data Migrator
+          url: /learn-about-data-migrator.html
+        - title: Quick start 
+          url: /quick-start.html
+    - title: Install and use NetApp Data Migrator
+      links: 
+        - title: Install NetApp Data Migrator
+          url: /learn-about-install.html
+        - title: Upgrade control plane and workers
+          url: /upgrade.html
+        - title: Create and manage projects
+          url: /manage-projects.html
+        - title: Use NetApp Data Migrator
+          url: /manage-users.html
+    - title: More resources
+      links: 
+        - title: Get help
+          url: /register-for-support.html
+        - title: FAQ
+          url: /faq.html
