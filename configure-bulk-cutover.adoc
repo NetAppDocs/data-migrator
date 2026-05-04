@@ -48,3 +48,43 @@ Review the report to verify if the cutover was successful and if all data has su
 . If you are satisfied with the information in the COC report, select *Confirm* to approve the *Bulk Cutover*. 
 +
 The status changes to *Complete.* 
+
+=== Resolve Metadata Update Conflicts
+
+Metadata update conflicts might arise during the cutover confirmation process for SMB migrations. To resolve the metadata update conflicts, run the metadata synchronization script for the impacted files. 
+
+.Steps
+
+. Download CoC Report ZIP folder that was generated as part of the cutover process.
+. Extract the ZIP folder on the Windows worker machine that was involved in the cutover for the path pair.
++
+Note: The drive letters 'S' and 'T' are used to map the source and target volumes on the Windows worker. Do not use these drive letters for any other mounts when running this script. 
+. Copy the required 'metadata_conflict_errors.csv' file. 
+. Open PowerShell as an administrator on the Windows worker machine.
+. Navigate to Scripts Directory:
++
+[source,cli]
+----
+cd C:\datamigrator\scripts
+----
+. Run the Metadata Stamping Script using placeholders for all parameters:
++
+[source,cli]
+----
+.\stamp-metadata.ps1 
+-SourceHost <SourceFileServer_FQDN_or_IP>"
+-SourceShare "<Source_ShareName_Only (e.g., data)>"
+-DestHost "<DestinationFileServer_FQDN_or_IP>"
+-DestShare "<Destination_ShareName_Only>"
+-SourceUsername "<DOMAIN User_With_Read_Access_To_Source>"
+-SourcePassword "<Password_For_Source_User>"
+-DestUsername "<DOMAIN User_With_Write_Access_To_Destination>"
+-DestPassword "<Password_For_Destination_User>"
+-InputFile "<Full_Path_To_File_List_CSV (e.g., C:\Migration\files.csv)>"
+-SidMapFile "<Full_Path_To_SID_Mapping_CSV (OldSID_to_NewSID)>"
+-Domain "<ActiveDirectory_Domain (e.g., company.com_or_COMPANY)>"
+----
+
+The SID mapping and domain-related parameters (SidMapFile and Domain) are optional and can be included as needed.
+
+// 4-MAY-2026 OTHERDOC-220
