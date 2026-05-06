@@ -119,11 +119,12 @@ This gives you VM migration administrative permissions at the project level.
 +
 [source,cli]
 ----
---source-file=gs://<GCS_BUCKET>/<IMAGE_NAME>.tar.gz \
-  --image-name=<IMAGE_NAME> \
-  --location=<REGION> \
-  --target-project=projects/<PROJECT_ID>/locations/global/targetProjects/<PROJECT_ID> \
-  --project=<PROJECT_ID>
+gcloud migration vms image-imports create <image_name> \
+ --source-file=gs://<Google_Cloud_Storage_bucket>/<image_name>.tar.gz \
+  --image-name=<image_name> \
+  --location=<region> \
+  --target-project=projects/<project_ID>/locations/global/targetProjects/<project_ID> \
+  --project=<project_ID>
 ----
 +
 This command creates a new Google Cloud Platform VM image from the provided archive in the specified region. 
@@ -148,4 +149,5 @@ Download the control plane `.ova` image file and the Linux worker `.ova` image f
 .What's next?
 After learning about deploying a control plane VM and Linux worker VM, you can link:create-control-plane-and-worker-vms.html[create the control plane and worker VMs].
 
+// 2026 MAY 5, OTHERDOC-221
 // 2026 APRIL 15, GA release
