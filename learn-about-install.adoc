@@ -18,9 +18,9 @@ NetApp Data Migrator consists of a control plane and one or more workers that wo
 ** A Linux worker supports NFS migrations.
 ** A Windows worker supports SMB migrations. 
 
-First you deploy the control plane virtual machine (VM) and Linux worker VM using the AWS, Azure, or Google Cloud service or using Open Virtual Appliance (OVA) templates. You download the NetApp Data Migrator images required for deployment from the NetApp Support site. 
+First you deploy the control plane virtual machine (VM) and Linux worker VM using the AWS, Azure, or Google Cloud service or using Open Virtual Appliance (OVA) templates. You download the NetApp Data Migrator images required for deployment from the NetApp Support Site. 
 
-After deployment, create the control plane VM and worker VMs to access NetApp Data Migrator. Create the control plane VM and Linux worker VM using the deployed images. Create the Windows worker VM using the Windows Worker Installer, which you download from the NetApp Support site. You can then optionally validate the control plane VM or proceed to access the NetApp Data Migrator UI and connect to the control plane and workers.
+After deployment, create the control plane VM and worker VMs to access NetApp Data Migrator. Create the control plane VM and Linux worker VM using the deployed images. Create the Windows worker VM using the Windows Worker Installer, which you download from the NetApp Support Site. You can then optionally validate the control plane VM or proceed to access the NetApp Data Migrator UI and connect to the control plane and workers.
 
 .What's next?
 After learning about installing NetApp Data Migrator, you can link:register-for-account.html[register for an account] on the NetApp Support Site if you are a new customer or proceed to link:deploy-control-plane-and-linux-workers.html[deploy the control plane and Linux worker VMs] if you already have an account.
