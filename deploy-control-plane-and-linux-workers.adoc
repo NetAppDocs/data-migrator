@@ -59,11 +59,11 @@ Group 1065216673, Grouped object  --destination-container <YOUR_CONTAINER_NAME> 
 [source,cli]
 ----
 az image create \
-  --resource-group <YOUR_RESOURCE_GROUP> \
-  --name <YOUR_IMAGE_NAME> \
-  --source https://<YOUR_STORAGE_ACCOUNT>.blob.core.windows.net/<YOUR_CONTAINER_NAME>/<VHD_FILE_NAME>.vhd \
+  --resource-group <your_resource_group> \
+  --name <your_image_name> \
+  --source https://<your_storage_account>.blob.core.windows.net/<your_container_name>/<VHD_file_name>.vhd \
   --os-type linux \
-  --location <YOUR_AZURE_REGION>
+  --location <your_Azure_region>
 ----
  
 --
@@ -84,7 +84,7 @@ Learn how to link:https://cloud.google.com/storage/docs/creating-buckets#console
 +
 [source,cli]
 ----
-gcloud storage buckets add-iam-policy-binding gs://<GCS_BUCKET> \
+gcloud storage buckets add-iam-policy-binding gs://<Google_Cloud_Storage_Bucket> \
   --member=serviceAccount:service-<PROJECT_NUMBER>@gcp-sa-vmmigration.iam.gserviceaccount.com \
   --role=roles/storage.objectViewer
 ----
@@ -119,11 +119,11 @@ This gives you VM migration administrative permissions at the project level.
 +
 [source,cli]
 ----
---source-file=gs://<GCS_BUCKET>/<IMAGE_NAME>.tar.gz \
-  --image-name=<IMAGE_NAME> \
-  --location=<REGION> \
-  --target-project=projects/<PROJECT_ID>/locations/global/targetProjects/<PROJECT_ID> \
-  --project=<PROJECT_ID>
+--source-file=gs://<Google_Cloud_Storage_bucket>/<image_name>.tar.gz \
+  --image-name=<image_name> \
+  --location=<region> \
+  --target-project=projects/<project_ID>/locations/global/targetProjects/<project_ID> \
+  --project=<project_ID>
 ----
 +
 This command creates a new Google Cloud Platform VM image from the provided archive in the specified region. 
@@ -132,7 +132,7 @@ This command creates a new Google Cloud Platform VM image from the provided arch
 +
 [source,cli]
 ----
-gcloud migration vms image-imports list --location=<REGION> --project=<PROJECT_ID>
+gcloud migration vms image-imports list --location=<region> --project=<project_ID>
 ----
 
 --
