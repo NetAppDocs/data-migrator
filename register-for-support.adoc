@@ -17,7 +17,7 @@ Register your NetApp Data Migrator product to access NetApp Support.
 +
 This is a 20-digit number, starting with 975.
 
-. Go to the link:https://register.netapp.com[NetApp support site registration page^].
+. Go to the link:https://register.netapp.com[NetApp Support Site registration page^].
 . Select *I am not a registered NetApp Customer*. 
 . Fill in the required product registration details: 
 +

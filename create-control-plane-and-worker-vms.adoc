@@ -77,9 +77,9 @@ Learn about link:https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connect-rdp
 
 .What's next?
 
-After learning about creating the control plane and worker VMs, you can choose one of the following options:
+After learning about creating the control plane and worker VMs, you can do the following:
 
-* Optionally, link:validate-control-plane-vm.html[Validate the control plane VM]
-* link:access-data-migrator-ui.html[Access the NetApp Data Migrator UI and connecting to the control plane and workers]
+* Optionally link:validate-control-plane-vm.html[validate the control plane VM]
+* link:access-data-migrator-ui.html[Access the NetApp Data Migrator UI and connect to the control plane and workers]
 
 // 2026 APRIL 15, GA release

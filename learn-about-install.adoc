@@ -9,7 +9,7 @@ summary: "Learn about installing the NetApp Data Migrator control plane and work
 :imagesdir: ./media/
 
 [.lead]
-You need to install a control plane and workers to run NFS and SMB migration jobs using NetApp Data Migrator. 
+NetApp Data Migrator consists of a control plane and one or more workers that work together to perform data migration jobs using the NFS and SMB transport protocols.
 
 * *Control plane*: The control plane acts as the central management and control layer. You deploy the control plane on a Linux virtual machine (VM), then you deploy the workers.
 
@@ -18,9 +18,9 @@ You need to install a control plane and workers to run NFS and SMB migration job
 ** A Linux worker supports NFS migrations.
 ** A Windows worker supports SMB migrations. 
 
-First you deploy the control plane virtual machine (VM) and Linux worker VM using the AWS, Azure, or Google Cloud service or using Open Virtual Appliance (OVA) templates. You download the NetApp Data Migrator images required for deployment from the NetApp Support site. 
+First you deploy the control plane virtual machine (VM) and Linux worker VM using the AWS, Azure, or Google Cloud service or using Open Virtual Appliance (OVA) templates. You download the NetApp Data Migrator images required for deployment from the NetApp Support Site. 
 
-After deployment, you create the control plane and worker VMs to access NetApp Data Migrator. You create the control plane VM and Linux worker VM using the deployed images. You create the Windows worker VM using the Windows Worker Installer, which you download from the NetApp Support site.
+After deployment, create the control plane VM and worker VMs to access NetApp Data Migrator. Create the control plane VM and Linux worker VM using the deployed images. Create the Windows worker VM using the Windows Worker Installer, which you download from the NetApp Support Site. You can then optionally validate the control plane VM or proceed to access the NetApp Data Migrator UI and connect to the control plane and workers.
 
 .What's next?
-After learning about installing NetApp Data Migrator, you can link:register-for-account.html[register for an account].
+After learning about installing NetApp Data Migrator, you can link:register-for-account.html[register for an account] on the NetApp Support Site if you are a new customer or proceed to link:deploy-control-plane-and-linux-workers.html[deploy the control plane and Linux worker VMs] if you already have an account.
