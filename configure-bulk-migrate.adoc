@@ -56,6 +56,8 @@ You can select various settings from the *Options* page to customize your Bulk M
 |===
 | Option | Description 
 
+| Convert inherited permissions to explicit
+| When you enable this option, any permissions inherited from the source are written as explicit permissions on the destination during directory-level SMB migrations.
 | Excluded Path Patterns
 a| Defines the specific file paths or directories to be excluded from processing. This helps to optimize storage and performance by skipping unnecessary files.
 
@@ -121,4 +123,5 @@ Verify your settings, then proceed with a bulk migration job.
 The *Bulk Migrate job has been created* confirmation message appears.
 . Select the *View Job Listing* link next to the notification message to open the *Job Config List* page where your new job is listed.
 
+// 2026 JUN 5, OTHERDOC-237
 // 2026 FEB 25, Preview + 3 release
