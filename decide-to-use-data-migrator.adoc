@@ -11,6 +11,8 @@ summary: "Use this decision matrix to determine whether to use NetApp Data Migra
 [.lead]
 Use the decision matrix to determine whether to use NetApp Data Migrator or SnapMirror for your NFS and SMB data migration operations from an ONTAP on-premises storage system. For example, if you are migrating NFS and SMB files from an ONTAP on-premises source running ONTAP 9.12.1 to a Google Cloud NetApp Volumes Flex service destination, you should use NetApp Data Migrator.
 
+NOTE: NetApp Data Migrator does not support data migration to ONTAP on-premises storage system destinations.
+
 [cols="2,1,1,1,1,1,1a" options="header"]
 |===
 | On-premises or third-party storage system source |Amazon FSx for NetApp ONTAP |Azure NetApp Files hardware | Cloud Volumes ONTAP | Google Cloud NetApp Volumes hardware| Google Cloud NetApp Volumes Flex | Google Cloud NetApp Volumes Flex (VSA based) 
@@ -45,4 +47,5 @@ For ONTAP 9.9.1 and earlier
 
 Learn about link:https://docs.netapp.com/us-en/ontap/data-protection/snapmirror-disaster-recovery-concept.html[SnapMirror volume replication^]
 
+// 2026 JUN 19, OTHERDOC-238
 // 15 APRIL 2026, GA release

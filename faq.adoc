@@ -33,4 +33,4 @@ Check that you have entered correct working directory for the selected export pa
 
 .Why do I get a 'write permission' error on the working directory?
 
-This error occurs when the correct export path and working directory are specified, but the necessary write permissions are not granted. Without the correct write access, the file server pre-check will fail, and the user will not be able to run jobs. Check that the user experiencing the error has the required write access.
+This error occurs when the correct export path and working directory are specified, but the necessary write permissions are not granted. Without the correct write access, the file server pre-check fails and you cannot run jobs. Check that the user experiencing the error has the required write access.
