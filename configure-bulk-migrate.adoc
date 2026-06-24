@@ -29,7 +29,7 @@ Add source and destination mappings to specify the source export paths and desti
 .Steps
 
 . Select the export path in the source that you want to migrate. 
-. Optionally, select *Add Source Directory* if you want to perform a directory level migration.  
+. Optionally, select *Add Source Directory* if you want to perform a migration at the directory level.  
 +
 After you select *Add Source Directory*, the directory explorer view appears. This view shows the list of directories at the root level. You can either navigate to the required directory or directly copy and paste the path of the required directory into the search bar of the explorer window to navigate to that folder.  
 
@@ -56,6 +56,8 @@ You can select various settings from the *Options* page to customize your Bulk M
 |===
 | Option | Description 
 
+| Convert inherited permissions to explicit
+| When you enable this option, any permissions inherited from the source are written as explicit permissions on the destination during SMB migrations at the directory level.
 | Excluded Path Patterns
 a| Defines the specific file paths or directories to be excluded from processing. This helps to optimize storage and performance by skipping unnecessary files.
 
@@ -121,4 +123,5 @@ Verify your settings, then proceed with a bulk migration job.
 The *Bulk Migrate job has been created* confirmation message appears.
 . Select the *View Job Listing* link next to the notification message to open the *Job Config List* page where your new job is listed.
 
+// 2026 JUN 5, OTHERDOC-237
 // 2026 FEB 25, Preview + 3 release
