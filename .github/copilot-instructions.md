@@ -6,37 +6,6 @@ Product: NetApp Data Migrator
 NetApp Data Migrator is an enterprise-grade, multicloud data migration application that moves unstructured file data from on-premises or third-party NAS storage systems to NetApp cloud storage services. It runs on user-managed virtual machines and supports NFS and SMB file transfer protocols.
 
 ### Repository structure
-- `learn-about-data-migrator.adoc` – Product overview and key terminology definitions (control plane, worker, job, project, export path, etc.)
-- `learn-about-install.adoc` – Architecture overview of the control plane and worker VM deployment model
-- `quick-start.adoc` – Quick start guide covering installation, configuration, and first migration
-- `deploy-control-plane-and-linux-workers.adoc` – Deployment steps for the control plane and Linux worker VMs on AWS, Azure, Google Cloud, and OVA
-- `create-control-plane-and-worker-vms.adoc` – Steps to create the control plane VM and worker VMs after deployment
-- `validate-control-plane-vm.adoc` – Optional post-deployment validation of the control plane VM
-- `access-data-migrator-ui.adoc` – Steps to access the NetApp Data Migrator UI and connect to the control plane
-- `configure-data-migrator.adoc` – Initial login, password reset, and first project creation
-- `register-for-account.adoc` – Account registration on the NetApp Support Site
-- `register-for-support.adoc` – Support registration steps
-- `manage-projects.adoc` – Creating, editing, and switching between projects
-- `manage-users.adoc` – Creating and managing users and role assignments
-- `manage-file-servers.adoc` – Adding and configuring NFS and SMB file servers, including Dell Isilon and manual export path upload
-- `manage-jobs.adoc` – Managing Discovery, Migration, and Cutover jobs and job runs
-- `configure-bulk-discover.adoc` – Performing bulk discovery across multiple export paths
-- `configure-bulk-migrate.adoc` – Performing bulk migration with source-to-destination mappings and job options
-- `configure-bulk-cutover.adoc` – Performing bulk cutover to finalize migration
-- `configure-notifications.adoc` – Configuring SMTP email notifications
-- `access-control.adoc` – RBAC model and user role permission table
-- `support-matrix.adoc` – Supported features, file servers (source and destination), and NFS/SMB protocol versions
-- `networking-requirements.adoc` – NFS and SMB network access verification for control plane and workers
-- `port-requirements.adoc` – Required TCP/UDP ports for control plane and worker communication
-- `decide-to-use-data-migrator.adoc` – Guidance for evaluating whether to use the product
-- `upgrade.adoc` – Upgrade procedures
-- `troubleshoot.adoc` – Troubleshooting guidance
-- `generate-support-bundle.adoc` – Steps to generate a support bundle
-- `known-issues.adoc` – Known issues
-- `known-limitations.adoc` – Known limitations
-- `faq.adoc` – Frequently asked questions
-- `whats-new.adoc` – Release notes and new features
-- `legal-notices.adoc` – Legal notices
 - `_include/` – Shared content fragments included in multiple pages
 - `media/` – Images used throughout the documentation
 
