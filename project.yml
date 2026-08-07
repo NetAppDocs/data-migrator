@@ -28,12 +28,6 @@ sidebar:
         url: /decide-to-use-data-migrator.html 
       - title: Quick start 
         url: /quick-start.html
-      - title: Networking requirements
-        entries:
-        - title: Verify networking access 
-          url: /networking-requirements.html
-        - title: Port requirements
-          url: /port-requirements.html
     - title: Install, set up, and upgrade
       entries:
       - title: Learn about installing NetApp Data Migrator
@@ -46,6 +40,12 @@ sidebar:
         url: /create-control-plane-and-worker-vms.html
       - title: Validate the control plane and worker deployment
         url: /validate-control-plane-vm.html
+      - title: Networking requirements
+        entries:
+        - title: Configure access for control plane and worker nodes
+          url: /networking-requirements.html
+        - title: Port requirements
+          url: /port-requirements.html
       - title: Access NetApp Data Migrator UI
         url: /access-data-migrator-ui.html
       - title: Configure NetApp Data Migrator
