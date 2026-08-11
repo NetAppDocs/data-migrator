@@ -1,6 +1,6 @@
 ---
 permalink: networking-requirements.html
-permalink: data-migrator/configure-access-for-control-plane-and-worker-nodes.html
+redirect: data-migrator/configure-access-for-control-plane-and-worker-nodes.html
 ---
 
 // 2026 AUG 11, OTHERDOC-253
