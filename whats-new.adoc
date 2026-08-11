@@ -15,7 +15,7 @@ Learn about what's new in NetApp Data Migrator.
 
 NetApp Data Migrator 2026.06.0 improves the accuracy, reliability, scalability, and security for data migrations:
 
-* Enhances SMB permissions handling with the inclusion of configurable permission inheritance modes and improved metadata synchronization. This results in more accurate incremental migrations and metadata preservation for SMB.
+* Includes enhancements to SMB permissions handling with the inclusion of configurable permission inheritance modes and improved metadata synchronization. This results in more accurate incremental migrations and metadata preservation for SMB.
 * Includes performance and stability improvements across discovery, migration, and permission-stamping workflows for NFS and SMB.
 
 == 22 April 2026
