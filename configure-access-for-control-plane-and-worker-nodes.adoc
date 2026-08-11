@@ -1,6 +1,6 @@
 ---
 sidebar: sidebar
-permalink: networking-requirements.html
+permalink: configure-access-for-control-plane-and-worker-nodes.html
 keywords: networking requirements, TCP, UDP, control plane, worker, communication
 summary: "Networking requirements for NetApp Data Migrator, including required TCP and UDP ports for control plane and worker communication."
 ---
@@ -45,6 +45,9 @@ Active Directory relies on DNS for domain controller discovery. Before attemptin
 After DNS is configured, follow the link:https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage/join-computer-to-domain?tabs=cmd&pivots=windows-server-2025[Microsoft documentation^] to join the Windows worker VM to the domain.
 +
 If you encounter any issues during the domain join process, refer to the link:https://techcommunity.microsoft.com/blog/askds/domain-join-and-basic-troubleshooting/4405860[Microsoft Domain Join troubleshooting documentation^].
+
+.What's next?
+After configuring network access, review the link:port-requirements.html[port requirements].
 
 
 // 2026 AUG 8, OTHERDOC-253

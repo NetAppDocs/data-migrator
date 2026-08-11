@@ -43,7 +43,7 @@ sidebar:
       - title: Networking requirements
         entries:
         - title: Configure access for control plane and worker nodes
-          url: /networking-requirements.html
+          url: /configure-access-for-control-plane-and-worker-nodes.html
         - title: Port requirements
           url: /port-requirements.html
       - title: Access NetApp Data Migrator UI

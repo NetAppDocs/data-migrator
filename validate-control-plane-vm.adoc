@@ -40,6 +40,6 @@ kubectl get pods -n datamigrator
 ----
 
 .What's next? 
-After validating the control plane and worker deployment, you can link:networking-requirements.html[configure access for control plane and worker nodes].
+After validating the control plane and worker deployment, you can link:configure-access-for-control-plane-and-worker-nodes.html[configure access for control plane and worker nodes].
 
 // 15 APRIL 2026, GA release
