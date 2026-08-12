@@ -40,7 +40,7 @@ net use Z: \\<storage-ip>\<share> /user:<domain>\<username> <password>
 
 . Join the Windows worker VM to a domain. 
 +
-Active Directory relies on DNS for domain controller discovery. Before attempting a domain join, verify that your system can locate the domain controller and that the Windows worker VM is configured to use the Active Directory DNS server.
+Active Directory relies on DNS for domain controller discovery. Before attempting to join a domain, verify that your system can locate the domain controller and that the Windows worker VM is configured to use the Active Directory DNS server.
 +
 After DNS is configured, follow the link:https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage/join-computer-to-domain?tabs=cmd&pivots=windows-server-2025[Microsoft documentation^] to join the Windows worker VM to the domain.
 +
