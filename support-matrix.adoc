@@ -57,7 +57,7 @@ a| * File pattern exclusions
 |===
 |Description | Unsupported feature
 
-| Cross Active Directory migration	
+| Cross Active Directory migration
 | Cross-domain migrations between source and destination systems joined to different Active Directory domains
 | Permissions and audit handling
 | System Access Control List (SACL)
