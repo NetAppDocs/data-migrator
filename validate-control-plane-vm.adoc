@@ -40,6 +40,6 @@ kubectl get pods -n datamigrator
 ----
 
 .What's next? 
-After learning about validating the control plane VM, you can link:access-data-migrator-ui.html[access the NetApp Data Migrator UI].
+After validating the control plane and worker deployment, you can link:configure-access-for-control-plane-and-worker-nodes.html[configure access for control plane and worker nodes].
 
 // 15 APRIL 2026, GA release
