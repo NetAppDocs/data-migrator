@@ -52,6 +52,7 @@ NetApp Data Migrator prevents you from selecting a mapping which has a parent or
 
 You can select various settings from the *Options* page to customize your Bulk Migrate job, according to your needs.
 
+[[inherited-permissions]]
 [cols="1,2a" options="header"]
 |===
 | Option | Description 

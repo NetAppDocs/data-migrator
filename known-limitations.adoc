@@ -17,8 +17,7 @@ NFS and SMB migration limitations and features that do not work or do not work w
 |===
 | Description | NFS | SMB 
 
-| Number of export paths that can
-run simultaneously	 | 4  | 2
+| Number of parallel jobs | 4 | 2
 | Maximum number of files in a directory | 1 million | 1 million
 | Worker sizing| 4 core CPU, 16 GB memory | 16 core CPU, 64 GB memory
 | Control plane sizing| 8 core CPU, 64 GB memory | 8 core CPU, 64 GB memory
@@ -53,5 +52,6 @@ run simultaneously	 | 4  | 2
 
 |===
 
+// 2026 AUG 8, OTHERDOC-254
 // 15 APRIL 2026, GA release
 // 2025 DEC 1, OTHERDOC-166 and NADIAA updates
