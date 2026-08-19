@@ -57,6 +57,8 @@ a| * File pattern exclusions
 |===
 |Description | Unsupported feature
 
+| Cross Active Directory migration
+| Cross-domain migrations between source and destination systems joined to different Active Directory domains
 | Permissions and audit handling
 | System Access Control List (SACL)
 
@@ -101,5 +103,6 @@ NetApp Data Migrator supports certain NFS and SMB protocol versions for data mig
 
 |===
 
+// 2026 AUG 8, OTHERDOC-254
 // 2026 APRIL 15, GA release
 // 2025 DEC 1, OTHERDOC-166 and NADIAA updates

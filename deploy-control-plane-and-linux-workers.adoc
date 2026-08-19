@@ -46,12 +46,12 @@ Repeat the following steps for the control plane and Linux worker VHDs.
 +
 [source,cli]
 ----
-az storage blob copy start \ 
-  --source-uri "<PROVIDED_SAS_URL>" \ 
-  --destination-blob "<VHD_FILE_NAME>.vhd" \ 
-Group 1065216673, Grouped object  --destination-container <YOUR_CONTAINER_NAME> \ 
-  --account-name <YOUR_STORAGE_ACCOUNT> \ 
-  --account-key <YOUR_STORAGE_ACCOUNT_KEY> 
+az storage blob copy start \
+ --source-uri "<PROVIDED_SAS_URL>" \
+ --destination-blob "<VHD_FILE_NAME>.vhd" \
+ --destination-container <YOUR_CONTAINER_NAME> \
+ --account-name <YOUR_STORAGE_ACCOUNT> \
+ --account-key <YOUR_STORAGE_ACCOUNT_KEY>
 ----
 
 . Create a new Azure image from the copied VHD file:
@@ -149,5 +149,6 @@ Download the control plane `.ova` image file and the Linux worker `.ova` image f
 .What's next?
 After learning about deploying a control plane VM and Linux worker VM, you can link:create-control-plane-and-worker-vms.html[create the control plane and worker VMs].
 
+// 2026 AUG 8, OTHERDOC-252
 // 2026 MAY 5, OTHERDOC-221
 // 2026 APRIL 15, GA release

@@ -1,17 +1,17 @@
 ---
 sidebar: sidebar
-permalink: networking-requirements.html
+permalink: configure-access-for-control-plane-and-worker-nodes.html
 keywords: networking requirements, TCP, UDP, control plane, worker, communication
 summary: "Networking requirements for NetApp Data Migrator, including required TCP and UDP ports for control plane and worker communication."
 ---
-= Verify NFS and SMB networking access in NetApp Data Migrator
+= Configure access for control plane and worker nodes in NetApp Data Migrator
 :icons: font
 :imagesdir: ./media/
 
 [.lead]
 You need to ensure that the IP address and subnet for both the control plane and workers are allowed in the export policy on the storage system. This is required to support NFS and SMB migrations using NetApp Data Migrator.
 
-== Verify NFS access
+== Configure NFS access
 
 For NFS, the control plane and worker nodes need permission to access the storage system as root clients.
 
@@ -26,15 +26,29 @@ ls -la /mnt/test
 
 . Ensure that root access is enabled by verifying that the export policy rule allows superuser access. If necessary, enable root access (no root squash) by modifying the export policy rule. 
 
-== Verify SMB access
+== Configure SMB access
 
 For SMB access, the control plane and worker nodes need permission to access the storage system using the SMB credentials. The SMB user must be part of the Backup operators and Administrators groups. 
 
-.Step
+.Steps
 . Perform a manual mount from a worker node to verify volume accessibility:
 + 
 [source,cli]
 ----
 net use Z: \\<storage-ip>\<share> /user:<domain>\<username> <password>
 ----
+
+. Join the Windows worker VM to a domain. 
++
+Active Directory relies on DNS for domain controller discovery. Before attempting to join a domain, verify that your system can locate the domain controller and that the Windows worker VM is configured to use the Active Directory DNS server.
++
+After DNS is configured, follow the link:https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage/join-computer-to-domain?tabs=cmd&pivots=windows-server-2025[Microsoft documentation^] to join the Windows worker VM to the domain.
++
+If you encounter any issues during the domain join process, refer to the link:https://techcommunity.microsoft.com/blog/askds/domain-join-and-basic-troubleshooting/4405860[Microsoft Domain Join troubleshooting documentation^].
+
+.What's next?
+After configuring network access, review the link:port-requirements.html[port requirements].
+
+
+// 2026 AUG 8, OTHERDOC-253
 // 2026 APRIL 15, GA release
