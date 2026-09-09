@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: legal notices, copyright, trademarks, open source, licenses
 summary: "Legal notices, copyright, trademarks, and open source license information for NetApp Data Migrator."
 ---
-= Legal notices
+= Legal notices for NetApp Data Migrator
 :icons: font
 :imagesdir: ./media/
 
