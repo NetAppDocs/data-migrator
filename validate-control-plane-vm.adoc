@@ -4,7 +4,7 @@ permalink: validate-control-plane-vm.html
 keywords: google cloud, installation, control plane, worker vm, iam roles
 summary: "Optionally, validate the control plane VM deployment on Google Cloud by checking service status, logs, and pod health."
 ---
-= Optionally, validate the control plane VM deployment for NetApp Data Migrator
+= Validate the control plane VM deployment for NetApp Data Migrator
 :icons: font
 :imagesdir: ./media/
 

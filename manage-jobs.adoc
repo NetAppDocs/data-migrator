@@ -30,7 +30,7 @@ The *Jobs Listings* table appears, which includes the following information:
 * *Next Schedule*: The next scheduled execution time (if applicable).
 * *Runs*: The number of times the job has been executed.
 * *Type*: The job type (Discovery, Migration, or Cutover).
-* *Status*: The current state of a job can be either Active or Inactive. Jobs that use manual export paths with an invalid or disabled status automatically become inactive. Refer to link:manage-file-servers.html[Add and manage file servers] for more details.
+* *Status*: The current state of a job can be either Active or Inactive. Jobs that use manual export paths with an invalid or disabled status automatically become inactive. Refer to link:manage-file-servers.html[Add and manage file servers in NetApp Data Migrator] for more details.
 * *Updated On*: Job update timestamp.
 +
 Jobs that use manual export paths or the export paths file are later re-uploaded. Any previously run jobs associated with a now invalid or disabled path automatically become inactive.
